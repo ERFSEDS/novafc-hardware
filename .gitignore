@@ -1,3 +1,5 @@
 #Add all files that should be igored
-#Before you edit this file double check with Nathan to make sure you're going about it the right way
-*.bin
+#software
+*/bin
+
+
