@@ -4,14 +4,19 @@
 
 
 enum PyroConfig {
-    VELOCITY_ABOVE,
-    VELOCITY_BELOW,
-    ACCELERATION_BELOW,
-    ACCELERATION_ABOVE,
-    ALTITUDE_ABOVE,
-    ALTITUDE_BELOW,
-    TIME_DELAY,
+	VELOCITY_ABOVE,
+	VELOCITY_BELOW,
+	ACCELERATION_BELOW,
+	ACCELERATION_ABOVE,
+	ALTITUDE_ABOVE,
+	ALTITUDE_BELOW,
+	TIME_DELAY,
 	NONE
+};
+enum AltitudeDeterminination {
+	ACCELEROMETER_ONLY,
+	BAROMETER_ONLY,
+	BOTH
 };
 struct Pyro {
 	PyroConfig configOne;
@@ -30,6 +35,23 @@ struct Pyro {
 		return false;
 	}
 };
+struct LoggingRates {
+	float preLaunch;
+	float poweredFlight;
+	float unpoweredFlight;
+	float descent;
+	
+	bool operator==(const LoggingRates& rates){
+   	if ( (preLaunch == rates.preLaunch) &&
+		 (poweredFlight == rates.poweredFlight) &&
+		 (unpoweredFlight == rates.unpoweredFlight) &&
+		 (descent == rates.descent) ) {
+		return true;
+	}
+	
+	return false;
+	}
+};
 
 class Configuration {	
 	public:
@@ -38,6 +60,8 @@ class Configuration {
 
 		bool getSafetyLock();
 		void setSafetyLock(bool safetyLock);
+		float getSafetyLockValue();						
+		void setSafetyLockValue(float safetyLockValue); 
 
 		void setPyro(int pyroNum, Pyro& pyro);
 		void setPyro(int pyroNum, 
@@ -45,12 +69,52 @@ class Configuration {
 					 PyroConfig& configTwo, float& valueTwo);
 		void setPyro(int pyroNum, int pyroConfigNum,
 					 PyroConfig& config, float& value);
-		Pyro getPyro(int pyroNum);	
-		Pyro*  getAllPyros();
+		Pyro* getPyro(int pyroNum);	
+		Pyro* getAllPyros();
+		
+		float getIgnitionThreshold();
+		void setIgnitionThreshold(float ignitionThreshold);
+		float getCutoffThreshold();
+		void setCutoffThreshold(float cutoffThreshold);
+
+		LoggingRates* getLoggingRates(); 
+		void setLoggingRates(LoggingRates logRates);
+		
+		AltitudeDeterminination getAltitudeDetermination();
+		void setAltitudeDetermination(AltitudeDeterminination determination);
+		
+		float getArmingAltitude();
+		void setArmingAltitude(float altitude);
+		
+		bool getDrogueChute();
+		void setDrogueChute(bool drogueChute);
+		
+		int getMainPyroChannel();
+		void setMainPyroChannel(int channel);
+		
+		int getDroguePyroChannel();
+		void setDroguePyroChannel(int channel);
 
 	private:
 		bool twoStageRocket;
+		
 		bool safetyLock;
+		float safetyLockValue;
+		
 		Pyro pyroChannels[NUMBER_OF_PYROS];
+		
+		float ignitionThreshold;
+		float cutoffThreshold;
+		
+		LoggingRates loggingRates;
+		
+		AltitudeDeterminination altitudeDetermination;
+		
+		float armingAltitude;
+		
+		bool drogueChute;
+		
+		int mainPyroChannel;
+		int droguePyroChannel;
 		
 };

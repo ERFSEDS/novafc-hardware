@@ -60,3 +60,31 @@ create_config_test(
 	NAME "Pyro_Channel_Test"
 	SOURCE "testing/testPyroChannels.cpp"
 )
+create_config_test(
+	NAME "Thresholds_Test"
+	SOURCE "testing/testThresholds.cpp"
+)
+create_config_test(
+	NAME "Logging_Rates_Test"
+	SOURCE "testing/testLoggingRates.cpp"
+)
+create_config_test(
+	NAME "Altitude_Determination_Test"
+	SOURCE "testing/testAltitudeDetermination.cpp"
+)
+create_config_test(
+	NAME "Arming_Altitude_Test"
+	SOURCE "testing/testArmingAltitude.cpp"
+)
+create_config_test(
+	NAME "Drogue_Chute_Test"
+	SOURCE "testing/testDrogueChute.cpp"
+)
+create_config_test(
+	NAME "Main_Pyro_Test"
+	SOURCE "testing/testMainPyroChannel.cpp"
+)
+create_config_test(
+	NAME "Drogue_Pyro_Test"
+	SOURCE "testing/testDroguePyroChannel.cpp"
+)

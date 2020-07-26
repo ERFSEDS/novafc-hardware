@@ -116,7 +116,7 @@ bool testSet(int index, Configuration config,
              PyroConfig configTwo, float valueTwo) {
 	Pyro pyroSet = {configOne, valueOne, configTwo, valueTwo};
     config.setPyro(index, configOne, valueOne, configTwo, valueTwo);
-    Pyro pyroGet = config.getPyro(index);
+    Pyro pyroGet = *(config.getPyro(index));
     if( pyroSet == pyroGet ) {
         return true;
     }
