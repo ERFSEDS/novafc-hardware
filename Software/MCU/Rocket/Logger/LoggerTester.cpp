@@ -5,12 +5,13 @@ using namespace std;
 
 int main()
 {
-    Logger go;
-    go.SetLogLevel(DEBUG);
-    go.Debug("please");
-    go.Info("god");
-    go.Event("end");
-    go.Warning("my");
-    go.Error("suffering");
-    go.Fatal("already");
+	Logger go;
+	go.SetLogLevel(DEBUG);
+	go.SetLogState(USB);
+	go.Debug("please");
+	go.Info("god");
+	go.Event("end");
+	go.Warning("my");
+	go.Error("suffering");
+	go.Fatal("already");
 }
