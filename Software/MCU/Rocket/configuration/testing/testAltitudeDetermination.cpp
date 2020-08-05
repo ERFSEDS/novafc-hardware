@@ -2,14 +2,13 @@
 #include <iostream>
 
 int main() {
-	Configuration config;
 	AltitudeDeterminination determine;
 	bool success;
 	
 	//Altitude Determination = ACCELEROMETER ONLY
 	determine = ACCELEROMETER_ONLY;
-	config.setAltitudeDetermination(determine);
-	success = determine == config.getAltitudeDetermination();
+	Configuration::setAltitudeDetermination(determine);
+	success = determine == Configuration::getAltitudeDetermination();
 	if( !success ) {
 		std::cout << "Failed to set Altitude Determination" << std::endl;
 		return 1;
@@ -17,8 +16,8 @@ int main() {
 	
 	//Altitude Determination = BOTH
 	determine = BOTH;
-	config.setAltitudeDetermination(determine);
-	success = determine == config.getAltitudeDetermination();
+	Configuration::setAltitudeDetermination(determine);
+	success = determine == Configuration::getAltitudeDetermination();
 	if( !success ) {
 		std::cout << "Failed to set Altitude Determination" << std::endl;
 		return 1;

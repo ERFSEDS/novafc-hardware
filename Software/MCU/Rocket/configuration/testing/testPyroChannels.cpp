@@ -1,13 +1,12 @@
 #include "Configuration.hpp"
 #include <iostream>
 
-bool testSet(int index, Configuration config,
+bool testSet(int index, 
 			 PyroConfig configOne, float valueOne,
 			 PyroConfig configTwo, float valueTwo);
-bool testSetAll(Configuration config, Pyro pyroArray[]);
+bool testSetAll(Pyro pyroArray[]);
 
 int main() {
-	Configuration config;
 	PyroConfig configOne, configTwo;
 	float valueOne, valueTwo;
 	int index;
@@ -19,7 +18,7 @@ int main() {
 	configTwo = VELOCITY_BELOW;
 	valueTwo = 50;
 	index = 0;
-	success = testSet(index, config, configOne, valueOne, configTwo, valueTwo);
+	success = testSet(index, configOne, valueOne, configTwo, valueTwo);
 	if( !success ) {
 		std::cout << "FAILED to set pyro " << index << std::endl;
 		return 1;
@@ -32,7 +31,7 @@ int main() {
     configTwo = ALTITUDE_ABOVE;
     valueTwo = 20;
     index = 0;
-    success = testSet(index, config, configOne, valueOne, configTwo, valueTwo);
+    success = testSet(index, configOne, valueOne, configTwo, valueTwo);
     if( !success ) {
         std::cout << "FAILED to set pyro " << index << std::endl;
         return 1;
@@ -46,7 +45,7 @@ int main() {
     configTwo = TIME_DELAY;
     valueTwo = 2.3;
     index = 1;
-    success = testSet(index, config, configOne, valueOne, configTwo, valueTwo);
+    success = testSet(index, configOne, valueOne, configTwo, valueTwo);
     if( !success ) {
         std::cout << "FAILED to set pyro " << index << std::endl;
         return 1;
@@ -59,7 +58,7 @@ int main() {
     configTwo = ACCELERATION_ABOVE;
     valueTwo = 256;
     index = 1;
-    success = testSet(index, config, configOne, valueOne, configTwo, valueTwo);
+    success = testSet(index, configOne, valueOne, configTwo, valueTwo);
     if( !success ) {
         std::cout << "FAILED to set pyro " << index << std::endl;
         return 1;
@@ -72,7 +71,7 @@ int main() {
     configTwo = NONE;
     valueTwo = 50;
     index = 2;
-    success = testSet(index, config, configOne, valueOne, configTwo, valueTwo);
+    success = testSet(index, configOne, valueOne, configTwo, valueTwo);
     if( !success ) {
         std::cout << "FAILED to set pyro " << index << std::endl;
         return 1;
@@ -85,7 +84,7 @@ int main() {
     configTwo = NONE;
     valueTwo = 50;
     index = 0;
-    success = testSet(index, config, configOne, valueOne, configTwo, valueTwo);
+    success = testSet(index, configOne, valueOne, configTwo, valueTwo);
     if( !success ) {
         std::cout << "FAILED to set pyro " << index << std::endl;
         return 1;
@@ -98,7 +97,7 @@ int main() {
 
 	Pyro pyroThree = {TIME_DELAY, 10, ACCELERATION_ABOVE, 10};
 	Pyro pyroArray[] = {pyroOne, pyroTwo, pyroThree};
-	success = testSetAll(config, pyroArray);
+	success = testSetAll( pyroArray);
 	if (!success) {
 		std::cout << "FAILED to set all" << std::endl;
 	}
@@ -111,23 +110,23 @@ int main() {
 }
 
 
-bool testSet(int index, Configuration config,
+bool testSet(int index,
              PyroConfig configOne, float valueOne,
              PyroConfig configTwo, float valueTwo) {
 	Pyro pyroSet = {configOne, valueOne, configTwo, valueTwo};
-    config.setPyro(index, configOne, valueOne, configTwo, valueTwo);
-    Pyro pyroGet = *(config.getPyro(index));
+    Configuration::setPyro(index, configOne, valueOne, configTwo, valueTwo);
+    Pyro pyroGet = *(Configuration::getPyro(index));
     if( pyroSet == pyroGet ) {
         return true;
     }
 	return false;
 }
 
-bool testSetAll(Configuration config, Pyro pyros[]) {
+bool testSetAll(Pyro pyros[]) {
 	for(int i = 0; i < NUMBER_OF_PYROS; i++) {
-		config.setPyro(i, pyros[i]);
+		Configuration::setPyro(i, pyros[i]);
 	}
-	Pyro *getPyros = config.getAllPyros();
+	Pyro *getPyros = Configuration::getAllPyros();
 	
 	bool success = true;
 	for(int i = 0; i < NUMBER_OF_PYROS; i++) {

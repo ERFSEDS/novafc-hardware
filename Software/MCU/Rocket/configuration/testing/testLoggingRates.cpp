@@ -2,7 +2,6 @@
 #include <iostream>
 
 int main() {
-	Configuration config;
 	LoggingRates logRates;
 	bool success;
 	
@@ -12,8 +11,8 @@ int main() {
 	//	unpoweredFlight = 25
 	//	descent = 0
 	logRates = {0.1, 50, 25, 0};
-	config.setLoggingRates(logRates);
-	success = logRates == *config.getLoggingRates();
+	Configuration::setLoggingRates(logRates);
+	success = logRates == *Configuration::getLoggingRates();
 	if( !success) {
 		std::cout << "Failed to set Logging Values" <<std::endl;
 		return 1;
@@ -25,8 +24,8 @@ int main() {
 	//	unpoweredFlight = 0.6
 	//	descent = 70
 	logRates = {100, 0.1, 0.6, 70};
-	config.setLoggingRates(logRates);
-	success = logRates == *config.getLoggingRates();
+	Configuration::setLoggingRates(logRates);
+	success = logRates == *Configuration::getLoggingRates();
 	if( !success) {
 		std::cout << "Failed to set Logging Values" <<std::endl;
 		return 1;

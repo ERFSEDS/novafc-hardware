@@ -2,14 +2,13 @@
 #include <iostream>
 
 int main() {
-	Configuration config;
 	float threshold;
 	bool success;
 	
 	//test set Ignition threshold 10.25
 	threshold = 10.25;
-	config.setIgnitionThreshold(threshold);
-	success = threshold == config.getIgnitionThreshold();
+	Configuration::setIgnitionThreshold(threshold);
+	success = threshold == Configuration::getIgnitionThreshold();
 	if(!success) {
 		std::cout << "Failed to set Ignition Threshold" << std::endl;
 		return 1;
@@ -17,8 +16,8 @@ int main() {
 	
 	//test set ignition 83
 	threshold = 83;
-	config.setIgnitionThreshold(threshold);
-	success = threshold == config.getIgnitionThreshold();
+	Configuration::setIgnitionThreshold(threshold);
+	success = threshold == Configuration::getIgnitionThreshold();
 	if(!success) {
 		std::cout << "Failed to set Ignition Threshold" << std::endl;
 		return 1;
@@ -26,8 +25,8 @@ int main() {
 	
 	//test set cutoff threshold 6.5
 	threshold = 6.5;
-	config.setCutoffThreshold(threshold);
-	success = threshold == config.getCutoffThreshold();
+	Configuration::setCutoffThreshold(threshold);
+	success = threshold == Configuration::getCutoffThreshold();
 	if(!success) {
 		std::cout << "Failed to set Cutoff Threshold" << std::endl;
 		return 1;
@@ -35,8 +34,8 @@ int main() {
 	
 	//test set cutoff threshold 946
 	threshold = 946;
-	config.setCutoffThreshold(threshold);
-	success = threshold == config.getCutoffThreshold();
+	Configuration::setCutoffThreshold(threshold);
+	success = threshold == Configuration::getCutoffThreshold();
 	if(!success) {
 		std::cout << "Failed to set Cutoff Threshold" << std::endl;
 		return 1;
