@@ -1,0 +1,22 @@
+
+void writeFlashData(word address, *byte data[]){
+	writeEnable
+	blockErase
+	quadProgramDataLoad
+	writeDisable
+}
+
+void copyFlashData(word address, *byte data[]){
+	fastReadQuadOutput
+	retreiveOutputSave
+}
+
+void resetFlash(){
+	enableReset
+	reset
+}
+
+void chipErase(){
+	Erase
+}
+

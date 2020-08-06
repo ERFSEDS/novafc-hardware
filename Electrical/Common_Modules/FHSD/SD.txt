@@ -1,0 +1,28 @@
+void wakeUp(){
+	D0 = high
+	CS = high -> low
+	transmit rando byte
+	CMD0
+	transmit another dummy byte to generate SCK
+	#wait for the receive flag bit to be set and check for response
+	# desired response is 0x01
+}
+
+void initilalize(){
+	ACMD41
+	if (rejected){
+		CMD1
+	}
+}
+
+void writeSdData(word address, *byte data[]){
+	CMD16	#Block Size
+	CMD24	#Specify message
+}
+
+void readSdData(word address, *byte data[]){
+	CMD16	#Block Size
+	wait for response of 0x00 and 0xFE
+	then take in data
+}
+
