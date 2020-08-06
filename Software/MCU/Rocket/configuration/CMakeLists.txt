@@ -88,3 +88,11 @@ create_config_test(
 	NAME "Drogue_Pyro_Test"
 	SOURCE "testing/testDroguePyroChannel.cpp"
 )
+create_config_test(
+	NAME "Default_Value_Test"
+	SOURCE "testing/testDefaults.cpp"
+)
+create_config_test(
+	NAME "Safe_Defaults_Test"
+	SOURCE "testing/testSafeDefaults.cpp"
+)

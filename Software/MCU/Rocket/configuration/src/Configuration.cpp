@@ -138,17 +138,22 @@ void Configuration::setToDefault() {
 	this->twoStageRocket = DEFAULT_TWO_STAGE_ROCKET;
 		
 	this->safetyLock = DEFAULT_SAFETY_LOCK;
-	this->safetyLockValue = DEFAULT_PYRO_CONFIG;
+	this->safetyLockValue = DEFAULT_SAFETY_LOCK_VALUE;
 		
 	this->pyroChannels[NUMBER_OF_PYROS];
 	for(int i = 0; i < NUMBER_OF_PYROS; i++) {
-		this->pyroChannels[i] = {DEFAULT_PYRO_CONFIG, DEFAULT_PYRO_VALUE};
+		this->pyroChannels[i] = {
+		DEFAULT_PYRO_CONFIG, DEFAULT_PYRO_VALUE, 
+		DEFAULT_PYRO_CONFIG, DEFAULT_PYRO_VALUE};
 	}
 		
 	this->ignitionThreshold = DEFAULT_IGNITION_THRESHOLD;
 	this->cutoffThreshold = DEFAULT_CUTOFF_THRESHOLD;
 		
-	this->loggingRates = DEFAULT_ARMING_RATES;
+	this->loggingRates = {	DEFAULT_PRE_LAUNCH_LOG_RATE, 
+							DEFAULT_POWERED_FLIGHT_LOG_RATE,
+							DEFAULT_UNPOWERED_FLIGHT_LOG_RATE,
+							DEFAULT_DESCENT_LOG_RATE};
 		
 	this->altitudeDetermination = DEFAULT_ALTITUDE_DETERMINATION;
 		
