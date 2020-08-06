@@ -1,0 +1,3 @@
+PROJECT( Logger )
+
+ADD_SUBDIRECTORY( Logger )
