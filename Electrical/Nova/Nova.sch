@@ -16,24 +16,6 @@ $EndDescr
 Text Notes 1250 -1150 0    157  ~ 31
 When creating your part in your feature branch create a heirarchical\nsheet and name it appropriately and do your work in there. NOT IN\nTHIS SHEET. THis sheet is the top level connect all the parts together\nsheet. I will find you if you put something other than  Heirarchical\nsheet in here
 $Sheet
-S 4350 1100 2450 3150
-U 5F317AC9
-F0 "MCU" 50
-F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Common_Modules/MCU/Breakout/MCU.sch" 20
-F2 "RESET" I L 4350 1500 50 
-F3 "CRYSTALIN" I L 4350 1750 50 
-F4 "CRYSTALOUT" I L 4350 1850 50 
-F5 "RTCCRYSTALIN" I L 4350 2000 50 
-F6 "RTCCRYSTALOUT" I L 4350 2100 50 
-F7 "TXD" I L 4350 2750 50 
-F8 "RXD" I L 4350 2850 50 
-F9 "VCAP" I L 4350 2350 50 
-F10 "VSSA" I L 4350 2450 50 
-F11 "VREF+" I L 4350 2550 50 
-F12 "PA14" I L 4350 1300 50 
-F13 "PA13" I L 4350 1200 50 
-$EndSheet
-$Sheet
 S 800  1850 1250 350 
 U 5F317E00
 F0 "MCU RESET" 50
@@ -184,4 +166,42 @@ Text Label 2400 3900 0    50   ~ 0
 TXD
 Text Label 2400 4000 0    50   ~ 0
 RXD
+$Sheet
+S 4350 1100 2450 3150
+U 5F317AC9
+F0 "MCU" 50
+F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Common_Modules/MCU/Breakout/MCU.sch" 20
+F2 "RESET" I L 4350 1500 50 
+F3 "CRYSTALIN" I L 4350 1750 50 
+F4 "CRYSTALOUT" I L 4350 1850 50 
+F5 "RTCCRYSTALIN" I L 4350 2000 50 
+F6 "RTCCRYSTALOUT" I L 4350 2100 50 
+F7 "TXD" I L 4350 2750 50 
+F8 "RXD" I L 4350 2850 50 
+F9 "VCAP" I L 4350 2350 50 
+F10 "VSSA" I L 4350 2450 50 
+F11 "VREF+" I L 4350 2550 50 
+F12 "PA14" I L 4350 1300 50 
+F13 "PA13" I L 4350 1200 50 
+F14 "PA4" I L 4350 3150 50 
+F15 "PA5" I L 4350 3250 50 
+F16 "PA6" I L 4350 3350 50 
+F17 "PA7" I L 4350 3450 50 
+$EndSheet
+Wire Wire Line
+	4350 3150 3550 3150
+Wire Wire Line
+	4350 3250 3550 3250
+Wire Wire Line
+	4350 3350 3550 3350
+Wire Wire Line
+	4350 3450 3550 3450
+Text Label 3850 3150 0    50   ~ 0
+NSS
+Text Label 3850 3250 0    50   ~ 0
+SCLK
+Text Label 3850 3350 0    50   ~ 0
+MISO
+Text Label 3850 3450 0    50   ~ 0
+MOSI
 $EndSCHEMATC
