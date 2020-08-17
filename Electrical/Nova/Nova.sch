@@ -63,28 +63,6 @@ Text Label 3850 2750 0    50   ~ 0
 RXD
 Text Label 3850 2850 0    50   ~ 0
 TXD
-$Sheet
-S 4350 1100 2450 3150
-U 5F317AC9
-F0 "MCU" 50
-F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Common_Modules/MCU/Breakout/MCU.sch" 20
-F2 "RESET" I L 4350 1500 50 
-F3 "CRYSTALIN" I L 4350 1750 50 
-F4 "CRYSTALOUT" I L 4350 1850 50 
-F5 "RTCCRYSTALIN" I L 4350 2000 50 
-F6 "RTCCRYSTALOUT" I L 4350 2100 50 
-F7 "TXD" I L 4350 2750 50 
-F8 "RXD" I L 4350 2850 50 
-F9 "VCAP" I L 4350 2350 50 
-F10 "VSSA" I L 4350 2450 50 
-F11 "VREF+" I L 4350 2550 50 
-F12 "PA14" I L 4350 1300 50 
-F13 "PA13" I L 4350 1200 50 
-F14 "PA4" I L 4350 3150 50 
-F15 "PA5" I L 4350 3250 50 
-F16 "PA6" I L 4350 3350 50 
-F17 "PA7" I L 4350 3450 50 
-$EndSheet
 Wire Wire Line
 	4350 3150 3550 3150
 Wire Wire Line
@@ -186,7 +164,7 @@ $Sheet
 S 800  3400 1250 350 
 U 5F319D4B
 F0 "USB-C" 50
-F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Nova/lib_sch/USB-C.sch" 20
+F1 "USB-C.sch" 20
 F2 "TXD" I R 2050 3500 50 
 F3 "RXD" I R 2050 3600 50 
 $EndSheet
@@ -194,7 +172,7 @@ $Sheet
 S 800  2000 1250 550 
 U 5F319C9C
 F0 "CLOCKS" 50
-F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Nova/lib_sch/Clocks.sch" 20
+F1 "Clocks.sch" 20
 F2 "CLOCKIN" I R 2050 2100 50 
 F3 "CLOCKOUT" I R 2050 2200 50 
 F4 "RTCCRYSTALIN" I R 2050 2350 50 
@@ -204,7 +182,7 @@ $Sheet
 S 800  2750 1250 500 
 U 5F3189B2
 F0 "MCU FILTERING" 50
-F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Nova/lib_sch/FILTERING.sch" 20
+F1 "MCU FILTERING.sch" 20
 F2 "VCAP" I R 2050 2850 50 
 F3 "VSSA" I R 2050 2950 50 
 F4 "VDDA" I R 2050 3050 50 
@@ -214,16 +192,38 @@ $Sheet
 S 800  1450 1250 350 
 U 5F317E00
 F0 "MCU RESET" 50
-F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Nova/lib_sch/RESET.sch" 20
+F1 "MCU RESET.sch" 20
 F2 "RESET" I R 2050 1650 50 
 $EndSheet
 $Sheet
 S 800  700  1250 450 
 U 5F31B2A5
 F0 "SWD" 50
-F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Nova/lib_sch/SWD .sch" 20
+F1 "SWD.sch" 20
 F2 "JTMS-SWDIO" I R 2050 800 50 
 F3 "JTCK-SWCLK" I R 2050 900 50 
 F4 "RESET" I R 2050 1000 50 
+$EndSheet
+$Sheet
+S 4350 1100 2450 3150
+U 5F317AC9
+F0 "MCU" 50
+F1 "MCU.sch" 20
+F2 "RESET" I L 4350 1500 50 
+F3 "CRYSTALIN" I L 4350 1750 50 
+F4 "CRYSTALOUT" I L 4350 1850 50 
+F5 "RTCCRYSTALIN" I L 4350 2000 50 
+F6 "RTCCRYSTALOUT" I L 4350 2100 50 
+F7 "TXD" I L 4350 2750 50 
+F8 "RXD" I L 4350 2850 50 
+F9 "VCAP" I L 4350 2350 50 
+F10 "VSSA" I L 4350 2450 50 
+F11 "VREF+" I L 4350 2550 50 
+F12 "PA14" I L 4350 1300 50 
+F13 "PA13" I L 4350 1200 50 
+F14 "PA4" I L 4350 3150 50 
+F15 "PA5" I L 4350 3250 50 
+F16 "PA6" I L 4350 3350 50 
+F17 "PA7" I L 4350 3450 50 
 $EndSheet
 $EndSCHEMATC
