@@ -121,14 +121,6 @@ Wire Wire Line
 	2050 3600 2850 3600
 Wire Wire Line
 	2050 3500 2850 3500
-$Sheet
-S 800  3400 1250 350 
-U 5F319D4B
-F0 "USB-C" 50
-F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Common_Modules/MCU/Breakout/USB-C.sch" 20
-F2 "TXD" I R 2050 3500 50 
-F3 "RXD" I R 2050 3600 50 
-$EndSheet
 Text Label 2350 3150 0    50   ~ 0
 VREF+
 Text Label 2350 2950 0    50   ~ 0
@@ -148,16 +140,6 @@ Wire Wire Line
 	2050 2950 2850 2950
 Wire Wire Line
 	2050 2850 2850 2850
-$Sheet
-S 800  2750 1250 500 
-U 5F3189B2
-F0 "MCU FILTERING" 50
-F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Common_Modules/MCU/Breakout/FILTERING.sch" 20
-F2 "VCAP" I R 2050 2850 50 
-F3 "VSSA" I R 2050 2950 50 
-F4 "VDDA" I R 2050 3050 50 
-F5 "VREF+" I R 2050 3150 50 
-$EndSheet
 Text Label 2350 800  0    50   ~ 0
 SWDIO
 Text Label 2350 900  0    50   ~ 0
@@ -170,15 +152,6 @@ Wire Wire Line
 	2050 900  2850 900 
 Wire Wire Line
 	2050 1000 2850 1000
-$Sheet
-S 800  700  1250 450 
-U 5F31B2A5
-F0 "SWD" 50
-F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Common_Modules/MCU/Breakout/SWD .sch" 20
-F2 "JTMS-SWDIO" I R 2050 800 50 
-F3 "JTCK-SWCLK" I R 2050 900 50 
-F4 "RESET" I R 2050 1000 50 
-$EndSheet
 Text Label 2250 2450 0    50   ~ 0
 32CLOCKOUT
 Text Label 2250 2350 0    50   ~ 0
@@ -199,23 +172,6 @@ Wire Wire Line
 	2050 2100 2850 2100
 Wire Wire Line
 	2050 1650 2850 1650
-$Sheet
-S 800  2000 1250 550 
-U 5F319C9C
-F0 "CLOCKS" 50
-F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Common_Modules/MCU/Breakout/Clocks.sch" 20
-F2 "CLOCKIN" I R 2050 2100 50 
-F3 "CLOCKOUT" I R 2050 2200 50 
-F4 "RTCCRYSTALIN" I R 2050 2350 50 
-F5 "RTCCRYSTALOUT" I R 2050 2450 50 
-$EndSheet
-$Sheet
-S 800  1450 1250 350 
-U 5F317E00
-F0 "MCU RESET" 50
-F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Common_Modules/MCU/Breakout/RESET.sch" 20
-F2 "RESET" I R 2050 1650 50 
-$EndSheet
 Wire Notes Line
 	700  550  3100 550 
 Wire Notes Line
@@ -226,4 +182,48 @@ Wire Notes Line
 	700  5150 700  550 
 Text Notes 1850 5300 0    79   ~ 0
 MCU\n
+$Sheet
+S 800  700  1250 450 
+U 5F31B2A5
+F0 "SWD" 50
+F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Nova/SWD .sch" 20
+F2 "JTMS-SWDIO" I R 2050 800 50 
+F3 "JTCK-SWCLK" I R 2050 900 50 
+F4 "RESET" I R 2050 1000 50 
+$EndSheet
+$Sheet
+S 800  1450 1250 350 
+U 5F317E00
+F0 "MCU RESET" 50
+F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Nova/RESET.sch" 20
+F2 "RESET" I R 2050 1650 50 
+$EndSheet
+$Sheet
+S 800  2000 1250 550 
+U 5F319C9C
+F0 "CLOCKS" 50
+F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Nova/Clocks.sch" 20
+F2 "CLOCKIN" I R 2050 2100 50 
+F3 "CLOCKOUT" I R 2050 2200 50 
+F4 "RTCCRYSTALIN" I R 2050 2350 50 
+F5 "RTCCRYSTALOUT" I R 2050 2450 50 
+$EndSheet
+$Sheet
+S 800  2750 1250 500 
+U 5F3189B2
+F0 "MCU FILTERING" 50
+F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Nova/FILTERING.sch" 20
+F2 "VCAP" I R 2050 2850 50 
+F3 "VSSA" I R 2050 2950 50 
+F4 "VDDA" I R 2050 3050 50 
+F5 "VREF+" I R 2050 3150 50 
+$EndSheet
+$Sheet
+S 800  3400 1250 350 
+U 5F319D4B
+F0 "USB-C" 50
+F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Nova/USB-C.sch" 20
+F2 "TXD" I R 2050 3500 50 
+F3 "RXD" I R 2050 3600 50 
+$EndSheet
 $EndSCHEMATC

@@ -183,26 +183,18 @@ Wire Notes Line
 Text Notes 1850 5300 0    79   ~ 0
 MCU\n
 $Sheet
-S 800  700  1250 450 
-U 5F31B2A5
-F0 "SWD" 50
-F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Nova/SWD .sch" 20
-F2 "JTMS-SWDIO" I R 2050 800 50 
-F3 "JTCK-SWCLK" I R 2050 900 50 
-F4 "RESET" I R 2050 1000 50 
-$EndSheet
-$Sheet
-S 800  1450 1250 350 
-U 5F317E00
-F0 "MCU RESET" 50
-F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Nova/RESET.sch" 20
-F2 "RESET" I R 2050 1650 50 
+S 800  3400 1250 350 
+U 5F319D4B
+F0 "USB-C" 50
+F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Nova/lib_sch/USB-C.sch" 20
+F2 "TXD" I R 2050 3500 50 
+F3 "RXD" I R 2050 3600 50 
 $EndSheet
 $Sheet
 S 800  2000 1250 550 
 U 5F319C9C
 F0 "CLOCKS" 50
-F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Nova/Clocks.sch" 20
+F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Nova/lib_sch/Clocks.sch" 20
 F2 "CLOCKIN" I R 2050 2100 50 
 F3 "CLOCKOUT" I R 2050 2200 50 
 F4 "RTCCRYSTALIN" I R 2050 2350 50 
@@ -212,18 +204,26 @@ $Sheet
 S 800  2750 1250 500 
 U 5F3189B2
 F0 "MCU FILTERING" 50
-F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Nova/FILTERING.sch" 20
+F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Nova/lib_sch/FILTERING.sch" 20
 F2 "VCAP" I R 2050 2850 50 
 F3 "VSSA" I R 2050 2950 50 
 F4 "VDDA" I R 2050 3050 50 
 F5 "VREF+" I R 2050 3150 50 
 $EndSheet
 $Sheet
-S 800  3400 1250 350 
-U 5F319D4B
-F0 "USB-C" 50
-F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Nova/USB-C.sch" 20
-F2 "TXD" I R 2050 3500 50 
-F3 "RXD" I R 2050 3600 50 
+S 800  1450 1250 350 
+U 5F317E00
+F0 "MCU RESET" 50
+F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Nova/lib_sch/RESET.sch" 20
+F2 "RESET" I R 2050 1650 50 
+$EndSheet
+$Sheet
+S 800  700  1250 450 
+U 5F31B2A5
+F0 "SWD" 50
+F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Nova/lib_sch/SWD .sch" 20
+F2 "JTMS-SWDIO" I R 2050 800 50 
+F3 "JTCK-SWCLK" I R 2050 900 50 
+F4 "RESET" I R 2050 1000 50 
 $EndSheet
 $EndSCHEMATC
