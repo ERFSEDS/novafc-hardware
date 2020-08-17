@@ -216,4 +216,14 @@ F0 "MCU RESET" 50
 F1 "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Common_Modules/MCU/Breakout/RESET.sch" 20
 F2 "RESET" I R 2050 1650 50 
 $EndSheet
+Wire Notes Line
+	700  550  3100 550 
+Wire Notes Line
+	3100 550  3100 5150
+Wire Notes Line
+	3100 5150 700  5150
+Wire Notes Line
+	700  5150 700  550 
+Text Notes 1850 5300 0    79   ~ 0
+MCU\n
 $EndSCHEMATC
