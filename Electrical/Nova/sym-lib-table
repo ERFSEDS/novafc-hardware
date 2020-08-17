@@ -1,3 +1,8 @@
 (sym_lib_table
   (lib (name Nova_Microcontroller)(type Legacy)(uri "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Common_Modules/MCU/Symbols/Nova Microcontroller.lib")(options "")(descr ""))
+  (lib (name Nova-rescue)(type Legacy)(uri ${KIPRJMOD}/Nova-rescue.lib)(options "")(descr ""))
+  (lib (name MS560702BA03-50)(type Legacy)(uri "C:/Users/Penguin/Documents/GitHub/Nova_Flight_Computer/Electrical/Common_Modules/Barometer/Symbol Library/MS560702BA03-50.lib")(options "")(descr ""))
+  (lib (name LM78M05CDTXNOPB)(type Legacy)(uri "C:/Users/Penguin/Documents/GitHub/Nova_Flight_Computer/Electrical/Common_Modules/PowerSupply/Symbol Library/LM78M05CDTXNOPB.lib")(options "")(descr ""))
+  (lib (name TLV1117LV33DCYR)(type Legacy)(uri "C:/Users/Penguin/Documents/GitHub/Nova_Flight_Computer/Electrical/Common_Modules/PowerSupply/Symbol Library/TLV1117LV33DCYR.lib")(options "")(descr ""))
+  (lib (name Flash_Chip)(type Legacy)(uri "C:/Users/Penguin/Documents/GitHub/Nova_Flight_Computer/Electrical/Common_Modules/FHSD/Symbol Library/Flash Chip.lib")(options "")(descr ""))
 )

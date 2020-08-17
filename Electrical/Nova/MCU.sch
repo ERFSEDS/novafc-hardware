@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 9 9
+Sheet 9 13
 Title "Microcontroller"
 Date "2020-07-02"
 Rev "1"
@@ -7705,7 +7705,7 @@ Wire Wire Line
 Wire Wire Line
 	5000 2200 5350 2200
 $Comp
-L Nova_Microcontroller:STM32F401RBTx U201
+L Nova-rescue:STM32F401RBTx-Nova_Microcontroller U201
 U 1 1 5EE690AA
 P 6050 3700
 F 0 "U201" H 6050 6150 50  0000 C CNN

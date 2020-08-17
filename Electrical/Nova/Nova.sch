@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
-Sheet 1 9
+Sheet 1 13
 Title ""
 Date ""
 Rev ""
@@ -226,4 +226,92 @@ F15 "PA5" I L 4350 3250 50
 F16 "PA6" I L 4350 3350 50 
 F17 "PA7" I L 4350 3450 50 
 $EndSheet
+$Sheet
+S 4350 4450 1000 500 
+U 5F3A063C
+F0 "Barometer" 50
+F1 "Barometer.sch" 50
+F2 "SCLK" I L 4350 4550 50 
+F3 "SDI" I L 4350 4650 50 
+F4 "SDO" I L 4350 4750 50 
+F5 "CSB" I L 4350 4850 50 
+$EndSheet
+Wire Wire Line
+	4350 4550 3550 4550
+Wire Wire Line
+	4350 4650 3550 4650
+Wire Wire Line
+	4350 4750 3550 4750
+Wire Wire Line
+	3550 4850 4350 4850
+Text Label 3850 4550 0    50   ~ 0
+SCLK
+Text Label 3850 4650 0    50   ~ 0
+MOSI
+Text Label 3850 4750 0    50   ~ 0
+MISO
+$Sheet
+S 5400 4450 1000 500 
+U 5F3B0B4B
+F0 "PowerSupply" 50
+F1 "PowerSupply.sch" 50
+$EndSheet
+$Sheet
+S 4350 5150 1000 500 
+U 5F3B5BD1
+F0 "MicroSD" 50
+F1 "MicroSD.sch" 50
+F2 "MISO" I L 4350 5250 50 
+F3 "MOSI" I L 4350 5350 50 
+F4 "SCLK" I L 4350 5450 50 
+F5 "CS_SD" I L 4350 5550 50 
+$EndSheet
+$Sheet
+S 4350 5850 1000 500 
+U 5F3B5C2E
+F0 "FlashChip" 50
+F1 "FlashChip.sch" 50
+F2 "SCLK" I L 4350 5900 50 
+F3 "MOSI" I L 4350 6000 50 
+F4 "MISO" I L 4350 6100 50 
+F5 "CS_FLASH" I L 4350 6200 50 
+F6 "HOLD" I L 4350 6300 50 
+F7 "WP" I R 5350 5900 50 
+$EndSheet
+Wire Wire Line
+	4350 5250 3550 5250
+Wire Wire Line
+	3550 5350 4350 5350
+Wire Wire Line
+	4350 5450 3550 5450
+Wire Wire Line
+	4350 5550 3550 5550
+Wire Wire Line
+	3550 5900 4350 5900
+Wire Wire Line
+	4350 6000 3550 6000
+Wire Wire Line
+	4350 6100 3550 6100
+Wire Wire Line
+	3550 6200 4350 6200
+Wire Wire Line
+	4350 6300 3550 6300
+Wire Wire Line
+	5350 5900 6150 5900
+Text Label 3850 5250 0    50   ~ 0
+MISO
+Text Label 3850 5350 0    50   ~ 0
+MOSI
+Text Label 3850 5450 0    50   ~ 0
+SCLK
+Text Label 3850 5900 0    50   ~ 0
+SCLK
+Text Label 3850 6000 0    50   ~ 0
+MOSI
+Text Label 3850 6100 0    50   ~ 0
+MISO
+Text Label 3850 6300 0    50   ~ 0
+HOLD
+Text Label 5600 5900 0    50   ~ 0
+WP
 $EndSCHEMATC
