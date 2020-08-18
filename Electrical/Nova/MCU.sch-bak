@@ -7705,7 +7705,7 @@ Wire Wire Line
 Wire Wire Line
 	5000 2200 5350 2200
 $Comp
-L Nova-rescue:STM32F401RBTx-Nova_Microcontroller U201
+L Nova-rescue:STM32F401RBTx-Nova_Microcontroller-Nova-rescue U201
 U 1 1 5EE690AA
 P 6050 3700
 F 0 "U201" H 6050 6150 50  0000 C CNN

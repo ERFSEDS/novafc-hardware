@@ -81,22 +81,6 @@ F 3 "https://www.digikey.com/product-detail/en/avx-corporation/SD0805S020S1R0/47
 	1    3350 3150
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	1800 4650 1800 4800
-$Comp
-L power:GND #PWR?
-U 1 1 5F0EA8E3
-P 1950 4950
-AR Path="/5F0EA8E3" Ref="#PWR?"  Part="1" 
-AR Path="/5F0C9147/5F0EA8E3" Ref="#PWR0103"  Part="1" 
-AR Path="/5F3B0B4B/5F0EA8E3" Ref="#PWR0103"  Part="1" 
-F 0 "#PWR0103" H 1950 4700 50  0001 C CNN
-F 1 "GND" H 1955 4777 50  0000 C CNN
-F 2 "" H 1950 4950 50  0001 C CNN
-F 3 "" H 1950 4950 50  0001 C CNN
-	1    1950 4950
-	1    0    0    -1  
-$EndComp
 $Comp
 L power:PWR_FLAG #FLG?
 U 1 1 5F0EA8F3
@@ -116,77 +100,6 @@ Wire Wire Line
 	2900 3150 3150 3150
 Wire Wire Line
 	2700 3150 2900 3150
-$Comp
-L Connector:USB_C_Receptacle_USB2.0 J?
-U 1 1 5F0EA902
-P 2100 3750
-AR Path="/5F0EA902" Ref="J?"  Part="1" 
-AR Path="/5F0C9147/5F0EA902" Ref="USBC401"  Part="1" 
-AR Path="/5F3B0B4B/5F0EA902" Ref="USBC401"  Part="1" 
-F 0 "USBC401" H 2207 4617 50  0000 C CNN
-F 1 "USB_C_2.0" H 2207 4526 50  0000 C CNN
-F 2 "Connector_USB:USB_C_Receptacle_GCT_USB4085" H 2250 3750 50  0001 C CNN
-F 3 "https://www.usb.org/sites/default/files/documents/usb_type-c.zip" H 2250 3750 50  0001 C CNN
-	1    2100 3750
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_US R?
-U 1 1 5F0EA908
-P 3200 3450
-AR Path="/5F0EA908" Ref="R?"  Part="1" 
-AR Path="/5F0C9147/5F0EA908" Ref="R201"  Part="1" 
-AR Path="/5F3B0B4B/5F0EA908" Ref="R201"  Part="1" 
-F 0 "R201" V 2995 3450 50  0000 C CNN
-F 1 "5k" V 3086 3450 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 3240 3440 50  0001 C CNN
-F 3 "~" H 3200 3450 50  0001 C CNN
-	1    3200 3450
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:R_US R?
-U 1 1 5F0EA90E
-P 3200 3750
-AR Path="/5F0EA90E" Ref="R?"  Part="1" 
-AR Path="/5F0C9147/5F0EA90E" Ref="R202"  Part="1" 
-AR Path="/5F3B0B4B/5F0EA90E" Ref="R202"  Part="1" 
-F 0 "R202" V 3405 3750 50  0000 C CNN
-F 1 "5k" V 3314 3750 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 3240 3740 50  0001 C CNN
-F 3 "~" H 3200 3750 50  0001 C CNN
-	1    3200 3750
-	0    -1   -1   0   
-$EndComp
-$Comp
-L power:GND #PWR?
-U 1 1 5F0EA914
-P 3550 3600
-AR Path="/5F0EA914" Ref="#PWR?"  Part="1" 
-AR Path="/5F0C9147/5F0EA914" Ref="#PWR0104"  Part="1" 
-AR Path="/5F3B0B4B/5F0EA914" Ref="#PWR0104"  Part="1" 
-F 0 "#PWR0104" H 3550 3350 50  0001 C CNN
-F 1 "GND" V 3555 3472 50  0000 R CNN
-F 2 "" H 3550 3600 50  0001 C CNN
-F 3 "" H 3550 3600 50  0001 C CNN
-	1    3550 3600
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	2700 3350 2900 3350
-Wire Wire Line
-	2900 3450 3050 3450
-Wire Wire Line
-	2700 3450 2800 3450
-Wire Wire Line
-	2800 3750 3050 3750
-Wire Wire Line
-	3350 3450 3550 3450
-Wire Wire Line
-	3550 3450 3550 3600
-Wire Wire Line
-	3550 3750 3350 3750
-Connection ~ 3550 3600
 Wire Wire Line
 	9950 3050 9750 3050
 Wire Wire Line
@@ -205,13 +118,6 @@ F 3 "" H 9750 2850 50  0001 C CNN
 	1    9750 2850
 	-1   0    0    1   
 $EndComp
-NoConn ~ 8850 2850
-NoConn ~ 2700 3650
-NoConn ~ 2700 3750
-NoConn ~ 2700 3850
-NoConn ~ 2700 3950
-NoConn ~ 2700 4250
-NoConn ~ 2700 4350
 Connection ~ 7600 4600
 $Comp
 L power:+3V3 #PWR?
@@ -244,15 +150,9 @@ F 3 "" H 4050 2950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2900 3350 2900 3450
-Wire Wire Line
 	5150 3600 5150 4000
 Wire Wire Line
 	5150 3050 5150 3600
-Wire Wire Line
-	3550 3600 3550 3750
-Wire Wire Line
-	2800 3450 2800 3750
 $Comp
 L pspice:C C?
 U 1 1 5F0EA956
@@ -308,13 +208,6 @@ Wire Wire Line
 Wire Wire Line
 	5150 3050 5650 3050
 Connection ~ 5500 5350
-Wire Wire Line
-	2100 4650 2100 4800
-Wire Wire Line
-	1800 4800 1950 4800
-Connection ~ 1950 4800
-Wire Wire Line
-	1950 4800 2100 4800
 Connection ~ 8550 3150
 Wire Wire Line
 	7600 5350 7600 5200
@@ -361,8 +254,6 @@ F 3 "~" H 9200 3150 50  0001 C CNN
 $EndComp
 Connection ~ 9200 3150
 Wire Wire Line
-	1950 4800 1950 4950
-Wire Wire Line
 	4050 4700 4050 4600
 $Comp
 L pspice:C C?
@@ -402,7 +293,7 @@ Connection ~ 7300 5350
 Wire Wire Line
 	7300 5350 7600 5350
 $Comp
-L TLV1117LV33DCYR:TLV1117LV33DCYR 3v3Reg401
+L Nova-rescue:TLV1117LV33DCYR-TLV1117LV33DCYR 3v3Reg401
 U 1 1 5F123DAD
 P 7150 4700
 AR Path="/5F123DAD" Ref="3v3Reg401"  Part="1" 
@@ -416,7 +307,7 @@ F 3 "https://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%
 	-1   0    0    1   
 $EndComp
 $Comp
-L LM78M05CDTXNOPB:LM78M05CDTX_NOPB 5vReg401
+L Nova-rescue:LM78M05CDTX_NOPB-LM78M05CDTXNOPB 5vReg401
 U 1 1 5F10F960
 P 7850 3150
 F 0 "5vReg401" H 8950 2663 60  0000 C CNN
@@ -432,4 +323,15 @@ Wire Wire Line
 	7600 4600 7750 4600
 Wire Wire Line
 	9200 3150 9950 3150
+$Comp
+L power:VBUS #PWR?
+U 1 1 5F3BD3CD
+P 2700 3150
+F 0 "#PWR?" H 2700 3000 50  0001 C CNN
+F 1 "VBUS" V 2715 3277 50  0000 L CNN
+F 2 "" H 2700 3150 50  0001 C CNN
+F 3 "" H 2700 3150 50  0001 C CNN
+	1    2700 3150
+	0    -1   -1   0   
+$EndComp
 $EndSCHEMATC

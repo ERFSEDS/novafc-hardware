@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 5 13
+Sheet 4 13
 Title "Microcontroller"
 Date "2020-07-02"
 Rev "1"
@@ -7648,7 +7648,7 @@ FD 2F F4 F9 A0 3B 67 FA D8 61 00 00 00 00 49 45 4E 44 AE 42 60 82
 EndData
 $EndBitmap
 $Comp
-L Nova-rescue:USB_C_Receptacle-Nova_Microcontroller J?
+L Nova-rescue:USB_C_Receptacle-Nova_Microcontroller-Nova-rescue J?
 U 1 1 5EE7E0E1
 P 3900 3500
 F 0 "J?" H 4007 4767 50  0000 C CNN
@@ -7661,7 +7661,7 @@ F 4 "12401598E4#2A" H 3900 3500 50  0001 C CNN "DIGIKEY"
 $EndComp
 $Comp
 L power:GND #PWR?
-U 1 1 5EE7F750
+U 1 1 5F3B6869
 P 3900 5300
 F 0 "#PWR?" H 3900 5050 50  0001 C CNN
 F 1 "GND" H 3905 5127 50  0000 C CNN
@@ -7678,7 +7678,7 @@ Wire Wire Line
 	3600 5300 3900 5300
 Connection ~ 3900 5300
 $Comp
-L Nova-rescue:Fuse-Nova_Microcontroller F?
+L Nova-rescue:Fuse-Nova_Microcontroller-Nova-rescue F?
 U 1 1 5EE8054D
 P 5050 2500
 F 0 "F?" V 4853 2500 50  0000 C CNN
@@ -7692,8 +7692,8 @@ $EndComp
 Wire Wire Line
 	4500 2500 4700 2500
 $Comp
-L Nova-rescue:FT234XD-R-Nova_Microcontroller U?
-U 1 1 5EE8343B
+L Nova-rescue:FT234XD-R-Nova_Microcontroller-Nova-rescue U?
+U 1 1 5F3B686B
 P 7900 3500
 F 0 "U?" H 7450 4000 60  0000 C CNN
 F 1 "FT234XD-R" H 7450 3900 60  0000 C CNN
@@ -7712,8 +7712,8 @@ F 12 "Active" H 8100 4700 60  0001 L CNN "Status"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Nova-rescue:Ferrite_Bead-Nova_Microcontroller FB?
-U 1 1 5EE89DD0
+L Nova-rescue:Ferrite_Bead-Nova_Microcontroller-Nova-rescue FB?
+U 1 1 5F3B686C
 P 6050 2500
 F 0 "FB?" V 5776 2500 50  0000 C CNN
 F 1 "600 OHM" V 5867 2500 50  0000 C CNN
@@ -7726,7 +7726,7 @@ $EndComp
 Wire Wire Line
 	6200 2500 8000 2500
 $Comp
-L Nova-rescue:R_US-Nova_Microcontroller R?
+L Nova-rescue:R_US-Nova_Microcontroller-Nova-rescue R?
 U 1 1 5EE8D72F
 P 5150 3000
 F 0 "R?" V 4945 3000 50  0000 C CNN
@@ -7802,7 +7802,7 @@ Wire Wire Line
 	8850 3600 8400 3600
 $Comp
 L power:+3.3V #PWR?
-U 1 1 5EE9256E
+U 1 1 5F3B6871
 P 7250 3600
 F 0 "#PWR?" H 7250 3450 50  0001 C CNN
 F 1 "+3.3V" V 7265 3728 50  0000 L CNN
@@ -7814,8 +7814,8 @@ $EndComp
 Wire Wire Line
 	7250 3600 7500 3600
 $Comp
-L Nova-rescue:C-Nova_Microcontroller C?
-U 1 1 5EE93320
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue C?
+U 1 1 5F3B6872
 P 5950 3750
 F 0 "C?" H 6065 3796 50  0000 L CNN
 F 1 "47pF" H 6065 3705 50  0000 L CNN
@@ -7825,7 +7825,7 @@ F 3 "~" H 5950 3750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Nova-rescue:C-Nova_Microcontroller C?
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue C?
 U 1 1 5EE93CEE
 P 6400 3750
 F 0 "C?" H 6515 3796 50  0000 L CNN
@@ -7866,7 +7866,7 @@ Wire Wire Line
 	6400 4050 6200 4050
 Connection ~ 6200 4050
 $Comp
-L Nova-rescue:R_US-Nova_Microcontroller R?
+L Nova-rescue:R_US-Nova_Microcontroller-Nova-rescue R?
 U 1 1 5EE8E4DE
 P 5150 3200
 F 0 "R?" V 5350 3200 50  0000 C CNN
@@ -7877,8 +7877,8 @@ F 3 "~" H 5150 3200 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Nova-rescue:C-Nova_Microcontroller C?
-U 1 1 5EE97E32
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue C?
+U 1 1 5F3B6875
 P 9400 3650
 F 0 "C?" H 9515 3696 50  0000 L CNN
 F 1 "100nF" H 9515 3605 50  0000 L CNN
@@ -7901,7 +7901,7 @@ $EndComp
 Wire Wire Line
 	9400 3800 9400 3950
 $Comp
-L Nova-rescue:C-Nova_Microcontroller C?
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue C?
 U 1 1 5EE98E46
 P 5450 2350
 F 0 "C?" H 5565 2396 50  0000 L CNN
@@ -7925,7 +7925,7 @@ $EndComp
 Wire Wire Line
 	5450 2200 5450 2000
 $Comp
-L Nova-rescue:LED-Nova_Microcontroller D?
+L Nova-rescue:LED-Nova_Microcontroller-Nova-rescue D?
 U 1 1 5EE9CC36
 P 7150 4650
 F 0 "D?" H 7143 4395 50  0000 C CNN
@@ -7936,7 +7936,7 @@ F 3 "~" H 7150 4650 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Nova-rescue:R_US-Nova_Microcontroller R?
+L Nova-rescue:R_US-Nova_Microcontroller-Nova-rescue R?
 U 1 1 5EE9D264
 P 6550 4650
 F 0 "R?" V 6345 4650 50  0000 C CNN
@@ -7995,8 +7995,8 @@ D2-
 Text Label 5500 3200 0    50   ~ 0
 D2+
 $Comp
-L Nova-rescue:R_US-Nova_Microcontroller R?
-U 1 1 5EF2AE69
+L Nova-rescue:R_US-Nova_Microcontroller-Nova-rescue R?
+U 1 1 5F3B687C
 P 6200 3000
 F 0 "R?" V 5995 3000 50  0000 C CNN
 F 1 "5K" V 6086 3000 50  0000 C CNN
@@ -8006,7 +8006,7 @@ F 3 "~" H 6200 3000 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Nova-rescue:R_US-Nova_Microcontroller R?
+L Nova-rescue:R_US-Nova_Microcontroller-Nova-rescue R?
 U 1 1 5EF2B785
 P 6450 2750
 F 0 "R?" V 6245 2750 50  0000 C CNN
@@ -8048,7 +8048,7 @@ Wire Wire Line
 	6750 2750 6800 2750
 $Comp
 L power:PWR_FLAG #FLG?
-U 1 1 5EF372DE
+U 1 1 5F3B687F
 P 8200 2500
 F 0 "#FLG?" H 8200 2575 50  0001 C CNN
 F 1 "PWR_FLAG" H 8200 2673 50  0000 C CNN
@@ -8073,7 +8073,7 @@ F 3 "~" H 3900 5150 50  0001 C CNN
 $EndComp
 $Comp
 L power:PWR_FLAG #FLG?
-U 1 1 5EF3B232
+U 1 1 5F3B6881
 P 4700 2500
 F 0 "#FLG?" H 4700 2575 50  0001 C CNN
 F 1 "PWR_FLAG" H 4700 2673 50  0000 C CNN

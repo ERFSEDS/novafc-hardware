@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Nova-rescue:Conn_01x06_Male-Nova_Microcontroller J?
+L Nova-rescue:Conn_01x06_Male-Nova_Microcontroller-Nova-rescue J?
 U 1 1 5F3A5F38
 P 5150 3600
 F 0 "J?" H 5258 3981 50  0000 C CNN
@@ -896,7 +896,7 @@ C8 24 80 5C 90 49 00 B9 20 93 00 72 41 26 01 E4 82 4C 02 C8 05 99 04 90 0B 32 09
 EndData
 $EndBitmap
 $Comp
-L Nova-rescue:Conn_01x06_Male-Nova_Microcontroller J?
+L Nova-rescue:Conn_01x06_Male-Nova_Microcontroller-Nova-rescue J?
 U 1 1 5EF13F12
 P 5150 3600
 F 0 "J?" H 5258 3981 50  0000 C CNN
