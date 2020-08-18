@@ -118,7 +118,6 @@ F 3 "" H 9750 2850 50  0001 C CNN
 	1    9750 2850
 	-1   0    0    1   
 $EndComp
-NoConn ~ 8850 2850
 Connection ~ 7600 4600
 $Comp
 L power:+3V3 #PWR?

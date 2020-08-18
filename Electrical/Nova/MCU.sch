@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 9 13
+Sheet 13 13
 Title "Microcontroller"
 Date "2020-07-02"
 Rev "1"
@@ -15586,4 +15586,10 @@ C8 58 4D 2A 25 01 58 BA C4 D5 64 3F 3A 43 29 09 C0 0B 90 38 26 BB 65 54 0D 70 05
 FD 2F F4 F9 A0 3B 67 FA D8 61 00 00 00 00 49 45 4E 44 AE 42 60 82 
 EndData
 $EndBitmap
+Text Notes 7450 3900 0    50   ~ 0
+Barometer
+Text Notes 7450 4000 0    50   ~ 0
+Accelerometer\n
+Text Notes 7450 4100 0    50   ~ 0
+Gyro
 $EndSCHEMATC
