@@ -7,4 +7,5 @@
   (lib (name Flash_Chip)(type Legacy)(uri "C:/Users/Penguin/Documents/GitHub/Nova_Flight_Computer/Electrical/Common_Modules/FHSD/Symbol Library/Flash Chip.lib")(options "")(descr ""))
   (lib (name 74HC2GU04GW_125)(type Legacy)(uri "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Common_Modules/Transducer/Symbol Library/74HC2GU04GW_125.lib")(options "")(descr ""))
   (lib (name PS1440P02BT)(type Legacy)(uri "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Common_Modules/Transducer/Symbol Library/PS1440P02BT.lib")(options "")(descr ""))
+  (lib (name Gyroscope)(type Legacy)(uri ${KIPRJMOD}/../Common_Modules/Gyroscope/symbols/Gyroscope.lib)(options "")(descr ""))
 )

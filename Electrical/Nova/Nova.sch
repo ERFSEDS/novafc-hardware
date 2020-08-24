@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
-Sheet 1 13
+Sheet 1 14
 Title ""
 Date ""
 Rev ""
@@ -370,4 +370,10 @@ Wire Notes Line
 	3300 4550 3300 550 
 Text Notes 5350 4700 0    79   ~ 0
 MCU
+$Sheet
+S 4250 5300 1150 550 
+U 5F440A67
+F0 "GyroScope" 50
+F1 "../Common_Modules/Gyroscope/breakout/Gyroscope.sch" 50
+$EndSheet
 $EndSCHEMATC
