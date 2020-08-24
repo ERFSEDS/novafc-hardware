@@ -117,11 +117,11 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Nova-rescue_74HC2GU04GW,125-74HC2GU04GW_125
+# Nova-rescue_74HC2GU04GW,125-74HC2GU04GW_125-Nova-rescue
 #
-DEF Nova-rescue_74HC2GU04GW,125-74HC2GU04GW_125 IC 0 30 Y Y 1 F N
+DEF Nova-rescue_74HC2GU04GW,125-74HC2GU04GW_125-Nova-rescue IC 0 30 Y Y 1 F N
 F0 "IC" 850 300 50 H V L CNN
-F1 "Nova-rescue_74HC2GU04GW,125-74HC2GU04GW_125" 850 200 50 H V L CNN
+F1 "Nova-rescue_74HC2GU04GW,125-74HC2GU04GW_125-Nova-rescue" 850 200 50 H V L CNN
 F2 "SOP65P210X110-6N" 850 100 50 H I L CNN
 F3 "https://assets.nexperia.com/documents/data-sheet/74HC2GU04.pdf" 850 0 50 H I L CNN
 F4 "74HC2GU04 - Dual unbuffered inverter@en-us" 850 -100 50 H I L CNN "Description"
@@ -141,11 +141,11 @@ X ~ 6 1000 0 200 L 50 50 0 0 P
 ENDDRAW
 ENDDEF
 #
-# Nova-rescue_C-Nova_Microcontroller-Nova-rescue-Nova-rescue
+# Nova-rescue_C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue
 #
-DEF Nova-rescue_C-Nova_Microcontroller-Nova-rescue-Nova-rescue C 0 10 N Y 1 F N
+DEF Nova-rescue_C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue C 0 10 N Y 1 F N
 F0 "C" 25 100 50 H V L CNN
-F1 "Nova-rescue_C-Nova_Microcontroller-Nova-rescue-Nova-rescue" 25 -100 50 H V L CNN
+F1 "Nova-rescue_C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue" 25 -100 50 H V L CNN
 F2 "" 38 -150 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -159,11 +159,11 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Nova-rescue_Conn_01x06_Male-Nova_Microcontroller-Nova-rescue-Nova-rescue
+# Nova-rescue_Conn_01x06_Male-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue
 #
-DEF Nova-rescue_Conn_01x06_Male-Nova_Microcontroller-Nova-rescue-Nova-rescue J 0 40 Y N 1 F N
+DEF Nova-rescue_Conn_01x06_Male-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue J 0 40 Y N 1 F N
 F0 "J" 0 300 50 H V C CNN
-F1 "Nova-rescue_Conn_01x06_Male-Nova_Microcontroller-Nova-rescue-Nova-rescue" 0 -400 50 H V C CNN
+F1 "Nova-rescue_Conn_01x06_Male-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue" 0 -400 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -191,11 +191,11 @@ X Pin_6 6 200 -300 150 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Nova-rescue_Crystal-Nova_Microcontroller-Nova-rescue-Nova-rescue
+# Nova-rescue_Crystal-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue
 #
-DEF Nova-rescue_Crystal-Nova_Microcontroller-Nova-rescue-Nova-rescue Y 0 40 N N 1 F N
+DEF Nova-rescue_Crystal-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue Y 0 40 N N 1 F N
 F0 "Y" 0 150 50 H V C CNN
-F1 "Nova-rescue_Crystal-Nova_Microcontroller-Nova-rescue-Nova-rescue" 0 -150 50 H V C CNN
+F1 "Nova-rescue_Crystal-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue" 0 -150 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -212,11 +212,11 @@ X 2 2 150 0 50 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Nova-rescue_Crystal_GND24-Nova_Microcontroller-Nova-rescue-Nova-rescue
+# Nova-rescue_Crystal_GND24-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue
 #
-DEF Nova-rescue_Crystal_GND24-Nova_Microcontroller-Nova-rescue-Nova-rescue Y 0 40 Y N 1 F N
+DEF Nova-rescue_Crystal_GND24-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue Y 0 40 Y N 1 F N
 F0 "Y" 125 200 50 H V L CNN
-F1 "Nova-rescue_Crystal_GND24-Nova_Microcontroller-Nova-rescue-Nova-rescue" 125 125 50 H V L CNN
+F1 "Nova-rescue_Crystal_GND24-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue" 125 125 50 H V L CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -239,11 +239,11 @@ X 4 4 0 -200 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Nova-rescue_FT234XD-R-Nova_Microcontroller-Nova-rescue-Nova-rescue
+# Nova-rescue_FT234XD-R-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue
 #
-DEF Nova-rescue_FT234XD-R-Nova_Microcontroller-Nova-rescue-Nova-rescue U 0 40 Y Y 1 F N
+DEF Nova-rescue_FT234XD-R-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue U 0 40 Y Y 1 F N
 F0 "U" -200 350 60 H V C CNN
-F1 "Nova-rescue_FT234XD-R-Nova_Microcontroller-Nova-rescue-Nova-rescue" 300 -600 60 H V L CNN
+F1 "Nova-rescue_FT234XD-R-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue" 300 -600 60 H V L CNN
 F2 "digikey-footprints:DFN-12-1EP_3x3mm" 200 200 60 H I L CNN
 F3 "http://www.ftdichip.com/Support/Documents/DataSheets/ICs/DS_FT234XD.pdf" 200 300 60 H I L CNN
 F4 "768-1178-1-ND" 200 400 60 H I L CNN "Digi-Key_PN"
@@ -273,11 +273,11 @@ X VCCIO 9 200 400 100 D 50 50 1 1 W
 ENDDRAW
 ENDDEF
 #
-# Nova-rescue_Ferrite_Bead-Nova_Microcontroller-Nova-rescue-Nova-rescue
+# Nova-rescue_Ferrite_Bead-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue
 #
-DEF Nova-rescue_Ferrite_Bead-Nova_Microcontroller-Nova-rescue-Nova-rescue FB 0 0 N Y 1 F N
+DEF Nova-rescue_Ferrite_Bead-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue FB 0 0 N Y 1 F N
 F0 "FB" -150 25 50 V V C CNN
-F1 "Nova-rescue_Ferrite_Bead-Nova_Microcontroller-Nova-rescue-Nova-rescue" 150 0 50 V V C CNN
+F1 "Nova-rescue_Ferrite_Bead-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue" 150 0 50 V V C CNN
 F2 "" -70 0 50 V I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -294,11 +294,11 @@ X ~ 2 0 -150 100 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Nova-rescue_Fuse-Nova_Microcontroller-Nova-rescue-Nova-rescue
+# Nova-rescue_Fuse-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue
 #
-DEF Nova-rescue_Fuse-Nova_Microcontroller-Nova-rescue-Nova-rescue F 0 0 N Y 1 F N
+DEF Nova-rescue_Fuse-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue F 0 0 N Y 1 F N
 F0 "F" 80 0 50 V V C CNN
-F1 "Nova-rescue_Fuse-Nova_Microcontroller-Nova-rescue-Nova-rescue" -75 0 50 V V C CNN
+F1 "Nova-rescue_Fuse-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue" -75 0 50 V V C CNN
 F2 "" -70 0 50 V I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -312,11 +312,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Nova-rescue_GPTS203211B-Nova_Microcontroller-Nova-rescue-Nova-rescue
+# Nova-rescue_GPTS203211B-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue
 #
-DEF Nova-rescue_GPTS203211B-Nova_Microcontroller-Nova-rescue-Nova-rescue S 0 40 Y Y 1 F N
+DEF Nova-rescue_GPTS203211B-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue S 0 40 Y Y 1 F N
 F0 "S" -150 150 50 H V C CNN
-F1 "Nova-rescue_GPTS203211B-Nova_Microcontroller-Nova-rescue-Nova-rescue" 0 -100 50 H V C CNN
+F1 "Nova-rescue_GPTS203211B-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue" 0 -100 50 H V C CNN
 F2 "digikey-footprints:PushButton_12x12mm_THT_GPTS203211B" 200 200 50 H I L CNN
 F3 "http://switches-connectors-custom.cwind.com/Asset/GPTS203211BR2.pdf" 200 300 60 H I L CNN
 F4 "CW181-ND" 200 400 60 H I L CNN "Digi-Key_PN"
@@ -341,11 +341,11 @@ X ~ 2 200 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Nova-rescue_LED-Nova_Microcontroller-Nova-rescue-Nova-rescue
+# Nova-rescue_LED-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue
 #
-DEF Nova-rescue_LED-Nova_Microcontroller-Nova-rescue-Nova-rescue D 0 40 N N 1 F N
+DEF Nova-rescue_LED-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue D 0 40 N N 1 F N
 F0 "D" 0 100 50 H V C CNN
-F1 "Nova-rescue_LED-Nova_Microcontroller-Nova-rescue-Nova-rescue" 0 -100 50 H V C CNN
+F1 "Nova-rescue_LED-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue" 0 -100 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -364,11 +364,11 @@ X A 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Nova-rescue_LM78M05CDTX_NOPB-LM78M05CDTXNOPB-Nova-rescue
+# Nova-rescue_LM78M05CDTX_NOPB-LM78M05CDTXNOPB-Nova-rescue-Nova-rescue
 #
-DEF Nova-rescue_LM78M05CDTX_NOPB-LM78M05CDTXNOPB-Nova-rescue U 0 10 Y Y 1 L N
+DEF Nova-rescue_LM78M05CDTX_NOPB-LM78M05CDTXNOPB-Nova-rescue-Nova-rescue U 0 10 Y Y 1 L N
 F0 "U" 1100 400 60 H V C CNN
-F1 "Nova-rescue_LM78M05CDTX_NOPB-LM78M05CDTXNOPB-Nova-rescue" 1100 300 60 H V C CNN
+F1 "Nova-rescue_LM78M05CDTX_NOPB-LM78M05CDTXNOPB-Nova-rescue-Nova-rescue" 1100 300 60 H V C CNN
 F2 "TD03B_TEX" 1100 240 60 H I C CNN
 F3 "" 0 0 60 H V C CNN
 $FPLIST
@@ -387,11 +387,11 @@ X OUT 3 2200 0 300 L 59 59 1 1 W
 ENDDRAW
 ENDDEF
 #
-# Nova-rescue_MS560702BA03-50-MS560702BA03-50-Nova-rescue
+# Nova-rescue_MS560702BA03-50-MS560702BA03-50-Nova-rescue-Nova-rescue
 #
-DEF Nova-rescue_MS560702BA03-50-MS560702BA03-50-Nova-rescue U 0 10 Y Y 1 L N
+DEF Nova-rescue_MS560702BA03-50-MS560702BA03-50-Nova-rescue-Nova-rescue U 0 10 Y Y 1 L N
 F0 "U" 0 600 60 H V C CNN
-F1 "Nova-rescue_MS560702BA03-50-MS560702BA03-50-Nova-rescue" 0 500 60 H V C CNN
+F1 "Nova-rescue_MS560702BA03-50-MS560702BA03-50-Nova-rescue-Nova-rescue" 0 500 60 H V C CNN
 F2 "SON8_MS5611_TEC" 0 440 60 H I C CNN
 F3 "" 0 0 60 H V C CNN
 $FPLIST
@@ -413,11 +413,11 @@ X SCLK 8 900 200 300 L 59 59 1 1 I
 ENDDRAW
 ENDDEF
 #
-# Nova-rescue_PS1440P02BT-PS1440P02BT
+# Nova-rescue_PS1440P02BT-PS1440P02BT-Nova-rescue
 #
-DEF Nova-rescue_PS1440P02BT-PS1440P02BT LS 0 40 Y N 1 L N
+DEF Nova-rescue_PS1440P02BT-PS1440P02BT-Nova-rescue LS 0 40 Y N 1 L N
 F0 "LS" -50 250 50 H V L BNN
-F1 "Nova-rescue_PS1440P02BT-PS1440P02BT" -50 -325 50 H V L BNN
+F1 "Nova-rescue_PS1440P02BT-PS1440P02BT-Nova-rescue" -50 -325 50 H V L BNN
 F2 "BUZZER_PS1440P02BT" 0 0 50 H I L BNN
 F3 "TDK" 0 0 50 H I L BNN
 F4 "IPC-7251" 0 0 50 H I L BNN
@@ -438,11 +438,11 @@ X ~ 2 -100 -200 100 U 40 40 0 0 P
 ENDDRAW
 ENDDEF
 #
-# Nova-rescue_R_US-Nova_Microcontroller-Nova-rescue-Nova-rescue
+# Nova-rescue_R_US-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue
 #
-DEF Nova-rescue_R_US-Nova_Microcontroller-Nova-rescue-Nova-rescue R 0 0 N Y 1 F N
+DEF Nova-rescue_R_US-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue R 0 0 N Y 1 F N
 F0 "R" 100 0 50 V V C CNN
-F1 "Nova-rescue_R_US-Nova_Microcontroller-Nova-rescue-Nova-rescue" -100 0 50 V V C CNN
+F1 "Nova-rescue_R_US-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue" -100 0 50 V V C CNN
 F2 "" 40 -10 50 V I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -459,11 +459,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Nova-rescue_STM32F401RBTx-Nova_Microcontroller-Nova-rescue-Nova-rescue
+# Nova-rescue_STM32F401RBTx-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue
 #
-DEF Nova-rescue_STM32F401RBTx-Nova_Microcontroller-Nova-rescue-Nova-rescue U 0 20 Y Y 1 F N
+DEF Nova-rescue_STM32F401RBTx-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue U 0 20 Y Y 1 F N
 F0 "U" -600 1650 50 H V L CNN
-F1 "Nova-rescue_STM32F401RBTx-Nova_Microcontroller-Nova-rescue-Nova-rescue" 300 1650 50 H V L CNN
+F1 "Nova-rescue_STM32F401RBTx-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue" 300 1650 50 H V L CNN
 F2 "Package_QFP:LQFP-64_10x10mm_P0.5mm" -600 -1700 50 H I R CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -538,11 +538,11 @@ X PC1 9 -700 -200 100 R 50 50 1 1 B
 ENDDRAW
 ENDDEF
 #
-# Nova-rescue_TLV1117LV33DCYR-TLV1117LV33DCYR-Nova-rescue
+# Nova-rescue_TLV1117LV33DCYR-TLV1117LV33DCYR-Nova-rescue-Nova-rescue
 #
-DEF Nova-rescue_TLV1117LV33DCYR-TLV1117LV33DCYR-Nova-rescue U 0 10 Y Y 1 L N
+DEF Nova-rescue_TLV1117LV33DCYR-TLV1117LV33DCYR-Nova-rescue-Nova-rescue U 0 10 Y Y 1 L N
 F0 "U" 1400 400 60 H V C CNN
-F1 "Nova-rescue_TLV1117LV33DCYR-TLV1117LV33DCYR-Nova-rescue" 1400 300 60 H V C CNN
+F1 "Nova-rescue_TLV1117LV33DCYR-TLV1117LV33DCYR-Nova-rescue-Nova-rescue" 1400 300 60 H V C CNN
 F2 "DCY4" 1400 240 60 H I C CNN
 F3 "" 2900 500 60 H V C CNN
 $FPLIST
@@ -562,11 +562,11 @@ X OUTPUT 4 0 -100 300 R 59 59 1 1 B
 ENDDRAW
 ENDDEF
 #
-# Nova-rescue_USB_C_Receptacle-Nova_Microcontroller-Nova-rescue-Nova-rescue
+# Nova-rescue_USB_C_Receptacle-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue
 #
-DEF Nova-rescue_USB_C_Receptacle-Nova_Microcontroller-Nova-rescue-Nova-rescue J 0 40 Y Y 1 F N
+DEF Nova-rescue_USB_C_Receptacle-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue J 0 40 Y Y 1 F N
 F0 "J" -400 1150 50 H V L CNN
-F1 "Nova-rescue_USB_C_Receptacle-Nova_Microcontroller-Nova-rescue-Nova-rescue" 400 1150 50 H V R CNN
+F1 "Nova-rescue_USB_C_Receptacle-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue" 400 1150 50 H V R CNN
 F2 "" 150 0 50 H I C CNN
 F3 "" 150 0 50 H I C CNN
 $FPLIST
@@ -636,11 +636,11 @@ X SHIELD S1 -300 -1600 200 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Nova-rescue_W25N512GVPIT-Flash_Chip-Nova-rescue
+# Nova-rescue_W25N512GVPIT-Flash_Chip-Nova-rescue-Nova-rescue
 #
-DEF Nova-rescue_W25N512GVPIT-Flash_Chip-Nova-rescue U 0 40 Y Y 1 F N
+DEF Nova-rescue_W25N512GVPIT-Flash_Chip-Nova-rescue-Nova-rescue U 0 40 Y Y 1 F N
 F0 "U" 0 300 50 H V C CNN
-F1 "Nova-rescue_W25N512GVPIT-Flash_Chip-Nova-rescue" 0 300 50 H V C CNN
+F1 "Nova-rescue_W25N512GVPIT-Flash_Chip-Nova-rescue-Nova-rescue" 0 300 50 H V C CNN
 F2 "" 0 300 50 H I C CNN
 F3 "" 0 300 50 H I C CNN
 DRAW

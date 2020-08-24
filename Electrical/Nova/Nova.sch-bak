@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
-Sheet 1 13
+Sheet 1 14
 Title ""
 Date ""
 Rev ""
@@ -202,7 +202,7 @@ $Sheet
 S 9350 800  1000 500 
 U 5F3A063C
 F0 "Barometer" 50
-F1 "Barometer.sch" 50
+F1 "Barometer.sch" 20
 F2 "SCLK" I L 9350 900 50 
 F3 "SDI" I L 9350 1000 50 
 F4 "SDO" I L 9350 1100 50 
@@ -226,13 +226,13 @@ $Sheet
 S 9350 5300 1000 500 
 U 5F3B0B4B
 F0 "PowerSupply" 50
-F1 "PowerSupply.sch" 50
+F1 "PowerSupply.sch" 20
 $EndSheet
 $Sheet
 S 9350 3450 1000 500 
 U 5F3B5BD1
 F0 "MicroSD" 50
-F1 "MicroSD.sch" 50
+F1 "MicroSD.sch" 20
 F2 "MISO" I L 9350 3550 50 
 F3 "MOSI" I L 9350 3650 50 
 F4 "SCLK" I L 9350 3750 50 
@@ -242,7 +242,7 @@ $Sheet
 S 9350 4150 1000 600 
 U 5F3B5C2E
 F0 "FlashChip" 50
-F1 "FlashChip.sch" 50
+F1 "FlashChip.sch" 20
 F2 "SCLK" I L 9350 4200 50 
 F3 "MOSI" I L 9350 4300 50 
 F4 "MISO" I L 9350 4400 50 
@@ -370,4 +370,39 @@ Wire Notes Line
 	3300 4550 3300 550 
 Text Notes 5350 4700 0    79   ~ 0
 MCU
+$Sheet
+S 9350 1500 1000 600 
+U 5F440A67
+F0 "GyroScope" 50
+F1 "../Common_Modules/Gyroscope/breakout/Gyroscope.sch" 20
+F2 "SCK" B L 9350 1600 50 
+F3 "SDI" B L 9350 1700 50 
+F4 "SDO" B L 9350 1800 50 
+F5 "INT1_ACCEL" O R 10350 1850 50 
+F6 "INT2_ACCEL" O R 10350 1750 50 
+F7 "INT3_GYRO" O R 10350 1650 50 
+F8 "INT4_GYRO" O R 10350 1550 50 
+F9 "CSB_ACCEL" O L 9350 1900 50 
+F10 "CSB_GYRO" O L 9350 2000 50 
+$EndSheet
+Wire Wire Line
+	9350 1600 8550 1600
+Wire Wire Line
+	9350 1700 8550 1700
+Wire Wire Line
+	9350 1800 8550 1800
+Wire Wire Line
+	9350 1900 8550 1900
+Wire Wire Line
+	9350 2000 8550 2000
+Text Label 8850 1600 0    50   ~ 0
+SCLK
+Text Label 8850 1700 0    50   ~ 0
+MOSI
+Text Label 8850 1800 0    50   ~ 0
+MISO
+Text Label 8550 1900 0    50   ~ 0
+ACCELEROMETER_CS
+Text Label 8800 2000 0    50   ~ 0
+GYRO_CS
 $EndSCHEMATC

@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Nova-rescue:MS560702BA03-50-MS560702BA03-50-Nova-rescue Barometer201
+L Nova-rescue:MS560702BA03-50-MS560702BA03-50-Nova-rescue-Nova-rescue Barometer201
 U 1 1 5F01D3E2
 P 6000 3600
 AR Path="/5F01D3E2" Ref="Barometer201"  Part="1" 

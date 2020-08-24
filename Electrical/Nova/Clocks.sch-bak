@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 6 13
+Sheet 6 14
 Title "Microcontroller"
 Date "2020-07-02"
 Rev "1"
@@ -7648,7 +7648,7 @@ FD 2F F4 F9 A0 3B 67 FA D8 61 00 00 00 00 49 45 4E 44 AE 42 60 82
 EndData
 $EndBitmap
 $Comp
-L Nova-rescue:Crystal_GND24-Nova_Microcontroller-Nova-rescue Y?
+L Nova-rescue:Crystal_GND24-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue Y?
 U 1 1 5EE6B82C
 P 3350 3550
 F 0 "Y?" H 3300 4300 50  0000 L CNN
@@ -7689,7 +7689,7 @@ Wire Wire Line
 Wire Wire Line
 	3350 3350 3350 3150
 $Comp
-L Nova-rescue:Crystal-Nova_Microcontroller-Nova-rescue Y?
+L Nova-rescue:Crystal-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue Y?
 U 1 1 5EE717EC
 P 8050 3550
 F 0 "Y?" H 8050 3818 50  0000 C CNN
@@ -7709,7 +7709,7 @@ Wire Wire Line
 Wire Wire Line
 	3350 3850 3700 3850
 $Comp
-L Nova-rescue:C-Nova_Microcontroller-Nova-rescue C?
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue C?
 U 1 1 5EE74A4A
 P 7600 3700
 AR Path="/5EE74A4A" Ref="C?"  Part="1" 
@@ -7723,7 +7723,7 @@ F 3 "~" H 7600 3700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Nova-rescue:C-Nova_Microcontroller-Nova-rescue C?
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue C?
 U 1 1 5EE7523E
 P 8550 3700
 AR Path="/5EE7523E" Ref="C?"  Part="1" 
@@ -7757,7 +7757,7 @@ Wire Wire Line
 Wire Wire Line
 	2600 3550 2450 3550
 $Comp
-L Nova-rescue:R_US-Nova_Microcontroller-Nova-rescue R?
+L Nova-rescue:R_US-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue R?
 U 1 1 5EE707DE
 P 2750 3550
 F 0 "R?" V 2545 3550 50  0000 C CNN
@@ -15402,7 +15402,7 @@ FD 2F F4 F9 A0 3B 67 FA D8 61 00 00 00 00 49 45 4E 44 AE 42 60 82
 EndData
 $EndBitmap
 $Comp
-L Nova-rescue:C-Nova_Microcontroller-Nova-rescue C?
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue C?
 U 1 1 5EE74215
 P 3700 3700
 AR Path="/5EE74215" Ref="C?"  Part="1" 
@@ -15416,7 +15416,7 @@ F 3 "~" H 3700 3700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Nova-rescue:C-Nova_Microcontroller-Nova-rescue C?
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue C?
 U 1 1 5EE73815
 P 3000 3700
 AR Path="/5EE73815" Ref="C?"  Part="1" 

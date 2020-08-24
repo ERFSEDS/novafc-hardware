@@ -202,7 +202,7 @@ $Sheet
 S 9350 800  1000 500 
 U 5F3A063C
 F0 "Barometer" 50
-F1 "Barometer.sch" 50
+F1 "Barometer.sch" 20
 F2 "SCLK" I L 9350 900 50 
 F3 "SDI" I L 9350 1000 50 
 F4 "SDO" I L 9350 1100 50 
@@ -223,41 +223,35 @@ MOSI
 Text Label 8850 1100 0    50   ~ 0
 MISO
 $Sheet
-S 9350 5300 1000 500 
+S 9350 5850 1000 500 
 U 5F3B0B4B
 F0 "PowerSupply" 50
-F1 "PowerSupply.sch" 50
+F1 "PowerSupply.sch" 20
 $EndSheet
 $Sheet
-S 9350 3450 1000 500 
+S 9350 4000 1000 500 
 U 5F3B5BD1
 F0 "MicroSD" 50
-F1 "MicroSD.sch" 50
-F2 "MISO" I L 9350 3550 50 
-F3 "MOSI" I L 9350 3650 50 
-F4 "SCLK" I L 9350 3750 50 
-F5 "CS_SD" I L 9350 3850 50 
+F1 "MicroSD.sch" 20
+F2 "MISO" I L 9350 4100 50 
+F3 "MOSI" I L 9350 4200 50 
+F4 "SCLK" I L 9350 4300 50 
+F5 "CS_SD" I L 9350 4400 50 
 $EndSheet
 $Sheet
-S 9350 4150 1000 600 
+S 9350 4700 1000 600 
 U 5F3B5C2E
 F0 "FlashChip" 50
-F1 "FlashChip.sch" 50
-F2 "SCLK" I L 9350 4200 50 
-F3 "MOSI" I L 9350 4300 50 
-F4 "MISO" I L 9350 4400 50 
-F5 "CS_FLASH" I L 9350 4500 50 
-F6 "HOLD" I L 9350 4600 50 
-F7 "WP" I L 9350 4700 50 
+F1 "FlashChip.sch" 20
+F2 "SCLK" I L 9350 4750 50 
+F3 "MOSI" I L 9350 4850 50 
+F4 "MISO" I L 9350 4950 50 
+F5 "CS_FLASH" I L 9350 5050 50 
+F6 "HOLD" I L 9350 5150 50 
+F7 "WP" I L 9350 5250 50 
 $EndSheet
 Wire Wire Line
-	9350 3550 8550 3550
-Wire Wire Line
-	8550 3650 9350 3650
-Wire Wire Line
-	9350 3750 8550 3750
-Wire Wire Line
-	9350 3850 8550 3850
+	9350 4100 8550 4100
 Wire Wire Line
 	8550 4200 9350 4200
 Wire Wire Line
@@ -265,32 +259,38 @@ Wire Wire Line
 Wire Wire Line
 	9350 4400 8550 4400
 Wire Wire Line
-	8550 4500 9350 4500
+	8550 4750 9350 4750
 Wire Wire Line
-	9350 4600 8550 4600
+	9350 4850 8550 4850
 Wire Wire Line
-	9350 4700 8550 4700
-Text Label 8850 3550 0    50   ~ 0
+	9350 4950 8550 4950
+Wire Wire Line
+	8550 5050 9350 5050
+Wire Wire Line
+	9350 5150 8550 5150
+Wire Wire Line
+	9350 5250 8550 5250
+Text Label 8850 4100 0    50   ~ 0
 MISO
-Text Label 8850 3650 0    50   ~ 0
-MOSI
-Text Label 8850 3750 0    50   ~ 0
-SCLK
 Text Label 8850 4200 0    50   ~ 0
-SCLK
-Text Label 8850 4300 0    50   ~ 0
 MOSI
-Text Label 8850 4400 0    50   ~ 0
+Text Label 8850 4300 0    50   ~ 0
+SCLK
+Text Label 8850 4750 0    50   ~ 0
+SCLK
+Text Label 8850 4850 0    50   ~ 0
+MOSI
+Text Label 8850 4950 0    50   ~ 0
 MISO
-Text Label 8850 4600 0    50   ~ 0
+Text Label 8850 5150 0    50   ~ 0
 HOLD
-Text Label 9000 4700 2    50   ~ 0
+Text Label 9000 5250 2    50   ~ 0
 WP
 Text Label 8700 1200 0    50   ~ 0
 BAROMETER_CS
-Text Label 8800 3850 0    50   ~ 0
+Text Label 8800 4400 0    50   ~ 0
 SD_CS
-Text Label 8750 4500 0    50   ~ 0
+Text Label 8750 5050 0    50   ~ 0
 FLASH_CS
 $Sheet
 S 4350 1100 2450 3150
@@ -341,24 +341,24 @@ Wire Wire Line
 Text Label 2350 4800 0    50   ~ 0
 BUZZER
 Wire Notes Line
-	8450 3200 10450 3200
+	8450 3750 10450 3750
 Wire Notes Line
-	10450 3200 10450 4900
+	10450 3750 10450 5450
 Wire Notes Line
-	10450 4900 8450 4900
+	10450 5450 8450 5450
 Wire Notes Line
-	8450 4900 8450 3200
-Text Notes 9100 5050 0    79   ~ 0
+	8450 5450 8450 3750
+Text Notes 9100 5600 0    79   ~ 0
 DATA LOGGING\n
 Wire Notes Line
-	8450 5200 10450 5200
+	8450 5750 10450 5750
 Wire Notes Line
-	10450 5200 10450 5950
+	10450 5750 10450 6500
 Wire Notes Line
-	10450 5950 8450 5950
+	10450 6500 8450 6500
 Wire Notes Line
-	8450 5950 8450 5200
-Text Notes 9000 6100 0    79   ~ 0
+	8450 6500 8450 5750
+Text Notes 9000 6650 0    79   ~ 0
 POWER SUPPLY\n
 Wire Notes Line
 	3300 550  7750 550 
@@ -371,9 +371,38 @@ Wire Notes Line
 Text Notes 5350 4700 0    79   ~ 0
 MCU
 $Sheet
-S 4250 5300 1150 550 
+S 9350 1500 1000 600 
 U 5F440A67
 F0 "GyroScope" 50
-F1 "../Common_Modules/Gyroscope/breakout/Gyroscope.sch" 50
+F1 "../Common_Modules/Gyroscope/breakout/Gyroscope.sch" 20
+F2 "SCK" B L 9350 1600 50 
+F3 "SDI" B L 9350 1700 50 
+F4 "SDO" B L 9350 1800 50 
+F5 "INT1_ACCEL" O R 10350 1850 50 
+F6 "INT2_ACCEL" O R 10350 1750 50 
+F7 "INT3_GYRO" O R 10350 1650 50 
+F8 "INT4_GYRO" O R 10350 1550 50 
+F9 "CSB_ACCEL" O L 9350 1900 50 
+F10 "CSB_GYRO" O L 9350 2000 50 
 $EndSheet
+Wire Wire Line
+	9350 1600 8550 1600
+Wire Wire Line
+	9350 1700 8550 1700
+Wire Wire Line
+	9350 1800 8550 1800
+Wire Wire Line
+	9350 1900 8550 1900
+Wire Wire Line
+	9350 2000 8550 2000
+Text Label 8850 1600 0    50   ~ 0
+SCLK
+Text Label 8850 1700 0    50   ~ 0
+MOSI
+Text Label 8850 1800 0    50   ~ 0
+MISO
+Text Label 8550 1900 0    50   ~ 0
+ACCELEROMETER_CS
+Text Label 8800 2000 0    50   ~ 0
+GYRO_CS
 $EndSCHEMATC
