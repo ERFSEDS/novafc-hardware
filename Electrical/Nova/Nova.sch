@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
-Sheet 1 14
+Sheet 1 16
 Title ""
 Date ""
 Rev ""
@@ -405,4 +405,10 @@ Text Label 8550 1900 0    50   ~ 0
 ACCELEROMETER_CS
 Text Label 8800 2000 0    50   ~ 0
 GYRO_CS
+$Sheet
+S 4050 5400 800  850 
+U 5F448D4B
+F0 "Pyro Channels" 50
+F1 "PyroChannels.sch" 50
+$EndSheet
 $EndSCHEMATC

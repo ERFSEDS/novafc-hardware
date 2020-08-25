@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 11 14
+Sheet 11 16
 Title ""
 Date ""
 Rev ""
@@ -293,7 +293,7 @@ Connection ~ 7300 5350
 Wire Wire Line
 	7300 5350 7600 5350
 $Comp
-L Nova-rescue:TLV1117LV33DCYR-TLV1117LV33DCYR-Nova-rescue-Nova-rescue 3v3Reg401
+L Nova-rescue:TLV1117LV33DCYR-TLV1117LV33DCYR-Nova-rescue-Nova-rescue-Nova-rescue 3v3Reg401
 U 1 1 5F123DAD
 P 7150 4700
 AR Path="/5F123DAD" Ref="3v3Reg401"  Part="1" 
@@ -307,7 +307,7 @@ F 3 "https://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%
 	-1   0    0    1   
 $EndComp
 $Comp
-L Nova-rescue:LM78M05CDTX_NOPB-LM78M05CDTXNOPB-Nova-rescue-Nova-rescue 5vReg401
+L Nova-rescue:LM78M05CDTX_NOPB-LM78M05CDTXNOPB-Nova-rescue-Nova-rescue-Nova-rescue 5vReg401
 U 1 1 5F10F960
 P 7850 3150
 F 0 "5vReg401" H 8950 2663 60  0000 C CNN
