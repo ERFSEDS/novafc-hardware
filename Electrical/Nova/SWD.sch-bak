@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 9 18
+Sheet 7 18
 Title "Microcontroller"
 Date "2020-07-02"
 Rev "1"
@@ -14,10 +14,10 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Nova-rescue:Conn_01x06_Male-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue J?
+L Nova-rescue:Conn_01x06_Male-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue J702
 U 1 1 5F3A5F38
 P 5150 3600
-F 0 "J?" H 5258 3981 50  0000 C CNN
+F 0 "J702" H 5258 3981 50  0000 C CNN
 F 1 "Conn_01x06_Male" H 5258 3890 50  0000 C CNN
 F 2 "NOVA MCU (STM):j-link_6_pin_needle" H 5150 3600 50  0001 C CNN
 F 3 "~" H 5150 3600 50  0001 C CNN
@@ -25,10 +25,10 @@ F 3 "~" H 5150 3600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3.3V #PWR?
+L power:+3.3V #PWR0702
 U 1 1 5F3A5F39
 P 5800 3400
-F 0 "#PWR?" H 5800 3250 50  0001 C CNN
+F 0 "#PWR0702" H 5800 3250 50  0001 C CNN
 F 1 "+3.3V" V 5815 3528 50  0000 L CNN
 F 2 "" H 5800 3400 50  0001 C CNN
 F 3 "" H 5800 3400 50  0001 C CNN
@@ -36,10 +36,10 @@ F 3 "" H 5800 3400 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0703
 U 1 1 5EF14A6C
 P 5800 3800
-F 0 "#PWR?" H 5800 3550 50  0001 C CNN
+F 0 "#PWR0703" H 5800 3550 50  0001 C CNN
 F 1 "GND" V 5805 3672 50  0000 R CNN
 F 2 "" H 5800 3800 50  0001 C CNN
 F 3 "" H 5800 3800 50  0001 C CNN
@@ -58,7 +58,6 @@ Wire Wire Line
 	5350 3500 5800 3500
 Wire Wire Line
 	5350 3600 5800 3600
-NoConn ~ 5350 3900
 Text HLabel 5800 3600 2    50   Input ~ 0
 RESET
 Wire Wire Line
@@ -896,10 +895,10 @@ C8 24 80 5C 90 49 00 B9 20 93 00 72 41 26 01 E4 82 4C 02 C8 05 99 04 90 0B 32 09
 EndData
 $EndBitmap
 $Comp
-L Nova-rescue:Conn_01x06_Male-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue J?
+L Nova-rescue:Conn_01x06_Male-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue J701
 U 1 1 5EF13F12
 P 5150 3600
-F 0 "J?" H 5258 3981 50  0000 C CNN
+F 0 "J701" H 5258 3981 50  0000 C CNN
 F 1 "Conn_01x06_Male" H 5258 3890 50  0000 C CNN
 F 2 "NOVA MCU (STM):j-link_6_pin_needle" H 5150 3600 50  0001 C CNN
 F 3 "~" H 5150 3600 50  0001 C CNN
@@ -907,10 +906,10 @@ F 3 "~" H 5150 3600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3.3V #PWR?
+L power:+3.3V #PWR0701
 U 1 1 5EF1469E
 P 5800 3400
-F 0 "#PWR?" H 5800 3250 50  0001 C CNN
+F 0 "#PWR0701" H 5800 3250 50  0001 C CNN
 F 1 "+3.3V" V 5815 3528 50  0000 L CNN
 F 2 "" H 5800 3400 50  0001 C CNN
 F 3 "" H 5800 3400 50  0001 C CNN
@@ -918,33 +917,22 @@ F 3 "" H 5800 3400 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0704
 U 1 1 5F3A5F3A
 P 5800 3800
-F 0 "#PWR?" H 5800 3550 50  0001 C CNN
+F 0 "#PWR0704" H 5800 3550 50  0001 C CNN
 F 1 "GND" V 5805 3672 50  0000 R CNN
 F 2 "" H 5800 3800 50  0001 C CNN
 F 3 "" H 5800 3800 50  0001 C CNN
 	1    5800 3800
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	5350 3400 5800 3400
-Wire Wire Line
-	5350 3800 5800 3800
 Text HLabel 5800 3500 2    50   Input ~ 0
 JTMS-SWDIO
 Text HLabel 5800 3700 2    50   Input ~ 0
 JTCK-SWCLK
-Wire Wire Line
-	5350 3500 5800 3500
-Wire Wire Line
-	5350 3600 5800 3600
-NoConn ~ 5350 3900
 Text HLabel 5800 3600 2    50   Input ~ 0
 RESET
-Wire Wire Line
-	5350 3700 5800 3700
 $Bitmap
 Pos 9100 7700
 Scale 1.000000

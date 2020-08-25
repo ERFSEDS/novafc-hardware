@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 12 18
+Sheet 18 18
 Title "Microcontroller"
 Date "2020-07-02"
 Rev "1"
@@ -7668,10 +7668,10 @@ Wire Wire Line
 Text HLabel 5000 2600 0    50   Input ~ 0
 VCAP
 $Comp
-L power:GND #PWR0101
+L power:GND #PWR01802
 U 1 1 5EEC261C
 P 5850 5850
-F 0 "#PWR0101" H 5850 5600 50  0001 C CNN
+F 0 "#PWR01802" H 5850 5600 50  0001 C CNN
 F 1 "GND" H 5855 5677 50  0000 C CNN
 F 2 "" H 5850 5850 50  0001 C CNN
 F 3 "" H 5850 5850 50  0001 C CNN
@@ -7705,10 +7705,10 @@ Wire Wire Line
 Wire Wire Line
 	5000 2200 5350 2200
 $Comp
-L Nova-rescue:STM32F401RBTx-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue U201
+L Nova-rescue:STM32F401RBTx-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue U1801
 U 1 1 5EE690AA
 P 6050 3700
-F 0 "U201" H 6050 6150 50  0000 C CNN
+F 0 "U1801" H 6050 6150 50  0000 C CNN
 F 1 "STM32F401RBTx" H 6050 6000 50  0000 C CNN
 F 2 "NOVA MCU (STM):LQFP-64_10x10mm_P0.5mm" H 5450 2000 50  0001 R CNN
 F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/DM00086815.pdf" H 6050 3700 50  0001 C CNN
@@ -7721,10 +7721,10 @@ Wire Wire Line
 	6150 5600 6050 5600
 Connection ~ 6050 5600
 $Comp
-L power:+3.3V #PWR0102
+L power:+3.3V #PWR01803
 U 1 1 5EEC4D36
 P 6250 1750
-F 0 "#PWR0102" H 6250 1600 50  0001 C CNN
+F 0 "#PWR01803" H 6250 1600 50  0001 C CNN
 F 1 "+3.3V" H 6265 1923 50  0000 C CNN
 F 2 "" H 6250 1750 50  0001 C CNN
 F 3 "" H 6250 1750 50  0001 C CNN
@@ -7940,10 +7940,10 @@ Wire Wire Line
 Wire Wire Line
 	7150 5300 6650 5300
 $Comp
-L power:GND #PWR0103
+L power:GND #PWR01801
 U 1 1 5EED9B7A
 P 5000 2400
-F 0 "#PWR0103" H 5000 2150 50  0001 C CNN
+F 0 "#PWR01801" H 5000 2150 50  0001 C CNN
 F 1 "GND" H 5005 2227 50  0000 C CNN
 F 2 "" H 5000 2400 50  0001 C CNN
 F 3 "" H 5000 2400 50  0001 C CNN

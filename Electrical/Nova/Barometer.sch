@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 10 18
+Sheet 8 18
 Title ""
 Date ""
 Rev ""
@@ -14,13 +14,13 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Nova-rescue:MS560702BA03-50-MS560702BA03-50-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue Barometer201
+L Nova-rescue:MS560702BA03-50-MS560702BA03-50-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue Barometer?
 U 1 1 5F01D3E2
 P 6000 3600
-AR Path="/5F01D3E2" Ref="Barometer201"  Part="1" 
-AR Path="/5F013144/5F01D3E2" Ref="Barometer201"  Part="1" 
-AR Path="/5F3A063C/5F01D3E2" Ref="Barometer201"  Part="1" 
-F 0 "Barometer201" H 6000 4187 60  0000 C CNN
+AR Path="/5F01D3E2" Ref="Barometer?"  Part="1" 
+AR Path="/5F013144/5F01D3E2" Ref="Barometer?"  Part="1" 
+AR Path="/5F3A063C/5F01D3E2" Ref="Barometer801"  Part="1" 
+F 0 "Barometer801" H 6000 4187 60  0000 C CNN
 F 1 "MS560702BA03-50" H 6000 4081 60  0000 C CNN
 F 2 "Footprint Library:MS560702BA03-50" H 6000 4040 60  0001 C CNN
 F 3 "https://www.mouser.com/datasheet/2/418/5/NG_DS_MS5607-02BA03_B-1134558.pdf" H 6000 3600 60  0001 C CNN
@@ -28,10 +28,10 @@ F 3 "https://www.mouser.com/datasheet/2/418/5/NG_DS_MS5607-02BA03_B-1134558.pdf"
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3V3 #PWR0201
+L power:+3V3 #PWR0801
 U 1 1 5F01D3E8
 P 4450 3300
-F 0 "#PWR0201" H 4450 3150 50  0001 C CNN
+F 0 "#PWR0801" H 4450 3150 50  0001 C CNN
 F 1 "+3V3" H 4465 3473 50  0000 C CNN
 F 2 "" H 4450 3300 50  0001 C CNN
 F 3 "" H 4450 3300 50  0001 C CNN
@@ -39,12 +39,12 @@ F 3 "" H 4450 3300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L pspice:C C201
+L pspice:C C801
 U 1 1 5F01D3EE
 P 4450 3750
-F 0 "C201" H 4628 3796 50  0000 L CNN
+F 0 "C801" H 4628 3796 50  0000 L CNN
 F 1 "100nF" H 4628 3705 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 4450 3750 50  0001 C CNN
+F 2 "NOVA MCU (STM):C_0805_2012Metric" H 4450 3750 50  0001 C CNN
 F 3 "~" H 4450 3750 50  0001 C CNN
 	1    4450 3750
 	1    0    0    -1  
@@ -54,10 +54,10 @@ Wire Wire Line
 Wire Wire Line
 	4450 4000 4450 4100
 $Comp
-L power:GND #PWR0202
+L power:GND #PWR0802
 U 1 1 5F01D3F6
 P 4450 4150
-F 0 "#PWR0202" H 4450 3900 50  0001 C CNN
+F 0 "#PWR0802" H 4450 3900 50  0001 C CNN
 F 1 "GND" H 4455 3977 50  0000 C CNN
 F 2 "" H 4450 4150 50  0001 C CNN
 F 3 "" H 4450 4150 50  0001 C CNN

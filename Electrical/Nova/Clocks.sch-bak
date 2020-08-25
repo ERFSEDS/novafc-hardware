@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 6 18
+Sheet 4 18
 Title "Microcontroller"
 Date "2020-07-02"
 Rev "1"
@@ -7648,10 +7648,10 @@ FD 2F F4 F9 A0 3B 67 FA D8 61 00 00 00 00 49 45 4E 44 AE 42 60 82
 EndData
 $EndBitmap
 $Comp
-L Nova-rescue:Crystal_GND24-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue Y?
+L Nova-rescue:Crystal_GND24-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue Y401
 U 1 1 5EE6B82C
 P 3350 3550
-F 0 "Y?" H 3300 4300 50  0000 L CNN
+F 0 "Y401" H 3300 4300 50  0000 L CNN
 F 1 "ECS-260-8-36B-CKY-TR" H 2850 4200 50  0000 L CNN
 F 2 "NOVA MCU (STM):ECX-2236B" H 3350 3550 50  0001 C CNN
 F 3 "https://ecsxtal.com/store/pdf/ECX-2236B.pdf" H 3350 3550 50  0001 C CNN
@@ -7663,10 +7663,10 @@ CLOCKIN
 Text HLabel 2450 3550 0    50   Input ~ 0
 CLOCKOUT
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0402
 U 1 1 5EE6F36D
 P 3350 3950
-F 0 "#PWR?" H 3350 3700 50  0001 C CNN
+F 0 "#PWR0402" H 3350 3700 50  0001 C CNN
 F 1 "GND" H 3355 3777 50  0000 C CNN
 F 2 "" H 3350 3950 50  0001 C CNN
 F 3 "" H 3350 3950 50  0001 C CNN
@@ -7674,10 +7674,10 @@ F 3 "" H 3350 3950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0401
 U 1 1 5EE6FC19
 P 3350 3150
-F 0 "#PWR?" H 3350 2900 50  0001 C CNN
+F 0 "#PWR0401" H 3350 2900 50  0001 C CNN
 F 1 "GND" H 3355 2977 50  0000 C CNN
 F 2 "" H 3350 3150 50  0001 C CNN
 F 3 "" H 3350 3150 50  0001 C CNN
@@ -7689,10 +7689,10 @@ Wire Wire Line
 Wire Wire Line
 	3350 3350 3350 3150
 $Comp
-L Nova-rescue:Crystal-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue Y?
+L Nova-rescue:Crystal-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue Y402
 U 1 1 5EE717EC
 P 8050 3550
-F 0 "Y?" H 8050 3818 50  0000 C CNN
+F 0 "Y402" H 8050 3818 50  0000 C CNN
 F 1 "JTX310" H 8050 3727 50  0000 C CNN
 F 2 "NOVA MCU (STM):JTX310" H 8050 3550 50  0001 C CNN
 F 3 "https://www.jauch.com/downloadfile/57fde22d50dbf_d3c203011c87952f2834/jtx310-auto-2-210512.pdf" H 8050 3550 50  0001 C CNN
@@ -7713,11 +7713,11 @@ L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-re
 U 1 1 5EE74A4A
 P 7600 3700
 AR Path="/5EE74A4A" Ref="C?"  Part="1" 
-AR Path="/5EE654BB/5EE655E0/5EE74A4A" Ref="C403"  Part="1" 
+AR Path="/5EE654BB/5EE655E0/5EE74A4A" Ref="C?"  Part="1" 
 AR Path="/5F319C9C/5EE74A4A" Ref="C403"  Part="1" 
 F 0 "C403" H 7715 3746 50  0000 L CNN
 F 1 "18pf" H 7715 3655 50  0000 L CNN
-F 2 "NOVA MCU (STM):C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7638 3550 50  0001 C CNN
+F 2 "NOVA MCU (STM):C_0805_2012Metric" H 7638 3550 50  0001 C CNN
 F 3 "~" H 7600 3700 50  0001 C CNN
 	1    7600 3700
 	1    0    0    -1  
@@ -7727,11 +7727,11 @@ L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-re
 U 1 1 5EE7523E
 P 8550 3700
 AR Path="/5EE7523E" Ref="C?"  Part="1" 
-AR Path="/5EE654BB/5EE655E0/5EE7523E" Ref="C404"  Part="1" 
+AR Path="/5EE654BB/5EE655E0/5EE7523E" Ref="C?"  Part="1" 
 AR Path="/5F319C9C/5EE7523E" Ref="C404"  Part="1" 
 F 0 "C404" H 8665 3746 50  0000 L CNN
 F 1 "18pf" H 8665 3655 50  0000 L CNN
-F 2 "NOVA MCU (STM):C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 8588 3550 50  0001 C CNN
+F 2 "NOVA MCU (STM):C_0805_2012Metric" H 8588 3550 50  0001 C CNN
 F 3 "~" H 8550 3700 50  0001 C CNN
 	1    8550 3700
 	1    0    0    -1  
@@ -7739,10 +7739,10 @@ $EndComp
 Wire Wire Line
 	7600 3850 8100 3850
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0403
 U 1 1 5EE75B51
 P 8100 3850
-F 0 "#PWR?" H 8100 3600 50  0001 C CNN
+F 0 "#PWR0403" H 8100 3600 50  0001 C CNN
 F 1 "GND" H 8105 3677 50  0000 C CNN
 F 2 "" H 8100 3850 50  0001 C CNN
 F 3 "" H 8100 3850 50  0001 C CNN
@@ -7757,10 +7757,10 @@ Wire Wire Line
 Wire Wire Line
 	2600 3550 2450 3550
 $Comp
-L Nova-rescue:R_US-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue R?
+L Nova-rescue:R_US-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue R401
 U 1 1 5EE707DE
 P 2750 3550
-F 0 "R?" V 2545 3550 50  0000 C CNN
+F 0 "R401" V 2545 3550 50  0000 C CNN
 F 1 "TBD" V 2636 3550 50  0000 C CNN
 F 2 "NOVA MCU (STM):R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 2790 3540 50  0001 C CNN
 F 3 "~" H 2750 3550 50  0001 C CNN
@@ -15406,11 +15406,11 @@ L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-re
 U 1 1 5EE74215
 P 3700 3700
 AR Path="/5EE74215" Ref="C?"  Part="1" 
-AR Path="/5EE654BB/5EE655E0/5EE74215" Ref="C402"  Part="1" 
+AR Path="/5EE654BB/5EE655E0/5EE74215" Ref="C?"  Part="1" 
 AR Path="/5F319C9C/5EE74215" Ref="C402"  Part="1" 
 F 0 "C402" H 3815 3746 50  0000 L CNN
 F 1 "10pf" H 3815 3655 50  0000 L CNN
-F 2 "NOVA MCU (STM):C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3738 3550 50  0001 C CNN
+F 2 "NOVA MCU (STM):C_0805_2012Metric" H 3738 3550 50  0001 C CNN
 F 3 "~" H 3700 3700 50  0001 C CNN
 	1    3700 3700
 	1    0    0    -1  
@@ -15420,21 +15420,33 @@ L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-re
 U 1 1 5EE73815
 P 3000 3700
 AR Path="/5EE73815" Ref="C?"  Part="1" 
-AR Path="/5EE654BB/5EE655E0/5EE73815" Ref="C401"  Part="1" 
+AR Path="/5EE654BB/5EE655E0/5EE73815" Ref="C?"  Part="1" 
 AR Path="/5F319C9C/5EE73815" Ref="C401"  Part="1" 
 F 0 "C401" H 2700 3750 50  0000 L CNN
 F 1 "10pf" H 2700 3650 50  0000 L CNN
-F 2 "NOVA MCU (STM):C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3038 3550 50  0001 C CNN
+F 2 "NOVA MCU (STM):C_0805_2012Metric" H 3038 3550 50  0001 C CNN
 F 3 "~" H 3000 3700 50  0001 C CNN
 	1    3000 3700
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3500 3550 3900 3550
+	3500 3550 3700 3550
 Wire Wire Line
-	7200 3550 7900 3550
+	7200 3550 7600 3550
 Wire Wire Line
-	8200 3550 9050 3550
+	8200 3550 8550 3550
 Wire Wire Line
-	2900 3550 3200 3550
+	2900 3550 3000 3550
+Connection ~ 3000 3550
+Wire Wire Line
+	3000 3550 3200 3550
+Connection ~ 3700 3550
+Wire Wire Line
+	3700 3550 3900 3550
+Connection ~ 7600 3550
+Wire Wire Line
+	7600 3550 7900 3550
+Connection ~ 8550 3550
+Wire Wire Line
+	8550 3550 9050 3550
 $EndSCHEMATC

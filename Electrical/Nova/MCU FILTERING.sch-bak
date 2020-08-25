@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 7 18
+Sheet 5 18
 Title "Microcontroller"
 Date "2020-07-02"
 Rev "1"
@@ -846,76 +846,76 @@ C8 24 80 5C 90 49 00 B9 20 93 00 72 41 26 01 E4 82 4C 02 C8 05 99 04 90 0B 32 09
 EndData
 $EndBitmap
 $Comp
-L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C?
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C501
 U 1 1 5EEB15D0
 P 1600 3450
-F 0 "C?" H 1715 3496 50  0000 L CNN
+F 0 "C501" H 1715 3496 50  0000 L CNN
 F 1 "100nF" H 1715 3405 50  0000 L CNN
-F 2 "NOVA MCU (STM):C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1638 3300 50  0001 C CNN
+F 2 "NOVA MCU (STM):C_0805_2012Metric" H 1638 3300 50  0001 C CNN
 F 3 "~" H 1600 3450 50  0001 C CNN
 	1    1600 3450
 	1    0    0    -1  
 $EndComp
 $Comp
-L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C?
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C502
 U 1 1 5EEA7BC1
 P 2150 3450
-F 0 "C?" H 2265 3496 50  0000 L CNN
+F 0 "C502" H 2265 3496 50  0000 L CNN
 F 1 "100nF" H 2265 3405 50  0000 L CNN
-F 2 "NOVA MCU (STM):C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2188 3300 50  0001 C CNN
+F 2 "NOVA MCU (STM):C_0805_2012Metric" H 2188 3300 50  0001 C CNN
 F 3 "~" H 2150 3450 50  0001 C CNN
 	1    2150 3450
 	1    0    0    -1  
 $EndComp
 $Comp
-L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C?
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C503
 U 1 1 5EEA7EAA
 P 2650 3450
-F 0 "C?" H 2765 3496 50  0000 L CNN
+F 0 "C503" H 2765 3496 50  0000 L CNN
 F 1 "100nF" H 2765 3405 50  0000 L CNN
-F 2 "NOVA MCU (STM):C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2688 3300 50  0001 C CNN
+F 2 "NOVA MCU (STM):C_0805_2012Metric" H 2688 3300 50  0001 C CNN
 F 3 "~" H 2650 3450 50  0001 C CNN
 	1    2650 3450
 	1    0    0    -1  
 $EndComp
 $Comp
-L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C?
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C504
 U 1 1 5EEA8258
 P 3150 3450
-F 0 "C?" H 3265 3496 50  0000 L CNN
+F 0 "C504" H 3265 3496 50  0000 L CNN
 F 1 "100nF" H 3265 3405 50  0000 L CNN
-F 2 "NOVA MCU (STM):C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3188 3300 50  0001 C CNN
+F 2 "NOVA MCU (STM):C_0805_2012Metric" H 3188 3300 50  0001 C CNN
 F 3 "~" H 3150 3450 50  0001 C CNN
 	1    3150 3450
 	1    0    0    -1  
 $EndComp
 $Comp
-L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C?
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C505
 U 1 1 5EEA85B4
 P 3650 3450
-F 0 "C?" H 3765 3496 50  0000 L CNN
+F 0 "C505" H 3765 3496 50  0000 L CNN
 F 1 "100nF" H 3765 3405 50  0000 L CNN
-F 2 "NOVA MCU (STM):C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3688 3300 50  0001 C CNN
+F 2 "NOVA MCU (STM):C_0805_2012Metric" H 3688 3300 50  0001 C CNN
 F 3 "~" H 3650 3450 50  0001 C CNN
 	1    3650 3450
 	1    0    0    -1  
 $EndComp
 $Comp
-L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C?
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C506
 U 1 1 5EEA893A
 P 4150 3450
-F 0 "C?" H 4265 3496 50  0000 L CNN
+F 0 "C506" H 4265 3496 50  0000 L CNN
 F 1 "100nF" H 4265 3405 50  0000 L CNN
-F 2 "NOVA MCU (STM):C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 4188 3300 50  0001 C CNN
+F 2 "NOVA MCU (STM):C_0805_2012Metric" H 4188 3300 50  0001 C CNN
 F 3 "~" H 4150 3450 50  0001 C CNN
 	1    4150 3450
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0502
 U 1 1 5EEA8DC8
 P 2900 3900
-F 0 "#PWR?" H 2900 3650 50  0001 C CNN
+F 0 "#PWR0502" H 2900 3650 50  0001 C CNN
 F 1 "GND" H 2905 3727 50  0000 C CNN
 F 2 "" H 2900 3900 50  0001 C CNN
 F 3 "" H 2900 3900 50  0001 C CNN
@@ -923,10 +923,10 @@ F 3 "" H 2900 3900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3.3V #PWR?
+L power:+3.3V #PWR0501
 U 1 1 5EEA931E
 P 2900 3000
-F 0 "#PWR?" H 2900 2850 50  0001 C CNN
+F 0 "#PWR0501" H 2900 2850 50  0001 C CNN
 F 1 "+3.3V" H 2915 3173 50  0000 C CNN
 F 2 "" H 2900 3000 50  0001 C CNN
 F 3 "" H 2900 3000 50  0001 C CNN
@@ -992,21 +992,21 @@ Connection ~ 3650 3000
 Wire Wire Line
 	3650 3000 4150 3000
 $Comp
-L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C?
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C509
 U 1 1 5EEADB63
 P 6350 3450
-F 0 "C?" H 6468 3496 50  0000 L CNN
+F 0 "C509" H 6468 3496 50  0000 L CNN
 F 1 "4.7uF" H 6468 3405 50  0000 L CNN
-F 2 "NOVA MCU (STM):C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6388 3300 50  0001 C CNN
+F 2 "NOVA MCU (STM):C_0805_2012Metric" H 6388 3300 50  0001 C CNN
 F 3 "~" H 6350 3450 50  0001 C CNN
 	1    6350 3450
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0505
 U 1 1 5EEAE613
 P 6350 3800
-F 0 "#PWR?" H 6350 3550 50  0001 C CNN
+F 0 "#PWR0505" H 6350 3550 50  0001 C CNN
 F 1 "GND" H 6355 3627 50  0000 C CNN
 F 2 "" H 6350 3800 50  0001 C CNN
 F 3 "" H 6350 3800 50  0001 C CNN
@@ -1016,10 +1016,10 @@ $EndComp
 Wire Wire Line
 	6350 3800 6350 3600
 $Comp
-L power:+3.3V #PWR?
+L power:+3.3V #PWR0504
 U 1 1 5EEAEBC7
 P 6350 3100
-F 0 "#PWR?" H 6350 2950 50  0001 C CNN
+F 0 "#PWR0504" H 6350 2950 50  0001 C CNN
 F 1 "+3.3V" H 6365 3273 50  0000 C CNN
 F 2 "" H 6350 3100 50  0001 C CNN
 F 3 "" H 6350 3100 50  0001 C CNN
@@ -1029,23 +1029,23 @@ $EndComp
 Wire Wire Line
 	6350 3300 6350 3100
 $Comp
-L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C?
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C507
 U 1 1 5EEAF36F
 P 4900 3450
-F 0 "C?" H 5015 3496 50  0000 L CNN
+F 0 "C507" H 5015 3496 50  0000 L CNN
 F 1 "2.2uF" H 5015 3405 50  0000 L CNN
-F 2 "NOVA MCU (STM):C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 4938 3300 50  0001 C CNN
+F 2 "NOVA MCU (STM):C_0805_2012Metric" H 4938 3300 50  0001 C CNN
 F 3 "~" H 4900 3450 50  0001 C CNN
 	1    4900 3450
 	1    0    0    -1  
 $EndComp
 $Comp
-L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C?
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C508
 U 1 1 5EEAF915
 P 5450 3450
-F 0 "C?" H 5565 3496 50  0000 L CNN
+F 0 "C508" H 5565 3496 50  0000 L CNN
 F 1 "2.2uF" H 5565 3405 50  0000 L CNN
-F 2 "NOVA MCU (STM):C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5488 3300 50  0001 C CNN
+F 2 "NOVA MCU (STM):C_0805_2012Metric" H 5488 3300 50  0001 C CNN
 F 3 "~" H 5450 3450 50  0001 C CNN
 	1    5450 3450
 	1    0    0    -1  
@@ -1070,10 +1070,10 @@ Connection ~ 5150 3800
 Wire Wire Line
 	5150 3800 4900 3800
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0503
 U 1 1 5EEB0D7F
 P 5150 3000
-F 0 "#PWR?" H 5150 2750 50  0001 C CNN
+F 0 "#PWR0503" H 5150 2750 50  0001 C CNN
 F 1 "GND" H 5155 2827 50  0000 C CNN
 F 2 "" H 5150 3000 50  0001 C CNN
 F 3 "" H 5150 3000 50  0001 C CNN
@@ -1086,23 +1086,23 @@ Connection ~ 5150 3100
 Wire Wire Line
 	5150 3100 5450 3100
 $Comp
-L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C?
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C510
 U 1 1 5EEB4CA7
 P 7350 3450
-F 0 "C?" H 7465 3496 50  0000 L CNN
+F 0 "C510" H 7465 3496 50  0000 L CNN
 F 1 "100nF" H 7465 3405 50  0000 L CNN
-F 2 "NOVA MCU (STM):C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7388 3300 50  0001 C CNN
+F 2 "NOVA MCU (STM):C_0805_2012Metric" H 7388 3300 50  0001 C CNN
 F 3 "~" H 7350 3450 50  0001 C CNN
 	1    7350 3450
 	1    0    0    -1  
 $EndComp
 $Comp
-L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C?
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C511
 U 1 1 5EEB51E9
 P 8000 3450
-F 0 "C?" H 8115 3496 50  0000 L CNN
+F 0 "C511" H 8115 3496 50  0000 L CNN
 F 1 "1uF" H 8115 3405 50  0000 L CNN
-F 2 "NOVA MCU (STM):C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 8038 3300 50  0001 C CNN
+F 2 "NOVA MCU (STM):C_0805_2012Metric" H 8038 3300 50  0001 C CNN
 F 3 "~" H 8000 3450 50  0001 C CNN
 	1    8000 3450
 	1    0    0    -1  
@@ -1126,10 +1126,10 @@ Wire Wire Line
 Wire Wire Line
 	7350 3800 7350 3600
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0507
 U 1 1 5EEB6C30
 P 7650 4200
-F 0 "#PWR?" H 7650 3950 50  0001 C CNN
+F 0 "#PWR0507" H 7650 3950 50  0001 C CNN
 F 1 "GND" H 7655 4027 50  0000 C CNN
 F 2 "" H 7650 4200 50  0001 C CNN
 F 3 "" H 7650 4200 50  0001 C CNN
@@ -1140,10 +1140,10 @@ Connection ~ 7650 3800
 Wire Wire Line
 	7650 3800 7350 3800
 $Comp
-L power:+3.3V #PWR?
+L power:+3.3V #PWR0506
 U 1 1 5EEB7BE7
 P 7650 2750
-F 0 "#PWR?" H 7650 2600 50  0001 C CNN
+F 0 "#PWR0506" H 7650 2600 50  0001 C CNN
 F 1 "+3.3V" H 7665 2923 50  0000 C CNN
 F 2 "" H 7650 2750 50  0001 C CNN
 F 3 "" H 7650 2750 50  0001 C CNN
@@ -1172,23 +1172,23 @@ Wire Wire Line
 Text Notes 7500 2350 0    50   ~ 0
 VREF CAPS
 $Comp
-L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C?
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C512
 U 1 1 5EEBBE66
 P 9450 3450
-F 0 "C?" H 9565 3496 50  0000 L CNN
+F 0 "C512" H 9565 3496 50  0000 L CNN
 F 1 "100nF" H 9565 3405 50  0000 L CNN
-F 2 "NOVA MCU (STM):C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 9488 3300 50  0001 C CNN
+F 2 "NOVA MCU (STM):C_0805_2012Metric" H 9488 3300 50  0001 C CNN
 F 3 "~" H 9450 3450 50  0001 C CNN
 	1    9450 3450
 	1    0    0    -1  
 $EndComp
 $Comp
-L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C?
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C513
 U 1 1 5EEBC1C7
 P 10050 3450
-F 0 "C?" H 10165 3496 50  0000 L CNN
+F 0 "C513" H 10165 3496 50  0000 L CNN
 F 1 "1uF" H 10165 3405 50  0000 L CNN
-F 2 "NOVA MCU (STM):C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 10088 3300 50  0001 C CNN
+F 2 "NOVA MCU (STM):C_0805_2012Metric" H 10088 3300 50  0001 C CNN
 F 3 "~" H 10050 3450 50  0001 C CNN
 	1    10050 3450
 	1    0    0    -1  
@@ -1208,10 +1208,10 @@ Wire Wire Line
 Text HLabel 9750 2850 2    50   Input ~ 0
 VREF+
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0508
 U 1 1 5EEBDC9A
 P 9750 3900
-F 0 "#PWR?" H 9750 3650 50  0001 C CNN
+F 0 "#PWR0508" H 9750 3650 50  0001 C CNN
 F 1 "GND" H 9755 3727 50  0000 C CNN
 F 2 "" H 9750 3900 50  0001 C CNN
 F 3 "" H 9750 3900 50  0001 C CNN
@@ -1233,10 +1233,10 @@ VREF+ CAPS\n
 Wire Wire Line
 	7650 2750 7650 2900
 $Comp
-L power:PWR_FLAG #FLG?
+L power:PWR_FLAG #FLG0501
 U 1 1 5EF3DD95
 P 5150 3800
-F 0 "#FLG?" H 5150 3875 50  0001 C CNN
+F 0 "#FLG0501" H 5150 3875 50  0001 C CNN
 F 1 "PWR_FLAG" H 5150 3973 50  0000 C CNN
 F 2 "" H 5150 3800 50  0001 C CNN
 F 3 "~" H 5150 3800 50  0001 C CNN

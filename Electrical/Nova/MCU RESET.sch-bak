@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 8 18
+Sheet 6 18
 Title "Microcontroller"
 Date "2020-07-02"
 Rev "1"
@@ -7579,10 +7579,10 @@ C8 24 80 5C 90 49 00 B9 20 93 00 72 41 26 01 E4 82 4C 02 C8 05 99 04 90 0B 32 09
 EndData
 $EndBitmap
 $Comp
-L Nova-rescue:GPTS203211B-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue S?
+L Nova-rescue:GPTS203211B-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue S601
 U 1 1 5EEE3482
 P 5700 3550
-F 0 "S?" H 5700 3825 50  0000 C CNN
+F 0 "S601" H 5700 3825 50  0000 C CNN
 F 1 "KSR223GLFG" H 5700 3734 50  0000 C CNN
 F 2 "NOVA MCU (STM):KSR223GLFG" H 5900 3750 50  0001 L CNN
 F 3 "https://www.ckswitches.com/media/1466/ksr.pdf" H 5900 3850 60  0001 L CNN
@@ -7599,10 +7599,10 @@ F 12 "" H 5900 4750 60  0001 L CNN "Status"
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0601
 U 1 1 5EEE4440
 P 5150 3550
-F 0 "#PWR?" H 5150 3300 50  0001 C CNN
+F 0 "#PWR0601" H 5150 3300 50  0001 C CNN
 F 1 "GND" H 5155 3377 50  0000 C CNN
 F 2 "" H 5150 3550 50  0001 C CNN
 F 3 "" H 5150 3550 50  0001 C CNN
@@ -7612,10 +7612,10 @@ $EndComp
 Wire Wire Line
 	5150 3550 5500 3550
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0602
 U 1 1 5EEE4D7F
 P 6350 4050
-F 0 "#PWR?" H 6350 3800 50  0001 C CNN
+F 0 "#PWR0602" H 6350 3800 50  0001 C CNN
 F 1 "GND" H 6355 3877 50  0000 C CNN
 F 2 "" H 6350 4050 50  0001 C CNN
 F 3 "" H 6350 4050 50  0001 C CNN
@@ -7625,12 +7625,12 @@ $EndComp
 Text HLabel 6850 3550 2    50   Input ~ 0
 RESET
 $Comp
-L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C?
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C601
 U 1 1 5EEE5880
 P 6350 3700
-F 0 "C?" H 6465 3746 50  0000 L CNN
+F 0 "C601" H 6465 3746 50  0000 L CNN
 F 1 "0.1uF" H 6465 3655 50  0000 L CNN
-F 2 "NOVA MCU (STM):C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6388 3550 50  0001 C CNN
+F 2 "NOVA MCU (STM):C_0805_2012Metric" H 6388 3550 50  0001 C CNN
 F 3 "~" H 6350 3700 50  0001 C CNN
 	1    6350 3700
 	1    0    0    -1  
@@ -15203,5 +15203,8 @@ C8 24 80 5C 90 49 00 B9 20 93 00 72 41 26 01 E4 82 4C 02 C8 05 99 04 90 0B 32 09
 EndData
 $EndBitmap
 Wire Wire Line
-	5900 3550 6850 3550
+	5900 3550 6350 3550
+Connection ~ 6350 3550
+Wire Wire Line
+	6350 3550 6850 3550
 $EndSCHEMATC

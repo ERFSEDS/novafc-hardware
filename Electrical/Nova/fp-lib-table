@@ -1,3 +1,5 @@
 (fp_lib_table
   (lib (name "NOVA MCU (STM)")(type KiCad)(uri "C:/Users/ckeer/OneDrive/Documents/Github/Modular-Flight-Computer/Electrical/Common_Modules/MCU/Footprints/NOVA MCU (STM).pretty")(options "")(descr ""))
+  (lib (name Accelerometer_Breakout)(type KiCad)(uri C:/Users/ckeer/OneDrive/Documents/Github/common_modules/Accelerometer_Breakout/Accelerometer_Breakout.pretty)(options "")(descr ""))
+  (lib (name PyroChannel)(type KiCad)(uri C:/Users/ckeer/OneDrive/Documents/Github/common_modules/PyroChannel/Footprints/PyroChannel.pretty)(options "")(descr ""))
 )
