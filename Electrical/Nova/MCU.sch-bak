@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 13 18
+Sheet 12 18
 Title "Microcontroller"
 Date "2020-07-02"
 Rev "1"
@@ -15592,4 +15592,40 @@ Text Notes 7450 4000 0    50   ~ 0
 Accelerometer\n
 Text Notes 7450 4100 0    50   ~ 0
 Gyro
+Text Notes 7450 4900 0    50   ~ 0
+Gyro_Accelerometer\n
+Text Notes 4350 4250 0    50   ~ 0
+FLASH_CS\n
+Text Notes 4450 4350 0    50   ~ 0
+SD_CS\n
+Text Notes 7450 5100 0    50   ~ 0
+BUZZER
+Text Notes 7450 5200 0    50   ~ 0
+LED_RED\n
+Text Notes 7450 5300 0    50   ~ 0
+LED_BLUE\n
+Text Notes 4300 4450 0    50   ~ 0
+LED_GREEN\n
+Text Notes 4550 4650 0    50   ~ 0
+ARM\n
+Text Notes 4500 4750 0    50   ~ 0
+FIRE1\n
+Text Notes 7400 3000 0    50   ~ 0
+FIRE2
+Text Notes 7400 3100 0    50   ~ 0
+CONTINUITY1
+Text Notes 7400 3200 0    50   ~ 0
+CONTINUITY2
+Text Notes 7400 2600 0    50   ~ 0
+SPI1_NSS\n
+Text Notes 7400 2700 0    50   ~ 0
+SPI1_SCK\n
+Text Notes 7400 2800 0    50   ~ 0
+SPI1_MISO\n
+Text Notes 7400 2900 0    50   ~ 0
+SPI1_MOSI
+Text Notes 7400 3500 0    50   ~ 0
+JTMS_SWDIO
+Text Notes 7400 3600 0    50   ~ 0
+JTCK_SWCLK
 $EndSCHEMATC
