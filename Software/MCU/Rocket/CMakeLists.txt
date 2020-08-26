@@ -3,8 +3,6 @@ enable_testing()
 project("Rocket Layer")
 
 set(Rocket_testing_dir ${CMAKE_CURRENT_SOURCE_DIR}/testing)
-add_subdirectory(brain)
 add_subdirectory(configuration)
-add_subdirectory(RocketData)
 add_subdirectory(SensorValues)
 

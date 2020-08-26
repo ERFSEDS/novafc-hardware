@@ -14,23 +14,23 @@ cartesian testValue;
 cartesian holder;
 int testNumber = 0;
 
-int testValueX = 0;
-int testValueY = 0;
-int testValueZ = 0;
+unsigned short int testValueX = 0;
+unsigned short int testValueY = 0;
+unsigned short int testValueZ = 0;
 
 int testResult = 0;
 
 void testValuePass(){
     if(holder.x != testValue.x){
-        std::cout << "[ERROR] Test failed at %d for x /n",testNumber;
+        std::cout << "[ERROR] Test failed at " << testNumber << " for x" << std::endl;
         testResult = 1;
     }
     if(holder.y != testValue.y){
-        std::cout << "[ERROR] Test failed at %d for y /n",testNumber;
+        std::cout << "[ERROR] Test failed at " << testNumber << " for y" << std::endl;
         testResult = 1;
     }
     if(holder.z != testValue.z){
-        std::cout << "[ERROR] Test failed at %d for z /n",testNumber;
+        std::cout << "[ERROR] Test failed at " << testNumber << " for z" << std::endl;
         testResult = 1;
     }  
 }
@@ -66,16 +66,16 @@ int main(){
     testValuePass();
 
 /*##########[ PYRO TEST ]##########*/
-    for(int i=0; i<2; i++){
+	for(int i=0; i<2; i++){
         run.setPyro(1,i);
         run.setPyro(2,i);
 
         if(run.checkPyro(1) != i){
-            std::cout << ("[ERROR] Pyro Test Failed for iteration:[ %d ] on pyroOne", i);
+            std::cout << "[ERROR] Pyro Test Failed for iteration:[ " << i <<  "] on pyroOne" << std::endl;
             testResult = 1;
         }
         if(run.checkPyro(2) != i){
-            std::cout << ("[ERROR] Pyro Test Failed for iteration:[ %d ] on pyroTwo", i);
+            std::cout << "[ERROR] Pyro Test Failed for iteration:[ " << i << " ] on pyroTwo" << std::endl;
             testResult = 1;
         }
     }

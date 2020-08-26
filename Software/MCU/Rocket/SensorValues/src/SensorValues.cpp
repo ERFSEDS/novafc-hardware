@@ -44,7 +44,7 @@ bool SensorValues::checkPyro(int cmd){
             return pyro[1];
             break;
     }
-    return;
+    return false;
 }
 
 void SensorValues::firePyro(int cmd){
