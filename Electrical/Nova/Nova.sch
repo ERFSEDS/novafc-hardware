@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
-Sheet 1 18
+Sheet 1 19
 Title ""
 Date ""
 Rev ""
@@ -531,4 +531,10 @@ Text Label 6950 2700 0    50   ~ 0
 CONTINUITY1
 Text Label 6950 2800 0    50   ~ 0
 CONTINUITY2
+$Sheet
+S 9400 2425 950  850 
+U 5F46051D
+F0 "Accelerometer" 50
+F1 "Accelerometer.sch" 50
+$EndSheet
 $EndSCHEMATC

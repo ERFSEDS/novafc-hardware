@@ -71,8 +71,6 @@ F 3 "" H 6150 3200 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	5950 3200 6100 3200
-Wire Wire Line
 	5950 3100 6500 3100
 Wire Wire Line
 	6500 3700 5650 3700
@@ -99,20 +97,8 @@ Wire Wire Line
 Connection ~ 6500 3600
 Wire Wire Line
 	6500 3600 6500 3700
-$Comp
-L power:PWR_FLAG #FLG01201
-U 1 1 5F410118
-P 6100 3200
-F 0 "#FLG01201" H 6100 3275 50  0001 C CNN
-F 1 "PWR_FLAG" H 6100 3373 50  0000 C CNN
-F 2 "" H 6100 3200 50  0001 C CNN
-F 3 "~" H 6100 3200 50  0001 C CNN
-	1    6100 3200
-	1    0    0    -1  
-$EndComp
-Connection ~ 6100 3200
-Wire Wire Line
-	6100 3200 6150 3200
 Text HLabel 4700 3100 0    50   Input ~ 0
 BUZZER
+Wire Wire Line
+	5950 3200 6150 3200
 $EndSCHEMATC

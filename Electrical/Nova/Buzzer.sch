@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 12 18
+Sheet 12 19
 Title ""
 Date ""
 Rev ""
@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Nova-rescue:PS1440P02BT-PS1440P02BT-Nova-rescue-Nova-rescue-Nova-rescue LS1201
+L Nova-rescue:PS1440P02BT-PS1440P02BT-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue LS1201
 U 1 1 5F404605
 P 5450 3800
 F 0 "LS1201" H 5580 3846 50  0000 L CNN
@@ -26,7 +26,7 @@ F 4 "IPC-7251" H 5450 3800 50  0001 L BNN "Field4"
 	0    1    1    0   
 $EndComp
 $Comp
-L Nova-rescue:74HC2GU04GW,125-74HC2GU04GW_125-Nova-rescue-Nova-rescue-Nova-rescue IC?
+L Nova-rescue:74HC2GU04GW,125-74HC2GU04GW_125-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue IC?
 U 1 1 5F40586B
 P 4950 3100
 AR Path="/5F40586B" Ref="IC?"  Part="1" 

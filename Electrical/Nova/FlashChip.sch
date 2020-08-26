@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 11 18
+Sheet 11 19
 Title ""
 Date ""
 Rev ""
@@ -75,7 +75,7 @@ F 3 "~" H 6550 3400 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Nova-rescue:W25N512GVPIT-Flash_Chip-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue U?
+L Nova-rescue:W25N512GVPIT-Flash_Chip-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue U?
 U 1 1 5F01567A
 P 5450 3400
 AR Path="/5F01567A" Ref="U?"  Part="1" 
