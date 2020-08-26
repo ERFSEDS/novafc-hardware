@@ -1,5 +1,5 @@
 /*
- * ProjectCerberus: Nova/SensorValues
+ * ProjectCerberus: Nova SensorValues
  * 
  * This class is to act like a Storage class for sensor values
  * 
@@ -24,7 +24,7 @@ class SensorValues{
         cartesian getLocation();
         cartesian getAngularPos();
         
-        void setPyro();
-        bool checkPyro();
-        void firePyro();
+        bool checkPyro(int cmd);
+        void firePyro(int cmd);
+        void setPyro(int cmd, bool state);
 };
