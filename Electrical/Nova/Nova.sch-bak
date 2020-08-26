@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
-Sheet 1 18
+Sheet 1 19
 Title ""
 Date ""
 Rev ""
@@ -195,16 +195,6 @@ F2 "JTMS-SWDIO" I R 2050 800 50
 F3 "JTCK-SWCLK" I R 2050 900 50 
 F4 "RESET" I R 2050 1000 50 
 $EndSheet
-$Sheet
-S 9350 800  1000 500 
-U 5F3A063C
-F0 "Barometer" 50
-F1 "Barometer.sch" 20
-F2 "SCLK" I L 9350 900 50 
-F3 "SDI" I L 9350 1000 50 
-F4 "SDO" I L 9350 1100 50 
-F5 "CSB" I L 9350 1200 50 
-$EndSheet
 Wire Wire Line
 	9350 900  8550 900 
 Wire Wire Line
@@ -219,34 +209,6 @@ Text Label 8850 1000 0    50   ~ 0
 MOSI
 Text Label 8850 1100 0    50   ~ 0
 MISO
-$Sheet
-S 9350 5850 1000 500 
-U 5F3B0B4B
-F0 "PowerSupply" 50
-F1 "PowerSupply.sch" 20
-$EndSheet
-$Sheet
-S 9350 4000 1000 500 
-U 5F3B5BD1
-F0 "MicroSD" 50
-F1 "MicroSD.sch" 20
-F2 "MISO" I L 9350 4100 50 
-F3 "MOSI" I L 9350 4200 50 
-F4 "SCLK" I L 9350 4300 50 
-F5 "CS_SD" I L 9350 4400 50 
-$EndSheet
-$Sheet
-S 9350 4700 1000 600 
-U 5F3B5C2E
-F0 "FlashChip" 50
-F1 "FlashChip.sch" 20
-F2 "SCLK" I L 9350 4750 50 
-F3 "MOSI" I L 9350 4850 50 
-F4 "MISO" I L 9350 4950 50 
-F5 "CS_FLASH" I L 9350 5050 50 
-F6 "HOLD" I L 9350 5150 50 
-F7 "WP" I L 9350 5250 50 
-$EndSheet
 Wire Wire Line
 	9350 4100 8550 4100
 Wire Wire Line
@@ -531,4 +493,48 @@ Text Label 6950 2700 0    50   ~ 0
 CONTINUITY1
 Text Label 6950 2800 0    50   ~ 0
 CONTINUITY2
+$Sheet
+S 9350 5850 1000 500 
+U 5F3B0B4B
+F0 "PowerSupply" 50
+F1 "../Common_Modules/PowerSupply/Voltage Regulation Board/VoltageRegulators.sch" 20
+$EndSheet
+$Sheet
+S 9350 4700 1000 600 
+U 5F3B5C2E
+F0 "FlashChip" 50
+F1 "../Common_Modules/FHSD/Flash SD Board/Flash Chip.sch" 20
+F2 "SCLK" I L 9350 4750 50 
+F3 "MOSI" I L 9350 4850 50 
+F4 "MISO" I L 9350 4950 50 
+F5 "CS_FLASH" I L 9350 5050 50 
+F6 "HOLD" I L 9350 5150 50 
+F7 "WP" I L 9350 5250 50 
+$EndSheet
+$Sheet
+S 9350 4000 1000 500 
+U 5F3B5BD1
+F0 "MicroSD" 50
+F1 "../Common_Modules/FHSD/Flash SD Board/Micro SD.sch" 20
+F2 "MISO" I L 9350 4100 50 
+F3 "MOSI" I L 9350 4200 50 
+F4 "SCLK" I L 9350 4300 50 
+F5 "CS_SD" I L 9350 4400 50 
+$EndSheet
+$Sheet
+S 9400 2425 950  850 
+U 5F46051D
+F0 "Accelerometer" 50
+F1 "../Common_Modules/Accelerometer_Breakout/Breakout_Board/H3LIS331DL_Accelerometer.sch" 20
+$EndSheet
+$Sheet
+S 9350 800  1000 500 
+U 5F3A063C
+F0 "Barometer" 50
+F1 "../Common_Modules/Barometer/Barometer Board/Barometer.sch" 20
+F2 "SCLK" I L 9350 900 50 
+F3 "SDI" I L 9350 1000 50 
+F4 "SDO" I L 9350 1100 50 
+F5 "CSB" I L 9350 1200 50 
+$EndSheet
 $EndSCHEMATC

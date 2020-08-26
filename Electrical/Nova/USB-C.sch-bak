@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 18
+Sheet 3 19
 Title "Microcontroller"
 Date "2020-07-02"
 Rev "1"
@@ -7648,7 +7648,7 @@ FD 2F F4 F9 A0 3B 67 FA D8 61 00 00 00 00 49 45 4E 44 AE 42 60 82
 EndData
 $EndBitmap
 $Comp
-L Nova-rescue:USB_C_Receptacle-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue J301
+L Nova-rescue:USB_C_Receptacle-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue J301
 U 1 1 5EE7E0E1
 P 3900 3500
 F 0 "J301" H 4007 4767 50  0000 C CNN
@@ -7676,7 +7676,7 @@ Wire Wire Line
 	3600 5300 3900 5300
 Connection ~ 3900 5300
 $Comp
-L Nova-rescue:Fuse-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue F301
+L Nova-rescue:Fuse-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue F301
 U 1 1 5EE8054D
 P 5050 2500
 F 0 "F301" V 4853 2500 50  0000 C CNN
@@ -7690,7 +7690,7 @@ $EndComp
 Wire Wire Line
 	4500 2500 4700 2500
 $Comp
-L Nova-rescue:FT234XD-R-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue U301
+L Nova-rescue:FT234XD-R-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue U301
 U 1 1 5F3B686B
 P 7900 3500
 F 0 "U301" H 7450 4000 60  0000 C CNN
@@ -7710,7 +7710,7 @@ F 12 "Active" H 8100 4700 60  0001 L CNN "Status"
 	1    0    0    -1  
 $EndComp
 $Comp
-L Nova-rescue:Ferrite_Bead-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue FB301
+L Nova-rescue:Ferrite_Bead-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue FB301
 U 1 1 5F3B686C
 P 6050 2500
 F 0 "FB301" V 5776 2500 50  0000 C CNN
@@ -7724,7 +7724,7 @@ $EndComp
 Wire Wire Line
 	6200 2500 8000 2500
 $Comp
-L Nova-rescue:R_US-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue R301
+L Nova-rescue:R_US-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue R301
 U 1 1 5EE8D72F
 P 5150 3000
 F 0 "R301" V 4945 3000 50  0000 C CNN
@@ -7812,7 +7812,7 @@ $EndComp
 Wire Wire Line
 	7250 3600 7500 3600
 $Comp
-L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C302
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C302
 U 1 1 5F3B6872
 P 5950 3750
 F 0 "C302" H 6065 3796 50  0000 L CNN
@@ -7823,7 +7823,7 @@ F 3 "~" H 5950 3750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C303
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C303
 U 1 1 5EE93CEE
 P 6400 3750
 F 0 "C303" H 6515 3796 50  0000 L CNN
@@ -7864,7 +7864,7 @@ Wire Wire Line
 	6400 4050 6200 4050
 Connection ~ 6200 4050
 $Comp
-L Nova-rescue:R_US-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue R302
+L Nova-rescue:R_US-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue R302
 U 1 1 5EE8E4DE
 P 5150 3200
 F 0 "R302" V 5350 3200 50  0000 C CNN
@@ -7875,7 +7875,7 @@ F 3 "~" H 5150 3200 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C304
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C304
 U 1 1 5F3B6875
 P 9400 3650
 F 0 "C304" H 9515 3696 50  0000 L CNN
@@ -7899,7 +7899,7 @@ $EndComp
 Wire Wire Line
 	9400 3800 9400 3950
 $Comp
-L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C301
+L Nova-rescue:C-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue C301
 U 1 1 5EE98E46
 P 5450 2350
 F 0 "C301" H 5565 2396 50  0000 L CNN
@@ -7923,7 +7923,7 @@ $EndComp
 Wire Wire Line
 	5450 2200 5450 2000
 $Comp
-L Nova-rescue:LED-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue D301
+L Nova-rescue:LED-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue D301
 U 1 1 5EE9CC36
 P 7150 4650
 F 0 "D301" H 7143 4395 50  0000 C CNN
@@ -7934,7 +7934,7 @@ F 3 "~" H 7150 4650 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Nova-rescue:R_US-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue R305
+L Nova-rescue:R_US-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue R305
 U 1 1 5EE9D264
 P 6550 4650
 F 0 "R305" V 6345 4650 50  0000 C CNN
@@ -7991,7 +7991,7 @@ D2-
 Text Label 5500 3200 0    50   ~ 0
 D2+
 $Comp
-L Nova-rescue:R_US-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue R303
+L Nova-rescue:R_US-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue R303
 U 1 1 5F3B687C
 P 6200 3000
 F 0 "R303" V 5995 3000 50  0000 C CNN
@@ -8002,7 +8002,7 @@ F 3 "~" H 6200 3000 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Nova-rescue:R_US-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue R304
+L Nova-rescue:R_US-Nova_Microcontroller-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue R304
 U 1 1 5EF2B785
 P 6450 2750
 F 0 "R304" V 6245 2750 50  0000 C CNN
