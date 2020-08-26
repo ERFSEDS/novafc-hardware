@@ -151,105 +151,61 @@ Wire Notes Line
 	700  550  3100 550 
 Text Notes 1300 4150 0    79   ~ 0
 MCU PERIPHERALS\n\n
-$Sheet
-S 800  3400 1250 350 
-U 5F319D4B
-F0 "USB-C" 50
-F1 "USB-C.sch" 20
-F2 "TXD" I R 2050 3500 50 
-F3 "RXD" I R 2050 3600 50 
-$EndSheet
-$Sheet
-S 800  2000 1250 550 
-U 5F319C9C
-F0 "CLOCKS" 50
-F1 "Clocks.sch" 20
-F2 "CLOCKIN" I R 2050 2100 50 
-F3 "CLOCKOUT" I R 2050 2200 50 
-F4 "RTCCRYSTALIN" I R 2050 2350 50 
-F5 "RTCCRYSTALOUT" I R 2050 2450 50 
-$EndSheet
-$Sheet
-S 800  2750 1250 500 
-U 5F3189B2
-F0 "MCU FILTERING" 50
-F1 "MCU FILTERING.sch" 20
-F2 "VCAP" I R 2050 2850 50 
-F3 "VSSA" I R 2050 2950 50 
-F4 "VDDA" I R 2050 3050 50 
-F5 "VREF+" I R 2050 3150 50 
-$EndSheet
-$Sheet
-S 800  1450 1250 350 
-U 5F317E00
-F0 "MCU RESET" 50
-F1 "MCU RESET.sch" 20
-F2 "RESET" I R 2050 1650 50 
-$EndSheet
-$Sheet
-S 800  700  1250 450 
-U 5F31B2A5
-F0 "SWD" 50
-F1 "SWD.sch" 20
-F2 "JTMS-SWDIO" I R 2050 800 50 
-F3 "JTCK-SWCLK" I R 2050 900 50 
-F4 "RESET" I R 2050 1000 50 
-$EndSheet
 Wire Wire Line
-	9350 900  8550 900 
+	8900 800  8100 800 
 Wire Wire Line
-	9350 1000 8550 1000
+	8900 900  8100 900 
 Wire Wire Line
-	9350 1100 8550 1100
+	8900 1000 8100 1000
 Wire Wire Line
-	8550 1200 9350 1200
-Text Label 8850 900  0    50   ~ 0
+	8100 1100 8900 1100
+Text Label 8400 800  0    50   ~ 0
 SCLK
-Text Label 8850 1000 0    50   ~ 0
+Text Label 8400 900  0    50   ~ 0
 MOSI
-Text Label 8850 1100 0    50   ~ 0
+Text Label 8400 1000 0    50   ~ 0
 MISO
 Wire Wire Line
-	9350 4100 8550 4100
+	8900 4000 8100 4000
 Wire Wire Line
-	8550 4200 9350 4200
+	8100 4100 8900 4100
 Wire Wire Line
-	9350 4300 8550 4300
+	8900 4200 8100 4200
 Wire Wire Line
-	9350 4400 8550 4400
+	8900 4300 8100 4300
 Wire Wire Line
-	8550 4750 9350 4750
+	8100 4650 8900 4650
 Wire Wire Line
-	9350 4850 8550 4850
+	8900 4750 8100 4750
 Wire Wire Line
-	9350 4950 8550 4950
+	8900 4850 8100 4850
 Wire Wire Line
-	8550 5050 9350 5050
+	8100 4950 8900 4950
 Wire Wire Line
-	9350 5150 8550 5150
+	8900 5050 8100 5050
 Wire Wire Line
-	9350 5250 8550 5250
-Text Label 8850 4100 0    50   ~ 0
+	8900 5150 8100 5150
+Text Label 8400 4000 0    50   ~ 0
 MISO
-Text Label 8850 4200 0    50   ~ 0
+Text Label 8400 4100 0    50   ~ 0
 MOSI
-Text Label 8850 4300 0    50   ~ 0
+Text Label 8400 4200 0    50   ~ 0
 SCLK
-Text Label 8850 4750 0    50   ~ 0
+Text Label 8400 4650 0    50   ~ 0
 SCLK
-Text Label 8850 4850 0    50   ~ 0
+Text Label 8400 4750 0    50   ~ 0
 MOSI
-Text Label 8850 4950 0    50   ~ 0
+Text Label 8400 4850 0    50   ~ 0
 MISO
-Text Label 8850 5150 0    50   ~ 0
+Text Label 8400 5050 0    50   ~ 0
 HOLD
-Text Label 9000 5250 2    50   ~ 0
+Text Label 8550 5150 2    50   ~ 0
 WP
-Text Label 8700 1200 0    50   ~ 0
+Text Label 8250 1100 0    50   ~ 0
 BAROMETER_CS
-Text Label 8800 4400 0    50   ~ 0
+Text Label 8350 4300 0    50   ~ 0
 SD_CS
-Text Label 8750 5050 0    50   ~ 0
+Text Label 8300 4950 0    50   ~ 0
 FLASH_CS
 Wire Wire Line
 	6800 1200 7600 1200
@@ -275,24 +231,24 @@ Wire Wire Line
 Text Label 2350 5150 0    50   ~ 0
 BUZZER
 Wire Notes Line
-	8450 3750 10450 3750
+	8000 3650 10000 3650
 Wire Notes Line
-	10450 3750 10450 5450
+	10000 3650 10000 5350
 Wire Notes Line
-	10450 5450 8450 5450
+	10000 5350 8000 5350
 Wire Notes Line
-	8450 5450 8450 3750
-Text Notes 9100 5600 0    79   ~ 0
+	8000 5350 8000 3650
+Text Notes 8650 5500 0    79   ~ 0
 DATA LOGGING\n
 Wire Notes Line
-	8450 5750 10450 5750
+	8000 5650 10000 5650
 Wire Notes Line
-	10450 5750 10450 6500
+	10000 5650 10000 6400
 Wire Notes Line
-	10450 6500 8450 6500
+	10000 6400 8000 6400
 Wire Notes Line
-	8450 6500 8450 5750
-Text Notes 9000 6650 0    79   ~ 0
+	8000 6400 8000 5650
+Text Notes 8550 6550 0    79   ~ 0
 POWER SUPPLY\n
 Wire Notes Line
 	3300 550  7750 550 
@@ -305,39 +261,39 @@ Wire Notes Line
 Text Notes 5350 4700 0    79   ~ 0
 MCU
 $Sheet
-S 9350 1500 1000 600 
+S 8900 1400 1000 600 
 U 5F440A67
 F0 "GyroScope" 50
 F1 "../Common_Modules/Gyroscope/breakout/Gyroscope.sch" 20
-F2 "SCK" B L 9350 1600 50 
-F3 "SDI" B L 9350 1700 50 
-F4 "SDO" B L 9350 1800 50 
-F5 "INT1_ACCEL" O R 10350 1850 50 
-F6 "INT2_ACCEL" O R 10350 1750 50 
-F7 "INT3_GYRO" O R 10350 1650 50 
-F8 "INT4_GYRO" O R 10350 1550 50 
-F9 "CSB_ACCEL" O L 9350 1900 50 
-F10 "CSB_GYRO" O L 9350 2000 50 
+F2 "SCK" B L 8900 1500 50 
+F3 "SDI" B L 8900 1600 50 
+F4 "SDO" B L 8900 1700 50 
+F5 "INT1_ACCEL" O R 9900 1750 50 
+F6 "INT2_ACCEL" O R 9900 1650 50 
+F7 "INT3_GYRO" O R 9900 1550 50 
+F8 "INT4_GYRO" O R 9900 1450 50 
+F9 "CSB_ACCEL" O L 8900 1800 50 
+F10 "CSB_GYRO" O L 8900 1900 50 
 $EndSheet
 Wire Wire Line
-	9350 1600 8550 1600
+	8900 1500 8100 1500
 Wire Wire Line
-	9350 1700 8550 1700
+	8900 1600 8100 1600
 Wire Wire Line
-	9350 1800 8550 1800
+	8900 1700 8100 1700
 Wire Wire Line
-	9350 1900 8550 1900
+	8900 1800 8100 1800
 Wire Wire Line
-	9350 2000 8550 2000
-Text Label 8850 1600 0    50   ~ 0
+	8900 1900 8100 1900
+Text Label 8400 1500 0    50   ~ 0
 SCLK
-Text Label 8850 1700 0    50   ~ 0
+Text Label 8400 1600 0    50   ~ 0
 MOSI
-Text Label 8850 1800 0    50   ~ 0
+Text Label 8400 1700 0    50   ~ 0
 MISO
-Text Label 8650 1900 0    50   ~ 0
+Text Label 8200 1800 0    50   ~ 0
 GYRO_ACCEL_CS
-Text Label 8800 2000 0    50   ~ 0
+Text Label 8350 1900 0    50   ~ 0
 GYRO_CS
 $Sheet
 S 800  6100 1250 600 
@@ -397,14 +353,14 @@ Wire Notes Line
 Text Notes 1450 7000 0    79   ~ 0
 PYRO CHANNELS
 Wire Notes Line
-	8450 3400 10450 3400
+	8000 3300 10000 3300
 Wire Notes Line
-	10450 3400 10450 650 
+	10000 3300 10000 550 
 Wire Notes Line
-	10450 650  8450 650 
+	10000 550  8000 550 
 Wire Notes Line
-	8450 650  8450 3400
-Text Notes 9150 3650 0    79   ~ 0
+	8000 550  8000 3300
+Text Notes 8700 3550 0    79   ~ 0
 SENSORS\n\n
 Wire Wire Line
 	2050 4400 2900 4400
@@ -438,11 +394,75 @@ Text Label 7050 2100 0    50   ~ 0
 LED_BLUE
 Text Label 7050 2200 0    50   ~ 0
 LED_GREEN
+Wire Wire Line
+	6800 2400 7600 2400
+Wire Wire Line
+	6800 2500 7600 2500
+Wire Wire Line
+	6800 2600 7600 2600
+Wire Wire Line
+	6800 2700 7600 2700
+Wire Wire Line
+	6800 2800 7600 2800
+Text Label 7150 2400 0    50   ~ 0
+ARM
+Text Label 7150 2500 0    50   ~ 0
+FIRE1
+Text Label 7150 2600 0    50   ~ 0
+FIRE2
+Text Label 6950 2700 0    50   ~ 0
+CONTINUITY1
+Text Label 6950 2800 0    50   ~ 0
+CONTINUITY2
+$Sheet
+S 8900 5750 1000 500 
+U 5F3B0B4B
+F0 "PowerSupply" 50
+F1 "../Common_Modules/PowerSupply/Voltage Regulation Board/VoltageRegulators.sch" 20
+$EndSheet
+$Sheet
+S 8900 4600 1000 600 
+U 5F3B5C2E
+F0 "FlashChip" 50
+F1 "../Common_Modules/FHSD/Flash SD Board/Flash Chip.sch" 20
+F2 "SCLK" I L 8900 4650 50 
+F3 "MOSI" I L 8900 4750 50 
+F4 "MISO" I L 8900 4850 50 
+F5 "CS_FLASH" I L 8900 4950 50 
+F6 "HOLD" I L 8900 5050 50 
+F7 "WP" I L 8900 5150 50 
+$EndSheet
+$Sheet
+S 8900 3900 1000 500 
+U 5F3B5BD1
+F0 "MicroSD" 50
+F1 "../Common_Modules/FHSD/Flash SD Board/Micro SD.sch" 20
+F2 "MISO" I L 8900 4000 50 
+F3 "MOSI" I L 8900 4100 50 
+F4 "SCLK" I L 8900 4200 50 
+F5 "CS_SD" I L 8900 4300 50 
+$EndSheet
+$Sheet
+S 8950 2325 950  850 
+U 5F46051D
+F0 "Accelerometer" 50
+F1 "../Common_Modules/Accelerometer_Breakout/Breakout_Board/H3LIS331DL_Accelerometer.sch" 20
+$EndSheet
+$Sheet
+S 8900 700  1000 500 
+U 5F3A063C
+F0 "Barometer" 50
+F1 "../Common_Modules/Barometer/Barometer Board/Barometer.sch" 20
+F2 "SCLK" I L 8900 800 50 
+F3 "SDI" I L 8900 900 50 
+F4 "SDO" I L 8900 1000 50 
+F5 "CSB" I L 8900 1100 50 
+$EndSheet
 $Sheet
 S 4350 1100 2450 3150
 U 5F317AC9
 F0 "MCU" 50
-F1 "MCU.sch" 20
+F1 "../Common_Modules/MCU/Breakout/MCU.sch" 20
 F2 "RESET" I L 4350 1500 50 
 F3 "CRYSTALIN" I L 4350 1750 50 
 F4 "CRYSTALOUT" I L 4350 1850 50 
@@ -473,68 +493,48 @@ F28 "PB13" I R 6800 1750 50
 F29 "PB14" I R 6800 2000 50 
 F30 "PB15" I R 6800 2100 50 
 $EndSheet
-Wire Wire Line
-	6800 2400 7600 2400
-Wire Wire Line
-	6800 2500 7600 2500
-Wire Wire Line
-	6800 2600 7600 2600
-Wire Wire Line
-	6800 2700 7600 2700
-Wire Wire Line
-	6800 2800 7600 2800
-Text Label 7150 2400 0    50   ~ 0
-ARM
-Text Label 7150 2500 0    50   ~ 0
-FIRE1
-Text Label 7150 2600 0    50   ~ 0
-FIRE2
-Text Label 6950 2700 0    50   ~ 0
-CONTINUITY1
-Text Label 6950 2800 0    50   ~ 0
-CONTINUITY2
 $Sheet
-S 9350 5850 1000 500 
-U 5F3B0B4B
-F0 "PowerSupply" 50
-F1 "../Common_Modules/PowerSupply/Voltage Regulation Board/VoltageRegulators.sch" 20
+S 800  700  1250 450 
+U 5F31B2A5
+F0 "SWD" 50
+F1 "../Common_Modules/MCU/Breakout/SWD .sch" 20
+F2 "JTMS-SWDIO" I R 2050 800 50 
+F3 "JTCK-SWCLK" I R 2050 900 50 
+F4 "RESET" I R 2050 1000 50 
 $EndSheet
 $Sheet
-S 9350 4700 1000 600 
-U 5F3B5C2E
-F0 "FlashChip" 50
-F1 "../Common_Modules/FHSD/Flash SD Board/Flash Chip.sch" 20
-F2 "SCLK" I L 9350 4750 50 
-F3 "MOSI" I L 9350 4850 50 
-F4 "MISO" I L 9350 4950 50 
-F5 "CS_FLASH" I L 9350 5050 50 
-F6 "HOLD" I L 9350 5150 50 
-F7 "WP" I L 9350 5250 50 
+S 800  1450 1250 350 
+U 5F317E00
+F0 "MCU RESET" 50
+F1 "../Common_Modules/MCU/Breakout/RESET.sch" 20
+F2 "RESET" I R 2050 1650 50 
 $EndSheet
 $Sheet
-S 9350 4000 1000 500 
-U 5F3B5BD1
-F0 "MicroSD" 50
-F1 "../Common_Modules/FHSD/Flash SD Board/Micro SD.sch" 20
-F2 "MISO" I L 9350 4100 50 
-F3 "MOSI" I L 9350 4200 50 
-F4 "SCLK" I L 9350 4300 50 
-F5 "CS_SD" I L 9350 4400 50 
+S 800  2000 1250 550 
+U 5F319C9C
+F0 "CLOCKS" 50
+F1 "../Common_Modules/MCU/Breakout/Clocks.sch" 20
+F2 "CLOCKIN" I R 2050 2100 50 
+F3 "CLOCKOUT" I R 2050 2200 50 
+F4 "RTCCRYSTALIN" I R 2050 2350 50 
+F5 "RTCCRYSTALOUT" I R 2050 2450 50 
 $EndSheet
 $Sheet
-S 9400 2425 950  850 
-U 5F46051D
-F0 "Accelerometer" 50
-F1 "../Common_Modules/Accelerometer_Breakout/Breakout_Board/H3LIS331DL_Accelerometer.sch" 20
+S 800  2750 1250 500 
+U 5F3189B2
+F0 "MCU FILTERING" 50
+F1 "../Common_Modules/MCU/Breakout/FILTERING.sch" 20
+F2 "VCAP" I R 2050 2850 50 
+F3 "VSSA" I R 2050 2950 50 
+F4 "VDDA" I R 2050 3050 50 
+F5 "VREF+" I R 2050 3150 50 
 $EndSheet
 $Sheet
-S 9350 800  1000 500 
-U 5F3A063C
-F0 "Barometer" 50
-F1 "../Common_Modules/Barometer/Barometer Board/Barometer.sch" 20
-F2 "SCLK" I L 9350 900 50 
-F3 "SDI" I L 9350 1000 50 
-F4 "SDO" I L 9350 1100 50 
-F5 "CSB" I L 9350 1200 50 
+S 800  3400 1250 350 
+U 5F319D4B
+F0 "USB-C" 50
+F1 "../Common_Modules/MCU/Breakout/USB-C.sch" 20
+F2 "TXD" I R 2050 3500 50 
+F3 "RXD" I R 2050 3600 50 
 $EndSheet
 $EndSCHEMATC

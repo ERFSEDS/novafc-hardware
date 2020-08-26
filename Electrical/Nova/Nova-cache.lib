@@ -236,30 +236,6 @@ X RK 4 -200 200 100 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Nova-rescue_74HC2GU04GW,125-74HC2GU04GW_125-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue
-#
-DEF Nova-rescue_74HC2GU04GW,125-74HC2GU04GW_125-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue IC 0 30 Y Y 1 F N
-F0 "IC" 850 300 50 H V L CNN
-F1 "Nova-rescue_74HC2GU04GW,125-74HC2GU04GW_125-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue" 850 200 50 H V L CNN
-F2 "SOP65P210X110-6N" 850 100 50 H I L CNN
-F3 "https://assets.nexperia.com/documents/data-sheet/74HC2GU04.pdf" 850 0 50 H I L CNN
-F4 "74HC2GU04 - Dual unbuffered inverter@en-us" 850 -100 50 H I L CNN "Description"
-F5 "1.1" 850 -200 50 H I L CNN "Height"
-F6 "Nexperia" 850 -300 50 H I L CNN "Manufacturer_Name"
-F7 "74HC2GU04GW,125" 850 -400 50 H I L CNN "Manufacturer_Part_Number"
-F8 "74HC2GU04GW,125" 850 -500 50 H I L CNN "Arrow Part Number"
-F9 "https://www.arrow.com/en/products/74hc2gu04gw125/nexperia" 850 -600 50 H I L CNN "Arrow Price/Stock"
-DRAW
-P 5 0 1 6 200 100 800 100 800 -300 200 -300 200 100 N
-X ~ 1 0 0 200 R 50 50 0 0 P
-X ~ 2 0 -100 200 R 50 50 0 0 P
-X ~ 3 0 -200 200 R 50 50 0 0 P
-X ~ 4 1000 -200 200 L 50 50 0 0 P
-X ~ 5 1000 -100 200 L 50 50 0 0 P
-X ~ 6 1000 0 200 L 50 50 0 0 P
-ENDDRAW
-ENDDEF
-#
 # Nova-rescue_PS1440P02BT-PS1440P02BT-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue
 #
 DEF Nova-rescue_PS1440P02BT-PS1440P02BT-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue LS 0 40 Y N 1 L N
