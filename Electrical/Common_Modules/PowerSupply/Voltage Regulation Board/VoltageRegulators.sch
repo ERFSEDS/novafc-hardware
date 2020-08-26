@@ -283,7 +283,7 @@ AR Path="/5F0C9147/5F123DAD" Ref="3v3Reg?"  Part="1"
 AR Path="/5F3B0B4B/5F123DAD" Ref="3v3Reg901"  Part="1" 
 F 0 "3v3Reg901" H 8550 4213 60  0000 C CNN
 F 1 "TLV1117LV33DCYR" H 8550 4319 60  0000 C CNN
-F 2 "FootprintLibrary:TLV1117LV33DCYR" H 8550 4940 60  0001 C CNN
+F 2 "Power:TLV1117LV33DCYR" H 8550 4940 60  0001 C CNN
 F 3 "https://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Ftlv1117lv" H 10050 5200 60  0001 C CNN
 	1    7150 4700
 	-1   0    0    1   
@@ -294,7 +294,7 @@ U 1 1 5F10F960
 P 7850 3150
 F 0 "5vReg901" H 8950 2663 60  0000 C CNN
 F 1 "LM78M05CDTX_NOPB" H 8950 2769 60  0000 C CNN
-F 2 "FootprintLibrary:LM78M05CDTX&slash_NOPB" H 8950 3390 60  0001 C CNN
+F 2 "Power:LM78M05CDTX&slash_NOPB" H 8950 3390 60  0001 C CNN
 F 3 "https://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Flm341" H 7850 3150 60  0001 C CNN
 	1    7850 3150
 	-1   0    0    1   
