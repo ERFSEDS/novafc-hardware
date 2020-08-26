@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 2 19
+Sheet 13 19
 Title ""
 Date ""
 Rev ""
@@ -19,6 +19,7 @@ U 1 1 5F01D3E2
 P 6000 3600
 AR Path="/5F01D3E2" Ref="Barometer?"  Part="1" 
 AR Path="/5F013144/5F01D3E2" Ref="Barometer201"  Part="1" 
+AR Path="/5F3A063C/5F01D3E2" Ref="Barometer?"  Part="1" 
 F 0 "Barometer?" H 6000 4187 60  0000 C CNN
 F 1 "MS560702BA03-50" H 6000 4081 60  0000 C CNN
 F 2 "Footprint Library:MS560702BA03-50" H 6000 4040 60  0001 C CNN
