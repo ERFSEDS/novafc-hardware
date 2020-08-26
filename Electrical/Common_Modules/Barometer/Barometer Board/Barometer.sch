@@ -22,7 +22,7 @@ AR Path="/5F013144/5F01D3E2" Ref="Barometer?"  Part="1"
 AR Path="/5F3A063C/5F01D3E2" Ref="Barometer1301"  Part="1" 
 F 0 "Barometer1301" H 6000 4187 60  0000 C CNN
 F 1 "MS560702BA03-50" H 6000 4081 60  0000 C CNN
-F 2 "Footprint Library:MS560702BA03-50" H 6000 4040 60  0001 C CNN
+F 2 "Barometer:MS560702BA03-50" H 6000 4040 60  0001 C CNN
 F 3 "https://www.mouser.com/datasheet/2/418/5/NG_DS_MS5607-02BA03_B-1134558.pdf" H 6000 3600 60  0001 C CNN
 	1    6000 3600
 	1    0    0    -1  
