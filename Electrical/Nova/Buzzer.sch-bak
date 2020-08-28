@@ -19,7 +19,7 @@ U 1 1 5F404605
 P 5750 3450
 F 0 "LS301" H 5880 3496 50  0000 L CNN
 F 1 "PS1440P02BT" H 5880 3405 50  0000 L CNN
-F 2 "Footprint Library:BUZZER_PS1440P02BT" H 5750 3450 50  0001 L BNN
+F 2 "Transducer:BUZZER_PS1440P02BT" H 5750 3450 50  0001 L BNN
 F 3 "https://product.tdk.com/info/en/catalog/datasheets/piezoelectronic_buzzer_ps_en.pdf" H 5750 3450 50  0001 L BNN
 F 4 "IPC-7251" H 5750 3450 50  0001 L BNN "Field4"
 	1    5750 3450
