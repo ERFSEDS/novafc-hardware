@@ -99,7 +99,6 @@ F 3 "" H 9750 2850 50  0001 C CNN
 	1    9750 2850
 	-1   0    0    1   
 $EndComp
-NoConn ~ 8850 2850
 Connection ~ 7600 4600
 $Comp
 L power:+3V3 #PWR?
@@ -157,8 +156,6 @@ Wire Wire Line
 	8550 4000 8550 3850
 Connection ~ 5500 4000
 Wire Wire Line
-	8550 3150 9200 3150
-Wire Wire Line
 	3550 3150 4050 3150
 $Comp
 L power:PWR_FLAG #FLG0904
@@ -190,7 +187,6 @@ Wire Wire Line
 Wire Wire Line
 	5150 3050 5650 3050
 Connection ~ 5500 5350
-Connection ~ 8550 3150
 Wire Wire Line
 	7600 5350 7600 5200
 Wire Wire Line
@@ -234,7 +230,6 @@ F 3 "~" H 9200 3150 50  0001 C CNN
 	1    9200 3150
 	1    0    0    -1  
 $EndComp
-Connection ~ 9200 3150
 Wire Wire Line
 	4050 4700 4050 4600
 $Comp
@@ -346,4 +341,25 @@ $EndComp
 Connection ~ 2750 3150
 Wire Wire Line
 	2750 3150 3150 3150
+$Comp
+L Connector_Generic:Conn_01x02 xt902
+U 1 1 5F4B607D
+P 8800 2700
+F 0 "xt902" H 8880 2692 50  0000 L CNN
+F 1 "Conn_01x02" H 8880 2601 50  0000 L CNN
+F 2 "TerminalBlock_4Ucon:TerminalBlock_4Ucon_1x02_P3.50mm_Horizontal" H 8800 2700 50  0001 C CNN
+F 3 "~" H 8800 2700 50  0001 C CNN
+	1    8800 2700
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	9200 3150 8900 3150
+Wire Wire Line
+	8900 3150 8900 2900
+Connection ~ 9200 3150
+Wire Wire Line
+	8800 2900 8800 3150
+Wire Wire Line
+	8800 3150 8550 3150
+Connection ~ 8550 3150
 $EndSCHEMATC
