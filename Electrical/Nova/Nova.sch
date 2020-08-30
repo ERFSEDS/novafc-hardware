@@ -385,11 +385,11 @@ Wire Wire Line
 Wire Wire Line
 	6800 2300 7600 2300
 Text Label 7050 2100 0    50   ~ 0
-LED_RED
+LED_GREEN
 Text Label 7050 2200 0    50   ~ 0
 LED_BLUE
 Text Label 7050 2300 0    50   ~ 0
-LED_GREEN
+LED_RED
 Wire Wire Line
 	6800 2500 7600 2500
 Wire Wire Line

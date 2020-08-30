@@ -18,20 +18,20 @@ FIRE
 $Comp
 L Pyro_Library:Conn_01x02_Female J?
 U 1 1 5F14E374
-P 6700 3650
+P 6300 3750
 AR Path="/5F146B30/5F14E374" Ref="J?"  Part="1" 
 AR Path="/5F1C91C3/5F14E374" Ref="J?"  Part="1" 
 AR Path="/5F19FDB4/5F14E374" Ref="J?"  Part="1" 
 AR Path="/5F1A022A/5F14E374" Ref="J?"  Part="1" 
 AR Path="/5F448D4B/5F44909A/5F14E374" Ref="J701"  Part="1" 
 AR Path="/5F448D4B/5F449170/5F14E374" Ref="J801"  Part="1" 
-F 0 "J801" H 6728 3626 50  0000 L CNN
-F 1 "Conn_01x02_Female" H 6728 3535 50  0000 L CNN
-F 2 "TerminalBlock_4Ucon:TerminalBlock_4Ucon_1x02_P3.50mm_Horizontal" H 6700 3650 50  0001 C CNN
-F 3 "~" H 6700 3650 50  0001 C CNN
-F 4 "A98333-ND" H 6700 3650 50  0001 C CNN "digikey"
-	1    6700 3650
-	1    0    0    -1  
+F 0 "J801" H 6328 3726 50  0000 L CNN
+F 1 "Conn_01x02_Female" H 6328 3635 50  0000 L CNN
+F 2 "TerminalBlock_4Ucon:TerminalBlock_4Ucon_1x02_P3.50mm_Horizontal" H 6300 3750 50  0001 C CNN
+F 3 "~" H 6300 3750 50  0001 C CNN
+F 4 "A98333-ND" H 6300 3750 50  0001 C CNN "digikey"
+	1    6300 3750
+	-1   0    0    1   
 $EndComp
 $Comp
 L power:+3.3V #PWR?
