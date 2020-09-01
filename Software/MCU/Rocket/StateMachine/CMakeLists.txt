@@ -7,12 +7,14 @@ project("State_Machine")
 #Create variables for sources and header files
 set("State_Machine_sources" ${CMAKE_CURRENT_SOURCE_DIR}/src/StateMachine.cpp)
 set("State_Machine_include" ${CMAKE_CURRENT_SOURCE_DIR}/include)
+set("State_Machine_dependencies" "Logger" "Configuration")
 
 #Create a library from source files
 add_library("${PROJECT_NAME}" ${State_Machine_sources})
 
 #Include the header files for everyone else to use
 target_include_directories("${PROJECT_NAME}" PUBLIC ${State_Machine_include})
+target_link_libraries("${PROJECT_NAME}" PRIVATE ${State_Machine_dependencies})
 
 #declare a function to make a test
 function(create_State_Machine_test)
@@ -36,8 +38,8 @@ function(create_State_Machine_test)
     endforeach()
 
     #Create the executable and link to the library
-    add_executable(${test_NAME} ${test_SOURCE})
-    target_link_libraries(${test_NAME} PRIVATE "${PROJECT_NAME}")
+    add_executable("${test_NAME}" ${test_SOURCE})
+    target_link_libraries(${test_NAME} PRIVATE "${PROJECT_NAME}" ${State_Machine_dependencies})
     add_test("${test_NAME}_test"  "${test_NAME}")
 
     #if there is a REGEX that was passed in(usually no but sometimes yes) check it against this variable
@@ -51,4 +53,12 @@ endfunction()
 create_State_Machine_test(
 	NAME "One_Stage_Flight"
 	SOURCE "test/testOneStageFlight.cpp"
+)
+create_State_Machine_test(
+	NAME "Two_Stage_Flight"
+	SOURCE "test/testTwoStageFlight.cpp"
+)
+create_State_Machine_test(
+	NAME "Randome_Changes"
+	SOURCE "test/testRandomChanges.cpp"
 )

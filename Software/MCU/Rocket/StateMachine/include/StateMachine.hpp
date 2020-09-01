@@ -47,7 +47,7 @@ class StateMachine
 		static void changeState(State state);
 		static State getCurrentState();
 		static State getPreviousState();
-		
+		static void refresh();
 	private:
 		static StateMachine INSTANCE;
 		State currentState;
@@ -59,6 +59,7 @@ class StateMachine
 		void changeState_I(State state);
 		State getCurrentState_I();
 		State getPreviousState_I();
+		void refresh_I();
 	public:
 		StateMachine(const StateMachine &state) = delete;
 

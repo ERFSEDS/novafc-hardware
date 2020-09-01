@@ -1,8 +1,8 @@
 #pragma once
 #include <string>
 
-#define DEFAULT_USB_LOG_LEVEL 		(INFO)
-#define DEFAULT_FLASH_LOG_LEVEL		(INFO)
+#define DEFAULT_USB_LOG_LEVEL 		(EVENT)
+#define DEFAULT_FLASH_LOG_LEVEL		(EVENT)
  
 enum LoggerLevel
 {

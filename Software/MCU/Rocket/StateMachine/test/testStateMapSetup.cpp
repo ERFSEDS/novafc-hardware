@@ -4,7 +4,7 @@
 
 
 int main() {
-	//set configuration
+	//check to make sure 1 stage cannot go to 2 stage flight
 	Configuration::setTwoStageRocket(false);
 	
 	StateMachine::refresh();
