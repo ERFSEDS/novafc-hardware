@@ -2,7 +2,7 @@
 #include <string>
 
 #define NUMBER_OF_STATES 10
-#define DEFAULT_START_STATE UNARMED
+#define DEFAULT_START_STATE (UNARMED)
 enum State
 {
 	UNARMED = 0,
@@ -15,6 +15,7 @@ enum State
 	MAINPAR = 7,
 	LANDED = 8,
 	RESET = 9
+	
 };
 
 struct ValidTransitionNode {
@@ -30,6 +31,8 @@ class TransitionLinkedList {
 		void addTransition(State state);
 		void removeTransition(State state);
 		bool checkIfPresent(State state);
+		void removeAll();
+		void print();
 	
 };
 class StateMap {
@@ -39,6 +42,7 @@ class StateMap {
 		StateMap();
 		bool checkTransition(State currentState, State desiredTransition);
 		void setupTransitions();
+		void resetTransitions();
 };
 
 class StateMachine

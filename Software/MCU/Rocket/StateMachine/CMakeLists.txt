@@ -59,6 +59,10 @@ create_State_Machine_test(
 	SOURCE "test/testTwoStageFlight.cpp"
 )
 create_State_Machine_test(
-	NAME "Randome_Changes"
+	NAME "Random_Changes"
 	SOURCE "test/testRandomChanges.cpp"
+)
+create_State_Machine_test(
+	NAME "Improper_transitions"
+	SOURCE "test/testStateMapSetup.cpp"
 )
