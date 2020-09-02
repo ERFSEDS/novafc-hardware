@@ -10,8 +10,15 @@
 class RocketData{
     private:
         cartesian  acceleration, velocity, location, angularPos;
-        bool parachutes, pyro;
+        unsigned short int altitude;
 
     public:
         void updateData();
+        cartesian getAcceleration();
+        cartesian getAngularPos();
+        cartesian getLocation();
+        cartesian getVelocity();
+        void getAltitude();
+        
+        
 };
