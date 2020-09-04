@@ -1,4 +1,4 @@
-update=8/27/2020 9:51:12 PM
+update=9/4/2020 1:50:14 AM
 version=1
 last_client=kicad
 [general]
@@ -12,16 +12,6 @@ NetIExt=net
 version=1
 LibDir=
 [eeschema/libraries]
-[schematic_editor]
-version=1
-PageLayoutDescrFile=/home/nathan/Desktop/Backup/Clubs/ERFSEDS/Cerberus/Flight Computer/Modular-Flight-Computer/Electrical/FlightComputerDesignSchematic.kicad_wks
-PlotDirectoryName=
-SubpartIdSeparator=0
-SubpartFirstId=65
-NetFmtName=
-SpiceAjustPassiveValues=0
-LabSize=50
-ERC_TestSimilarLabels=1
 [pcbnew]
 version=1
 PageLayoutDescrFile=
@@ -246,3 +236,13 @@ uViaDrill=0.1
 dPairWidth=0.2
 dPairGap=0.25
 dPairViaGap=0.25
+[schematic_editor]
+version=1
+PageLayoutDescrFile=/home/nathan/Desktop/Backup/Clubs/ERFSEDS/Cerberus/Flight Computer/Modular-Flight-Computer/Electrical/FlightComputerDesignSchematic.kicad_wks
+PlotDirectoryName=
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=Pcbnew
+SpiceAjustPassiveValues=0
+LabSize=50
+ERC_TestSimilarLabels=1

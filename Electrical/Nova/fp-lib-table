@@ -4,7 +4,7 @@
   (lib (name PyroChannel)(type KiCad)(uri ${KIPRJMOD}/../common_modules/PyroChannel/Footprints/PyroChannel.pretty)(options "")(descr ""))
   (lib (name Barometer)(type KiCad)(uri "${KIPRJMOD}/../Common_Modules/Barometer/Footprint Library/Barometer.pretty")(options "")(descr ""))
   (lib (name Power)(type KiCad)(uri "${KIPRJMOD}/../Common_Modules/PowerSupply/Footprint Library/Power.pretty")(options "")(descr ""))
-  (lib (name FCSD)(type KiCad)(uri "${KIPRJMOD}/../Common_Modules/FHSD/Footprint Library/FCSD.pretty")(options "")(descr ""))
   (lib (name Transducer)(type KiCad)(uri "${KIPRJMOD}/../Common_Modules/Transducer/Footprint Library/Transducer.pretty")(options "")(descr ""))
   (lib (name Gyroscope)(type KiCad)(uri ${KIPRJMOD}/../Common_Modules/Gyroscope/footprints/Gyroscope.pretty)(options "")(descr ""))
+  (lib (name FCSD)(type KiCad)(uri "${KIPRJMOD}/../Common_Modules/FHSD/Footprint Library/FCSD.pretty")(options "")(descr ""))
 )
