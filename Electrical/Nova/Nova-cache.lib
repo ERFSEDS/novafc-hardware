@@ -226,29 +226,6 @@ X RK 4 -200 200 100 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# LM78M05CDTXNOPB_LM78M05CDTX_NOPB
-#
-DEF LM78M05CDTXNOPB_LM78M05CDTX_NOPB U 0 10 Y Y 1 L N
-F0 "U" 1100 400 60 H V C CNN
-F1 "LM78M05CDTXNOPB_LM78M05CDTX_NOPB" 1100 300 60 H V C CNN
-F2 "TD03B_TEX" 1100 240 60 H I C CNN
-F3 "" 0 0 60 H V C CNN
-$FPLIST
- TD03B_TEX
- TD03B_TEX-M
- TD03B_TEX-L
-$ENDFPLIST
-DRAW
-P 2 1 1 5 300 -300 1900 -300 N
-P 2 1 1 5 300 200 300 -300 N
-P 2 1 1 5 1900 -300 1900 200 N
-P 2 1 1 5 1900 200 300 200 N
-X IN 1 0 0 300 R 59 59 1 1 W
-X GND 2 2200 -100 300 L 59 59 1 1 I
-X OUT 3 2200 0 300 L 59 59 1 1 W
-ENDDRAW
-ENDDEF
-#
 # MS560702BA03-50_MS560702BA03-50
 #
 DEF MS560702BA03-50_MS560702BA03-50 U 0 10 Y Y 1 L N
@@ -275,11 +252,11 @@ X SCLK 8 900 200 300 L 59 59 1 1 I
 ENDDRAW
 ENDDEF
 #
-# Nova-rescue_PS1440P02BT-PS1440P02BT-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue
+# Nova-rescue_PS1440P02BT-PS1440P02BT-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue
 #
-DEF Nova-rescue_PS1440P02BT-PS1440P02BT-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue LS 0 40 Y N 1 L N
+DEF Nova-rescue_PS1440P02BT-PS1440P02BT-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue LS 0 40 Y N 1 L N
 F0 "LS" -50 250 50 H V L BNN
-F1 "Nova-rescue_PS1440P02BT-PS1440P02BT-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue" -50 -325 50 H V L BNN
+F1 "Nova-rescue_PS1440P02BT-PS1440P02BT-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue" -50 -325 50 H V L BNN
 F2 "BUZZER_PS1440P02BT" 0 0 50 H I L BNN
 F3 "TDK" 0 0 50 H I L BNN
 F4 "IPC-7251" 0 0 50 H I L BNN
@@ -755,27 +732,28 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# TLV1117LV33DCYR_TLV1117LV33DCYR
+# dk_PMIC-Voltage-Regulators-Linear_LD1117S33CTR
 #
-DEF TLV1117LV33DCYR_TLV1117LV33DCYR U 0 10 Y Y 1 L N
-F0 "U" 1400 400 60 H V C CNN
-F1 "TLV1117LV33DCYR_TLV1117LV33DCYR" 1400 300 60 H V C CNN
-F2 "DCY4" 1400 240 60 H I C CNN
-F3 "" 2900 500 60 H V C CNN
-$FPLIST
- DCY4
- DCY4-M
- DCY4-L
-$ENDFPLIST
+DEF dk_PMIC-Voltage-Regulators-Linear_LD1117S33CTR U 0 20 Y Y 1 F N
+F0 "U" 50 150 60 H V C CNN
+F1 "dk_PMIC-Voltage-Regulators-Linear_LD1117S33CTR" 50 250 60 H V C CNN
+F2 "digikey-footprints:SOT-223" 200 200 60 H I L CNN
+F3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/99/3b/7d/91/91/51/4b/be/CD00000544.pdf/files/CD00000544.pdf/jcr:content/translations/en.CD00000544.pdf" 200 300 60 H I L CNN
+F4 "497-1241-1-ND" 200 400 60 H I L CNN "Digi-Key_PN"
+F5 "LD1117S33CTR" 200 500 60 H I L CNN "MPN"
+F6 "Integrated Circuits (ICs)" 200 600 60 H I L CNN "Category"
+F7 "PMIC - Voltage Regulators - Linear" 200 700 60 H I L CNN "Family"
+F8 "http://www.st.com/content/ccc/resource/technical/document/datasheet/99/3b/7d/91/91/51/4b/be/CD00000544.pdf/files/CD00000544.pdf/jcr:content/translations/en.CD00000544.pdf" 200 800 60 H I L CNN "DK_Datasheet_Link"
+F9 "/product-detail/en/stmicroelectronics/LD1117S33CTR/497-1241-1-ND/586241" 200 900 60 H I L CNN "DK_Detail_Page"
+F10 "IC REG LINEAR 3.3V 800MA SOT223" 200 1000 60 H I L CNN "Description"
+F11 "STMicroelectronics" 200 1100 60 H I L CNN "Manufacturer"
+F12 "Active" 200 1200 60 H I L CNN "Status"
 DRAW
-P 2 1 1 5 300 -300 2500 -300 N
-P 2 1 1 5 300 200 300 -300 N
-P 2 1 1 5 2500 -300 2500 200 N
-P 2 1 1 5 2500 200 300 200 N
-X GND 1 0 0 300 R 59 59 1 1 I
-X OUTPUT 2 0 -100 300 R 59 59 1 1 O
-X INPUT 3 2800 -100 300 L 59 59 1 1 I
-X OUTPUT 4 0 -100 300 R 59 59 1 1 B
+S -200 100 300 -200 1 1 0 f
+X GND 1 0 -300 100 U 50 50 1 1 W
+X VOUT 2 400 0 100 L 50 50 1 1 w
+X VIN 3 -300 0 100 R 50 50 1 1 W
+X VOUT 4 400 -100 100 L 50 50 1 1 w
 ENDDRAW
 ENDDEF
 #
