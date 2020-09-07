@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
-Sheet 1 19
+Sheet 1 20
 Title ""
 Date ""
 Rev ""
@@ -624,4 +624,10 @@ NoConn ~ 4350 4400
 NoConn ~ 3550 3150
 NoConn ~ 8100 5050
 NoConn ~ 8100 5150
+$Sheet
+S 4300 5200 2500 1200
+U 5F56FF14
+F0 "Pin Headers" 50
+F1 "Pin Headers.sch" 50
+$EndSheet
 $EndSCHEMATC

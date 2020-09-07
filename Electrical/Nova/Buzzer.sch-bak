@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 19
+Sheet 3 20
 Title ""
 Date ""
 Rev ""
@@ -14,9 +14,11 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Nova-rescue:PS1440P02BT-PS1440P02BT-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue LS301
+L Nova-rescue:PS1440P02BT-PS1440P02BT-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue LS301
 U 1 1 5F404605
 P 5750 3450
+AR Path="/5F404605" Ref="LS301"  Part="1" 
+AR Path="/5F36176A/5F404605" Ref="LS301"  Part="1" 
 F 0 "LS301" H 5880 3496 50  0000 L CNN
 F 1 "PS1440P02BT" H 5880 3405 50  0000 L CNN
 F 2 "Transducer:BUZZER_PS1440P02BT" H 5750 3450 50  0001 L BNN
