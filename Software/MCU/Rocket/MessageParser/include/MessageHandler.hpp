@@ -55,6 +55,7 @@
 
 //escapeChars
 #define ESCAPE_INT				0
+#define ESCAPE_END_MSG			0
 #define ESCAPE_0				1
 
 
@@ -68,16 +69,17 @@ struct CommandStatus {
 };
 
 class MessageHandler {
-		uint8_t address;
 	public:
-		static void parseMessage(uint8_t* message, uint16_t arraySize);
-		static void sendCommand(uint8_t* message, uint8_t size); //rework into command options
+		//returns size message put into buffer
+		//buffer should be BUFFER_SIZE * 2 bytes
+		static uint16_t parseMessage(uint8_t* message, uint16_t arraySize, uint8_t * responseBuffer);
+		static void sendCommand(uint8_t* message, uint8_t size); //rework into command options, figure out how to handle response
 		
 	private:
-		static void sendMessage(uint8_t* response,  uint8_t msgSize);
-		static void formatResponse(CommandStatus * fieldStatuses, int numFields, CommandStatus * actionStatuses, int numActions);
-		static void handleCommand(uint8_t* message, uint8_t msgSize);
-		static void handleResponse(uint8_t* message, uint8_t msgSize);
+		static uint16_t formatResponse(CommandStatus * fieldStatuses, int numFields, CommandStatus * actionStatuses, int numActions, uint8_t * responeBuffer);
+		static uint16_t handleCommand(uint8_t* message, uint8_t msgSize, uint8_t * responseBuffer);
+		static uint16_t handleResponse(uint8_t* message, uint8_t msgSize, uint8_t * responseBuffer);
+		uint8_t address;
 		
 	public:
 		MessageHandler(const MessageHandler &messageHandler) = delete;

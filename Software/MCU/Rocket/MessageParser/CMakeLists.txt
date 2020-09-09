@@ -13,9 +13,8 @@ add_library("${PROJECT_NAME}" ${MessageHandler_sources})
 
 #Include the header files for everyone else to use
 target_include_directories("${PROJECT_NAME}" PUBLIC ${Messagehandler_include})
-target_link_libraries("${PROJECT_NAME}" PRIVATE Logger)
 target_link_libraries("${PROJECT_NAME}" PRIVATE Configuration)
-target_link_libraries("${PROJECT_NAME}" PRIVATE StateMachine)
+target_link_libraries("${PROJECT_NAME}" PRIVATE State_Machine)
 
 
 #declare a function to make a test
@@ -42,6 +41,8 @@ function(create_MessageHandler_test)
     #Create the executable and link to the library
     add_executable(${test_NAME} ${test_SOURCE})
     target_link_libraries(${test_NAME} PRIVATE "${PROJECT_NAME}")
+	target_link_libraries(${test_NAME} PRIVATE Configuration)
+	target_link_libraries(${test_NAME} PRIVATE State_Machine)
     add_test("${test_NAME}_test"  "${test_NAME}")
 
     #if there is a REGEX that was passed in(usually no but sometimes yes) check it against this variable

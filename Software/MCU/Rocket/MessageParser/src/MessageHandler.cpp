@@ -5,7 +5,7 @@
 #include <cassert>
 
 MessageHandler MessageHandler::INSTANCE;
-void MessageHandler::parseMessage(uint8_t* message, uint16_t arraySize) {
+uint16_t MessageHandler::parseMessage(uint8_t* message, uint16_t arraySize, uint8_t * responseBuffer) {
 	uint8_t * buffer = new uint8_t[BUFFER_SIZE];
 	
 	uint8_t bufferIndex = 0;
@@ -14,7 +14,7 @@ void MessageHandler::parseMessage(uint8_t* message, uint16_t arraySize) {
 		if(message[i] == ESCAPE_INT) {
 			//escape charachter
 			i++;
-			if(message[i] == 0) {
+			if(message[i] == ESCAPE_END_MSG) {
 				bufferIndex++;
 				break;
 			}
@@ -29,7 +29,7 @@ void MessageHandler::parseMessage(uint8_t* message, uint16_t arraySize) {
 		
 		if(bufferIndex == BUFFER_SIZE-1) {
 			delete buffer;
-			return; //message too large, drop
+			return 0; //message too large, drop
 		}
 		bufferIndex++;
 	}
@@ -58,10 +58,10 @@ void MessageHandler::parseMessage(uint8_t* message, uint16_t arraySize) {
 		//drop, not addressed to this device
 	}
 	else if(COMMAND_TYPE == buffer[COMMAND_RESPONSE_BYTE]) {
-		handleCommand(buffer, messageSize);
+		return handleCommand(buffer, messageSize, responseBuffer);
 	}
 	else if(RESPONSE_TYPE == buffer[COMMAND_RESPONSE_BYTE]) {
-		handleResponse(buffer, messageSize);
+		return handleResponse(buffer, messageSize, responseBuffer);
 	}
 	else {
 		std::cout << "Incorrect address" << std::endl;
@@ -69,16 +69,13 @@ void MessageHandler::parseMessage(uint8_t* message, uint16_t arraySize) {
 	}
 	
 	delete buffer;
-	return;
+	return 0;
 }
 void MessageHandler::sendCommand(uint8_t* message, uint8_t size) {
 
 }
 
-void MessageHandler::sendMessage(uint8_t* response,  uint8_t size) {
-	
-}
-void MessageHandler::handleCommand(uint8_t* message, uint8_t size) {
+uint16_t MessageHandler::handleCommand(uint8_t* message, uint8_t size, uint8_t * responseBuffer) {
 	uint8_t index = MESSAGE_DATA_START;
 	uint8_t numFields = message[index++];
 	
@@ -87,82 +84,96 @@ void MessageHandler::handleCommand(uint8_t* message, uint8_t size) {
 		uint8_t fieldId = message[index++];
 		uint8_t setGet = message[index++];
 		fieldStatuses[i].ID = fieldId;
-		fieldStatuses[i].value = 0; //by default ignore
-		fieldStatuses[i].size = 0; //by default ignore
+		fieldStatuses[i].value = 0; //by default 0
+		fieldStatuses[i].size = 4; //by default 0
 		switch(fieldId) {
 		case FIELD_PRESSURE:
 			if(setGet == FIELD_SET) {
 				std::cout << "Cannot set FIELD_PRESSURE silly " << std::endl;
+				fieldStatuses[i].value = 0; 
+				fieldStatuses[i].size = 1; 
 			}
 			else if(setGet == FIELD_GET) {
 				std::cout << "Get get Pressure yet" << std::endl;
-				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 0; 
+				fieldStatuses[i].value = 0;
+				fieldStatuses[i].size = 4;  
 			}
 			break;
 		case FIELD_ACCELERATION_X:
 			if(setGet == FIELD_SET) {
 				std::cout << "Cannot set FIELD_ACCELERATION_X silly " << std::endl;
+				fieldStatuses[i].value = 0; 
+				fieldStatuses[i].size = 1; 
 			}
 			else if(setGet == FIELD_GET) {
 				std::cout << "Cannot Get FIELD_ACCELERATION_X " << std::endl;
 				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 0; 
+				fieldStatuses[i].size = 4; 
 			}
 			break;
 			break;
 		case FIELD_ACCELERATION_Y:
 			if(setGet == FIELD_SET) {
 				std::cout << "Cannot set FIELD_ACCELERATION_Y silly " << std::endl;
+				fieldStatuses[i].value = 0; 
+				fieldStatuses[i].size = 1; 
 			}
 			else if(setGet == FIELD_GET) {
 				std::cout << "Cannot Get FIELD_ACCELERATION_Y" << std::endl;
 				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 0; 
+				fieldStatuses[i].size = 4; 
 			}
 			break;
 			break;
 		case FIELD_ACCELERATION_Z:
 			if(setGet == FIELD_SET) {
 				std::cout << "Cannot set FIELD_ACCELERATION_Z silly " << std::endl;
+				fieldStatuses[i].value = 0; 
+				fieldStatuses[i].size = 1; 
 			}
 			else if(setGet == FIELD_GET) {
 				std::cout << "Cannot Get FIELD_ACCELERATION_Z" << std::endl;
 				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 0; 
+				fieldStatuses[i].size = 4; 
 			}
 			break;
 			break;
 		case FIELD_ROTATION_X:
 			if(setGet == FIELD_SET) {
 				std::cout << "Cannot set FIELD_ROTATION_X silly " << std::endl;
+				fieldStatuses[i].value = 0; 
+				fieldStatuses[i].size = 1; 
 			}
 			else if(setGet == FIELD_GET) {
 				std::cout << "Cannot Get FIELD_ROTATION_X" << std::endl;
 				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 0; 
+				fieldStatuses[i].size = 4; 
 			}
 			break;
 			break;
 		case FIELD_ROTATION_Y:
 			if(setGet == FIELD_SET) {
 				std::cout << "Cannot set FIELD_ROTATION_Y silly " << std::endl;
+				fieldStatuses[i].value = 0; 
+				fieldStatuses[i].size = 1; 
 			}
 			else if(setGet == FIELD_GET) {
 				std::cout << "Cannot Get FIELD_ROTATION_Y" << std::endl;
 				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 0; 
+				fieldStatuses[i].size = 4; 
 			}
 			break;
 			break;
 		case FIELD_ROTATION_Z:
 			if(setGet == FIELD_SET) {
 				std::cout << "Cannot set FIELD_ROTATION_Z silly " << std::endl;
+				fieldStatuses[i].value = 0; 
+				fieldStatuses[i].size = 1; 
 			}
 			else if(setGet == FIELD_GET) {
 				std::cout << "Cannot Get FIELD_ROTATION_Z" << std::endl;
 				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 0; 
+				fieldStatuses[i].size = 4; 
 			}
 			break;
 			break;
@@ -176,12 +187,12 @@ void MessageHandler::handleCommand(uint8_t* message, uint8_t size) {
 				index = index + 4;
 				std::cout << "Set FIELD_ALTITUDE to " << value << std::endl;
 				fieldStatuses[i].value = 0;
-				fieldStatuses[i].size = 0;
+				fieldStatuses[i].size = 1; 
 			}
 			else if(setGet == FIELD_GET) {
 				std::cout << "Cannot Get FIELD_ALTITUDE" << std::endl;
 				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 0; 
+				fieldStatuses[i].size = 4; 
 			}
 			break;
 		case FIELD_ANGLE_X:
@@ -194,12 +205,12 @@ void MessageHandler::handleCommand(uint8_t* message, uint8_t size) {
 				index = index + 4;
 				std::cout << "Set FIELD_ANGLE_X to " << value << std::endl;
 				fieldStatuses[i].value = 0;
-				fieldStatuses[i].size = 0;
+				fieldStatuses[i].size = 1; 
 			}
 			else if(setGet == FIELD_GET) {
 				std::cout << "Cannot Get FIELD_ANGLE_X" << std::endl;
 				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 0; 
+				fieldStatuses[i].size = 4; 
 			}
 			break;
 		case FIELD_ANGLE_Y:
@@ -212,12 +223,12 @@ void MessageHandler::handleCommand(uint8_t* message, uint8_t size) {
 				index = index + 4;
 				std::cout << "Set FIELD_ANGLE_Y to " << value << std::endl;
 				fieldStatuses[i].value = 0;
-				fieldStatuses[i].size = 0;
+				fieldStatuses[i].size = 1; 
 			}
 			else if(setGet == FIELD_GET) {
 				std::cout << "Cannot Get FIELD_ANGLE_Y" << std::endl;
 				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 0; 
+				fieldStatuses[i].size = 4; 
 			}
 			break;
 		case FIELD_ANGLE_Z:
@@ -230,12 +241,12 @@ void MessageHandler::handleCommand(uint8_t* message, uint8_t size) {
 				index = index + 4;
 				std::cout << "Set FIELD_ANGLE_Z to " << value << std::endl;
 				fieldStatuses[i].value = 0;
-				fieldStatuses[i].size = 0;
+				fieldStatuses[i].size = 1; 
 			}
 			else if(setGet == FIELD_GET) {
 				std::cout << "Cannot Get FIELD_ANGLE_Z" << std::endl;
 				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 0; 
+				fieldStatuses[i].size = 4; 
 			}
 			break;
 		case FIELD_ROCKET_STATE:
@@ -250,12 +261,12 @@ void MessageHandler::handleCommand(uint8_t* message, uint8_t size) {
 				index = index + 4;
 				std::cout << "Set FIELD_LED_1 to " << value << std::endl;
 				fieldStatuses[i].value = 0;
-				fieldStatuses[i].size = 0;
+				fieldStatuses[i].size = 1; 
 			}
 			else if(setGet == FIELD_GET) {
 				std::cout << "Cannot Get FIELD_LED_1" << std::endl;
 				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 0; 
+				fieldStatuses[i].size = 4; 
 			}
 			break;
 		case FIELD_LED_2:
@@ -267,13 +278,13 @@ void MessageHandler::handleCommand(uint8_t* message, uint8_t size) {
 				float value = static_cast<float>(floatBytes);
 				index = index + 4;
 				std::cout << "Set FIELD_LED_2 to " << value << std::endl;
-				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 0; 
+				fieldStatuses[i].value = 0;
+				fieldStatuses[i].size = 1; 
 			}
 			else if(setGet == FIELD_GET) {
 				std::cout << "Cannot Get FIELD_LED_2" << std::endl;
 				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 0; 
+				fieldStatuses[i].size = 4; 
 			}
 			break;
 		case FIELD_BUZZER:
@@ -286,31 +297,35 @@ void MessageHandler::handleCommand(uint8_t* message, uint8_t size) {
 				index = index + 4;
 				std::cout << "Set FIELD_BUZZER to " << value << std::endl;
 				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 0; 
+				fieldStatuses[i].size = 1; 
 			}
 			else if(setGet == FIELD_GET) {
 				std::cout << "Cannot Get FIELD_BUZZER" << std::endl;
 				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 0; 
+				fieldStatuses[i].size = 4; 
 			}
 			break;
 		case FIELD_SOFTWARE_VERSION:
 			if(setGet == FIELD_SET) {
 				std::cout << "cannot set FIELD_SOFTWARE_VERSION silly" << std::endl;
+				fieldStatuses[i].value = 0; 
+				fieldStatuses[i].size = 1; 
 			}
 			else if(setGet == FIELD_GET) {
 				std::cout << "Get FIELD_SOFTWARE_VERSION" << std::endl;
-				fieldStatuses[i].value = 17; //TODO Change to use Nova Header
-				fieldStatuses[i].size = 0; 
+				fieldStatuses[i].value = 257; //TODO Change to use Nova Header
+				fieldStatuses[i].size = 2; 
 			}
 			break;
 		case FIELD_HARDWARE_VERSION:
 			if(setGet == FIELD_SET) {
 				std::cout << "cannot set FIELD_HARDWARE_VERSION silly" << std::endl;
+				fieldStatuses[i].value = 0; 
+				fieldStatuses[i].size = 1; 
 			}
 			else if(setGet == FIELD_GET) {
 				std::cout << "Get FIELD_HARDWARE_VERSION" << std::endl;
-				fieldStatuses[i].value = 17; //TODO Change to use Nova Header
+				fieldStatuses[i].value = 257; //TODO Change to use Nova Header
 				fieldStatuses[i].size = 2; 
 			}
 			break;
@@ -336,9 +351,9 @@ void MessageHandler::handleCommand(uint8_t* message, uint8_t size) {
 	CommandStatus actionStatuses[numActions];
 	for(int i = 0; i < numActions; i++) {
 		uint8_t actionID = message[index++];
-		actionStatuses[i].id = actionID;
+		actionStatuses[i].ID = actionID;
 		actionStatuses[i].value = 1; //default is success
-		actionStatuses[i].size = 0; 
+		actionStatuses[i].size = 1; 
 		switch(actionID) {
 		case ACTION_COPY_FLASH:
 			std::cout << "Copying Flash" << std::endl;
@@ -356,24 +371,97 @@ void MessageHandler::handleCommand(uint8_t* message, uint8_t size) {
 	}
 	
 	
-	formatResponse(fieldStatuses, numFields, actionStatuses, numActions);
+	return formatResponse(fieldStatuses, numFields, actionStatuses, numActions, responseBuffer);
 }
 
-void MessageHandler::formatResponse(CommandStatus * fieldStatuses, int numFields, CommandStatus * actionStatuses, int numActions) {
-	std::cout <<"This is where I format a response" <<std::endl;
-}
+uint16_t MessageHandler::formatResponse(CommandStatus * fieldStatuses, int numFields, CommandStatus * actionStatuses, int numActions, uint8_t * responseBuffer) {
 
-
-
-void MessageHandler::handleResponse(uint8_t* message, uint8_t size) {
-	std::cout << "I got a response message" << std::endl;
-	std::cout << "msgData: ";
-	int i = MESSAGE_DATA_START;
-	while(i < size) {
-		std::cout << (int)message[i] << ", "; 
-		i++;
+	uint8_t * response = new uint8_t[BUFFER_SIZE];
+	response[MESSAGE_VERSION_BYTE] = MESSAGE_VERSION;
+	response[COMMAND_RESPONSE_BYTE] = RESPONSE_TYPE;
+	response[BOARD_TYPE_BYTE] = BOARD_TYPE;
+	response[ADDRESS_BYTE] = INSTANCE.address;
+	
+	uint8_t index = MESSAGE_DATA_START;
+	response[index++] = numFields;
+	
+	
+	for(int i = 0; i < numFields; i++) {
+		uint32_t value = fieldStatuses[i].value;
+		response[index++] = fieldStatuses[i].ID;
+		switch(fieldStatuses[i].size) {
+		case 0:
+			break;
+		case 1:
+			response[index++] = value & 0xFF;
+			break;	
+		case 2:
+			response[index++] = (value & (0xFF << 8) >> 8);
+			response[index++] = value & 0xFF;
+			break;
+		case 3:
+			response[index++] = (value & (0xFF << 16) >> 16);
+			response[index++] = (value & (0xFF << 8) >> 8);
+			response[index++] = value & 0xFF;
+			break;
+		case 4:
+			response[index++] = (value & (0xFF << 24) >> 24);
+			response[index++] = (value & (0xFF << 16) >> 16);
+			response[index++] = (value & (0xFF << 8) >> 8);
+			response[index++] = value & 0xFF;
+			break;
+		}
 	}
-	std::cout << std::endl;
+	
+	for(int i = 0; i < numActions; i++) {
+		uint32_t value = actionStatuses[i].value;
+		response[index++] = actionStatuses[i].ID;
+		switch(actionStatuses[i].size) {
+		case 0:
+			break;
+		case 1:
+			response[index++] = value & 0xFF;
+			break;	
+		case 2:
+			response[index++] = (value & (0xFF << 8) >> 8);
+			response[index++] = value & 0xFF;
+			break;
+		case 3:
+			response[index++] = (value & (0xFF << 16) >> 16);
+			response[index++] = (value & (0xFF << 8) >> 8);
+			response[index++] = value & 0xFF;
+			break;
+		case 4:
+			response[index++] = (value & (0xFF << 24) >> 24);
+			response[index++] = (value & (0xFF << 16) >> 16);
+			response[index++] = (value & (0xFF << 8) >> 8);
+			response[index++] = value & 0xFF;
+			break;
+		}
+	}
+	
+	response[MESSAGE_LENGTH_BYTE] = index;;
+	uint16_t finalSize = 0;
+	for(int i = 0; i < index; i++) {
+		if(response[i] == ESCAPE_INT) {
+			responseBuffer[finalSize++] = ESCAPE_INT;
+			responseBuffer[finalSize++] = ESCAPE_0;
+		}
+		else {
+			responseBuffer[finalSize++] = response[i];
+		}
+		
+	}
+	responseBuffer[finalSize++] = ESCAPE_INT;
+	responseBuffer[finalSize++] = ESCAPE_END_MSG;
+	delete response;
+	return finalSize;
+}
+
+
+
+uint16_t MessageHandler::handleResponse(uint8_t* message, uint8_t size, uint8_t * responseBuffer) {
+	//casually drops message
 }
 MessageHandler::MessageHandler() {
 	assert(sizeof (float) == 4);//need float to be 32 bit
