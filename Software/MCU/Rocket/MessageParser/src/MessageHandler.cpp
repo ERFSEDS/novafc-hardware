@@ -46,15 +46,10 @@ uint16_t MessageHandler::parseMessage(uint8_t* message, uint16_t arraySize, uint
 		std::cout << "Expected: " << (int)messageSize << " GOT: " << (int)buffer[MESSAGE_LENGTH_BYTE] << std::endl;
 		//drop, message incorrect size
 	} 
-	else if(BOARD_TYPE != buffer[BOARD_TYPE_BYTE] ) {
-		std::cout << "Incorrect Board Type" << std::endl;
-		std::cout << "Expected: " << (int)BOARD_TYPE << " GOT: " << (int)buffer[BOARD_TYPE_BYTE] << std::endl;
-		//drop incorrect boardType
-	}
-	else if( (INSTANCE.address != buffer[ADDRESS_BYTE]) 
+	else if( (INSTANCE.address != buffer[DEST_ADDRESS_BYTE]) 
 			 && (INSTANCE.address != BROADCAST_ADDRESS) ) {
 		std::cout << "Incorrect address" << std::endl;
-		std::cout << "Expected: " << (int)INSTANCE.address << " GOT: " << (int)buffer[ADDRESS_BYTE] << std::endl;
+		std::cout << "Expected: " << (int)INSTANCE.address << " GOT: " << (int)buffer[DEST_ADDRESS_BYTE] << std::endl;
 		//drop, not addressed to this device
 	}
 	else if(COMMAND_TYPE == buffer[COMMAND_RESPONSE_BYTE]) {
@@ -313,7 +308,7 @@ uint16_t MessageHandler::handleCommand(uint8_t* message, uint8_t size, uint8_t *
 			}
 			else if(setGet == FIELD_GET) {
 				std::cout << "Get FIELD_SOFTWARE_VERSION" << std::endl;
-				fieldStatuses[i].value = 257; //TODO Change to use Nova Header
+				fieldStatuses[i].value = SOFTWARE_VERSION; //TODO Change to use Nova Header
 				fieldStatuses[i].size = 2; 
 			}
 			break;
@@ -325,7 +320,7 @@ uint16_t MessageHandler::handleCommand(uint8_t* message, uint8_t size, uint8_t *
 			}
 			else if(setGet == FIELD_GET) {
 				std::cout << "Get FIELD_HARDWARE_VERSION" << std::endl;
-				fieldStatuses[i].value = 257; //TODO Change to use Nova Header
+				fieldStatuses[i].value = BOARD_VERSION; //TODO Change to use Nova Header
 				fieldStatuses[i].size = 2; 
 			}
 			break;
@@ -371,16 +366,17 @@ uint16_t MessageHandler::handleCommand(uint8_t* message, uint8_t size, uint8_t *
 	}
 	
 	
-	return formatResponse(fieldStatuses, numFields, actionStatuses, numActions, responseBuffer);
+	uint8_t srcAddress = message[SRC_ADDRESS_BYTE];
+	return formatResponse(fieldStatuses, numFields, actionStatuses, numActions, srcAddress, responseBuffer);
 }
 
-uint16_t MessageHandler::formatResponse(CommandStatus * fieldStatuses, int numFields, CommandStatus * actionStatuses, int numActions, uint8_t * responseBuffer) {
+uint16_t MessageHandler::formatResponse(CommandStatus * fieldStatuses, int numFields, CommandStatus * actionStatuses, int numActions, uint8_t srcAddress, uint8_t * responseBuffer) {
 
 	uint8_t * response = new uint8_t[BUFFER_SIZE];
 	response[MESSAGE_VERSION_BYTE] = MESSAGE_VERSION;
 	response[COMMAND_RESPONSE_BYTE] = RESPONSE_TYPE;
-	response[BOARD_TYPE_BYTE] = BOARD_TYPE;
-	response[ADDRESS_BYTE] = INSTANCE.address;
+	response[DEST_ADDRESS_BYTE] = srcAddress;
+	response[SRC_ADDRESS_BYTE] = INSTANCE.address;
 	
 	uint8_t index = MESSAGE_DATA_START;
 	response[index++] = numFields;
