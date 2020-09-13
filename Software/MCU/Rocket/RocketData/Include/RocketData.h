@@ -12,6 +12,7 @@ class RocketData{
     private:
         cartesian acceleration, angularVelocity; //Raw Sensor Data
         float cPressure, sPressure, temperature; //Raw Sensor Data
+        float cVelocity;
         cartesian displacement; //Processed Data
 
     public:

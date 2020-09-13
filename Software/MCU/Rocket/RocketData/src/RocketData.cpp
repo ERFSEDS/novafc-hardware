@@ -11,7 +11,7 @@ SensorValues *sv = sv-> getInstance();
 void RocketData::updateDisplacement(){
     //displacement.x = ;
     displacement.y = ((pow(sPressure/cPressure,1/5.257)-1)*(temperature+273.15))/0.0065;    //Hypsometric Formula
-    //displacement.y = u + at;
+    displacement.y = cVelocity * sin(complementaryFilter(acceleration.y,angularVelocity.y));
     //displacement.z = ;
 }
 
@@ -35,6 +35,8 @@ float intGyroAngle(){
     return gyroAngle;
 }
 */
+
+
 
 //In its current state this will only be able to calculate x and y angles
 float RocketData::complementaryFilter(float acc, float gyro){
