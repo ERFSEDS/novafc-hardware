@@ -96,3 +96,7 @@ create_config_test(
 	NAME "Safe_Defaults_Test"
 	SOURCE "testing/testSafeDefaults.cpp"
 )
+create_config_test(
+	NAME "Layer_Time_Step_Test"
+	SOURCE "testing/testLayerTimeSteps.cpp"
+)
