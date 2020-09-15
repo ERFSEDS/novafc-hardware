@@ -19,6 +19,8 @@
 #define DEFAULT_DROGUE_CHUTE				(true)
 #define DEFAULT_MAIN_PYRO_CHANNEL			(0)
 #define DEFAULT_DROGUE_PYRO_CHANNEL			(1)
+#define DEFAULT_UPPER_TIME_STEP_MS			(20) //50Hz
+#define DEFAULT_LOWER_TIME_STEP_MS			(20) //50Hz
 
 enum PyroConfig {
 	VELOCITY_ABOVE,
@@ -111,6 +113,12 @@ class Configuration {
 		
 		static int getDroguePyroChannel();
 		static void setDroguePyroChannel(int channel);
+		
+		static int getUpperTimeStepms(); //miliseconds
+		static void setUpperTimeStepms(int newTimeStep); //miliseconds
+		
+		static int getLowerTimeStepms(); //miliseconds
+		static void setLowerTimeStepms(int newTimeStep); //miliseconds
 
 		Configuration(const Configuration &conf) = delete; //copy constructor is not allowed
 		
@@ -164,6 +172,11 @@ class Configuration {
 		int getDroguePyroChannel_I();
 		void setDroguePyroChannel_I(int channel);
 		
+		int getUpperTimeStepms_I(); //miliseconds
+		void setUpperTimeStepms_I(int newTimeStep); //miliseconds
+		
+		int getLowerTimeStepms_I(); //miliseconds
+		void setLowerTimeStepms_I(int newTimeStep); //miliseconds
 		
 	//Private Variables
 	private:
@@ -189,5 +202,8 @@ class Configuration {
 		
 		int mainPyroChannel;
 		int droguePyroChannel;
+		
+		int uppertimeStepms; //miliseconds
+		int lowertimeStepms; //miliseconds
 		
 };

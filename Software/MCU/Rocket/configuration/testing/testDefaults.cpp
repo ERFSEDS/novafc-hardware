@@ -70,6 +70,14 @@ int main() {
 		std::cout << "Failed Drogue Pyro Channel" << std::endl;
 		return 1;
 	}
+	if (Configuration::getUpperTimeStepms() != DEFAULT_UPPER_TIME_STEP_MS) {
+		std::cout << "Failed upper layer time" << std::endl;
+		return 1;
+	}
+	if (Configuration::getLowerTimeStepms() != DEFAULT_LOWER_TIME_STEP_MS) {
+		std::cout << "Failed Lower Layer time" << std::endl;
+		return 1;
+	}
 	
 	return 0;
 }

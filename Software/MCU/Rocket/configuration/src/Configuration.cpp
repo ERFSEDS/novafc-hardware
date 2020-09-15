@@ -134,6 +134,21 @@ void Configuration::setDroguePyroChannel_I(int channel) {
 	this->droguePyroChannel = channel;
 }
 
+int Configuration::getUpperTimeStepms_I() {
+	return this->uppertimeStepms;
+}
+void Configuration::setUpperTimeStepms_I(int newTimeStep) {
+	this->uppertimeStepms = newTimeStep;
+}
+	
+int Configuration::getLowerTimeStepms_I() {
+	return this->lowertimeStepms;
+}
+void Configuration::setLowerTimeStepms_I(int newTimeStep) {
+	this->lowertimeStepms = newTimeStep;
+}
+
+
 void Configuration::setToDefault() {
 	this->twoStageRocket = DEFAULT_TWO_STAGE_ROCKET;
 		
@@ -163,6 +178,9 @@ void Configuration::setToDefault() {
 		
 	this->mainPyroChannel = DEFAULT_MAIN_PYRO_CHANNEL;
 	this->droguePyroChannel = DEFAULT_DROGUE_PYRO_CHANNEL;
+	
+	this->uppertimeStepms = DEFAULT_UPPER_TIME_STEP_MS;
+	this->lowertimeStepms = DEFAULT_LOWER_TIME_STEP_MS;
 }
 
 Configuration &Configuration::GET_INSTANCE() {
@@ -271,4 +289,18 @@ int Configuration::getDroguePyroChannel() {
 }
 void Configuration::setDroguePyroChannel(int channel) {
 	Configuration::GET_INSTANCE().setDroguePyroChannel_I(channel);
+}
+
+int Configuration::getUpperTimeStepms() {
+	Configuration::GET_INSTANCE().getUpperTimeStepms_I();
+}
+void Configuration::setUpperTimeStepms(int newTimeStep) {
+	Configuration::GET_INSTANCE().setUpperTimeStepms_I(newTimeStep);
+}
+		
+int Configuration::getLowerTimeStepms() {
+	Configuration::GET_INSTANCE().getLowerTimeStepms_I();
+}
+void Configuration::setLowerTimeStepms(int newTimeStep) {
+	Configuration::GET_INSTANCE().setLowerTimeStepms_I(newTimeStep);
 }
