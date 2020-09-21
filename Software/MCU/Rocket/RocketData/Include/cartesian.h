@@ -1,5 +1,5 @@
 #pragma once
 
 struct cartesian{
-    float x,y,z;
+    float dimension[3];
 };
