@@ -3,10 +3,6 @@
  * Description: This class is to process incoming sensor values
  * Author: Matthew Gasper
  */
-#pragma once
-#include "cartesian.h"
-#include "SensorValues.h"
-#include <cmath>
 
 class RocketData{
     private:
@@ -19,6 +15,12 @@ class RocketData{
         void updateData();  //Updates data from Sensor Values
         void updateDisplacement(); //Processes pressure & temp into altitude
         float complementaryFilter(float acc, float gyro);
-
+        
         cartesian getDisplacement();
+        cartesian getAcceleration();
+        cartesian getAngularVelocity();
+        float getCPressure();
+        float getSPressure();
+        float getTemperature();
+        float getCVelocity();
 };

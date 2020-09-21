@@ -5,6 +5,10 @@
  */
 #pragma once
 #include "RocketData.h"
+#include "cartesian.h"
+#include "SensorValues.h"
+#include <cmath>
+
 SensorValues *SensorValues::instance = 0;
 SensorValues *sv = sv-> getInstance();
 
@@ -16,8 +20,8 @@ void RocketData::updateDisplacement(){
 }
 
 void RocketData::updateData(){
-    acceleration = sv->getAcceleration();
-    angularVelocity = sv->getAngularVelocity();
+    acceleration = sv-> getAcceleration();
+    angularVelocity = sv-> getAngularVelocity();
     cPressure = sv-> getCPressure();
     sPressure = sv-> getSPressure();
     temperature = sv-> getTemperature();
@@ -56,8 +60,14 @@ float RocketData::complementaryFilter(float acc, float gyro){
     compFilterAngle = filteredAccAngle + filteredGyroAngle; //Combining both filtered signals to get full signal
     return compFilterAngle;
 }
-
-cartesian RocketData::getDisplacement(){return displacement;};
-
 // angle.x = α*gyro_angle_y+(1-­α)acc_angle_x; << Roll
 // angle.y = α*gyro_angle_x+(1-­α)acc_angle_y; << Pitch
+
+cartesian RocketData::getDisplacement()     {return displacement;}
+cartesian RocketData::getAcceleration()     {return acceleration;}
+cartesian RocketData::getAngularVelocity()  {return angularVelocity;}
+
+float RocketData::getCPressure()    {return cPressure;}
+float RocketData::getSPressure()    {return sPressure;}
+float RocketData::getTemperature()  {return temperature;}
+float RocketData::getCVelocity()    {return cVelocity;}

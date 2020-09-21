@@ -9,7 +9,7 @@ set("RocketData_include" ${CMAKE_CURRENT_SOURCE_DIR}/Include)
 add_library("${PROJECT_NAME}" ${RocketData_sources})
 
 target_include_directories("${PROJECT_NAME}" PUBLIC ${RocketData_include})
-
+target_link_libraries(RocketData, SensorData)
 ########################################################################
 
 function(create_RocketData_test)
