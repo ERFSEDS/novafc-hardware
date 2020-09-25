@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 5 20
+Sheet 17 20
 Title ""
 Date ""
 Rev ""
@@ -84,7 +84,7 @@ F 3 "" H 2900 3350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2900 3350 2900 3500
+	2900 3350 2900 3400
 $Comp
 L power:GND #PWR0502
 U 1 1 5F44A4A7
@@ -97,7 +97,7 @@ F 3 "" H 2900 3950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2900 3800 2900 3950
+	2900 3800 2900 3900
 Text HLabel 6350 3950 0    50   Input ~ 0
 arm
 Text HLabel 4400 2900 0    50   Input ~ 0
@@ -108,4 +108,29 @@ Text HLabel 4450 4700 0    50   Input ~ 0
 Fire2
 Text HLabel 4450 4850 0    50   Output ~ 0
 2Correct
+Wire Wire Line
+	2500 3800 2500 3900
+Wire Wire Line
+	2500 3900 2900 3900
+Connection ~ 2900 3900
+Wire Wire Line
+	2900 3900 2900 3950
+Wire Wire Line
+	2500 3500 2500 3400
+Wire Wire Line
+	2500 3400 2900 3400
+Connection ~ 2900 3400
+Wire Wire Line
+	2900 3400 2900 3500
+$Comp
+L Device:R_US R1701
+U 1 1 5F6ECA83
+P 2500 3650
+F 0 "R1701" H 2568 3696 50  0000 L CNN
+F 1 "10" H 2568 3605 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 2540 3640 50  0001 C CNN
+F 3 "~" H 2500 3650 50  0001 C CNN
+	1    2500 3650
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

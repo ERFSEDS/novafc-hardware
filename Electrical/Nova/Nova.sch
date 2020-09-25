@@ -291,17 +291,6 @@ Text Label 8200 1800 0    50   ~ 0
 GYRO_ACCEL_CS
 Text Label 8350 1900 0    50   ~ 0
 GYRO_CS
-$Sheet
-S 800  6100 1250 600 
-U 5F448D4B
-F0 "Pyro Channels" 50
-F1 "PyroChannels.sch" 20
-F2 "arm" I R 2050 6200 50 
-F3 "Fire1" I R 2050 6300 50 
-F4 "1Correct" O R 2050 6500 50 
-F5 "Fire2" I R 2050 6400 50 
-F6 "2Correct" O R 2050 6600 50 
-$EndSheet
 Wire Wire Line
 	2050 6200 2850 6200
 Wire Wire Line
@@ -690,4 +679,15 @@ Wire Wire Line
 	6800 5400 7350 5400
 Wire Wire Line
 	6800 5300 7350 5300
+$Sheet
+S 800  6100 1250 600 
+U 5F448D4B
+F0 "Pyro Channels" 50
+F1 "PyroChannels.sch" 20
+F2 "arm" I R 2050 6200 50 
+F3 "Fire1" I R 2050 6300 50 
+F4 "1Correct" O R 2050 6500 50 
+F5 "Fire2" I R 2050 6400 50 
+F6 "2Correct" O R 2050 6600 50 
+$EndSheet
 $EndSCHEMATC

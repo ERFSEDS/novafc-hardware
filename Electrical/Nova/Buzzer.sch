@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Nova-rescue:PS1440P02BT-PS1440P02BT-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue-Nova-rescue LS301
+L Device:Buzzer LS301
 U 1 1 5F404605
 P 5750 3450
 AR Path="/5F404605" Ref="LS301"  Part="1" 
@@ -41,7 +41,7 @@ $EndComp
 Text HLabel 6300 3350 2    50   Input ~ 0
 BUZZER
 Wire Wire Line
-	5250 3350 5550 3350
+	5850 3350 6300 3350
 Wire Wire Line
-	5950 3350 6300 3350
+	5250 3350 5650 3350
 $EndSCHEMATC

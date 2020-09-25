@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 9 20
+Sheet 5 20
 Title ""
 Date "2020-07-12"
 Rev "1"
@@ -87,20 +87,6 @@ F 1 "+5V" H 5315 3273 50  0000 C CNN
 F 2 "" H 5300 3100 50  0001 C CNN
 F 3 "" H 5300 3100 50  0001 C CNN
 	1    5300 3100
-	1    0    0    -1  
-$EndComp
-$Comp
-L pspice:C C?
-U 1 1 5F0EA956
-P 6600 4150
-AR Path="/5F0EA956" Ref="C?"  Part="1" 
-AR Path="/5F0C9147/5F0EA956" Ref="C?"  Part="1" 
-AR Path="/5F3B0B4B/5F0EA956" Ref="C904"  Part="1" 
-F 0 "C904" H 6778 4196 50  0000 L CNN
-F 1 "10 uF" H 6778 4105 50  0000 L CNN
-F 2 "NOVA MCU (STM):C_0603_1608Metric" H 6600 4150 50  0001 C CNN
-F 3 "~" H 6600 4150 50  0001 C CNN
-	1    6600 4150
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -228,9 +214,11 @@ Connection ~ 4450 3900
 Wire Wire Line
 	3950 3900 3200 3900
 $Comp
-L dk_PMIC-Voltage-Regulators-Linear:LD1117S33CTR U901
+L Regulator_Linear:LD1117S33TR_SOT223 U901
 U 1 1 5F5377C6
 P 5900 3900
+AR Path="/5F5377C6" Ref="U901"  Part="1" 
+AR Path="/5F3B0B4B/5F5377C6" Ref="U901"  Part="1" 
 F 0 "U901" H 5950 4187 60  0000 C CNN
 F 1 "LD1117S33CTR" H 5950 4081 60  0000 C CNN
 F 2 "digikey-footprints:SOT-223" H 6100 4100 60  0001 L CNN
@@ -248,18 +236,7 @@ F 12 "Active" H 6100 5100 60  0001 L CNN "Status"
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6600 3900 7050 3900
-Wire Wire Line
 	5600 3900 5300 3900
-Wire Wire Line
-	6300 3900 6400 3900
-Wire Wire Line
-	6300 4000 6400 4000
-Wire Wire Line
-	6400 4000 6400 3900
-Connection ~ 6400 3900
-Wire Wire Line
-	6400 3900 6600 3900
 Wire Wire Line
 	5900 4200 5900 4500
 Wire Wire Line
@@ -273,7 +250,6 @@ Wire Wire Line
 	5300 4400 5300 4500
 Wire Wire Line
 	5300 4500 5900 4500
-Connection ~ 6600 3900
 Connection ~ 5300 3900
 Wire Wire Line
 	5300 3900 5300 3300
@@ -297,4 +273,23 @@ Wire Wire Line
 	5300 3200 5300 3300
 Wire Wire Line
 	4450 3900 5300 3900
+Connection ~ 6600 3900
+Wire Wire Line
+	6600 3900 7050 3900
+$Comp
+L pspice:C C?
+U 1 1 5F0EA956
+P 6600 4150
+AR Path="/5F0EA956" Ref="C?"  Part="1" 
+AR Path="/5F0C9147/5F0EA956" Ref="C?"  Part="1" 
+AR Path="/5F3B0B4B/5F0EA956" Ref="C904"  Part="1" 
+F 0 "C904" H 6778 4196 50  0000 L CNN
+F 1 "10 uF" H 6778 4105 50  0000 L CNN
+F 2 "NOVA MCU (STM):C_0603_1608Metric" H 6600 4150 50  0001 C CNN
+F 3 "~" H 6600 4150 50  0001 C CNN
+	1    6600 4150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6200 3900 6600 3900
 $EndSCHEMATC
