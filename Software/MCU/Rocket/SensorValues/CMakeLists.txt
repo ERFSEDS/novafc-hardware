@@ -45,8 +45,8 @@ function(create_SensorValues_test)
     endif()
 endfunction()
 
-create_SensorValues_test(
-	NAME "Sensor_Values_Test"
-	SOURCE "testing/SensorValuesTester.cpp"
-)
+#create_SensorValues_test(
+#	NAME "Sensor_Values_Test"
+#	SOURCE "testing/SensorValuesTester.cpp"
+#)
 

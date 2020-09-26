@@ -3,10 +3,8 @@
  * Description: This class is to process incoming sensor values
  * Author: Matthew Gasper
  */
-#pragma once
 #include "RocketData.h"
 #include "Configuration.hpp"
-#include "cartesian.h"
 #include "SensorValues.h"
 #include <cmath>
 

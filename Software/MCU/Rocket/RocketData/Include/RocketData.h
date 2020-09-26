@@ -3,7 +3,7 @@
  * Description: This class is to process incoming sensor values
  * Author: Matthew Gasper
  */
-
+#include "cartesian.h"
 class RocketData{
     private:
         cartesian acceleration[2], angularVelocity[2]; //Raw Sensor Data
