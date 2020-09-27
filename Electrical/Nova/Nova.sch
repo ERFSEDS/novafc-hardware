@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
-Sheet 1 20
+Sheet 1 21
 Title ""
 Date ""
 Rev ""
@@ -298,18 +298,18 @@ Wire Wire Line
 Wire Wire Line
 	2050 6400 2850 6400
 Wire Wire Line
-	2050 6500 2850 6500
-Wire Wire Line
 	2050 6600 2850 6600
+Wire Wire Line
+	2050 6700 2850 6700
 Text Label 2400 6200 0    50   ~ 0
 ARM
 Text Label 2350 6300 0    50   ~ 0
 FIRE1
 Text Label 2350 6400 0    50   ~ 0
 FIRE2
-Text Label 2200 6500 0    50   ~ 0
-CONTINUITY1
 Text Label 2200 6600 0    50   ~ 0
+CONTINUITY1
+Text Label 2200 6700 0    50   ~ 0
 CONTINUITY2
 Wire Notes Line
 	3100 550  3100 3900
@@ -330,12 +330,8 @@ AUDIBLE/VISIBLE INDICATION\n
 Wire Notes Line
 	700  5850 3100 5850
 Wire Notes Line
-	3100 5850 3100 6850
-Wire Notes Line
-	700  6850 700  5850
-Wire Notes Line
-	700  6850 3100 6850
-Text Notes 1450 7000 0    79   ~ 0
+	700  7050 3100 7050
+Text Notes 1400 7200 0    79   ~ 0
 PYRO CHANNELS
 Wire Notes Line
 	8000 3300 10000 3300
@@ -680,14 +676,28 @@ Wire Wire Line
 Wire Wire Line
 	6800 5300 7350 5300
 $Sheet
-S 800  6100 1250 600 
+S 800  6100 1250 800 
 U 5F448D4B
 F0 "Pyro Channels" 50
 F1 "PyroChannels.sch" 20
 F2 "arm" I R 2050 6200 50 
 F3 "Fire1" I R 2050 6300 50 
-F4 "1Correct" O R 2050 6500 50 
+F4 "1Correct" O R 2050 6600 50 
 F5 "Fire2" I R 2050 6400 50 
-F6 "2Correct" O R 2050 6600 50 
+F6 "2Correct" O R 2050 6700 50 
+F7 "Fire3" I R 2050 6500 50 
+F8 "3Correct" I R 2050 6800 50 
 $EndSheet
+Wire Notes Line
+	3100 5850 3100 7050
+Wire Notes Line
+	700  5850 700  7050
+Wire Wire Line
+	2050 6500 2850 6500
+Wire Wire Line
+	2050 6800 2850 6800
+Text Label 2350 6500 0    50   ~ 0
+FIRE3
+Text Label 2200 6800 0    50   ~ 0
+CONTINUITY3
 $EndSCHEMATC

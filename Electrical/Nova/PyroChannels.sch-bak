@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 17 20
+Sheet 17 21
 Title ""
 Date ""
 Rev ""
@@ -21,45 +21,16 @@ F1 "../Common_Modules/PyroChannel/Breakout/ArmSchematic.sch" 50
 F2 "FireOut" I L 6700 3600 50 
 F3 "arm" I L 6700 3950 50 
 $EndSheet
-$Sheet
-S 4800 2800 1000 400 
-U 5F44909A
-F0 "Channel 1" 50
-F1 "../Common_Modules/PyroChannel/Breakout/PyroChannel.sch" 50
-F2 "FIRE" I L 4800 2900 50 
-F3 "pyroCorrect" O L 4800 3050 50 
-F4 "fireOut" O R 5800 2900 50 
-$EndSheet
-$Sheet
-S 4750 4600 1000 400 
-U 5F449170
-F0 "Channel 2" 50
-F1 "../Common_Modules/PyroChannel/Breakout/PyroChannel.sch" 50
-F2 "FIRE" I L 4750 4700 50 
-F3 "pyroCorrect" O L 4750 4850 50 
-F4 "fireOut" O R 5750 4700 50 
-$EndSheet
 Wire Wire Line
 	6700 3600 6250 3600
 Wire Wire Line
-	6250 3600 6250 4700
+	4150 2900 3750 2900
 Wire Wire Line
-	6250 4700 5750 4700
+	3750 2750 4150 2750
 Wire Wire Line
-	5800 2900 6250 2900
+	4150 3450 3850 3450
 Wire Wire Line
-	6250 2900 6250 3600
-Connection ~ 6250 3600
-Wire Wire Line
-	6700 3950 6350 3950
-Wire Wire Line
-	4800 3050 4400 3050
-Wire Wire Line
-	4400 2900 4800 2900
-Wire Wire Line
-	4750 4700 4450 4700
-Wire Wire Line
-	4750 4850 4450 4850
+	4150 3600 3850 3600
 $Comp
 L Device:C C501
 U 1 1 5F4497A2
@@ -98,15 +69,13 @@ F 3 "" H 2900 3950 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	2900 3800 2900 3900
-Text HLabel 6350 3950 0    50   Input ~ 0
-arm
-Text HLabel 4400 2900 0    50   Input ~ 0
+Text HLabel 3750 2750 0    50   Input ~ 0
 Fire1
-Text HLabel 4400 3050 0    50   Output ~ 0
+Text HLabel 3750 2900 0    50   Output ~ 0
 1Correct
-Text HLabel 4450 4700 0    50   Input ~ 0
+Text HLabel 3850 3450 0    50   Input ~ 0
 Fire2
-Text HLabel 4450 4850 0    50   Output ~ 0
+Text HLabel 3850 3600 0    50   Output ~ 0
 2Correct
 Wire Wire Line
 	2500 3800 2500 3900
@@ -127,10 +96,63 @@ L Device:R_US R1701
 U 1 1 5F6ECA83
 P 2500 3650
 F 0 "R1701" H 2568 3696 50  0000 L CNN
-F 1 "10" H 2568 3605 50  0000 L CNN
+F 1 "10k" H 2568 3605 50  0000 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 2540 3640 50  0001 C CNN
 F 3 "~" H 2500 3650 50  0001 C CNN
 	1    2500 3650
 	1    0    0    -1  
 $EndComp
+$Sheet
+S 4150 3350 1000 400 
+U 5F449170
+F0 "Channel 2" 50
+F1 "../Common_Modules/PyroChannel/Breakout/PyroChannel.sch" 50
+F2 "FIRE" I L 4150 3450 50 
+F3 "pyroCorrect" O L 4150 3600 50 
+F4 "fireOut" O R 5150 3450 50 
+$EndSheet
+$Sheet
+S 4150 2650 1000 400 
+U 5F44909A
+F0 "Channel 1" 50
+F1 "../Common_Modules/PyroChannel/Breakout/PyroChannel.sch" 50
+F2 "FIRE" I L 4150 2750 50 
+F3 "pyroCorrect" O L 4150 2900 50 
+F4 "fireOut" O R 5150 2750 50 
+$EndSheet
+Wire Wire Line
+	5150 3450 6250 3450
+Wire Wire Line
+	6250 3450 6250 3600
+Wire Wire Line
+	6250 3450 6250 2750
+Wire Wire Line
+	6250 2750 5150 2750
+Connection ~ 6250 3450
+Wire Wire Line
+	5150 4150 6250 4150
+Wire Wire Line
+	6250 4150 6250 3600
+Connection ~ 6250 3600
+Text HLabel 3850 4150 0    50   Input ~ 0
+Fire3
+Text HLabel 3850 4300 0    50   Input ~ 0
+3Correct
+Wire Wire Line
+	3850 4150 4150 4150
+Wire Wire Line
+	4150 4300 3850 4300
+$Sheet
+S 4150 4050 1000 400 
+U 5F71312E
+F0 "Channel 3" 50
+F1 "../Common_Modules/PyroChannel/Breakout/PyroChannel.sch" 50
+F2 "FIRE" I L 4150 4150 50 
+F3 "pyroCorrect" O L 4150 4300 50 
+F4 "fireOut" O R 5150 4150 50 
+$EndSheet
+Text HLabel 6500 3950 0    50   Input ~ 0
+arm
+Wire Wire Line
+	6500 3950 6700 3950
 $EndSCHEMATC
