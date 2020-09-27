@@ -6,9 +6,9 @@
 #pragma once
 #include "RocketData.h"
 #include "Configuration.hpp"
-#include "cartesian.h"
 #include "SensorValues.h"
 #include <cmath>
+
 
 SensorValues *SensorValues::instance = 0;
 SensorValues *sv = sv-> getInstance();
