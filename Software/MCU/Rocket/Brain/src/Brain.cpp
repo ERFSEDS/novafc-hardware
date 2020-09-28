@@ -1,17 +1,14 @@
 
 #include "Brain.hpp"
-#include "StateMachine.hpp"
-#include "RocketData.h"
-#include "SensorValues.h"
 #include "Logger.hpp"
 
 //Needed Instances
 SensorValues * Brain::sensor = SensorValues::getInstance();
-RocketData * Brain::rocket = RocketData();
+RocketData * Brain::rocket = RocketData::getInstance();
 void Brain::check() {
 	bool stateChange = StateMachine::getCurrentState() == lastState;
 	hangleStateChange();
-	
+	bool pyroFired;
 	switch(StateMachine::getCurrentState()) {
 	case UNARMED:
 		//TODO impliment arm checker(either sensor values read or vertical)
@@ -31,26 +28,41 @@ void Brain::check() {
 		}
 		break;
 	case STAGE1COAST:
+		pyroFired = checkPyros();
 		if(Configuration::getTwoStageRocket() ) {
 			if(motorIgnition()) {
 				StateMachine::changeState(STAGE1COAST);	
 			}
 		}
 		else {
-			StateMachine::changeState(STAGE1POWERED);
+			if(pyroFired) {
+				StateMachine::changeState(DROGUEPAR);
+			}
 		}
-		checkPyros();
 		break;
 	case STAGE2POWERED:
 		if(motorCutoff()) {
-		StateMachine::changeState(STAGE1POWERED);
+			StateMachine::changeState(STAGE2COAST);
 		}
-	case STAGE2COAST:
-	case DROGUEPAR:
-	case MAINPAR:
 		checkPyros();
 		break;
+	case STAGE2COAST:
+		pyroFired = checkPyros();
+		if(pyroFired) {
+			StateMachine::changeState(DROGUEPAR);
+		}
+		break;
+	case DROGUEPAR:
+		pyroFired = checkPyros();
+		if(pyroFired) {
+			StateMachine::changeState(MAINPAR);
+		}
+	case MAINPAR:
+		//CHeck to see if we landed
+		break;
 	case LANDED:
+		//write data then switch to reset mode
+		break;
 	case RESET:
 		break;
 	}
@@ -61,75 +73,75 @@ void Brain::hangleStateChange() {
 	State cState = StateMachine::getCurrentState();
 	State pState = StateMachine::getPreviousState();
 	
-	switch(cstate) {
+	switch(cState) {
 	case UNARMED:
-		if(pstate == READY) {
-			LOGGER::EVENT("ROCKET DISARMED");
+		if(pState == READY) {
+			Logger::Event("ROCKET DISARMED");
 		}
 		else {//shrug
 		}
 	case READY:
-		if(pstate == UNARMED) {
-			LOGGER::EVENT("ROCKET READY");
+		if(pState == UNARMED) {
+			Logger::Event("ROCKET READY");
 			//TODO arm
 		}
 		else {//shrug
 		}
 	case STAGE1POWERED:
-		if(pstate == READY) {
-			LOGGER::EVENT("STAGE 1 IGNITION");
+		if(pState == READY) {
+			Logger::Event("STAGE 1 IGNITION");
 		}
 		else {//shrug
 		}
 	case STAGE1COAST:
-		if(pstate == STAGE1POWERED) {
-			LOGGER::EVENT("STAGE 1 MECO");
+		if(pState == STAGE1POWERED) {
+			Logger::Event("MECO");
 		}
 		else {//shrug
 		}
 	case STAGE2POWERED:
-		if(pstate == STAGE1COAST) {
-			LOGGER::EVENT("STAGE 2 IGNITION");
+		if(pState == STAGE1COAST) {
+			Logger::Event("STAGE 2 IGNITION");
 		}
 		else {//shrug
 		}
 	case STAGE2COAST:
-		if(pstate == STAGE2POWERED) {
-			LOGGER::EVENT("STAGE 2 MECO");
+		if(pState == STAGE2POWERED) {
+			Logger::Event("SECO");
 		}
 		else {//shrug
 		}
 	case DROGUEPAR:
-		if(pstate == STAGE1COAST) {
-			LOGGER::EVENT("Drogue Deployed");
+		if(pState == STAGE1COAST) {
+			Logger::Event("Drogue Deployed");
 		}
-		else if(pstate == STAGE2COAST) {
-			LOGGER::EVENT("Drogue Deployed");
+		else if(pState == STAGE2COAST) {
+			Logger::Event("Drogue Deployed");
 		}
 		else {//shrug
 		}
 	case MAINPAR:
-		if(pstate == STAGE1COAST) {
-			LOGGER::EVENT("Main Chute Deployed");
+		if(pState == STAGE1COAST) {
+			Logger::Event("Main Chute Deployed");
 		}
-		else if(pstate == STAGE2COAST) {
-			LOGGER::EVENT("Main Chute Deployed");
+		else if(pState == STAGE2COAST) {
+			Logger::Event("Main Chute Deployed");
 		}
-		else if(pstate == DROGUEPAR) {
-			LOGGER::EVENT("Main Chute Deployed");
+		else if(pState == DROGUEPAR) {
+			Logger::Event("Main Chute Deployed");
 		}
 		else {//shrug
 		}
 	case LANDED:
-		if(pstate == MAINPAR) {
-			LOGGER::EVENT("SUCCESSFUL LANDING");
+		if(pState == MAINPAR) {
+			Logger::Event("SUCCESSFUL LANDING");
 			//TODO copy flash to SD
 		}
 		else {//shrug
 		}
 	case RESET:
-		if(pstate == LANDED) {
-			LOGGER::EVENT("RESETTING");
+		if(pState == LANDED) {
+			Logger::Event("RESETTING");
 		}
 		else {//shrug
 		}
@@ -138,13 +150,13 @@ void Brain::hangleStateChange() {
 void Brain::arm() {
 	if(StateMachine::getCurrentState() == UNARMED) {
 		StateMachine::changeState(READY);
-		Logger::EVENT("Rocket Disarmed");
+		Logger::Event("Rocket Disarmed");
 	}
 }
 void Brain::disarm() {
 	if(StateMachine::getCurrentState() == READY) {
 		StateMachine::changeState(UNARMED);
-		Logger::EVENT("Rocket Disarmed");
+		Logger::Event("Rocket Disarmed");
 	}
 }
 
@@ -177,8 +189,8 @@ bool Brain::motorCutoff() {
 }
 
 
-bool Brain::checkApogee() {
-	float currentAltitude = rocket.getDisplacement().dimension[3];
+void Brain::checkApogee() {
+	float currentAltitude = rocket->getDisplacement().dimension[3];
 	if( currentAltitude <= pastAltitude ) {
 		descentTimeSteps++;
 		if(descentTimeSteps >= requiredTimeSteps) {
@@ -191,7 +203,7 @@ bool Brain::checkApogee() {
 }
 		
 void Brain::updateConfigValues() {
-	float stepHz = 1000.0/( (float)Configuration::getUpperTimeStepms ) 
+	float stepHz = 1000.0/( (float)(Configuration::getUpperTimeStepms()) );
 	requiredTimeSteps = stepHz * APOGEE_DESCENT_DETECT_TIME;
 	
 	cutoffThreshold = Configuration::getCutoffThreshold();
@@ -201,15 +213,19 @@ void Brain::updateConfigValues() {
 	cutoffCountdown = cutoffCountdownStart;
 	ignitionCountdownStart = (int)( stepHz * IGNITION_DETECT_TIME );
 	ignitionCountdown = ignitionCountdownStart;
+	
+	landedCountdownStart = (int)( stepHz * LANDED_DETECTION_TIME );
+	landedCountdown = landedCountdownStart;
+	
 	for(int i = 0; i < NUMBER_OF_PYROS; i++) {	
-		PyroConfig configOne = Configuration::getPyro(i).configOne;
-		PyroConfig configTwo = Configuration::getPyro(i).configTwo;
+		PyroConfig configOne = Configuration::getPyro(i)->configOne;
+		PyroConfig configTwo = Configuration::getPyro(i)->configTwo;
 		if( configOne == TIME_DELAY ) {
-			delayPyroCharge[i] = (int)(stepHz) * Configuration::getPyro(i).valueOne);
+			delayPyroCharge[i] = (int)((stepHz) * Configuration::getPyro(i)->valueOne);
 			counting[i] = false;
 		}
 		else if( configTwo == TIME_DELAY ) {
-			delayPyroCharge[i] = (int)( stepHz ) * Configuration::getPyro(i).valueTwo);
+			delayPyroCharge[i] = (int)(( stepHz ) * Configuration::getPyro(i)->valueTwo);
 			counting[i] = false;
 		}
 		else {
@@ -220,9 +236,10 @@ void Brain::updateConfigValues() {
 }
 
 //checks and if neccessary fires pyros
-void Brain::checkPyros() {
+bool Brain::checkPyros() {
+	bool fired = false;
 	for(int i = 0; i < NUMBER_OF_PYROS; i++) {
-		Pyro pyro = Configuration::getPyro(i);
+		Pyro pyro = *Configuration::getPyro(i);
 		bool caseOneMet = checkPyroCase(pyro, 1);
 		bool caseTwoMet = checkPyroCase(pyro, 2);
 		
@@ -234,14 +251,16 @@ void Brain::checkPyros() {
 		
 		if(counting[i] == true) {
 			if(delayPyroCharge[i] == 0) {
-				LOGGER::EVENT("FIRE PYRO " + std::to_string(i));
+				Logger::Event("FIRE PYRO " + std::to_string(i));
 				sensor->firePyro(i); //FIRE THE PYRO
+				fired = true;
 			}
 			else {
 				delayPyroCharge[i]--; //waaaaaaaait
 			}
 		}
-	}	
+	}
+	return fired;	
 }
 
 		
@@ -255,17 +274,17 @@ bool Brain::checkPyroCase(Pyro pyro, int caseN ) {
 	else {
 		config = pyro.configTwo;
 		value = pyro.valueTwo;
-	
 	}
+	float acceleration, altitude;
 	switch(config) {
 	case VELOCITY_ABOVE:
-		//no velocity variable
+		//no velocity variable TODO
 		break;	
 	case VELOCITY_BELOW:
-		//no velocity variable
+		//no velocity variable TODO
 		break;	
 	case ACCELERATION_BELOW:
-		float acceleration = rocket->getAcceleration().magnitude();
+		acceleration = rocket->getAcceleration().magnitude();
 		if (acceleration < value ) {
 			return true;
 		}
@@ -273,7 +292,7 @@ bool Brain::checkPyroCase(Pyro pyro, int caseN ) {
 			return false;
 		}
 	case ACCELERATION_ABOVE:
-		float altitude = rocket->getDisplacement().dimension[3];
+		altitude = rocket->getDisplacement().magnitude();
 		if( altitude > value ) {
 			return true;
 		} 
@@ -281,7 +300,7 @@ bool Brain::checkPyroCase(Pyro pyro, int caseN ) {
 			return false;
 		}
 	case ALTITUDE_ABOVE:
-		float altitude = rocket->getDisplacement().dimension[3];
+		altitude = rocket->getDisplacement().dimension[3];
 		if( altitude > value ) {
 			return true;
 		} 
@@ -289,7 +308,7 @@ bool Brain::checkPyroCase(Pyro pyro, int caseN ) {
 			return false;
 		}
 	case ALTITUDE_BELOW:
-		float altitude = rocket->getDisplacement().dimension[3];
+		altitude = rocket->getDisplacement().dimension[3];
 		if( altitude < value ) {
 			return true;
 		} 
@@ -302,4 +321,18 @@ bool Brain::checkPyroCase(Pyro pyro, int caseN ) {
 	default:
 		return false;
 	}
+	return false;
+}
+
+bool Brain::checkLanded() {
+	if(rocket->getDisplacement().dimension[3] < LANDED_ALTITUDE) {
+		landedCountdown--;
+		if(landedCountdown < 0) {
+			return true;
+		}
+	}
+	else {
+		landedCountdown = landedCountdownStart;
+	}
+	return false;
 }

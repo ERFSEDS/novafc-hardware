@@ -1,8 +1,14 @@
 #include "cartesian.h"
+#include "Configuration.hpp"
+#include "RocketData.h"
+#include "SensorValues.h"
+#include "StateMachine.hpp"
 
 #define APOGEE_DESCENT_DETECT_TIME 5
 #define IGNITION_DETECT_TIME 0.25
 #define CUTOFF_DETECT_TIME 0.25
+#define LANDED_DETECTION_TIME 10
+#define LANDED_ALTITUDE 5
 
 class Brain {
 	public:
@@ -21,10 +27,13 @@ class Brain {
 		void checkApogee();
 		
 		//checks and if neccessary fires pyros
-		void checkPyros();
+		bool checkPyros();
+		
+		//check if landed
+		bool checkLanded();
 		
 		//checks a pyro case
-		bool checkPyroCase(PyroConfig config, float value );
+		bool checkPyroCase(Pyro pyro, int casen );
 		
 		//handles all state changes
 		void hangleStateChange();
@@ -47,8 +56,11 @@ class Brain {
 		int ignitionCountdown;
 		int ignitionCountdownStart;
 		
-		SensorValues * sensor;
-		RocketData * rocket;
+		int landedCountdown;
+		int landedCountdownStart;
+		
+		static SensorValues * sensor;
+		static RocketData * rocket;
 		State lastState;
 };
 
