@@ -8,6 +8,7 @@
 #include "SensorValues.h"
 #include <cmath>
 
+
 SensorValues *SensorValues::instance = 0;
 SensorValues *sv = sv-> getInstance();
 
