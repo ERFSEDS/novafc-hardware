@@ -29,6 +29,7 @@ void Brain::check() {
 		break;
 	case STAGE1COAST:
 		pyroFired = checkPyros();
+		checkApogee();
 		if(Configuration::getTwoStageRocket() ) {
 			if(motorIgnition()) {
 				StateMachine::changeState(STAGE1COAST);	
@@ -51,14 +52,19 @@ void Brain::check() {
 		if(pyroFired) {
 			StateMachine::changeState(DROGUEPAR);
 		}
+		checkApogee();
 		break;
 	case DROGUEPAR:
 		pyroFired = checkPyros();
+		checkApogee();
 		if(pyroFired) {
 			StateMachine::changeState(MAINPAR);
 		}
 	case MAINPAR:
-		//CHeck to see if we landed
+		checkApogee();
+		if(checkLanded()) {
+			StateMachine::changeState(LANDED);
+		}
 		break;
 	case LANDED:
 		//write data then switch to reset mode
