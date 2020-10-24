@@ -130,10 +130,6 @@ Wire Wire Line
 	8100 1250 8900 1250
 Text Label 8800 950  2    50   ~ 0
 SCLK
-Text Label 8800 1050 2    50   ~ 0
-MOSI
-Text Label 8800 1150 2    50   ~ 0
-MISO
 Text Label 8800 1250 2    50   ~ 0
 BAROMETER_CS
 Wire Wire Line
@@ -182,10 +178,6 @@ Wire Wire Line
 	8900 2000 8100 2000
 Text Label 8800 1600 2    50   ~ 0
 SCLK
-Text Label 8800 1700 2    50   ~ 0
-MOSI
-Text Label 8800 1800 2    50   ~ 0
-MISO
 Text Label 8800 1900 2    50   ~ 0
 GYRO_ACCEL_CS
 Text Label 8800 2000 2    50   ~ 0
@@ -434,10 +426,6 @@ Wire Notes Line
 	3400 1700 3400 5350
 Text Label 8800 2650 2    50   ~ 0
 SCLK
-Text Label 8800 2550 2    50   ~ 0
-MOSI
-Text Label 8800 2450 2    50   ~ 0
-MISO
 Text Label 8800 2350 2    50   ~ 0
 ACCELEROMETER_CS
 Wire Wire Line
@@ -511,45 +499,18 @@ Wire Notes Line
 	750  5950 3000 5950
 Wire Notes Line
 	3000 5950 3000 4900
-NoConn ~ 8100 4450
-$Sheet
-S 8900 3200 1250 500 
-U 5F3B5BD1
-F0 "MicroSD" 50
-F1 "../Common_Modules/FHSD/Flash SD Board/Micro SD.sch" 20
-F2 "MISO" I L 8900 3300 50 
-F3 "MOSI" I L 8900 3400 50 
-F4 "SCLK" I L 8900 3500 50 
-F5 "CS_SD" I L 8900 3600 50 
-$EndSheet
-$Sheet
-S 8900 3850 1250 700 
-U 5F3B5C2E
-F0 "FlashChip" 50
-F1 "../Common_Modules/FHSD/Flash SD Board/Flash Chip.sch" 20
-F2 "SCLK" I L 8900 3950 50 
-F3 "MOSI" I L 8900 4050 50 
-F4 "MISO" I L 8900 4150 50 
-F5 "CS_FLASH" I L 8900 4250 50 
-F6 "HOLD" I L 8900 4350 50 
-F7 "WP" I L 8900 4450 50 
-$EndSheet
 Text Notes 8900 3100 0    79   ~ 0
 SENSORS\n\n
 Text Notes 8750 4800 0    79   ~ 0
 DATA LOGGING\n
 Text Label 8800 4250 2    50   ~ 0
-FLASH_CS
+IO2
 Text Label 8800 3600 2    50   ~ 0
 SD_CS
 Text Label 8800 4450 2    50   ~ 0
-WP
+CS_FLASH
 Text Label 8800 4350 2    50   ~ 0
-HOLD
-Text Label 8800 4150 2    50   ~ 0
-MISO
-Text Label 8800 4050 2    50   ~ 0
-MOSI
+IO3
 Text Label 8800 3950 2    50   ~ 0
 SCLK
 Text Label 8800 3500 2    50   ~ 0
@@ -644,7 +605,6 @@ F19 "18" I R 2150 6650 50
 F20 "19" I R 2150 6550 50 
 F21 "20" I R 2150 6450 50 
 $EndSheet
-NoConn ~ 8100 4350
 Wire Notes Line
 	8000 3050 8000 4650
 Wire Notes Line
@@ -712,4 +672,42 @@ NoConn ~ 10150 2350
 NoConn ~ 10150 2450
 Text Notes 3350 6000 0    197  ~ 39
 Nova Flight Computer: Rev 1
+Text Label 8800 4150 2    50   ~ 0
+IO1
+Text Label 8800 4050 2    50   ~ 0
+IO0
+$Sheet
+S 8900 3850 1250 700 
+U 5F3B5C2E
+F0 "FlashChip" 50
+F1 "../Common_Modules/FHSD/Flash SD Board/Flash Chip.sch" 20
+F2 "SCLK" I L 8900 3950 50 
+F3 "IO0" I L 8900 4050 50 
+F4 "IO1" I L 8900 4150 50 
+F5 "CS_FLASH" I L 8900 4450 50 
+F6 "IO3" I L 8900 4350 50 
+F7 "IO2" I L 8900 4250 50 
+$EndSheet
+$Sheet
+S 8900 3200 1250 500 
+U 5F3B5BD1
+F0 "MicroSD" 50
+F1 "../Common_Modules/FHSD/Flash SD Board/Micro SD.sch" 20
+F2 "MISO" I L 8900 3300 50 
+F3 "MOSI" I L 8900 3400 50 
+F4 "SCLK" I L 8900 3500 50 
+F5 "CS_SD" I L 8900 3600 50 
+$EndSheet
+Text Label 8800 2550 2    50   ~ 0
+MOSI
+Text Label 8800 2450 2    50   ~ 0
+MISO
+Text Label 8800 1700 2    50   ~ 0
+MOSI
+Text Label 8800 1800 2    50   ~ 0
+MISO
+Text Label 8800 1150 2    50   ~ 0
+MISO
+Text Label 8800 1050 2    50   ~ 0
+MOSI
 $EndSCHEMATC

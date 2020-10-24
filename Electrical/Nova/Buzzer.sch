@@ -14,12 +14,12 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Device:Buzzer LS301
+L Device:Buzzer LS?
 U 1 1 5F404605
 P 5750 3450
-AR Path="/5F404605" Ref="LS301"  Part="1" 
-AR Path="/5F36176A/5F404605" Ref="LS301"  Part="1" 
-F 0 "LS301" H 5880 3496 50  0000 L CNN
+AR Path="/5F404605" Ref="LS?"  Part="1" 
+AR Path="/5F36176A/5F404605" Ref="LS1"  Part="1" 
+F 0 "LS1" H 5880 3496 50  0000 L CNN
 F 1 "PS1440P02BT" H 5880 3405 50  0000 L CNN
 F 2 "Transducer:BUZZER_PS1440P02BT" H 5750 3450 50  0001 L BNN
 F 3 "https://product.tdk.com/info/en/catalog/datasheets/piezoelectronic_buzzer_ps_en.pdf" H 5750 3450 50  0001 L BNN
@@ -28,10 +28,10 @@ F 4 "IPC-7251" H 5750 3450 50  0001 L BNN "Field4"
 	0    1    1    0   
 $EndComp
 $Comp
-L power:GND #PWR0301
+L power:GND #PWR02
 U 1 1 5F407098
 P 5250 3350
-F 0 "#PWR0301" H 5250 3100 50  0001 C CNN
+F 0 "#PWR02" H 5250 3100 50  0001 C CNN
 F 1 "GND" V 5255 3222 50  0000 R CNN
 F 2 "" H 5250 3350 50  0001 C CNN
 F 3 "" H 5250 3350 50  0001 C CNN

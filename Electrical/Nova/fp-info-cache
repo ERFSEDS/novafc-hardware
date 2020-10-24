@@ -1,4 +1,4 @@
-18686085533659548
+18681338462372906
 Accelerometer_Breakout
 4_Pin_Header
 
@@ -6194,6 +6194,13 @@ banana jack horizontal
 0
 4
 1
+Connector
+Connector_Mbed_LPC1768
+
+
+0
+40
+40
 Connector
 Connector_SFP_and_Cage
 https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2227302&DocType=Customer+Drawing&DocLang=English
@@ -19249,6 +19256,13 @@ connector Molex Mini-Fit_Jr top entryplastic_peg
 0
 24
 24
+Connector_Molex
+Molex_Mini-Fit_Jr_0039303045_User_Created
+
+
+0
+4
+4
 Connector_Molex
 Molex_Mini-Fit_Sr_42819-22XX_1x02_P10.00mm_Vertical
 Molex Mini-Fit Sr. Power Connectors, 42819-22XX, 2 Pins per row (http://www.molex.com/pdm_docs/sd/428192214_sd.pdf), generated with kicad-footprint-generator
@@ -50644,13 +50658,13 @@ One digit LED 7 segment SA39-11 SC39-11 SA39-12 SC39-12
 0
 10
 10
-FCSD
+FHSD
 W25N512GVPIT
 
 
 0
-9
-9
+8
+8
 Ferrite_THT
 LairdTech_28C0236-0JW-10
 Ferrite, vertical, LairdTech 28C0236-0JW-10, https://assets.lairdtech.com/home/brandworld/files/28C0236-0JW-10.pdf, JW Miller core https://www.bourns.com/products/magnetic-products/j.w.-miller-through-hole-ferrite-beads-emi-filters
@@ -58086,20 +58100,6 @@ capacitor tantalum
 2
 2
 NOVA MCU (STM)
-C_0603_1608Metric
-Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
-capacitor
-0
-2
-2
-NOVA MCU (STM)
-C_0805_2012Metric
-Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator
-capacitor
-0
-2
-2
-NOVA MCU (STM)
 C_0805_2012Metric_Pad1.15x1.40mm_HandSolder
 Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator
 capacitor handsolder
@@ -58162,20 +58162,6 @@ Through hole pin header THT 1x12 2.54mm single row
 0
 12
 12
-NOVA MCU (STM)
-R_0603_1608Metric
-Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
-resistor
-0
-2
-2
-NOVA MCU (STM)
-R_0805_2012Metric
-Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator
-resistor
-0
-2
-2
 NOVA MCU (STM)
 R_0805_2012Metric_Pad1.15x1.40mm_HandSolder
 Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator
@@ -80919,13 +80905,6 @@ BUZZER_PS1440P02BT
 0
 2
 2
-Transducer
-SOP65P210X110-6N
-SOT363
-Integrated Circuit
-0
-6
-6
 Transformer_SMD
 Pulse_P0926NL
 SMT Gate Drive Transformer, 1:1:1, 8.0x6.3x5.3mm (https://productfinder.pulseeng.com/products/datasheets/SPM2007_61.pdf)

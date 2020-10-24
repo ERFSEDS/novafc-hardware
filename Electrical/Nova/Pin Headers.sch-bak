@@ -14,10 +14,10 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Connector_Generic:Conn_02x10_Counter_Clockwise J1601
+L Connector_Generic:Conn_02x10_Counter_Clockwise J5
 U 1 1 5F570039
 P 6300 3700
-F 0 "J1601" H 6350 4317 50  0000 C CNN
+F 0 "J5" H 6350 4317 50  0000 C CNN
 F 1 "Conn_02x10_Counter_Clockwise" H 6350 4226 50  0000 C CNN
 F 2 "Connector_PinSocket_2.54mm:PinSocket_2x10_P2.54mm_Vertical" H 6300 3700 50  0001 C CNN
 F 3 "~" H 6300 3700 50  0001 C CNN
