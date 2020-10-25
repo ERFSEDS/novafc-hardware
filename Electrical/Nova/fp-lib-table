@@ -7,4 +7,5 @@
   (lib (name Transducer)(type KiCad)(uri "${KIPRJMOD}/../Common_Modules/Transducer/Footprint Library/Transducer.pretty")(options "")(descr ""))
   (lib (name Gyroscope)(type KiCad)(uri ${KIPRJMOD}/../Common_Modules/Gyroscope/footprints/Gyroscope.pretty)(options "")(descr ""))
   (lib (name FHSD)(type KiCad)(uri "${KIPRJMOD}/../Common_Modules/FHSD/Footprint Library/FHSD.pretty")(options "")(descr ""))
+  (lib (name "Footrpint Library")(type KiCad)(uri "C:/Users/Penguin/Documents/GitHub/Nova_Flight_Computer/Electrical/Common_Modules/FTDI/Footrpint Library")(options "")(descr ""))
 )

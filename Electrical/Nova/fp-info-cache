@@ -1,4 +1,4 @@
-18681338462372906
+18682942112674628
 Accelerometer_Breakout
 4_Pin_Header
 
@@ -50826,6 +50826,13 @@ emi filter
 0
 5
 5
+Footrpint Library
+SOP65P780X200-28N
+
+
+0
+28
+28
 Fuse
 Fuse_0201_0603Metric
 Fuse SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator
