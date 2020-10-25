@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
-Sheet 1 21
+Sheet 1 22
 Title ""
 Date ""
 Rev ""
@@ -620,8 +620,6 @@ Wire Notes Line
 Wire Notes Line
 	8000 3050 10250 3050
 Wire Notes Line
-	10250 4900 10250 5650
-Wire Notes Line
 	750  6200 3000 6200
 Wire Notes Line
 	750  6200 750  7600
@@ -650,12 +648,10 @@ Wire Wire Line
 Connection ~ 2150 2450
 Wire Wire Line
 	2150 2450 2900 2450
-Wire Notes Line
-	8000 5650 8000 4900
-Text Notes 8750 5800 0    79   ~ 0
+Text Notes 8750 6300 0    79   ~ 0
 POWER SUPPLY\n
 $Sheet
-S 8700 5050 1000 500 
+S 8900 5050 1250 550 
 U 5F3B0B4B
 F0 "PowerSupply" 50
 F1 "../Common_Modules/PowerSupply/Voltage Regulation Board/VoltageRegulators.sch" 20
@@ -663,7 +659,7 @@ $EndSheet
 Wire Notes Line
 	8000 4900 10250 4900
 Wire Notes Line
-	8000 5650 10250 5650
+	8000 6150 10250 6150
 NoConn ~ 10150 1600
 NoConn ~ 10150 1700
 NoConn ~ 10150 1800
@@ -710,4 +706,17 @@ Text Label 8800 1150 2    50   ~ 0
 MISO
 Text Label 8800 1050 2    50   ~ 0
 MOSI
+$Sheet
+S 8900 5800 1250 200 
+U 5F964042
+F0 "Voltage Monitor" 50
+F1 "Voltage Monitor.sch" 50
+F2 "MonitorPin" I L 8900 5900 50 
+$EndSheet
+Wire Notes Line
+	10250 4900 10250 6150
+Wire Notes Line
+	8000 4900 8000 6150
+Wire Wire Line
+	8900 5900 8100 5900
 $EndSCHEMATC

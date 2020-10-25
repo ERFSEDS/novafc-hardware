@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
-Sheet 1 21
+Sheet 1 22
 Title ""
 Date ""
 Rev ""
@@ -499,19 +499,18 @@ Wire Notes Line
 	750  5950 3000 5950
 Wire Notes Line
 	3000 5950 3000 4900
-NoConn ~ 8100 4450
 Text Notes 8900 3100 0    79   ~ 0
 SENSORS\n\n
 Text Notes 8750 4800 0    79   ~ 0
 DATA LOGGING\n
 Text Label 8800 4250 2    50   ~ 0
-FLASH_CS
+IO2
 Text Label 8800 3600 2    50   ~ 0
 SD_CS
 Text Label 8800 4450 2    50   ~ 0
-WP
+CS_FLASH
 Text Label 8800 4350 2    50   ~ 0
-HOLD
+IO3
 Text Label 8800 3950 2    50   ~ 0
 SCLK
 Text Label 8800 3500 2    50   ~ 0
@@ -606,7 +605,6 @@ F19 "18" I R 2150 6650 50
 F20 "19" I R 2150 6550 50 
 F21 "20" I R 2150 6450 50 
 $EndSheet
-NoConn ~ 8100 4350
 Wire Notes Line
 	8000 3050 8000 4650
 Wire Notes Line
@@ -621,8 +619,6 @@ Wire Notes Line
 	8000 4650 10250 4650
 Wire Notes Line
 	8000 3050 10250 3050
-Wire Notes Line
-	10250 4900 10250 5650
 Wire Notes Line
 	750  6200 3000 6200
 Wire Notes Line
@@ -652,12 +648,10 @@ Wire Wire Line
 Connection ~ 2150 2450
 Wire Wire Line
 	2150 2450 2900 2450
-Wire Notes Line
-	8000 5650 8000 4900
-Text Notes 8750 5800 0    79   ~ 0
+Text Notes 8750 6300 0    79   ~ 0
 POWER SUPPLY\n
 $Sheet
-S 8700 5050 1000 500 
+S 8900 5050 1250 550 
 U 5F3B0B4B
 F0 "PowerSupply" 50
 F1 "../Common_Modules/PowerSupply/Voltage Regulation Board/VoltageRegulators.sch" 20
@@ -665,7 +659,7 @@ $EndSheet
 Wire Notes Line
 	8000 4900 10250 4900
 Wire Notes Line
-	8000 5650 10250 5650
+	8000 6150 10250 6150
 NoConn ~ 10150 1600
 NoConn ~ 10150 1700
 NoConn ~ 10150 1800
@@ -675,20 +669,20 @@ NoConn ~ 10150 2450
 Text Notes 3350 6000 0    197  ~ 39
 Nova Flight Computer: Rev 1
 Text Label 8800 4150 2    50   ~ 0
-MISO
+IO1
 Text Label 8800 4050 2    50   ~ 0
-MOSI
+IO0
 $Sheet
 S 8900 3850 1250 700 
 U 5F3B5C2E
 F0 "FlashChip" 50
 F1 "../Common_Modules/FHSD/Flash SD Board/Flash Chip.sch" 20
 F2 "SCLK" I L 8900 3950 50 
-F3 "MOSI" I L 8900 4050 50 
-F4 "MISO" I L 8900 4150 50 
-F5 "CS_FLASH" I L 8900 4250 50 
-F6 "HOLD" I L 8900 4350 50 
-F7 "WP" I L 8900 4450 50 
+F3 "IO0" I L 8900 4050 50 
+F4 "IO1" I L 8900 4150 50 
+F5 "CS_FLASH" I L 8900 4450 50 
+F6 "IO3" I L 8900 4350 50 
+F7 "IO2" I L 8900 4250 50 
 $EndSheet
 $Sheet
 S 8900 3200 1250 500 
@@ -712,4 +706,17 @@ Text Label 8800 1150 2    50   ~ 0
 MISO
 Text Label 8800 1050 2    50   ~ 0
 MOSI
+$Sheet
+S 8900 5800 1250 200 
+U 5F964042
+F0 "Voltage Monitor" 50
+F1 "Voltage Monitor.sch" 50
+F2 "MonitorPin" I L 8900 5900 50 
+$EndSheet
+Wire Notes Line
+	10250 4900 10250 6150
+Wire Notes Line
+	8000 4900 8000 6150
+Wire Wire Line
+	8900 5900 8100 5900
 $EndSCHEMATC
