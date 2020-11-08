@@ -12,4 +12,5 @@
   (lib (name FTDI)(type Legacy)(uri C:/Users/surfs/OneDrive/Desktop/CAD_N_stuff/FTDI/symbols/FT234XD-T.lib)(options "")(descr ""))
   (lib (name FT232RL-REEL)(type Legacy)(uri "C:/Users/Penguin/Documents/GitHub/Nova_Flight_Computer/Electrical/Common_Modules/FTDI/Symbol Library/FT232RL-REEL.lib")(options "")(descr ""))
   (lib (name AZ1117EH-3.3TRG1)(type Legacy)(uri "C:/Users/Penguin/Documents/GitHub/Nova_Flight_Computer/Electrical/Common_Modules/PowerSupply/Symbol Library/AZ1117EH-3.3TRG1.lib")(options "")(descr ""))
+  (lib (name Nova-rescue)(type Legacy)(uri ${KIPRJMOD}/Nova-rescue.lib)(options "")(descr ""))
 )
