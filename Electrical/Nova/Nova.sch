@@ -414,8 +414,6 @@ Text Label 8800 3600 2    50   ~ 0
 SD_CS
 Text Label 8800 4450 2    50   ~ 0
 FLASH_CS
-Text Label 8800 3950 2    50   ~ 0
-SCLK
 Text Label 8800 3500 2    50   ~ 0
 SCLK
 Text Label 8800 3400 2    50   ~ 0
@@ -871,10 +869,6 @@ F5 "MISO" I L 8900 4150 50
 F6 "HOLD" I L 8900 4250 50 
 F7 "WP" I L 8900 4350 50 
 $EndSheet
-Text Label 8800 4150 2    50   ~ 0
-MISO
-Text Label 8800 4050 2    50   ~ 0
-MOSI
 $Comp
 L power:GND #PWR0122
 U 1 1 5FA3956D
@@ -907,4 +901,17 @@ Wire Wire Line
 	4300 3750 3500 3750
 Text Label 3800 3750 0    50   ~ 0
 VMonitorPin
+Text Label 8500 3950 0    50   ~ 0
+H_SCLK
+Text Label 8500 4050 0    50   ~ 0
+H_MOSI
+Text Label 8500 4150 0    50   ~ 0
+H_MISO
+NoConn ~ 4300 4850
+NoConn ~ 4300 4950
+NoConn ~ 4300 5050
+Text Label 4200 5150 2    50   ~ 0
+FLASH_CS
+Wire Wire Line
+	4300 5150 3500 5150
 $EndSCHEMATC
