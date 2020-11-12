@@ -9,4 +9,5 @@
   (lib (name FHSD)(type KiCad)(uri "${KIPRJMOD}/../Common_Modules/FHSD/Footprint Library/FHSD.pretty")(options "")(descr ""))
   (lib (name "Footrpint Library")(type KiCad)(uri "C:/Users/Penguin/Documents/GitHub/Nova_Flight_Computer/Electrical/Common_Modules/FTDI/Footrpint Library")(options "")(descr ""))
   (lib (name logo)(type KiCad)(uri C:/Users/Penguin/Documents/GitHub/Nova_Flight_Computer/Electrical/logo.pretty)(options "")(descr ""))
+  (lib (name Rev1Logo)(type KiCad)(uri ${KIPRJMOD}/Rev1Logo.pretty)(options "")(descr ""))
 )
