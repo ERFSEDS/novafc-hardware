@@ -6,4 +6,5 @@ set(Rocket_testing_dir ${CMAKE_CURRENT_SOURCE_DIR}/testing)
 add_subdirectory(Logger)
 add_subdirectory(configuration)
 add_subdirectory(StateMachine)
+add_subdirectory(SensorValues)
 
