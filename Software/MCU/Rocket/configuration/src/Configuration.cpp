@@ -292,14 +292,14 @@ void Configuration::setDroguePyroChannel(int channel) {
 }
 
 int Configuration::getUpperTimeStepms() {
-	Configuration::GET_INSTANCE().getUpperTimeStepms_I();
+	return Configuration::GET_INSTANCE().getUpperTimeStepms_I();
 }
 void Configuration::setUpperTimeStepms(int newTimeStep) {
 	Configuration::GET_INSTANCE().setUpperTimeStepms_I(newTimeStep);
 }
 		
 int Configuration::getLowerTimeStepms() {
-	Configuration::GET_INSTANCE().getLowerTimeStepms_I();
+	return Configuration::GET_INSTANCE().getLowerTimeStepms_I();
 }
 void Configuration::setLowerTimeStepms(int newTimeStep) {
 	Configuration::GET_INSTANCE().setLowerTimeStepms_I(newTimeStep);

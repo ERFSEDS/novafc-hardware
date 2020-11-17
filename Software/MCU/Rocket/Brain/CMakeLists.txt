@@ -1,18 +1,19 @@
 cmake_minimum_required(VERSION 3.16)
 enable_testing()
 
-project( SensorValues )
+project( Brain )
 
-set("SensorValues_sources" ${CMAKE_CURRENT_SOURCE_DIR}/src/SensorValues.cpp)
-set("SensorValues_include" ${CMAKE_CURRENT_SOURCE_DIR}/Include)
+set("Brain_sources" ${CMAKE_CURRENT_SOURCE_DIR}/src/Brain.cpp)
+set("Brain_include" ${CMAKE_CURRENT_SOURCE_DIR}/Include)
+set("Brain_dependencies" "SensorValues" "Logger" "Configuration" "RocketData" "State_Machine")
 
-add_library("${PROJECT_NAME}" ${SensorValues_sources})
+add_library("${PROJECT_NAME}" ${Brain_sources})
 
-target_include_directories("${PROJECT_NAME}" PUBLIC ${SensorValues_include})
-
+target_include_directories("${PROJECT_NAME}" PUBLIC ${Brain_include})
+target_link_libraries("${PROJECT_NAME}" PRIVATE ${Brain_dependencies})
 ########################################################################
 
-function(create_SensorValues_test)
+function(create_Brain_test)
     
     #parse all inputs namely NAME, SOURCE, and PASS_REGEX
     #Other two are not used, just needed for function call
@@ -45,8 +46,7 @@ function(create_SensorValues_test)
     endif()
 endfunction()
 
-#create_SensorValues_test(
-#	NAME "Sensor_Values_Test"
-#	SOURCE "testing/SensorValuesTester.cpp"
-#)
-
+# create_RocketData_test(
+# 	NAME "Rocket_Data_Test"
+# 	SOURCE "testing/RocketDataTester.cpp"
+# )

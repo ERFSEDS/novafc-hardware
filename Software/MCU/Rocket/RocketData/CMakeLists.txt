@@ -5,11 +5,12 @@ project( RocketData )
 
 set("RocketData_sources" ${CMAKE_CURRENT_SOURCE_DIR}/src/RocketData.cpp)
 set("RocketData_include" ${CMAKE_CURRENT_SOURCE_DIR}/Include)
+set("RocketData_dependencies" "SensorValues" "Logger" "Configuration")
 
 add_library("${PROJECT_NAME}" ${RocketData_sources})
 
 target_include_directories("${PROJECT_NAME}" PUBLIC ${RocketData_include})
-target_link_libraries(RocketData, SensorData)
+target_link_libraries("${PROJECT_NAME}" PRIVATE ${RocketData_dependencies})
 ########################################################################
 
 function(create_RocketData_test)
@@ -45,7 +46,7 @@ function(create_RocketData_test)
     endif()
 endfunction()
 
-create_RocketData_test(
-	NAME "Rocket_Data_Test"
-	SOURCE "testing/RocketDataTester.cpp"
-)
+# create_RocketData_test(
+# 	NAME "Rocket_Data_Test"
+# 	SOURCE "testing/RocketDataTester.cpp"
+# )

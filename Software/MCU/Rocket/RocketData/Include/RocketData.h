@@ -3,6 +3,7 @@
  * Description: This class is to process incoming sensor values
  * Author: Matthew Gasper
  */
+
 #pragma once
 #include "cartesian.h"
 
