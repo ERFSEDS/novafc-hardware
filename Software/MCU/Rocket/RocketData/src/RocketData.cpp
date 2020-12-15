@@ -7,24 +7,31 @@
 #include "Configuration.hpp"
 #include "SensorValues.h"
 #include <cmath>
+RocketData RocketData::rocketData;
 
-
-SensorValues *SensorValues::instance = 0;
-SensorValues *sv = sv-> getInstance();
+RocketData::RocketData() : sensors(SensorValues::getInstance()){
+	rocketDisplacement = {0,0,0};
+	rocketAngle = {0,0,0};
+}
+void RocketData::update() {
+	updateData();
+	updateDisplacement();
+}
 
 void RocketData::updateDisplacement(){
-    //displacement.x = ;
-    displacement.dimension[1] = ((pow(sPressure/cPressure,1/5.257)-1)*(temperature+273.15))/0.0065;    //Hypsometric Formula
-    displacement.dimension[1] = cVelocity * sin(complementaryFilter(acceleration[0].dimension[1], angularVelocity[0].dimension[1], 1)); //using Complmentary Filter to calculate Altitude
-    //displacement.z = ;
+	deltaAngle = angularVelocity[0] * deltaTmS;
+	globalAngle = globalAngle + 
 }
 
 void RocketData::updateData(){
-    acceleration[0] = sv-> getAcceleration();
-    angularVelocity[0] = sv-> getAngularVelocity();
-    cPressure = sv-> getCPressure();
-    sPressure = sv-> getSPressure();
-    temperature = sv-> getTemperature();
+	acceleration[1] = acceleration[0];
+	angularVelocity[1] = angularVelocity[0];
+	acceleration[0] = sensors.getAcceleration();
+	angularVelocity[0] = sensors.getAngularVelocity();
+    cPressure = sensors.getCPressure();
+    sPressure = sensors.getSPressure();
+    temperature = sensors.getTemperature();
+    deltaTms = Configuration::getUpperTimeStepms();
 }
 
 float RocketData::gyro_int(int axis){
@@ -44,6 +51,7 @@ float RocketData::gyro_int(int axis){
 float RocketData::accel_angle(int axis){
     float accelAngle = 0.0;
     accelAngle = accelAngle*180/3.14159;//assuming acc is in g's
+    return accelAngle;
 }
 
 //In its current state this will only be able to calculate x and y angles

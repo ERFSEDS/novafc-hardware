@@ -3,7 +3,7 @@ enable_testing()
 project("Rocket Layer")
 
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+add_subdirectory(common)
 add_subdirectory(Logger)
 add_subdirectory(SensorValues)
 add_subdirectory(configuration)

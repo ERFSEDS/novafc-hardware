@@ -3,8 +3,8 @@
 #include "Logger.hpp"
 
 //Needed Instances
-SensorValues * Brain::sensor = SensorValues::getInstance();
-RocketData * Brain::rocket = RocketData::getInstance();
+SensorValues& Brain::sensor = SensorValues::getInstance();
+RocketData& Brain::rocket = RocketData::getInstance();
 void Brain::check() {
 	bool stateChange = StateMachine::getCurrentState() == lastState;
 	hangleStateChange();
@@ -167,7 +167,7 @@ void Brain::disarm() {
 }
 
 bool Brain::motorIgnition() {
-	float acceleration = rocket->getAcceleration().magnitude();
+	float acceleration = rocket.getAcceleration().magnitude();
 	if (acceleration > ignitionThreshold) {
 		ignitionCountdown--;
 		if(ignitionCountdown) {
@@ -181,7 +181,7 @@ bool Brain::motorIgnition() {
 
 }
 bool Brain::motorCutoff() {
-	float acceleration = rocket->getAcceleration().magnitude();
+	float acceleration = rocket.getAcceleration().magnitude();
 	if (acceleration < cutoffThreshold) {
 		cutoffCountdown--;
 		if(cutoffCountdown) {
@@ -196,7 +196,7 @@ bool Brain::motorCutoff() {
 
 
 void Brain::checkApogee() {
-	float currentAltitude = rocket->getDisplacement().dimension[3];
+	float currentAltitude = rocket.getDisplacement().dimension[3];
 	if( currentAltitude <= pastAltitude ) {
 		descentTimeSteps++;
 		if(descentTimeSteps >= requiredTimeSteps) {
@@ -258,7 +258,7 @@ bool Brain::checkPyros() {
 		if(counting[i] == true) {
 			if(delayPyroCharge[i] == 0) {
 				Logger::Event("FIRE PYRO " + std::to_string(i));
-				sensor->firePyro(i); //FIRE THE PYRO
+				sensor.firePyro(i); //FIRE THE PYRO
 				fired = true;
 			}
 			else {
@@ -290,7 +290,7 @@ bool Brain::checkPyroCase(Pyro pyro, int caseN ) {
 		//no velocity variable TODO
 		break;	
 	case ACCELERATION_BELOW:
-		acceleration = rocket->getAcceleration().magnitude();
+		acceleration = rocket.getAcceleration().magnitude();
 		if (acceleration < value ) {
 			return true;
 		}
@@ -298,7 +298,7 @@ bool Brain::checkPyroCase(Pyro pyro, int caseN ) {
 			return false;
 		}
 	case ACCELERATION_ABOVE:
-		altitude = rocket->getDisplacement().magnitude();
+		altitude = rocket.getDisplacement().magnitude();
 		if( altitude > value ) {
 			return true;
 		} 
@@ -306,7 +306,7 @@ bool Brain::checkPyroCase(Pyro pyro, int caseN ) {
 			return false;
 		}
 	case ALTITUDE_ABOVE:
-		altitude = rocket->getDisplacement().dimension[3];
+		altitude = rocket.getDisplacement().dimension[3];
 		if( altitude > value ) {
 			return true;
 		} 
@@ -314,7 +314,7 @@ bool Brain::checkPyroCase(Pyro pyro, int caseN ) {
 			return false;
 		}
 	case ALTITUDE_BELOW:
-		altitude = rocket->getDisplacement().dimension[3];
+		altitude = rocket.getDisplacement().dimension[3];
 		if( altitude < value ) {
 			return true;
 		} 
@@ -331,7 +331,7 @@ bool Brain::checkPyroCase(Pyro pyro, int caseN ) {
 }
 
 bool Brain::checkLanded() {
-	if(rocket->getDisplacement().dimension[3] < LANDED_ALTITUDE) {
+	if(rocket.getDisplacement().dimension[3] < LANDED_ALTITUDE) {
 		landedCountdown--;
 		if(landedCountdown < 0) {
 			return true;

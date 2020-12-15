@@ -6,28 +6,33 @@
 
 #pragma once
 #include "cartesian.h"
+#include "SensorValues.h"
 
 class RocketData{
     private:
-        static RocketData * rocketD;
+        static RocketData rocketData;
 
         cartesian acceleration[2], angularVelocity[2]; //Raw Sensor Data
-        cartesian filteredGyroAngle[2], filteredAccAngle[2];
         float cPressure, sPressure, temperature; //Raw Sensor Data
         float cVelocity;
-        cartesian displacement; //Processed Data
+        cartesian globalPosition, globalAngle, globalVelocity; //Processed Data
+        SensorValues& sensors;
 
     protected:
-        RocketData(){}
+        RocketData();
         ~RocketData(){}
 
     public:
         RocketData(RocketData &other) = delete;
         void operator =(const RocketData &) = delete;
-        static RocketData *getInstance(){return rocketD;}
+        static RocketData &getInstance(){return rocketData;}
 
         void updateData();  //Updates data from Sensor Values
         void updateDisplacement(); //Processes pressure & temp into altitude
+        void update()
+        
+        float getAltitudeFromPressure();
+        float getAltitudeFromPressure();
         float complementaryFilter(float acc, float gyro, int axis);
         float gyro_int(int axis);
         float accel_angle(int axis);

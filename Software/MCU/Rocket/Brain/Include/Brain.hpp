@@ -59,8 +59,8 @@ class Brain {
 		int landedCountdown;
 		int landedCountdownStart;
 		
-		static SensorValues * sensor;
-		static RocketData * rocket;
+		static SensorValues& sensor;
+		static RocketData& rocket;
 		State lastState;
 };
 

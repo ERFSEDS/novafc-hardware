@@ -22,13 +22,13 @@ float Configuration::getSafetyLockValue_I() {
 void Configuration::setSafetyLockValue_I(float safetyLockValue) {
 	this->safetyLockValue = safetyLockValue;
 }
-void Configuration::setPyro_I(int pyroNum, Pyro& pyro) {
+void Configuration::setPyro_I(int pyroNum, Pyro pyro) {
 	if( (pyroNum<0) || (pyroNum>=NUMBER_OF_PYROS) ) {
 		return;
 	}
 	this->pyroChannels[pyroNum]=pyro;
 }
-void Configuration::setPyro_I(int pyroNum, int pyroConfigNum, PyroConfig& config, float& value) {
+void Configuration::setPyro_I(int pyroNum, int pyroConfigNum, PyroConfig config, float value) {
 	if( (pyroNum<0) || (pyroNum>=NUMBER_OF_PYROS) ) {
 		return;
 	}
@@ -41,9 +41,9 @@ void Configuration::setPyro_I(int pyroNum, int pyroConfigNum, PyroConfig& config
 		this->pyroChannels[pyroNum].valueTwo = value;
 	}
 }
-void Configuration::setPyro_I(int pyroNum, 
-							PyroConfig& configOne, float& valueOne,
-							PyroConfig& configTwo, float& valueTwo) {
+void Configuration::setPyro_I(int pyroNum, bool tiltLock,
+							PyroConfig configOne, float valueOne,
+							PyroConfig configTwo, float valueTwo) {
 	if( (pyroNum<0) || (pyroNum>=NUMBER_OF_PYROS) ) {
    		return;
    	}
@@ -51,6 +51,7 @@ void Configuration::setPyro_I(int pyroNum,
 	this->pyroChannels[pyroNum].valueOne = valueOne;
 	this->pyroChannels[pyroNum].configTwo = configTwo;
 	this->pyroChannels[pyroNum].valueTwo = valueTwo;
+	this->pyroChannels[pyroNum].tiltLock = tiltLock;
 
 }
 Pyro* Configuration::getPyro_I(int pyroNum) {
@@ -217,16 +218,16 @@ void Configuration::setSafetyLockValue(float safetyLockValue) {
 	Configuration::GET_INSTANCE().setSafetyLockValue_I(safetyLockValue);
 } 
 
-void Configuration::setPyro(int pyroNum, Pyro& pyro) {
+void Configuration::setPyro(int pyroNum, Pyro pyro) {
 	Configuration::GET_INSTANCE().setPyro_I(pyroNum, pyro);
 }
-void Configuration::setPyro(int pyroNum, 
-					 PyroConfig& configOne, float& valueOne,
-					 PyroConfig& configTwo, float& valueTwo) {
-	Configuration::GET_INSTANCE().setPyro_I(pyroNum, configOne, valueOne, configTwo, valueTwo);
+void Configuration::setPyro(int pyroNum, bool tiltLock,
+					 PyroConfig configOne, float valueOne,
+					 PyroConfig configTwo, float valueTwo) {
+	Configuration::GET_INSTANCE().setPyro_I(pyroNum, tiltLock, configOne, valueOne, configTwo, valueTwo);
 }
 void Configuration::setPyro(int pyroNum, int pyroConfigNum,
-					 PyroConfig& config, float& value) {
+					 PyroConfig config, float value) {
 	Configuration::GET_INSTANCE().setPyro_I(pyroNum, pyroConfigNum, config, value);
 }
 Pyro* Configuration::getPyro(int pyroNum) {

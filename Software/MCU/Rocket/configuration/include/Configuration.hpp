@@ -42,12 +42,14 @@ struct Pyro {
 	float valueOne;
 	PyroConfig configTwo;
 	float valueTwo;
+	bool tiltLock;
 	
 	bool operator==(const Pyro& pyro){
     	if ( (configOne == pyro.configOne) &&
 			 (valueOne == pyro.valueOne) &&
 			 (configTwo == pyro.configTwo) &&
-			 (valueTwo == pyro.valueTwo) ) {
+			 (valueTwo == pyro.valueTwo) &&
+			 (tiltLock == pyro.tiltLock)) {
 			return true;
 		}
 		
@@ -82,12 +84,12 @@ class Configuration {
 		static float getSafetyLockValue();						
 		static void setSafetyLockValue(float safetyLockValue); 
 
-		static void setPyro(int pyroNum, Pyro& pyro);
-		static void setPyro(int pyroNum, 
-					 PyroConfig& configOne, float& valueOne,
-					 PyroConfig& configTwo, float& valueTwo);
+		static void setPyro(int pyroNum, Pyro pyro);
+		static void setPyro(int pyroNum, bool tiltLock,
+					 PyroConfig configOne, float valueOne,
+					 PyroConfig configTwo, float valueTwo);
 		static void setPyro(int pyroNum, int pyroConfigNum,
-					 PyroConfig& config, float& value);
+					 PyroConfig config, float value);
 		static Pyro* getPyro(int pyroNum);	
 		static Pyro* getAllPyros();
 		
@@ -140,12 +142,12 @@ class Configuration {
 		float getSafetyLockValue_I();						
 		void setSafetyLockValue_I(float safetyLockValue); 
 
-		void setPyro_I(int pyroNum, Pyro& pyro);
-		void setPyro_I(int pyroNum, 
-					 PyroConfig& configOne, float& valueOne,
-					 PyroConfig& configTwo, float& valueTwo);
+		void setPyro_I(int pyroNum, Pyro pyro);
+		void setPyro_I(int pyroNum, bool tiltLock,
+					 PyroConfig configOne, float valueOne,
+					 PyroConfig configTwo, float valueTwo);
 		void setPyro_I(int pyroNum, int pyroConfigNum,
-					 PyroConfig& config, float& value);
+					 PyroConfig config, float value);
 		Pyro* getPyro_I(int pyroNum);	
 		Pyro* getAllPyros_I();
 		

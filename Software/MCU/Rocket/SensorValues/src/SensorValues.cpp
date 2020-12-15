@@ -5,6 +5,7 @@
 #pragma once
 #include "SensorValues.h"
 
+SensorValues SensorValues::instance;
 void SensorValues::setAcceleration(cartesian data){     acceleration = data;}
 void SensorValues::setAngularVelocity(cartesian data){  angularVelocity = data;}
 void SensorValues::setSPressure(float pressure){        sPressure = pressure;}

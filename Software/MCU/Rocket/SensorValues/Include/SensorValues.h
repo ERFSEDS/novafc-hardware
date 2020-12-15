@@ -6,13 +6,14 @@
 #pragma once
 #include "cartesian.h"
 
-class SensorValues{
+class SensorValues {
     private:
-        static SensorValues * instance;
+        static SensorValues instance;
 
         cartesian  acceleration, angularVelocity;
         float sPressure, cPressure, temperature;
         bool pyro[2];
+        float deltaT;
 
     protected:
         SensorValues(){}
@@ -21,7 +22,7 @@ class SensorValues{
     public:
         SensorValues(SensorValues &other) = delete;
         void operator =(const SensorValues &) = delete;
-        static SensorValues *getInstance(){return instance;}
+        static SensorValues& getInstance(){return instance;}
 
         void setAcceleration(cartesian data);
         void setAngularVelocity(cartesian data);
