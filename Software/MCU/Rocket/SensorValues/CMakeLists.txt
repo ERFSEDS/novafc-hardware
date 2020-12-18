@@ -5,11 +5,11 @@ project( SensorValues )
 
 set("SensorValues_sources" ${CMAKE_CURRENT_SOURCE_DIR}/src/SensorValues.cpp)
 set("SensorValues_include" ${CMAKE_CURRENT_SOURCE_DIR}/Include)
-
+set("SensorValues_dependencies" "Rocket_Layer_Common")
 add_library("${PROJECT_NAME}" ${SensorValues_sources})
 
 target_include_directories("${PROJECT_NAME}" PUBLIC ${SensorValues_include})
-
+target_link_libraries("${PROJECT_NAME}" PRIVATE ${SensorValues_dependencies})
 ########################################################################
 
 function(create_SensorValues_test)

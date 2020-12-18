@@ -10,13 +10,13 @@ class SensorValues {
     private:
         static SensorValues instance;
 
-        cartesian  acceleration, angularVelocity;
+        Cartesian  acceleration, angularVelocity;
         float sPressure, cPressure, temperature;
         bool pyro[2];
         float deltaT;
 
     protected:
-        SensorValues(){}
+        SensorValues();
         ~SensorValues(){}
 
     public:
@@ -24,14 +24,14 @@ class SensorValues {
         void operator =(const SensorValues &) = delete;
         static SensorValues& getInstance(){return instance;}
 
-        void setAcceleration(cartesian data);
-        void setAngularVelocity(cartesian data);
+        void setAcceleration(Cartesian data);
+        void setAngularVelocity(Cartesian data);
         void setSPressure(float pressure);
         void setCPressure(float pressure);
         void setTemperature(float temperature);
 
-        cartesian   getAcceleration();
-        cartesian   getAngularVelocity();
+        Cartesian   getAcceleration();
+        Cartesian   getAngularVelocity();
         float       getSPressure();
         float       getCPressure();
         float       getTemperature();

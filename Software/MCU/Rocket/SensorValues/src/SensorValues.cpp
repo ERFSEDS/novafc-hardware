@@ -6,14 +6,16 @@
 #include "SensorValues.h"
 
 SensorValues SensorValues::instance;
-void SensorValues::setAcceleration(cartesian data){     acceleration = data;}
-void SensorValues::setAngularVelocity(cartesian data){  angularVelocity = data;}
+SensorValues::SensorValues() : acceleration({0,0,0}), angularVelocity({0,0,0}), sPressure(0), cPressure(0), temperature(0), deltaT(0), pyro({false, false}){
+}
+void SensorValues::setAcceleration(Cartesian data){     acceleration = data;}
+void SensorValues::setAngularVelocity(Cartesian data){  angularVelocity = data;}
 void SensorValues::setSPressure(float pressure){        sPressure = pressure;}
 void SensorValues::setCPressure(float pressure){        cPressure = pressure;}
 void SensorValues::setTemperature(float temp){          temperature = temp;}
 
-cartesian   SensorValues::getAcceleration(){      return acceleration;}
-cartesian   SensorValues::getAngularVelocity(){   return angularVelocity;}
+Cartesian   SensorValues::getAcceleration(){      return acceleration;}
+Cartesian   SensorValues::getAngularVelocity(){   return angularVelocity;}
 float       SensorValues::getSPressure(){         return sPressure;}
 float       SensorValues::getCPressure(){         return cPressure;}
 float       SensorValues::getTemperature(){       return temperature;}
@@ -41,3 +43,5 @@ void SensorValues::firePyro(int cmd){
 void SensorValues::setPyro(int cmd, bool state){    //FOR TESTING!!!
     pyro[cmd] = state;
 }
+
+

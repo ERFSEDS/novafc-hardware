@@ -42,8 +42,8 @@ bool FlightSimulator::runSimulation() {
 		trueAltitude = arguements.at(9);
 		trueAngle = arguements.at(10);
 		
-		cartesian acceleration = {accelX, accelY, accelZ};
-		cartesian gyro = {gyroX, gyroY, gyroZ};
+		Cartesian acceleration = {accelX, accelY, accelZ};
+		Cartesian gyro = {gyroX, gyroY, gyroZ};
 		
 		this->sensors.setAcceleration(acceleration);
 		this->sensors.setAngularVelocity(gyro);

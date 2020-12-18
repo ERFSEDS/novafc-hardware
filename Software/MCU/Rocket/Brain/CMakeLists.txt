@@ -5,7 +5,7 @@ project( Brain )
 
 set("Brain_sources" ${CMAKE_CURRENT_SOURCE_DIR}/src/Brain.cpp)
 set("Brain_include" ${CMAKE_CURRENT_SOURCE_DIR}/Include)
-set("Brain_dependencies" "SensorValues" "Logger" "Configuration" "RocketData" "State_Machine")
+set("Brain_dependencies" "SensorValues" "Logger" "Configuration" "RocketData" "State_Machine" "Rocket_Layer_Common")
 
 add_library("${PROJECT_NAME}" ${Brain_sources})
 

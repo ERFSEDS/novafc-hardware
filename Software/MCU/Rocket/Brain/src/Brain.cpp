@@ -196,7 +196,7 @@ bool Brain::motorCutoff() {
 
 
 void Brain::checkApogee() {
-	float currentAltitude = rocket.getDisplacement().dimension[3];
+	float currentAltitude = rocket.getDisplacement().z;
 	if( currentAltitude <= pastAltitude ) {
 		descentTimeSteps++;
 		if(descentTimeSteps >= requiredTimeSteps) {
@@ -306,7 +306,7 @@ bool Brain::checkPyroCase(Pyro pyro, int caseN ) {
 			return false;
 		}
 	case ALTITUDE_ABOVE:
-		altitude = rocket.getDisplacement().dimension[3];
+		altitude = rocket.getDisplacement().z;
 		if( altitude > value ) {
 			return true;
 		} 
@@ -314,7 +314,7 @@ bool Brain::checkPyroCase(Pyro pyro, int caseN ) {
 			return false;
 		}
 	case ALTITUDE_BELOW:
-		altitude = rocket.getDisplacement().dimension[3];
+		altitude = rocket.getDisplacement().z;
 		if( altitude < value ) {
 			return true;
 		} 
@@ -331,7 +331,7 @@ bool Brain::checkPyroCase(Pyro pyro, int caseN ) {
 }
 
 bool Brain::checkLanded() {
-	if(rocket.getDisplacement().dimension[3] < LANDED_ALTITUDE) {
+	if(rocket.getDisplacement().z < LANDED_ALTITUDE) {
 		landedCountdown--;
 		if(landedCountdown < 0) {
 			return true;

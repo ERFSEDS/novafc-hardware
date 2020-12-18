@@ -5,7 +5,7 @@ project( RocketData )
 
 set("RocketData_sources" ${CMAKE_CURRENT_SOURCE_DIR}/src/RocketData.cpp)
 set("RocketData_include" ${CMAKE_CURRENT_SOURCE_DIR}/Include)
-set("RocketData_dependencies" "SensorValues" "Logger" "Configuration")
+set("RocketData_dependencies" "SensorValues" "Logger" "Configuration" "Rocket_Layer_Common")
 
 add_library("${PROJECT_NAME}" ${RocketData_sources})
 
@@ -58,4 +58,8 @@ create_RocketData_test(
 	NAME "Rocket_Data_Test"
 	SOURCE "testing/RocketDataTester.cpp"
 	RESOURCES "resources/TestData.csv"
+)
+create_RocketData_test(
+	NAME "Rocket_Angle_Test"
+	SOURCE "testing/AngleTester.cpp"
 )
