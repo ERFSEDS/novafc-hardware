@@ -116,11 +116,11 @@ class Configuration {
 		static int getDroguePyroChannel();
 		static void setDroguePyroChannel(int channel);
 		
-		static int getUpperTimeStepms(); //miliseconds
-		static void setUpperTimeStepms(int newTimeStep); //miliseconds
+		static float getUpperTimeStepms(); //miliseconds
+		static void setUpperTimeStepms(float newTimeStep); //miliseconds
 		
-		static int getLowerTimeStepms(); //miliseconds
-		static void setLowerTimeStepms(int newTimeStep); //miliseconds
+		static float getLowerTimeStepms(); //miliseconds
+		static void setLowerTimeStepms(float newTimeStep); //miliseconds
 
 		Configuration(const Configuration &conf) = delete; //copy constructor is not allowed
 		
@@ -174,11 +174,11 @@ class Configuration {
 		int getDroguePyroChannel_I();
 		void setDroguePyroChannel_I(int channel);
 		
-		int getUpperTimeStepms_I(); //miliseconds
-		void setUpperTimeStepms_I(int newTimeStep); //miliseconds
+		float getUpperTimeStepms_I(); //miliseconds
+		void setUpperTimeStepms_I(float newTimeStep); //miliseconds
 		
-		int getLowerTimeStepms_I(); //miliseconds
-		void setLowerTimeStepms_I(int newTimeStep); //miliseconds
+		float getLowerTimeStepms_I(); //miliseconds
+		void setLowerTimeStepms_I(float newTimeStep); //miliseconds
 		
 	//Private Variables
 	private:
@@ -205,7 +205,7 @@ class Configuration {
 		int mainPyroChannel;
 		int droguePyroChannel;
 		
-		int uppertimeStepms; //miliseconds
-		int lowertimeStepms; //miliseconds
+		float uppertimeStepms; //miliseconds
+		float lowertimeStepms; //miliseconds
 		
 };

@@ -1,6 +1,6 @@
 #pragma once
 #include "cartesian.h"
-
+#include "Matrix.hpp"
 struct Quanternion {
 	float a;
 	float i;
@@ -50,7 +50,15 @@ struct Quanternion {
     bool operator!=(const Quanternion& other) {
 		return (a != other.a) || (i != other.i) || (j != other.j) || (k != other.k);
     }
-    
+    float operator[](const int i) {
+    	switch(i) {
+		case 0: return a; break;
+		case 1: return i; break;
+		case 2: return j; break;
+		case 3: return k; break;
+		default: return 0; break;
+		}
+    }
     Cartesian const getCartesian() {
     	Cartesian returnVal;
     	returnVal.x = i;
@@ -79,15 +87,25 @@ struct Quanternion {
     	1,0  1,1  1,2
     	2,0  2,1  2,2
     */
-    void toRotationMatrix(float rotationMatrix[3][3]) {
-    	rotationMatrix[0][0] = 1-2*(j*j)-2*(k*k);
-    	rotationMatrix[0][1] = 2*i*j-2*k*a;
-    	rotationMatrix[0][2] = 2*i*k+2*i*a;
-    	rotationMatrix[1][0] = 2*i*j+2*k*a;		
-    	rotationMatrix[1][1] = 1-2*(i*i)-2*(k*k);
-    	rotationMatrix[1][2] = 2*j*k-2*i*a;
-    	rotationMatrix[2][0] = 2*i*k-2*j*a; 				
-    	rotationMatrix[2][1] = 2*j*k+2*i*a;
-    	rotationMatrix[2][2] = 1-2*(i*i)-2*(j*j);
+    Matrix getRotationMatrix() {
+    	Matrix rotationMatrix;
+    	rotationMatrix.values[0][0] = 1-2*(j*j)-2*(k*k);
+    	rotationMatrix.values[0][1] = 2*i*j-2*k*a;
+    	rotationMatrix.values[0][2] = 2*i*k+2*i*a;
+    	rotationMatrix.values[1][0] = 2*i*j+2*k*a;		
+    	rotationMatrix.values[1][1] = 1-2*(i*i)-2*(k*k);
+    	rotationMatrix.values[1][2] = 2*j*k-2*i*a;
+    	rotationMatrix.values[2][0] = 2*i*k-2*j*a; 				
+    	rotationMatrix.values[2][1] = 2*j*k+2*i*a;
+    	rotationMatrix.values[2][2] = 1-2*(i*i)-2*(j*j);
+    	return rotationMatrix;
+    }
+    
+    // gets the vector of the rocket is pointed in(not spin you need the full rotation
+	// matrix for that)  
+    void getOrientationVector(float orientationVector[3]) {
+    	orientationVector[0] = 2*i*k-2*j*a; 				
+    	orientationVector[1] = 2*j*k+2*i*a;
+    	orientationVector[2] = 1-2*(i*i)-2*(j*j);
     }
 };

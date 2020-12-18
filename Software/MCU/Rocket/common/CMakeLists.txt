@@ -53,3 +53,8 @@ create_rocket_layer_common_test(
 	NAME "Quanternion_Math"
 	SOURCE "testing/QuanternionMath.cpp"
 )
+
+create_rocket_layer_common_test(
+	NAME "Matrix_Math_Test"
+	SOURCE "testing/MatrixTest.cpp"
+)

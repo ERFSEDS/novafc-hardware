@@ -135,17 +135,17 @@ void Configuration::setDroguePyroChannel_I(int channel) {
 	this->droguePyroChannel = channel;
 }
 
-int Configuration::getUpperTimeStepms_I() {
+float Configuration::getUpperTimeStepms_I() {
 	return this->uppertimeStepms;
 }
-void Configuration::setUpperTimeStepms_I(int newTimeStep) {
+void Configuration::setUpperTimeStepms_I(float newTimeStep) {
 	this->uppertimeStepms = newTimeStep;
 }
 	
-int Configuration::getLowerTimeStepms_I() {
+float Configuration::getLowerTimeStepms_I() {
 	return this->lowertimeStepms;
 }
-void Configuration::setLowerTimeStepms_I(int newTimeStep) {
+void Configuration::setLowerTimeStepms_I(float newTimeStep) {
 	this->lowertimeStepms = newTimeStep;
 }
 
@@ -292,16 +292,16 @@ void Configuration::setDroguePyroChannel(int channel) {
 	Configuration::GET_INSTANCE().setDroguePyroChannel_I(channel);
 }
 
-int Configuration::getUpperTimeStepms() {
+float Configuration::getUpperTimeStepms() {
 	return Configuration::GET_INSTANCE().getUpperTimeStepms_I();
 }
-void Configuration::setUpperTimeStepms(int newTimeStep) {
+void Configuration::setUpperTimeStepms(float newTimeStep) {
 	Configuration::GET_INSTANCE().setUpperTimeStepms_I(newTimeStep);
 }
 		
-int Configuration::getLowerTimeStepms() {
+float Configuration::getLowerTimeStepms() {
 	return Configuration::GET_INSTANCE().getLowerTimeStepms_I();
 }
-void Configuration::setLowerTimeStepms(int newTimeStep) {
+void Configuration::setLowerTimeStepms(float newTimeStep) {
 	Configuration::GET_INSTANCE().setLowerTimeStepms_I(newTimeStep);
 }

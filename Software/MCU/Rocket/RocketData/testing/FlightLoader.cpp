@@ -5,11 +5,13 @@
 #include <cmath>
 #include <iostream>
 #include <stdexcept>
+#include "Configuration.hpp"
 
 FlightSimulator::FlightSimulator(RocketData &data, SensorValues &sensors, std::string inputFile, std::string outputFile) : rocket(data), sensors(sensors) {
 	
 	this->fileIn.open(inputFile);
 	this->fileOut.open(outputFile);
+	this->fileOut << "timeStep, altitude, trueAltitude, altitudeError" << std::endl;
 }
 
 bool FlightSimulator::runSimulation() {
@@ -59,15 +61,19 @@ bool FlightSimulator::runSimulation() {
 		
 		float altitudeError = std::abs(altitude - trueAltitude)/trueAltitude; 
 		float angleError = std::abs(angle - trueAngle)/trueAngle;
+		this->fileOut << timeStep << ", " << altitude << ", " << trueAltitude << ", " <<  altitudeError << std::endl;
+		float altitudeDifference = std::abs(altitude - trueAltitude);
+		float angleDifference = std::abs(angle - trueAngle);
 		
-		if(altitudeError > ACCEPTABLE_ALTITUDE_ERROR) {
+		
+		if( (altitudeError > ACCEPTABLE_ALTITUDE_ERROR) && (altitudeDifference > ACCEPTABLE_ALTITUDE_ERROR_ABS) ) {
 			std::cout << "Altitude outside acceptable bounds" <<std::endl;
 			std::cout << "True Altitude: " << trueAltitude << std::endl;
 			std::cout << "Measured Altitude: " << altitude << std::endl;
 			std::cout << std::endl;
 			success = false;
 		}
-		if(angleError > ACCEPTABLE_ANGLE_ERROR) {
+		if( (angleError > ACCEPTABLE_ANGLE_ERROR) && (angleDifference > ACCEPTABLE_ANGLE_ERROR_ABS)) {
 			std::cout << "Angle outside acceptable bounds" <<std::endl;
 			std::cout << "True Angle: " << trueAngle << std::endl;
 			std::cout << "Measured Angle: " << angle << std::endl;
@@ -75,6 +81,7 @@ bool FlightSimulator::runSimulation() {
 			success = false;
 		}
 	}
+	this->fileOut.close();
 	return success;
 }
 

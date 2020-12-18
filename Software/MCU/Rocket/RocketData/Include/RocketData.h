@@ -12,13 +12,18 @@ class RocketData{
     private:
         static RocketData rocketData;
 
-        Cartesian acceleration[2], angularVelocity[2]; //Raw Sensor Data
-        float cPressure, sPressure, temperature; //Raw Sensor Data
+
+		//Raw sensor Data
+        Cartesian acceleration[2], angularVelocity[2];
+        float cPressure, sPressure, temperature; 
         float cVelocity;
-        Cartesian rocketDisplacement, rocketVelocity; //Processed Data
+        
+        
+        //Processed Data, in earth coordinate frame nor rocketFrame
+        Cartesian rocketDisplacement, rocketVelocity; 
 		Quanternion rocketAngle;
         SensorValues& sensors;
-        float deltaTms;
+        float deltaT;
 
     protected:
         RocketData();

@@ -7,7 +7,6 @@
 #include "Configuration.hpp"
 #include "SensorValues.h"
 #include <cmath>
-#include <iostream> //REMOVE THIS
 RocketData RocketData::rocketData;
 
 RocketData::RocketData() : sensors(SensorValues::getInstance()){
@@ -16,20 +15,21 @@ RocketData::RocketData() : sensors(SensorValues::getInstance()){
 }
 void RocketData::update() {
 	updateData();
-	updateDisplacement();
 	updateAngle();
+	updateDisplacement();
 }
 
 void RocketData::updateDisplacement(){
-
+	Cartesian globalAcceleration = rocketAngle.getRotationMatrix() * acceleration[0];
+	rocketVelocity = rocketVelocity + acceleration[0] * deltaT;
+	rocketDisplacement = rocketDisplacement + rocketVelocity*deltaT;
 }
 void RocketData::updateAngle() {
 	Quanternion angularData;
 	angularData.setCartesian(angularVelocity[0]);
-	float deltaT = deltaTms / 1000.0;
 	Quanternion rocketAngleDot = rocketAngle * 0.5 * angularData * deltaT;
 	rocketAngle = rocketAngle + rocketAngleDot;
-	//rocketAngle.normalize();
+	rocketAngle.normalize();
 }
 void RocketData::updateData(){
 	acceleration[1] = acceleration[0];
@@ -39,7 +39,7 @@ void RocketData::updateData(){
     cPressure = sensors.getCPressure();
     sPressure = sensors.getSPressure();
     temperature = sensors.getTemperature();
-    deltaTms = Configuration::getUpperTimeStepms();
+    deltaT = Configuration::getUpperTimeStepms()/1000.0;
     
 }
 

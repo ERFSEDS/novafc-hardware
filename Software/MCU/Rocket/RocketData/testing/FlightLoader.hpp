@@ -7,7 +7,9 @@
 #include <string>
 
 #define ACCEPTABLE_ALTITUDE_ERROR 0.05
+#define ACCEPTABLE_ALTITUDE_ERROR_ABS 2
 #define ACCEPTABLE_ANGLE_ERROR 0.05
+#define ACCEPTABLE_ANGLE_ERROR_ABS 2
 class FlightSimulator {
 	public:	
 		FlightSimulator(RocketData& rocket, SensorValues &sensors, std::string inputFile, std::string outputFile);
