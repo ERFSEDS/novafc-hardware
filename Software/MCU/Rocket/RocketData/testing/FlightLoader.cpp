@@ -6,12 +6,21 @@
 #include <iostream>
 #include <stdexcept>
 #include "Configuration.hpp"
+#include <time.h>
+#include <stdlib.h>
+#include <iostream>
+#include <fstream>
+#include <cstdint>
+#include <filesystem>
+
+namespace fs = std::filesystem;
+
 
 FlightSimulator::FlightSimulator(RocketData &data, SensorValues &sensors, std::string inputFile, std::string outputFile) : rocket(data), sensors(sensors) {
-	
 	this->fileIn.open(inputFile);
 	this->fileOut.open(outputFile);
 	this->fileOut << "timeStep, altitude, trueAltitude, altitudeError" << std::endl;
+
 }
 
 bool FlightSimulator::runSimulation() {
@@ -19,7 +28,7 @@ bool FlightSimulator::runSimulation() {
 	std::cout << "Starting Simulation" << std::endl;
 	bool success = true;
 	std::string line;
-	this->fileIn>>line;
+	fileIn>>line;
 	
 	std::vector<float> arguements;
 	//this->split(line, arguements);
@@ -44,6 +53,19 @@ bool FlightSimulator::runSimulation() {
 		trueAltitude = arguements.at(9);
 		trueAngle = arguements.at(10);
 		
+		
+		float accelNoiseMean = 0;
+		float accelNoiseSTD = 3;
+		insertNoise(&accelX, accelNoiseMean, accelNoiseSTD);
+		insertNoise(&accelY, accelNoiseMean, accelNoiseSTD);
+		insertNoise(&accelZ, accelNoiseMean, accelNoiseSTD);
+		
+
+		float gyroNoiseMean = 1;
+		float gyroNoiseSTD = 2;
+		insertNoise(&gyroX, gyroNoiseMean, gyroNoiseSTD);
+		insertNoise(&gyroY, gyroNoiseMean, gyroNoiseSTD);
+		insertNoise(&gyroZ, gyroNoiseMean, gyroNoiseSTD);
 		Cartesian acceleration = {accelX, accelY, accelZ};
 		Cartesian gyro = {gyroX, gyroY, gyroZ};
 		
@@ -56,8 +78,9 @@ bool FlightSimulator::runSimulation() {
 		}
 		
 		this->rocket.update();
-		altitude = rocket.getDisplacement().y; //need to confirm axis is correct, also shoould change to x, y, z
-		angle = 0;// LOL whats an angle, TODO
+		altitude = rocket.getDisplacement().y; 
+		angle = rocket.getAngleFromVertical();
+		
 		
 		float altitudeError = std::abs(altitude - trueAltitude)/trueAltitude; 
 		float angleError = std::abs(angle - trueAngle)/trueAngle;
@@ -103,4 +126,11 @@ void FlightSimulator::split(std::string const &str, std::vector<float> &out)
 		}
 		out.push_back(value);
 	}
+}
+
+void FlightSimulator::insertNoise(float * value, float mean, float stdDev) {
+    std::random_device rd;
+	std::default_random_engine numberGenerator (rd());
+    std::normal_distribution<float> distN(mean, stdDev); 
+    *value += distN(numberGenerator);
 }

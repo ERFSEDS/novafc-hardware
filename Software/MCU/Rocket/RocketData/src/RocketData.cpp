@@ -78,6 +78,11 @@ float RocketData::complementaryFilter(float acc, float gyro, int axis){
 }
 // angle.x = α*gyro_angle_y+(1-­α)acc_angle_x; << Roll
 // angle.y = α*gyro_angle_x+(1-­α)acc_angle_y; << Pitch
+float RocketData::getAngleFromVertical() {
+	float orientationAngle[3];
+	rocketAngle.getOrientationVector(orientationAngle);
+	return acos(orientationAngle[2]);
+}
 
 Cartesian RocketData::getDisplacement()     {return rocketDisplacement;}
 Cartesian RocketData::getAcceleration()     {return acceleration[0];}

@@ -5,6 +5,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <random> 
 
 #define ACCEPTABLE_ALTITUDE_ERROR 0.05
 #define ACCEPTABLE_ALTITUDE_ERROR_ABS 2
@@ -17,7 +18,7 @@ class FlightSimulator {
 	
 		bool runSimulation(); //returns whether or not it passed
 		void split(std::string const &str, std::vector<float> &out);
-		
+		void insertNoise(float * value, float mean, float stdDev);
 	private:
 		std::ifstream fileIn;
 		std::ofstream fileOut;
