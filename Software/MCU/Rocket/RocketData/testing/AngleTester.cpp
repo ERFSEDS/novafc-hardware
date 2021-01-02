@@ -7,11 +7,16 @@
 #define ACCEPTABLE_ERROR_MARGIN 1//%
 float checkErrorRate(Quanternion calcAngle, Quanternion expectedAngle);
 int main() {
+	std::cout << "TEST" << std::endl;
 	Configuration::setUpperTimeStepms(1);
+	std::cout << "TEST" << std::endl;
 	SensorValues& sensors = SensorValues::getInstance();
-	RocketData& rocket = RocketData::getInstance();	
+	std::cout << "TEST" << std::endl;
+	RocketData& rocket = RocketData::getInstance();
+	std::cout << "TEST" << std::endl;	
 	sensors.setAngularVelocity({0,0,M_PI/2});
 	for(int i = 0; i < 1000; i++) {
+		std::cout << "TEST" << std::endl;
 		rocket.update();
 	}	
 	Quanternion calcAngle = rocket.getAngle();

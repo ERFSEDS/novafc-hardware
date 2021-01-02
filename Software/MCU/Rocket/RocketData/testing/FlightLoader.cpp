@@ -16,14 +16,23 @@
 namespace fs = std::filesystem;
 
 
-FlightSimulator::FlightSimulator(RocketData &data, SensorValues &sensors, std::string inputFile, std::string outputFile) : rocket(data), sensors(sensors) {
+FlightSimulator::FlightSimulator(RocketData &data, SensorValues &sensors, std::string inputFile, std::string outputFile) : rocket(data), sensors(sensors), gyroNoiseMean(0), gyroNoiseSTD(0), accelNoiseMean(0), accelNoiseSTD(0)
+ {
 	this->fileIn.open(inputFile);
 	this->fileOut.open(outputFile);
 	this->fileOut << "timeStep, altitude, trueAltitude, altitudeError" << std::endl;
+	
+		
 
 }
 
-bool FlightSimulator::runSimulation() {
+void FlightSimulator::insertNoise(float gyroMean, float gyroSTD, float accelMean, float accelSTD) {
+	gyroNoiseMean = gyroMean;
+	gyroNoiseSTD = gyroSTD;
+	accelNoiseMean = accelMean;
+	accelNoiseSTD = accelSTD;
+}
+bool FlightSimulator::runSimulation(int subSampleRate) {
 	//yes I know its not super efficent, it is more clear as a result and that is the goal in the test.
 	std::cout << "Starting Simulation" << std::endl;
 	bool success = true;
@@ -37,6 +46,7 @@ bool FlightSimulator::runSimulation() {
 	
 	float altitude, angle;
 	bool first = true;
+	int i = 0;
 	while(!fileIn.eof()) {
 		fileIn>>line;
 		arguements.clear();
@@ -54,54 +64,57 @@ bool FlightSimulator::runSimulation() {
 		trueAngle = arguements.at(10);
 		
 		
-		float accelNoiseMean = 0;
-		float accelNoiseSTD = 3;
 		insertNoise(&accelX, accelNoiseMean, accelNoiseSTD);
 		insertNoise(&accelY, accelNoiseMean, accelNoiseSTD);
 		insertNoise(&accelZ, accelNoiseMean, accelNoiseSTD);
 		
 
-		float gyroNoiseMean = 1;
-		float gyroNoiseSTD = 2;
 		insertNoise(&gyroX, gyroNoiseMean, gyroNoiseSTD);
 		insertNoise(&gyroY, gyroNoiseMean, gyroNoiseSTD);
 		insertNoise(&gyroZ, gyroNoiseMean, gyroNoiseSTD);
 		Cartesian acceleration = {accelX, accelY, accelZ};
 		Cartesian gyro = {gyroX, gyroY, gyroZ};
-		
-		this->sensors.setAcceleration(acceleration);
-		this->sensors.setAngularVelocity(gyro);
-		
-		this->sensors.setCPressure(pressure);
-		if(first) {
-			this->sensors.setSPressure(pressure);
+		if (i >= subSampleRate) {
+			this->sensors.setAcceleration(acceleration);
+			this->sensors.setAngularVelocity(gyro);
+			
+			this->sensors.setCPressure(pressure);
+			if(first) {
+				this->sensors.setSPressure(pressure);
+			}
+			
+			this->rocket.update();
+			altitude = rocket.getDisplacement().y; 
+			angle = rocket.getAngleFromVertical();
+			
+			
+			float altitudeError = std::abs(altitude - trueAltitude)/trueAltitude; 
+			float angleError = std::abs(angle - trueAngle)/trueAngle;
+			this->fileOut << timeStep << ", " << altitude << ", " << trueAltitude << ", " <<  altitudeError << std::endl;
+			float altitudeDifference = std::abs(altitude - trueAltitude);
+			float angleDifference = std::abs(angle - trueAngle);
+			
+			
+			if( (altitudeError > ACCEPTABLE_ALTITUDE_ERROR) && (altitudeDifference > ACCEPTABLE_ALTITUDE_ERROR_ABS) ) {
+				std::cout << "Time is: " << timeStep << std::endl;
+				std::cout << "Altitude outside acceptable bounds" <<std::endl;
+				std::cout << "True Altitude: " << trueAltitude << std::endl;
+				std::cout << "Measured Altitude: " << altitude << std::endl;
+				std::cout << std::endl;
+				success = false;
+			}
+			if( (angleError > ACCEPTABLE_ANGLE_ERROR) && (angleDifference > ACCEPTABLE_ANGLE_ERROR_ABS)) {
+				std::cout << "Time is: " << timeStep << std::endl;
+				std::cout << "Angle outside acceptable bounds" <<std::endl;
+				std::cout << "True Angle: " << trueAngle << std::endl;
+				std::cout << "Measured Angle: " << angle << std::endl;
+				std::cout << std::endl;
+				success = false;
+			}
+			i=1;
 		}
-		
-		this->rocket.update();
-		altitude = rocket.getDisplacement().y; 
-		angle = rocket.getAngleFromVertical();
-		
-		
-		float altitudeError = std::abs(altitude - trueAltitude)/trueAltitude; 
-		float angleError = std::abs(angle - trueAngle)/trueAngle;
-		this->fileOut << timeStep << ", " << altitude << ", " << trueAltitude << ", " <<  altitudeError << std::endl;
-		float altitudeDifference = std::abs(altitude - trueAltitude);
-		float angleDifference = std::abs(angle - trueAngle);
-		
-		
-		if( (altitudeError > ACCEPTABLE_ALTITUDE_ERROR) && (altitudeDifference > ACCEPTABLE_ALTITUDE_ERROR_ABS) ) {
-			std::cout << "Altitude outside acceptable bounds" <<std::endl;
-			std::cout << "True Altitude: " << trueAltitude << std::endl;
-			std::cout << "Measured Altitude: " << altitude << std::endl;
-			std::cout << std::endl;
-			success = false;
-		}
-		if( (angleError > ACCEPTABLE_ANGLE_ERROR) && (angleDifference > ACCEPTABLE_ANGLE_ERROR_ABS)) {
-			std::cout << "Angle outside acceptable bounds" <<std::endl;
-			std::cout << "True Angle: " << trueAngle << std::endl;
-			std::cout << "Measured Angle: " << angle << std::endl;
-			std::cout << std::endl;
-			success = false;
+		else {
+			i++;
 		}
 	}
 	this->fileOut.close();

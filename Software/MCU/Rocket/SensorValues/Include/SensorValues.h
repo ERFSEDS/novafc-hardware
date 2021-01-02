@@ -10,8 +10,8 @@ class SensorValues {
     private:
         static SensorValues instance;
 
-        Cartesian  acceleration, angularVelocity;
-        float sPressure, cPressure, temperature;
+        Cartesian  acceleration[2], angularVelocity[2];
+        float sPressure, cPressure[2], temperature;
         bool pyro[2];
         float deltaT;
 

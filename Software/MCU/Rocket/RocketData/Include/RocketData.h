@@ -8,42 +8,50 @@
 #include "cartesian.h"
 #include "SensorValues.h"
 #include "Quanternion.hpp"
+#include "Configuration.hpp"
+#define SEA_LEVEL_PRESSURE 101325
+#define MACH_LOCKOUT_BEGIN 231.91 //MACH 0.7
 class RocketData{
     private:
         static RocketData rocketData;
 
 
 		//Raw sensor Data
-        Cartesian acceleration[2], angularVelocity[2];
-        float cPressure, sPressure, temperature; 
-        float cVelocity;
-        
-        
-        //Processed Data, in earth coordinate frame nor rocketFrame
-        Cartesian rocketDisplacement, rocketVelocity; 
-		Quanternion rocketAngle;
         SensorValues& sensors;
+        Cartesian acceleration[2], angularVelocity[2];
+        float currentPressure, groundPressure, temperature; // in Pa
         float deltaT;
+        
+         
+        //Processed Data, in earth coordinate frame nor rocketFrame
+     	Cartesian accelDisplacement, accelVelocity;
+     	float baroHeight;
+     	
+     	//fused sensor data
+     	Cartesian rocketDisplacement, rocketVelocity;
+		Quanternion rocketAngle;
 
     protected:
         RocketData();
         ~RocketData(){}
+        void accelUpdate();
+        void gyroUpdate();
+        void updateBarometer();
+        void updateData();  //Updates data from Sensor Values
+        
+        void calcAltitudeFromBarometer();
+		void sensorFusion(AltitudeDeterminination mode);
 
     public:
         RocketData(RocketData &other) = delete;
         void operator =(const RocketData &) = delete;
         static RocketData &getInstance(){return rocketData;}
 
-        void updateData();  //Updates data from Sensor Values
-        void updateDisplacement(); //Processes pressure & temp into altitude
         void update();
-        void updateAngle();
-        float getAltitudeFromPressure();
-        float complementaryFilter(float acc, float gyro, int axis);
-        float gyro_int(int axis);
-        float accel_angle(int axis);
+		
 
         Cartesian getDisplacement();
+        Cartesian getVelocity();
         Cartesian getAcceleration();
         Cartesian getAngularVelocity();
         Quanternion getAngle();
@@ -52,5 +60,4 @@ class RocketData{
         float getCPressure();
         float getSPressure();
         float getTemperature();
-        float getCVelocity();
 };
