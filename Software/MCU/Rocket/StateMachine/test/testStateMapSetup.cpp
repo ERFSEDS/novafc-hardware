@@ -5,19 +5,21 @@
 
 int main() {
 	//check to make sure 2 stage cannot go to 1 stage flight
-	Configuration::setTwoStageRocket(true);
+	Configuration config;
+	StateMachine stateMachine(config);
+	config.setTwoStageRocket(true);
 	
-	StateMachine::refresh();
-	StateMachine::changeState(READY);
-	StateMachine::changeState(STAGE1POWERED);
-	StateMachine::changeState(STAGE1COAST);
-	StateMachine::changeState(DROGUEPAR);
-	StateMachine::changeState(MAINPAR);
-	StateMachine::changeState(LANDED);
-	StateMachine::changeState(RESET);
+	stateMachine.refresh();
+	stateMachine.changeState(READY);
+	stateMachine.changeState(STAGE1POWERED);
+	stateMachine.changeState(STAGE1COAST);
+	stateMachine.changeState(DROGUEPAR);
+	stateMachine.changeState(MAINPAR);
+	stateMachine.changeState(LANDED);
+	stateMachine.changeState(RESET);
 	
 	///should get stuck at stage1coast
-	if(StateMachine::getCurrentState() != STAGE1COAST) {
+	if(stateMachine.getCurrentState() != STAGE1COAST) {
 		Logger::Fatal("Did not properly handle a 1 stage flight");
 		return 1;
 	}
@@ -26,21 +28,21 @@ int main() {
 	}
 	
 	//check to make sure 1 stage cannot go to 2 stage flight
-	Configuration::setTwoStageRocket(true);
+	config.setTwoStageRocket(true);
 	
-	StateMachine::refresh();
-	StateMachine::changeState(READY);
-	StateMachine::changeState(STAGE1POWERED);
-	StateMachine::changeState(STAGE1COAST);
-	StateMachine::changeState(STAGE2POWERED);
-	StateMachine::changeState(STAGE2COAST);
-	StateMachine::changeState(DROGUEPAR);
-	StateMachine::changeState(MAINPAR);
-	StateMachine::changeState(LANDED);
-	StateMachine::changeState(RESET);
+	stateMachine.refresh();
+	stateMachine.changeState(READY);
+	stateMachine.changeState(STAGE1POWERED);
+	stateMachine.changeState(STAGE1COAST);
+	stateMachine.changeState(STAGE2POWERED);
+	stateMachine.changeState(STAGE2COAST);
+	stateMachine.changeState(DROGUEPAR);
+	stateMachine.changeState(MAINPAR);
+	stateMachine.changeState(LANDED);
+	stateMachine.changeState(RESET);
 	
 	//should get stuck at stage 1 coast
-	if(StateMachine::getCurrentState() != RESET) {
+	if(stateMachine.getCurrentState() != RESET) {
 		Logger::Fatal("Did not properly handle a 2 stage flight");
 		return 1;
 	}

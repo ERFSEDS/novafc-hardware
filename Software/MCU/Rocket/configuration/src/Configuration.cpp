@@ -1,34 +1,32 @@
 #include "Configuration.hpp"
 
-
-Configuration Configuration::INSTANCE;
-bool Configuration::getTwoStageRocket_I() {
+bool Configuration::getTwoStageRocket() {
 	return this->twoStageRocket;
 }
-void Configuration::setTwoStageRocket_I(bool twoStage) {
+void Configuration::setTwoStageRocket(bool twoStage) {
 	this->twoStageRocket = twoStage;
 }
 
-bool Configuration::getSafetyLock_I() {
+bool Configuration::getSafetyLock() {
 	return this->safetyLock;
 }
-void Configuration::setSafetyLock_I(bool safetyLock) {
+void Configuration::setSafetyLock(bool safetyLock) {
 	this->safetyLock = safetyLock;
 }
 
-float Configuration::getSafetyLockValue_I() {
+float Configuration::getSafetyLockValue() {
 	return this->safetyLockValue;
 }
-void Configuration::setSafetyLockValue_I(float safetyLockValue) {
+void Configuration::setSafetyLockValue(float safetyLockValue) {
 	this->safetyLockValue = safetyLockValue;
 }
-void Configuration::setPyro_I(int pyroNum, Pyro pyro) {
+void Configuration::setPyro(int pyroNum, Pyro pyro) {
 	if( (pyroNum<0) || (pyroNum>=NUMBER_OF_PYROS) ) {
 		return;
 	}
 	this->pyroChannels[pyroNum]=pyro;
 }
-void Configuration::setPyro_I(int pyroNum, int pyroConfigNum, PyroConfig config, float value) {
+void Configuration::setPyro(int pyroNum, int pyroConfigNum, PyroConfig config, float value) {
 	if( (pyroNum<0) || (pyroNum>=NUMBER_OF_PYROS) ) {
 		return;
 	}
@@ -41,7 +39,7 @@ void Configuration::setPyro_I(int pyroNum, int pyroConfigNum, PyroConfig config,
 		this->pyroChannels[pyroNum].valueTwo = value;
 	}
 }
-void Configuration::setPyro_I(int pyroNum, bool tiltLock,
+void Configuration::setPyro(int pyroNum, bool tiltLock,
 							PyroConfig configOne, float valueOne,
 							PyroConfig configTwo, float valueTwo) {
 	if( (pyroNum<0) || (pyroNum>=NUMBER_OF_PYROS) ) {
@@ -54,7 +52,7 @@ void Configuration::setPyro_I(int pyroNum, bool tiltLock,
 	this->pyroChannels[pyroNum].tiltLock = tiltLock;
 
 }
-Pyro* Configuration::getPyro_I(int pyroNum) {
+Pyro* Configuration::getPyro(int pyroNum) {
 	if( (pyroNum<0) ) {
 		return &(this->pyroChannels[0]);
 	}
@@ -64,55 +62,55 @@ Pyro* Configuration::getPyro_I(int pyroNum) {
 	return &(this->pyroChannels[pyroNum]);
 }
 
-Pyro* Configuration::getAllPyros_I() {
+Pyro* Configuration::getAllPyros() {
 	return this->pyroChannels;
 }
 
-float Configuration::getIgnitionThreshold_I() {
+float Configuration::getIgnitionThreshold() {
 	return this->ignitionThreshold;
 }
-void Configuration::setIgnitionThreshold_I(float ignitionThreshold) {
+void Configuration::setIgnitionThreshold(float ignitionThreshold) {
 	this->ignitionThreshold = ignitionThreshold;
 }
-float Configuration::getCutoffThreshold_I() {
+float Configuration::getCutoffThreshold() {
 	return this->cutoffThreshold;
 }
-void Configuration::setCutoffThreshold_I(float cutoffThreshold) {
+void Configuration::setCutoffThreshold(float cutoffThreshold) {
 	this->cutoffThreshold = cutoffThreshold;
 }
 
-LoggingRates* Configuration::getLoggingRates_I() {
+LoggingRates* Configuration::getLoggingRates() {
 	return &(this->loggingRates);
 }
-void Configuration::setLoggingRates_I(LoggingRates logRates) {
+void Configuration::setLoggingRates(LoggingRates logRates) {
 	this->loggingRates = logRates;
 }
 
-AltitudeDeterminination Configuration::getAltitudeDetermination_I() {
+AltitudeDeterminination Configuration::getAltitudeDetermination() {
 	return this->altitudeDetermination;
 }
-void Configuration::setAltitudeDetermination_I(AltitudeDeterminination determination) {
+void Configuration::setAltitudeDetermination(AltitudeDeterminination determination) {
 	this->altitudeDetermination = determination;
 }
 
-float Configuration::getArmingAltitude_I() {
+float Configuration::getArmingAltitude() {
 	return this->armingAltitude;
 }
-void Configuration::setArmingAltitude_I(float altitude) {
+void Configuration::setArmingAltitude(float altitude) {
 	this->armingAltitude = altitude;
 }
 		
-bool Configuration::getDrogueChute_I() {
+bool Configuration::getDrogueChute() {
 	return this->drogueChute;
 }
-void Configuration::setDrogueChute_I(bool drogueChute) {
+void Configuration::setDrogueChute(bool drogueChute) {
 	this->drogueChute = drogueChute;
 }
 		
-int Configuration::getMainPyroChannel_I() {
+int Configuration::getMainPyroChannel() {
 	return this->mainPyroChannel;
 }
-void Configuration::setMainPyroChannel_I(int channel) {
+void Configuration::setMainPyroChannel(int channel) {
 	if(channel >= NUMBER_OF_PYROS) {
 		channel = NUMBER_OF_PYROS - 1;
 	}
@@ -122,10 +120,10 @@ void Configuration::setMainPyroChannel_I(int channel) {
 	this->mainPyroChannel = channel;
 }
 		
-int Configuration::getDroguePyroChannel_I() {
+int Configuration::getDroguePyroChannel() {
 	return this->droguePyroChannel;
 }
-void Configuration::setDroguePyroChannel_I(int channel) {
+void Configuration::setDroguePyroChannel(int channel) {
 	if(channel >= NUMBER_OF_PYROS) {
 		channel = NUMBER_OF_PYROS - 1;
 	}
@@ -135,17 +133,17 @@ void Configuration::setDroguePyroChannel_I(int channel) {
 	this->droguePyroChannel = channel;
 }
 
-float Configuration::getUpperTimeStepms_I() {
+float Configuration::getUpperTimeStepms() {
 	return this->uppertimeStepms;
 }
-void Configuration::setUpperTimeStepms_I(float newTimeStep) {
+void Configuration::setUpperTimeStepms(float newTimeStep) {
 	this->uppertimeStepms = newTimeStep;
 }
 	
-float Configuration::getLowerTimeStepms_I() {
+float Configuration::getLowerTimeStepms() {
 	return this->lowertimeStepms;
 }
-void Configuration::setLowerTimeStepms_I(float newTimeStep) {
+void Configuration::setLowerTimeStepms(float newTimeStep) {
 	this->lowertimeStepms = newTimeStep;
 }
 
@@ -184,124 +182,10 @@ void Configuration::setToDefault() {
 	this->lowertimeStepms = DEFAULT_LOWER_TIME_STEP_MS;
 }
 
-Configuration &Configuration::GET_INSTANCE() {
-	return INSTANCE;
-}
-
 Configuration::Configuration() {
 	setToDefault();
 }
 
 Configuration::~Configuration() {
 	//should never get here
-}
-
-
-//mapping static functions to proper
-bool Configuration::getTwoStageRocket() {
-	return Configuration::GET_INSTANCE().getTwoStageRocket_I();
-}
-void Configuration::setTwoStageRocket(bool twoStage) {
-	return Configuration::GET_INSTANCE().setTwoStageRocket_I(twoStage);
-}
-
-bool Configuration::getSafetyLock() {
-	return Configuration::GET_INSTANCE().getSafetyLock_I();
-}
-void Configuration::setSafetyLock(bool safetyLock) {
-	return Configuration::GET_INSTANCE().setSafetyLock_I(safetyLock);
-}
-float Configuration::getSafetyLockValue() {
-	return Configuration::GET_INSTANCE().getSafetyLockValue_I();
-}						
-void Configuration::setSafetyLockValue(float safetyLockValue) {
-	Configuration::GET_INSTANCE().setSafetyLockValue_I(safetyLockValue);
-} 
-
-void Configuration::setPyro(int pyroNum, Pyro pyro) {
-	Configuration::GET_INSTANCE().setPyro_I(pyroNum, pyro);
-}
-void Configuration::setPyro(int pyroNum, bool tiltLock,
-					 PyroConfig configOne, float valueOne,
-					 PyroConfig configTwo, float valueTwo) {
-	Configuration::GET_INSTANCE().setPyro_I(pyroNum, tiltLock, configOne, valueOne, configTwo, valueTwo);
-}
-void Configuration::setPyro(int pyroNum, int pyroConfigNum,
-					 PyroConfig config, float value) {
-	Configuration::GET_INSTANCE().setPyro_I(pyroNum, pyroConfigNum, config, value);
-}
-Pyro* Configuration::getPyro(int pyroNum) {
-	return Configuration::GET_INSTANCE().getPyro_I(pyroNum);
-}
-Pyro* Configuration::getAllPyros() {
-	return Configuration::GET_INSTANCE().getAllPyros_I();
-}
-		
-float Configuration::getIgnitionThreshold() {
-	return Configuration::GET_INSTANCE().getIgnitionThreshold_I();
-}
-void Configuration::setIgnitionThreshold(float ignitionThreshold) {
-	Configuration::GET_INSTANCE().setIgnitionThreshold_I(ignitionThreshold);
-}
-float Configuration::getCutoffThreshold() {
-	return Configuration::GET_INSTANCE().getCutoffThreshold_I();
-}
-void Configuration::setCutoffThreshold(float cutoffThreshold) {
-	Configuration::GET_INSTANCE().setCutoffThreshold_I(cutoffThreshold);
-}
-
-LoggingRates* Configuration::getLoggingRates() {
-	return Configuration::GET_INSTANCE().getLoggingRates_I();
-} 
-void Configuration::setLoggingRates(LoggingRates logRates) {
-	Configuration::GET_INSTANCE().setLoggingRates_I(logRates);
-}
-		
-AltitudeDeterminination Configuration::getAltitudeDetermination() {
-	return Configuration::GET_INSTANCE().getAltitudeDetermination_I();
-}
-void Configuration::setAltitudeDetermination(AltitudeDeterminination determination) {
-	Configuration::GET_INSTANCE().setAltitudeDetermination_I(determination);
-}
-		
-float Configuration::getArmingAltitude() {
-	return Configuration::GET_INSTANCE().getArmingAltitude_I();
-}
-void Configuration::setArmingAltitude(float altitude) {
-	Configuration::GET_INSTANCE().setArmingAltitude_I(altitude);
-}
-		
-bool Configuration::getDrogueChute() {
-	return Configuration::GET_INSTANCE().getDrogueChute_I();
-}
-void Configuration::setDrogueChute(bool drogueChute) {
-	Configuration::GET_INSTANCE().setDrogueChute_I(drogueChute);
-}
-		
-int Configuration::getMainPyroChannel() {
-	return Configuration::GET_INSTANCE().getMainPyroChannel_I();
-}
-void Configuration::setMainPyroChannel(int channel) {
-	Configuration::GET_INSTANCE().setMainPyroChannel_I(channel);
-}
-		
-int Configuration::getDroguePyroChannel() {
-	return Configuration::GET_INSTANCE().getDroguePyroChannel_I();
-}
-void Configuration::setDroguePyroChannel(int channel) {
-	Configuration::GET_INSTANCE().setDroguePyroChannel_I(channel);
-}
-
-float Configuration::getUpperTimeStepms() {
-	return Configuration::GET_INSTANCE().getUpperTimeStepms_I();
-}
-void Configuration::setUpperTimeStepms(float newTimeStep) {
-	Configuration::GET_INSTANCE().setUpperTimeStepms_I(newTimeStep);
-}
-		
-float Configuration::getLowerTimeStepms() {
-	return Configuration::GET_INSTANCE().getLowerTimeStepms_I();
-}
-void Configuration::setLowerTimeStepms(float newTimeStep) {
-	Configuration::GET_INSTANCE().setLowerTimeStepms_I(newTimeStep);
 }

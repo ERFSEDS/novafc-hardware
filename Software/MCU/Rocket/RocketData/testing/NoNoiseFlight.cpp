@@ -7,12 +7,12 @@
 int main() {
 	std::string flightData = "resources/TestData.csv";
 	std::string fileOut = "noNoise.csv";
-	Configuration::setUpperTimeStepms(10);
-	Configuration::setAltitudeDetermination(ACCELEROMETER_ONLY);
-
+	Configuration config;
+	config.setUpperTimeStepms(10);
+	config.setAltitudeDetermination(ACCELEROMETER_ONLY);
 	
-	RocketData& rocket = RocketData::getInstance();
-	SensorValues& sensors = SensorValues::getInstance();
+	SensorValues sensors;
+	RocketData rocket(config, sensors);
 	
 	FlightSimulator simulator(rocket, sensors, flightData, fileOut);
 	bool success = simulator.runSimulation(100);

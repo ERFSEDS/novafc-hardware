@@ -3,22 +3,24 @@
 #include "Configuration.hpp"
 
 
-int main() {
+int main() {	
+	Configuration config;
+	StateMachine stateMachine(config);
 	//set configuration
-	Configuration::setTwoStageRocket(true);
+	config.setTwoStageRocket(true);
 	
-	StateMachine::refresh();
-	StateMachine::changeState(READY);
-	StateMachine::changeState(STAGE1POWERED);
-	StateMachine::changeState(STAGE1COAST);
-	StateMachine::changeState(STAGE2POWERED);
-	StateMachine::changeState(STAGE2COAST);
-	StateMachine::changeState(DROGUEPAR);
-	StateMachine::changeState(MAINPAR);
-	StateMachine::changeState(LANDED);
-	StateMachine::changeState(RESET);
+	stateMachine.refresh();
+	stateMachine.changeState(READY);
+	stateMachine.changeState(STAGE1POWERED);
+	stateMachine.changeState(STAGE1COAST);
+	stateMachine.changeState(STAGE2POWERED);
+	stateMachine.changeState(STAGE2COAST);
+	stateMachine.changeState(DROGUEPAR);
+	stateMachine.changeState(MAINPAR);
+	stateMachine.changeState(LANDED);
+	stateMachine.changeState(RESET);
 	
-	if(StateMachine::getCurrentState() != RESET) {
+	if(stateMachine.getCurrentState() != RESET) {
 		Logger::Fatal("Did not properly handle a 2 stage flight");
 		return 1;
 	}

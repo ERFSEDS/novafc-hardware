@@ -4,8 +4,7 @@
 #include <iostream>
 #include <sstream>
 
-StateMachine StateMachine::INSTANCE;
-void StateMachine::changeState_I(State state) {
+void StateMachine::changeState(State state) {
 	if(stateMap.checkTransition(this->currentState, state) ) {
 		std::stringstream ss;
 		this->previousState = this->currentState;
@@ -19,14 +18,14 @@ void StateMachine::changeState_I(State state) {
 		Logger::Warning(ss.str());
 	}
 }
-State StateMachine::getCurrentState_I() {
+State StateMachine::getCurrentState() {
 	return this->currentState;
 }
-State StateMachine::getPreviousState_I() {
+State StateMachine::getPreviousState() {
 	return this->previousState;
 }
 		
-StateMachine::StateMachine() {
+StateMachine::StateMachine(Configuration& config) : config(config), stateMap(config) {
 	this->currentState = DEFAULT_START_STATE;
 	this->previousState = DEFAULT_START_STATE;
 	stateMap.setupTransitions();
@@ -34,12 +33,12 @@ StateMachine::StateMachine() {
 StateMachine::~StateMachine() {
 
 }
-void StateMachine::refresh_I() {
+void StateMachine::refresh() {
 	this->stateMap.resetTransitions(); 
 	this->stateMap.setupTransitions();
 }
 
-StateMap::StateMap() {
+StateMap::StateMap(Configuration& config) : config(config){
 	setupTransitions();
 }
 bool StateMap::checkTransition(State currentState, State desiredTransition) {
@@ -50,10 +49,10 @@ void StateMap::setupTransitions() {
 	this->nodes[(int)READY].addTransition(UNARMED);
 	this->nodes[(int)READY].addTransition(STAGE1POWERED);
 	this->nodes[(int)STAGE1POWERED].addTransition(STAGE1COAST);
-	if(Configuration::getTwoStageRocket()) {
+	if(config.getTwoStageRocket()) {
 		this->nodes[(int)STAGE1COAST].addTransition(STAGE2POWERED);
 		this->nodes[(int)STAGE2POWERED].addTransition(STAGE2COAST);
-		if(Configuration::getDrogueChute()) {
+		if(config.getDrogueChute()) {
 			this->nodes[(int)STAGE2COAST].addTransition(DROGUEPAR);
 			this->nodes[(int)DROGUEPAR].addTransition(MAINPAR);
 		}
@@ -63,7 +62,7 @@ void StateMap::setupTransitions() {
 		
 	}
 	else {
-		if(Configuration::getDrogueChute()) {
+		if(config.getDrogueChute()) {
 			this->nodes[(int)STAGE1COAST].addTransition(DROGUEPAR);
 			this->nodes[(int)DROGUEPAR].addTransition(MAINPAR);
 		}
@@ -80,23 +79,6 @@ void StateMap::resetTransitions() {
 	for(int i = 0; i < NUMBER_OF_STATES; i++) {
 		this->nodes[i].removeAll();
 	}
-}
-
-
-StateMachine &StateMachine::GET_INSTANCE() {
-	return INSTANCE;
-}
-void StateMachine::changeState(State state) {
-	StateMachine::GET_INSTANCE().changeState_I(state);
-}
-State StateMachine::getCurrentState() {
-	return StateMachine::GET_INSTANCE().getCurrentState_I();
-}
-State StateMachine::getPreviousState() {
-	return StateMachine::GET_INSTANCE().getPreviousState_I();
-}
-void StateMachine::refresh() {
-	return StateMachine::GET_INSTANCE().refresh_I();
 }
 
 TransitionLinkedList::TransitionLinkedList() {

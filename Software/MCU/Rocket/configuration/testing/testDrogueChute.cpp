@@ -4,11 +4,12 @@
 int main() {
 	bool drogueChute;
 	bool success;
+	Configuration config;
 	
 	//set arming altitude to true
 	drogueChute = true;
-	Configuration::setDrogueChute(drogueChute);
-	success = drogueChute == Configuration::getDrogueChute();
+	config.setDrogueChute(drogueChute);
+	success = drogueChute == config.getDrogueChute();
 	if (!success) {
 		std::cout << "Failed to set drogue chute" << std::endl;
 		return 1;
@@ -17,8 +18,8 @@ int main() {
 	
 	//set arming altitude to false
 	drogueChute = false;
-	Configuration::setDrogueChute(drogueChute);
-	success = drogueChute == Configuration::getDrogueChute();
+	config.setDrogueChute(drogueChute);
+	success = drogueChute == config.getDrogueChute();
 	if (!success) {
 		std::cout << "Failed to set drogue chute" << std::endl;
 		return 1;

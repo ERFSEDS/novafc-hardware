@@ -8,21 +8,16 @@
 
 class SensorValues {
     private:
-        static SensorValues instance;
 
         Cartesian  acceleration[2], angularVelocity[2];
         float sPressure, cPressure[2], temperature;
         bool pyro[2];
         float deltaT;
 
-    protected:
-        SensorValues();
-        ~SensorValues(){}
 
     public:
-        SensorValues(SensorValues &other) = delete;
-        void operator =(const SensorValues &) = delete;
-        static SensorValues& getInstance(){return instance;}
+        SensorValues();
+        ~SensorValues(){}
 
         void setAcceleration(Cartesian data);
         void setAngularVelocity(Cartesian data);

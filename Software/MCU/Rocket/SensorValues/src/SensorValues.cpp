@@ -4,7 +4,6 @@
  */
 #include "SensorValues.h"
 
-SensorValues SensorValues::instance;
 SensorValues::SensorValues() : acceleration({{0,0,0}, {0,0,0}}), angularVelocity({{0,0,0}, {0,0,0}}), sPressure(0), cPressure({0, 0}), temperature(0), deltaT(0), pyro({false, false}){
 }
 void SensorValues::setAcceleration(Cartesian data){     

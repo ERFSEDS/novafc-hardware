@@ -6,16 +6,15 @@
 #include "RocketData.h"
 #include "SensorValues.h"
 #include <cmath>
+#include <iostream>
 
-RocketData RocketData::rocketData;
-
-RocketData::RocketData() : sensors(SensorValues::getInstance()), groundPressure(SEA_LEVEL_PRESSURE){
+RocketData::RocketData(Configuration& config, SensorValues& sensors) : sensors(sensors), groundPressure(SEA_LEVEL_PRESSURE), config(config){
 	rocketAngle = {1,0,0,0};
 	rocketDisplacement = {0,0,0};
 	rocketVelocity = {0,0,0};
 }
 void RocketData::update() {
-	AltitudeDeterminination mode = Configuration::getAltitudeDetermination();
+	AltitudeDeterminination mode = config.getAltitudeDetermination();
 	updateData();
 	switch(mode) {
 	case BOTH:
@@ -41,7 +40,6 @@ void RocketData::accelUpdate(){
 	Cartesian globalAcceleration = rocketAngle.getRotationMatrix() * acceleration;
 	globalAcceleration = globalAcceleration + gravityBias();
 	
-	
 	accelVelocity = rocketVelocity + (globalAcceleration * deltaT);
 	accelDisplacement = rocketDisplacement + (accelVelocity * deltaT);
 }
@@ -54,14 +52,15 @@ void RocketData::gyroUpdate() {
 	rocketAngle.normalize();
 }
 
-void RocketData::updateData(){
+void RocketData::updateData() {
 	acceleration = sensors.getAcceleration();
+	std::cout << "Acceleration: " << acceleration.x << ", " << acceleration.y << ", " << acceleration.z << std::endl;	
 	angularVelocity[1] = angularVelocity[0];
 	angularVelocity[0] = sensors.getAngularVelocity();
     currentPressure = sensors.getCPressure();
     groundPressure = sensors.getSPressure();
     temperature = sensors.getTemperature();
-    deltaT = Configuration::getUpperTimeStepms()/1000.0;
+    deltaT = config.getUpperTimeStepms()/1000.0;
     
 }
 

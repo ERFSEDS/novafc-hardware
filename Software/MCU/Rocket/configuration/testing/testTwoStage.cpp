@@ -3,9 +3,10 @@
 
 int main() {
 	//can set to false
+	Configuration config;
 	bool testSet = false;
-	Configuration::setTwoStageRocket(testSet);
-	bool success = Configuration::getTwoStageRocket() == testSet;
+	config.setTwoStageRocket(testSet);
+	bool success = config.getTwoStageRocket() == testSet;
 	if(!success) {
 		std::cout << "Failed to set two stage" << std::endl;
 		return 1;
@@ -13,8 +14,8 @@ int main() {
 
 	//can set to true
 	testSet = true;
-	Configuration::setTwoStageRocket(testSet);
-	success == Configuration::getTwoStageRocket() == testSet;
+	config.setTwoStageRocket(testSet);
+	success == config.getTwoStageRocket() == testSet;
 	if(!success) {
 		std::cout << "Failed to set two stage" << std::endl;
 		return 1;

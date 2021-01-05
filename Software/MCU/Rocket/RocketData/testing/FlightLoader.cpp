@@ -21,9 +21,6 @@ FlightSimulator::FlightSimulator(RocketData &data, SensorValues &sensors, std::s
 	this->fileIn.open(inputFile);
 	this->fileOut.open(outputFile);
 	this->fileOut << "timeStep, altitude, trueAltitude, altitudeError, angle, angleError" << std::endl;
-	
-		
-
 }
 
 void FlightSimulator::insertNoise(float gyroMean, float gyroSTD, float accelMean, float accelSTD) {
@@ -57,9 +54,9 @@ bool FlightSimulator::runSimulation(int subSampleRate) {
 			accelX = arguements.at(2);
 			accelY = arguements.at(3) + 9.81;
 			accelZ = arguements.at(4);
-			gyroX = arguements.at(5) ;
-			gyroY = arguements.at(6) ;
-			gyroZ = arguements.at(7) ;
+			gyroX = arguements.at(5);
+			gyroY = arguements.at(6);
+			gyroZ = arguements.at(7);
 			pressure = arguements.at(8);
 			trueAltitude = arguements.at(9);
 			trueAngle = arguements.at(10);
@@ -80,8 +77,11 @@ bool FlightSimulator::runSimulation(int subSampleRate) {
 				this->sensors.setAngularVelocity(gyro);
 				
 				this->sensors.setCPressure(pressure);
+				Cartesian val = sensors.getAcceleration();
+				std::cout << "Acceeleraton values: " << val.x << ". " << val.y << ". " << val.z << ". " <<std::endl; 
 				if(first) {
 					this->sensors.setSPressure(pressure);
+					first = false;
 				}
 				
 				this->rocket.update();

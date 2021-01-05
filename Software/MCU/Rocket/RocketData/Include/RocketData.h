@@ -18,6 +18,7 @@ class RocketData{
 
 		//Raw sensor Data
         SensorValues& sensors;
+		Configuration& config;
         Cartesian acceleration, angularVelocity[2];
         float currentPressure, groundPressure, temperature; // in Pa
         float deltaT;
@@ -32,8 +33,6 @@ class RocketData{
 		Quanternion rocketAngle;
 
     protected:
-        RocketData();
-        ~RocketData(){}
         void accelUpdate();
         void gyroUpdate();
         void updateBarometer();
@@ -44,9 +43,8 @@ class RocketData{
 		void sensorFusion(AltitudeDeterminination mode);
 
     public:
-        RocketData(RocketData &other) = delete;
-        void operator =(const RocketData &) = delete;
-        static RocketData &getInstance(){return rocketData;}
+        RocketData(Configuration& config, SensorValues& sensors);
+        ~RocketData(){}
 
         void update();
 		

@@ -12,12 +12,17 @@
 
 class Brain {
 	public:
+		Brain(Configuration& config, StateMachine& state, RocketData& rocket, SensorValues& sensor);
 		void check();
 		void arm();
 		void disarm();
 	
 		void updateConfigValues();
 	private:
+		Configuration& config;
+		StateMachine& state;
+		RocketData& rocket;
+		SensorValues& sensors;
 		//checks if the motor ignited
 		bool motorIgnition();
 		//checks if the motor has cutoff
@@ -59,8 +64,6 @@ class Brain {
 		int landedCountdown;
 		int landedCountdownStart;
 		
-		static SensorValues& sensor;
-		static RocketData& rocket;
 		State lastState;
 };
 

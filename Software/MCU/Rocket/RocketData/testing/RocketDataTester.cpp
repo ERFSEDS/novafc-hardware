@@ -7,18 +7,17 @@
 int main() {
 	std::string flightData = "resources/TestData.csv";
 	std::string fileOut = "results.csv";
-	Configuration::setUpperTimeStepms(10);
-	Configuration::setAltitudeDetermination(ACCELEROMETER_ONLY);
+	Configuration config;
+	config.setUpperTimeStepms(10);
+	config.setAltitudeDetermination(ACCELEROMETER_ONLY);
 	float gyroNoiseMean = 0.2;
 	float gyroNoiseSTD = 0.1;
 	float accelNoiseMean = 0;
 	float accelNoiseSTD = 3;
 
-
-	
-	RocketData& rocket = RocketData::getInstance();
-	SensorValues& sensors = SensorValues::getInstance();
-	
+	SensorValues sensors;
+	RocketData rocket(config, sensors);
+		
 	FlightSimulator simulator(rocket, sensors, flightData, fileOut);
 	simulator.insertNoise(gyroNoiseMean, gyroNoiseSTD, accelNoiseMean, accelNoiseSTD);
 	bool success = simulator.runSimulation(100);

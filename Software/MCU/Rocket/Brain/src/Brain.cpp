@@ -2,21 +2,22 @@
 #include "Brain.hpp"
 #include "Logger.hpp"
 
-//Needed Instances
-SensorValues& Brain::sensor = SensorValues::getInstance();
-RocketData& Brain::rocket = RocketData::getInstance();
+
+Brain::Brain(Configuration& config, StateMachine& state, RocketData& rocket, SensorValues& sensors) : config(config), state(state), rocket(rocket), sensors(sensors) {
+	
+}
 void Brain::check() {
-	bool stateChange = StateMachine::getCurrentState() == lastState;
+	bool stateChange = state.getCurrentState() == lastState;
 	hangleStateChange();
 	bool pyroFired;
-	switch(StateMachine::getCurrentState()) {
+	switch(state.getCurrentState()) {
 	case UNARMED:
 		//TODO impliment arm checker(either sensor values read or vertical)
 		break;
 	case READY:
 		if(motorIgnition()) {
 			//IGNITION
-			StateMachine::changeState(STAGE1POWERED);
+			state.changeState(STAGE1POWERED);
 		}
 		else {
 			//TODO Watch for disarming 
@@ -24,33 +25,33 @@ void Brain::check() {
 		break;
 	case STAGE1POWERED:
 		if(motorCutoff()) {
-			StateMachine::changeState(STAGE1COAST);
+			state.changeState(STAGE1COAST);
 		}
 		break;
 	case STAGE1COAST:
 		pyroFired = checkPyros();
 		checkApogee();
-		if(Configuration::getTwoStageRocket() ) {
+		if(config.getTwoStageRocket() ) {
 			if(motorIgnition()) {
-				StateMachine::changeState(STAGE1COAST);	
+				state.changeState(STAGE1COAST);	
 			}
 		}
 		else {
 			if(pyroFired) {
-				StateMachine::changeState(DROGUEPAR);
+				state.changeState(DROGUEPAR);
 			}
 		}
 		break;
 	case STAGE2POWERED:
 		if(motorCutoff()) {
-			StateMachine::changeState(STAGE2COAST);
+			state.changeState(STAGE2COAST);
 		}
 		checkPyros();
 		break;
 	case STAGE2COAST:
 		pyroFired = checkPyros();
 		if(pyroFired) {
-			StateMachine::changeState(DROGUEPAR);
+			state.changeState(DROGUEPAR);
 		}
 		checkApogee();
 		break;
@@ -58,12 +59,12 @@ void Brain::check() {
 		pyroFired = checkPyros();
 		checkApogee();
 		if(pyroFired) {
-			StateMachine::changeState(MAINPAR);
+			state.changeState(MAINPAR);
 		}
 	case MAINPAR:
 		checkApogee();
 		if(checkLanded()) {
-			StateMachine::changeState(LANDED);
+			state.changeState(LANDED);
 		}
 		break;
 	case LANDED:
@@ -72,12 +73,12 @@ void Brain::check() {
 	case RESET:
 		break;
 	}
-	lastState = StateMachine::getCurrentState();
+	lastState = state.getCurrentState();
 }
 //handles all state changes
 void Brain::hangleStateChange() {
-	State cState = StateMachine::getCurrentState();
-	State pState = StateMachine::getPreviousState();
+	State cState = state.getCurrentState();
+	State pState = state.getPreviousState();
 	
 	switch(cState) {
 	case UNARMED:
@@ -154,14 +155,14 @@ void Brain::hangleStateChange() {
 	}
 }
 void Brain::arm() {
-	if(StateMachine::getCurrentState() == UNARMED) {
-		StateMachine::changeState(READY);
+	if(state.getCurrentState() == UNARMED) {
+		state.changeState(READY);
 		Logger::Event("Rocket Disarmed");
 	}
 }
 void Brain::disarm() {
-	if(StateMachine::getCurrentState() == READY) {
-		StateMachine::changeState(UNARMED);
+	if(state.getCurrentState() == READY) {
+		state.changeState(UNARMED);
 		Logger::Event("Rocket Disarmed");
 	}
 }
@@ -209,11 +210,11 @@ void Brain::checkApogee() {
 }
 		
 void Brain::updateConfigValues() {
-	float stepHz = 1000.0/( (float)(Configuration::getUpperTimeStepms()) );
+	float stepHz = 1000.0/( (float)(config.getUpperTimeStepms()) );
 	requiredTimeSteps = stepHz * APOGEE_DESCENT_DETECT_TIME;
 	
-	cutoffThreshold = Configuration::getCutoffThreshold();
-	ignitionThreshold = Configuration::getIgnitionThreshold();
+	cutoffThreshold = config.getCutoffThreshold();
+	ignitionThreshold = config.getIgnitionThreshold();
 	
 	cutoffCountdownStart = (int)( stepHz * CUTOFF_DETECT_TIME );
 	cutoffCountdown = cutoffCountdownStart;
@@ -224,14 +225,14 @@ void Brain::updateConfigValues() {
 	landedCountdown = landedCountdownStart;
 	
 	for(int i = 0; i < NUMBER_OF_PYROS; i++) {	
-		PyroConfig configOne = Configuration::getPyro(i)->configOne;
-		PyroConfig configTwo = Configuration::getPyro(i)->configTwo;
+		PyroConfig configOne = config.getPyro(i)->configOne;
+		PyroConfig configTwo = config.getPyro(i)->configTwo;
 		if( configOne == TIME_DELAY ) {
-			delayPyroCharge[i] = (int)((stepHz) * Configuration::getPyro(i)->valueOne);
+			delayPyroCharge[i] = (int)((stepHz) * config.getPyro(i)->valueOne);
 			counting[i] = false;
 		}
 		else if( configTwo == TIME_DELAY ) {
-			delayPyroCharge[i] = (int)(( stepHz ) * Configuration::getPyro(i)->valueTwo);
+			delayPyroCharge[i] = (int)(( stepHz ) * config.getPyro(i)->valueTwo);
 			counting[i] = false;
 		}
 		else {
@@ -245,7 +246,7 @@ void Brain::updateConfigValues() {
 bool Brain::checkPyros() {
 	bool fired = false;
 	for(int i = 0; i < NUMBER_OF_PYROS; i++) {
-		Pyro pyro = *Configuration::getPyro(i);
+		Pyro pyro = *config.getPyro(i);
 		bool caseOneMet = checkPyroCase(pyro, 1);
 		bool caseTwoMet = checkPyroCase(pyro, 2);
 		
@@ -258,7 +259,7 @@ bool Brain::checkPyros() {
 		if(counting[i] == true) {
 			if(delayPyroCharge[i] == 0) {
 				Logger::Event("FIRE PYRO " + std::to_string(i));
-				sensor.firePyro(i); //FIRE THE PYRO
+				sensors.firePyro(i); //FIRE THE PYRO
 				fired = true;
 			}
 			else {

@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-
+#include "Configuration.hpp"
 #define NUMBER_OF_STATES 10
 #define DEFAULT_START_STATE (UNARMED)
 enum State
@@ -38,8 +38,9 @@ class TransitionLinkedList {
 class StateMap {
 	private:
 		TransitionLinkedList nodes[NUMBER_OF_STATES];
+		Configuration& config;
 	public:
-		StateMap();
+		StateMap(Configuration& config);
 		bool checkTransition(State currentState, State desiredTransition);
 		void setupTransitions();
 		void resetTransitions();
@@ -48,27 +49,16 @@ class StateMap {
 class StateMachine
 {
 	public:
-		static void changeState(State state);
-		static State getCurrentState();
-		static State getPreviousState();
-		static void refresh();
+		StateMachine(Configuration& config);
+		~StateMachine();
+		void changeState(State state);
+		State getCurrentState();
+		State getPreviousState();
+		void refresh();
 	private:
-		static StateMachine INSTANCE;
+		Configuration config;
 		State currentState;
 		State previousState;
 		StateMap stateMap;
-		
-		
-		static StateMachine &GET_INSTANCE();
-		void changeState_I(State state);
-		State getCurrentState_I();
-		State getPreviousState_I();
-		void refresh_I();
-	public:
-		StateMachine(const StateMachine &state) = delete;
-
-	private:
-		StateMachine();
-		~StateMachine();
 	
 };

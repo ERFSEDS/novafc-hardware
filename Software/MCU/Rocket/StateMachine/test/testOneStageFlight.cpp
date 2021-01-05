@@ -5,18 +5,20 @@
 
 int main() {
 	//set configuration
-	Configuration::setTwoStageRocket(false);
+	Configuration config;
+	StateMachine stateMachine(config);
+	config.setTwoStageRocket(false);
 	
-	StateMachine::refresh();
-	StateMachine::changeState(READY);
-	StateMachine::changeState(STAGE1POWERED);
-	StateMachine::changeState(STAGE1COAST);
-	StateMachine::changeState(DROGUEPAR);
-	StateMachine::changeState(MAINPAR);
-	StateMachine::changeState(LANDED);
-	StateMachine::changeState(RESET);
+	stateMachine.refresh();
+	stateMachine.changeState(READY);
+	stateMachine.changeState(STAGE1POWERED);
+	stateMachine.changeState(STAGE1COAST);
+	stateMachine.changeState(DROGUEPAR);
+	stateMachine.changeState(MAINPAR);
+	stateMachine.changeState(LANDED);
+	stateMachine.changeState(RESET);
 	
-	if(StateMachine::getCurrentState() != RESET) {
+	if(stateMachine.getCurrentState() != RESET) {
 		Logger::Fatal("Did not properly handle a 1 stage flight");
 		return 1;
 	}

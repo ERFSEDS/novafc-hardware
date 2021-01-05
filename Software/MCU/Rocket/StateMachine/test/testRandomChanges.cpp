@@ -5,11 +5,13 @@
 
 int main() {
 	//illegal
-	StateMachine::changeState(STAGE1POWERED);
-	StateMachine::changeState(STAGE1COAST);
-	StateMachine::changeState(RESET);
+	Configuration config;
+	StateMachine stateMachine(config);
+	stateMachine.changeState(STAGE1POWERED);
+	stateMachine.changeState(STAGE1COAST);
+	stateMachine.changeState(RESET);
 	
-	if(StateMachine::getCurrentState() != UNARMED) {
+	if(stateMachine.getCurrentState() != UNARMED) {
 		Logger::Fatal("State Machine changed state when it shouldnt have");
 		return 1;
 	}
@@ -17,14 +19,14 @@ int main() {
 		Logger::Info("nothing happened, SUCCESS!!!!");
 	}
 	//change state
-	StateMachine::changeState(READY);
+	stateMachine.changeState(READY);
 	
 	//illegal
-	StateMachine::changeState(STAGE2POWERED);
-	StateMachine::changeState(STAGE1COAST);
-	StateMachine::changeState(RESET);
+	stateMachine.changeState(STAGE2POWERED);
+	stateMachine.changeState(STAGE1COAST);
+	stateMachine.changeState(RESET);
 	
-	if(StateMachine::getCurrentState() != READY) {
+	if(stateMachine.getCurrentState() != READY) {
 		Logger::Fatal("State Machine changed state when it shouldnt have");
 		return 1;
 	}

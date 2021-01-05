@@ -4,11 +4,12 @@
 int main() {
 	float armingAltitude;
 	bool success;
+	Configuration config;
 	
 	//set arming altitude to 10
 	armingAltitude = 10;
-	Configuration::setArmingAltitude(armingAltitude);
-	success = armingAltitude == Configuration::getArmingAltitude();
+	config.setArmingAltitude(armingAltitude);
+	success = armingAltitude == config.getArmingAltitude();
 	if (!success) {
 		std::cout << "Failed to set arming altitude" << std::endl;
 		return 1;
@@ -17,8 +18,8 @@ int main() {
 	
 	//set arming altitude to 65.3
 	armingAltitude = 65.3;
-	Configuration::setArmingAltitude(armingAltitude);
-	success = armingAltitude == Configuration::getArmingAltitude();
+	config.setArmingAltitude(armingAltitude);
+	success = armingAltitude == config.getArmingAltitude();
 	if (!success) {
 		std::cout << "Failed to set arming altitude" << std::endl;
 		return 1;

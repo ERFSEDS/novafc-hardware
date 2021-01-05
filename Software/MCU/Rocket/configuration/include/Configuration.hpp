@@ -75,110 +75,57 @@ struct LoggingRates {
 };
 
 class Configuration {	
-	public:
-		static bool getTwoStageRocket();
-		static void setTwoStageRocket(bool twoStage);
-
-		static bool getSafetyLock();
-		static void setSafetyLock(bool safetyLock);
-		static float getSafetyLockValue();						
-		static void setSafetyLockValue(float safetyLockValue); 
-
-		static void setPyro(int pyroNum, Pyro pyro);
-		static void setPyro(int pyroNum, bool tiltLock,
-					 PyroConfig configOne, float valueOne,
-					 PyroConfig configTwo, float valueTwo);
-		static void setPyro(int pyroNum, int pyroConfigNum,
-					 PyroConfig config, float value);
-		static Pyro* getPyro(int pyroNum);	
-		static Pyro* getAllPyros();
-		
-		static float getIgnitionThreshold();
-		static void setIgnitionThreshold(float ignitionThreshold);
-		static float getCutoffThreshold();
-		static void setCutoffThreshold(float cutoffThreshold);
-
-		static LoggingRates* getLoggingRates(); 
-		static void setLoggingRates(LoggingRates logRates);
-		
-		static AltitudeDeterminination getAltitudeDetermination();
-		static void setAltitudeDetermination(AltitudeDeterminination determination);
-		
-		static float getArmingAltitude();
-		static void setArmingAltitude(float altitude);
-		
-		static bool getDrogueChute();
-		static void setDrogueChute(bool drogueChute);
-		
-		static int getMainPyroChannel();
-		static void setMainPyroChannel(int channel);
-		
-		static int getDroguePyroChannel();
-		static void setDroguePyroChannel(int channel);
-		
-		static float getUpperTimeStepms(); //miliseconds
-		static void setUpperTimeStepms(float newTimeStep); //miliseconds
-		
-		static float getLowerTimeStepms(); //miliseconds
-		static void setLowerTimeStepms(float newTimeStep); //miliseconds
-
-		Configuration(const Configuration &conf) = delete; //copy constructor is not allowed
-		
-	//Private Functions
-	private:
+	public:		
 		Configuration(); //constructor is private
 		
 		~Configuration(); //deconstructor is private
 
 		void setToDefault();
-		
-	private:		
-		static Configuration &GET_INSTANCE();
-		bool getTwoStageRocket_I();
-		void setTwoStageRocket_I(bool twoStage);
+		bool getTwoStageRocket();
+		void setTwoStageRocket(bool twoStage);
 
-		bool getSafetyLock_I();
-		void setSafetyLock_I(bool safetyLock);
-		float getSafetyLockValue_I();						
-		void setSafetyLockValue_I(float safetyLockValue); 
+		bool getSafetyLock();
+		void setSafetyLock(bool safetyLock);
+		float getSafetyLockValue();						
+		void setSafetyLockValue(float safetyLockValue); 
 
-		void setPyro_I(int pyroNum, Pyro pyro);
-		void setPyro_I(int pyroNum, bool tiltLock,
+		void setPyro(int pyroNum, Pyro pyro);
+		void setPyro(int pyroNum, bool tiltLock,
 					 PyroConfig configOne, float valueOne,
 					 PyroConfig configTwo, float valueTwo);
-		void setPyro_I(int pyroNum, int pyroConfigNum,
+		void setPyro(int pyroNum, int pyroConfigNum,
 					 PyroConfig config, float value);
-		Pyro* getPyro_I(int pyroNum);	
-		Pyro* getAllPyros_I();
+		Pyro* getPyro(int pyroNum);	
+		Pyro* getAllPyros();
 		
-		float getIgnitionThreshold_I();
-		void setIgnitionThreshold_I(float ignitionThreshold);
-		float getCutoffThreshold_I();
-		void setCutoffThreshold_I(float cutoffThreshold);
+		float getIgnitionThreshold();
+		void setIgnitionThreshold(float ignitionThreshold);
+		float getCutoffThreshold();
+		void setCutoffThreshold(float cutoffThreshold);
 
-		LoggingRates* getLoggingRates_I(); 
-		void setLoggingRates_I(LoggingRates logRates);
+		LoggingRates* getLoggingRates(); 
+		void setLoggingRates(LoggingRates logRates);
 		
-		AltitudeDeterminination getAltitudeDetermination_I();
-		void setAltitudeDetermination_I(AltitudeDeterminination determination);
+		AltitudeDeterminination getAltitudeDetermination();
+		void setAltitudeDetermination(AltitudeDeterminination determination);
 		
-		float getArmingAltitude_I();
-		void setArmingAltitude_I(float altitude);
+		float getArmingAltitude();
+		void setArmingAltitude(float altitude);
 		
-		bool getDrogueChute_I();
-		void setDrogueChute_I(bool drogueChute);
+		bool getDrogueChute();
+		void setDrogueChute(bool drogueChute);
 		
-		int getMainPyroChannel_I();
-		void setMainPyroChannel_I(int channel);
+		int getMainPyroChannel();
+		void setMainPyroChannel(int channel);
 		
-		int getDroguePyroChannel_I();
-		void setDroguePyroChannel_I(int channel);
+		int getDroguePyroChannel();
+		void setDroguePyroChannel(int channel);
 		
-		float getUpperTimeStepms_I(); //miliseconds
-		void setUpperTimeStepms_I(float newTimeStep); //miliseconds
+		float getUpperTimeStepms(); //miliseconds
+		void setUpperTimeStepms(float newTimeStep); //miliseconds
 		
-		float getLowerTimeStepms_I(); //miliseconds
-		void setLowerTimeStepms_I(float newTimeStep); //miliseconds
+		float getLowerTimeStepms(); //miliseconds
+		void setLowerTimeStepms(float newTimeStep); //miliseconds
 		
 	//Private Variables
 	private:

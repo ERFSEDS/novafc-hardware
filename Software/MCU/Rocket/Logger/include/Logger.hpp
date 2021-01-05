@@ -33,7 +33,7 @@ class Logger
 		static void SetLogLevelUSB(LoggerLevel level);
 		static void SetLogLevelFLASH(LoggerLevel level);
 	
-
+		static Logger& GET_INSTANCE();
 	private:
 		Logger();//private constructor
 		~Logger();//private decosntructor
@@ -45,7 +45,6 @@ class Logger
 		Logger(const Logger &conf) = delete; //copy constructor is not allowed
 
 	private:
-		static Logger &GET_INSTANCE();
 		void Debug_I(std::string message);
 		void Info_I(std::string message);
 		void Event_I(std::string message);
@@ -54,7 +53,6 @@ class Logger
 		void Fatal_I(std::string message);
 		void SetLogLevelUSB_I(LoggerLevel level);
 		void SetLogLevelFLASH_I(LoggerLevel level);
-
 
 
 };
