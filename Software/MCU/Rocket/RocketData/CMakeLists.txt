@@ -63,3 +63,8 @@ create_RocketData_test(
 	NAME "Rocket_Angle_Test"
 	SOURCE "testing/AngleTester.cpp"
 )
+
+create_RocketData_test(
+	NAME "No_Noise_Test"
+	SOURCE "testing/NoNoiseFlight.cpp"
+)

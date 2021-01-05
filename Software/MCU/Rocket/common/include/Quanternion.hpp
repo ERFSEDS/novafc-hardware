@@ -103,9 +103,11 @@ struct Quanternion {
     
     // gets the vector of the rocket is pointed in(not spin you need the full rotation
 	// matrix for that)  
-    void getOrientationVector(float orientationVector[3]) {
-    	orientationVector[0] = 2*i*k-2*j*a; 				
-    	orientationVector[1] = 2*j*k+2*i*a;
-    	orientationVector[2] = 1-2*(i*i)-2*(j*j);
+    Cartesian getOrientationVector() {
+    	Cartesian orientationVector;
+    	orientationVector.x = 2*i*j+2*k*a;		
+    	orientationVector.y = 1-2*(i*i)-2*(k*k);
+    	orientationVector.z = 2*j*k-2*i*a;
+    	return orientationVector;
     }
 };

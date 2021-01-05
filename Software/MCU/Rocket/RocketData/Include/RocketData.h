@@ -18,7 +18,7 @@ class RocketData{
 
 		//Raw sensor Data
         SensorValues& sensors;
-        Cartesian acceleration[2], angularVelocity[2];
+        Cartesian acceleration, angularVelocity[2];
         float currentPressure, groundPressure, temperature; // in Pa
         float deltaT;
         
@@ -38,6 +38,7 @@ class RocketData{
         void gyroUpdate();
         void updateBarometer();
         void updateData();  //Updates data from Sensor Values
+        Cartesian gravityBias();
         
         void calcAltitudeFromBarometer();
 		void sensorFusion(AltitudeDeterminination mode);
