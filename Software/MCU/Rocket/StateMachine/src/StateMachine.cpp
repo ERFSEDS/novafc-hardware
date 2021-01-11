@@ -1,21 +1,19 @@
 #include "StateMachine.hpp"
 #include "Logger.hpp"
 #include "Configuration.hpp"
-#include <iostream>
-#include <sstream>
+#include <cstdio>
 
 void StateMachine::changeState(State state) {
+	char msg[35];
 	if(stateMap.checkTransition(this->currentState, state) ) {
-		std::stringstream ss;
 		this->previousState = this->currentState;
 		this->currentState = state;
-		ss << "Switching State from " << (int)previousState << " to " << (int)currentState;
-		Logger::Event(ss.str());
+		std::sprintf(msg, "Switching State from %d to %d", (int)previousState,  (int)currentState);
+		Logger::Event(msg, 28);
 	}
 	else {
-		std::stringstream ss;
-		ss << "Illegal state change from " << (int)currentState << " to " << (int)state;
-		Logger::Warning(ss.str());
+		std::sprintf(msg, "Illegal state change from %d to %d", (int)previousState,  (int)currentState);
+		Logger::Warning(msg, 33);
 	}
 }
 State StateMachine::getCurrentState() {

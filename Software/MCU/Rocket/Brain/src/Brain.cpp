@@ -79,92 +79,39 @@ void Brain::check() {
 void Brain::hangleStateChange() {
 	State cState = state.getCurrentState();
 	State pState = state.getPreviousState();
-	
+	//not all states are here only the states where action is required
 	switch(cState) {
 	case UNARMED:
 		if(pState == READY) {
-			Logger::Event("ROCKET DISARMED");
+			//TODO disarm
 		}
-		else {//shrug
-		}
+		break;
 	case READY:
 		if(pState == UNARMED) {
-			Logger::Event("ROCKET READY");
 			//TODO arm
 		}
-		else {//shrug
-		}
-	case STAGE1POWERED:
-		if(pState == READY) {
-			Logger::Event("STAGE 1 IGNITION");
-		}
-		else {//shrug
-		}
-	case STAGE1COAST:
-		if(pState == STAGE1POWERED) {
-			Logger::Event("MECO");
-		}
-		else {//shrug
-		}
-	case STAGE2POWERED:
-		if(pState == STAGE1COAST) {
-			Logger::Event("STAGE 2 IGNITION");
-		}
-		else {//shrug
-		}
-	case STAGE2COAST:
-		if(pState == STAGE2POWERED) {
-			Logger::Event("SECO");
-		}
-		else {//shrug
-		}
-	case DROGUEPAR:
-		if(pState == STAGE1COAST) {
-			Logger::Event("Drogue Deployed");
-		}
-		else if(pState == STAGE2COAST) {
-			Logger::Event("Drogue Deployed");
-		}
-		else {//shrug
-		}
-	case MAINPAR:
-		if(pState == STAGE1COAST) {
-			Logger::Event("Main Chute Deployed");
-		}
-		else if(pState == STAGE2COAST) {
-			Logger::Event("Main Chute Deployed");
-		}
-		else if(pState == DROGUEPAR) {
-			Logger::Event("Main Chute Deployed");
-		}
-		else {//shrug
-		}
+		break;
 	case LANDED:
-		if(pState == MAINPAR) {
-			Logger::Event("SUCCESSFUL LANDING");
-			//TODO copy flash to SD
-		}
-		else {//shrug
-		}
+		//TODO copy flash to SD
+		break;
 	case RESET:
-		if(pState == LANDED) {
-			Logger::Event("RESETTING");
-		}
-		else {//shrug
-		}
+		//TODO reset
+		break;
+	default:
+		break;
 	}
 }
 void Brain::arm() {
 	if(state.getCurrentState() == UNARMED) {
 		state.changeState(READY);
-		Logger::Event("Rocket Disarmed");
+		//TODO arm
 	}
 }
 void Brain::disarm() {
 	if(state.getCurrentState() == READY) {
 		state.changeState(UNARMED);
-		Logger::Event("Rocket Disarmed");
 	}
+	//TODO disarm
 }
 
 bool Brain::motorIgnition() {
@@ -258,9 +205,12 @@ bool Brain::checkPyros() {
 		
 		if(counting[i] == true) {
 			if(delayPyroCharge[i] == 0) {
-				Logger::Event("FIRE PYRO " + std::to_string(i));
+				char * msg = (char*)malloc(12);
+				sprintf(msg, "FIRE PYRO %d", i);
+				Logger::Event(msg, 12);
 				sensors.firePyro(i); //FIRE THE PYRO
 				fired = true;
+				free(msg);
 			}
 			else {
 				delayPyroCharge[i]--; //waaaaaaaait

@@ -1,10 +1,22 @@
 #include "StateMachine.hpp"
 #include "Logger.hpp"
 #include "Configuration.hpp"
-
+#include <iostream>
+void flash_write_callback(const char * msg, const size_t size) {
+	std::string message(msg, size);
+	std::cout << "[Store]: " << message << std::endl;	
+}
+void transmit_callback(const char * msg, const size_t size) {
+	std::string message(msg, size);
+	std::cout << "[Transmit]: "  << message << std::endl;
+}
 
 int main() {	
+	Logger::setTransmitCallback(&transmit_callback);
+	Logger::setFlashWriteCallback(&flash_write_callback);
 	Configuration config;
+	int result;
+	char msg[100];
 	StateMachine stateMachine(config);
 	//set configuration
 	config.setTwoStageRocket(true);
@@ -21,11 +33,14 @@ int main() {
 	stateMachine.changeState(RESET);
 	
 	if(stateMachine.getCurrentState() != RESET) {
-		Logger::Fatal("Did not properly handle a 2 stage flight");
+		result = 1;
+		std::sprintf(msg, "Did not properly handle a 2 stage flight");
+		Logger::Fatal(msg, 40);
 		return 1;
 	}
 	else {
-		Logger::Info("Successful Flight!");
+		std::sprintf(msg, "Successful flight");
+		Logger::Info(msg, 19);
 	}
 	
 	
