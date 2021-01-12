@@ -10,7 +10,8 @@ int main() {
 	Configuration config;
 	config.setUpperTimeStepms(1);
 	SensorValues sensors;
-	RocketData rocket(config, sensors);
+	Cartesian gravityAcceleration = {0,9.81,0};
+	RocketData rocket(config, sensors, gravityAcceleration);
 	sensors.setAngularVelocity({0,0,M_PI/2});
 	for(int i = 0; i < 1000; i++) {
 		rocket.update();

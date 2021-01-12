@@ -1,18 +1,33 @@
 
 #include "Brain.hpp"
 #include "Logger.hpp"
+#include <cmath>
 
-
-Brain::Brain(Configuration& config, StateMachine& state, RocketData& rocket, SensorValues& sensors) : config(config), state(state), rocket(rocket), sensors(sensors) {
-	
+#define ARM_IF_VERTICAL_WHEN_ON //TODO move to common header
+ 
+#ifdef ARM_IF_VERTICAL_WHEN_ON
+#define VERTICAL_TOLERENCE (10*180/M_PI) //10 degrees in radians
+#endif
+Brain::Brain(Configuration& config, StateMachine& state, RocketData& rocket, SensorValues& sensors, ARM_CALLBACK, FIRE_CALLBACK) : config(config), state(state), rocket(rocket), sensors(sensors), arm_callback(arm_callback), fire_callback(fire_callback) {
+#ifdef ARM_IF_VERTICAL_WHEN_ON
+	if(rocket.getAngleFromVertical() > VERTICAL_TOLERENCE) {
+		if(state.getCurrentState() == UNARMED) {
+			state.changeState(READY);
+		}
+	}
+#endif
+	updateConfigValues();
 }
 void Brain::check() {
 	bool stateChange = state.getCurrentState() == lastState;
-	hangleStateChange();
+	if(stateChange) {
+		hangleStateChange();
+	}
+	
 	bool pyroFired;
 	switch(state.getCurrentState()) {
 	case UNARMED:
-		//TODO impliment arm checker(either sensor values read or vertical)
+		//only a message can change the state
 		break;
 	case READY:
 		if(motorIgnition()) {
@@ -104,14 +119,14 @@ void Brain::hangleStateChange() {
 void Brain::arm() {
 	if(state.getCurrentState() == UNARMED) {
 		state.changeState(READY);
-		//TODO arm
+		(*arm_callback)(true);
 	}
 }
 void Brain::disarm() {
 	if(state.getCurrentState() == READY) {
 		state.changeState(UNARMED);
+		(*arm_callback)(false);
 	}
-	//TODO disarm
 }
 
 bool Brain::motorIgnition() {
@@ -208,7 +223,7 @@ bool Brain::checkPyros() {
 				char * msg = (char*)malloc(12);
 				sprintf(msg, "FIRE PYRO %d", i);
 				Logger::Event(msg, 12);
-				sensors.firePyro(i); //FIRE THE PYRO
+				(*fire_callback)(i);
 				fired = true;
 				free(msg);
 			}
@@ -232,14 +247,24 @@ bool Brain::checkPyroCase(Pyro pyro, int caseN ) {
 		config = pyro.configTwo;
 		value = pyro.valueTwo;
 	}
-	float acceleration, altitude;
+	float acceleration, altitude, velocity;
 	switch(config) {
 	case VELOCITY_ABOVE:
-		//no velocity variable TODO
-		break;	
+		velocity = rocket.getVelocity().magnitude();
+		if (velocity > value ) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	case VELOCITY_BELOW:
-		//no velocity variable TODO
-		break;	
+		velocity = rocket.getVelocity().magnitude();
+		if (velocity < value ) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	case ACCELERATION_BELOW:
 		acceleration = rocket.getAcceleration().magnitude();
 		if (acceleration < value ) {
@@ -249,15 +274,15 @@ bool Brain::checkPyroCase(Pyro pyro, int caseN ) {
 			return false;
 		}
 	case ACCELERATION_ABOVE:
-		altitude = rocket.getDisplacement().magnitude();
-		if( altitude > value ) {
+		acceleration = rocket.getAcceleration().magnitude();
+		if( acceleration > value ) {
 			return true;
 		} 
 		else {
 			return false;
 		}
 	case ALTITUDE_ABOVE:
-		altitude = rocket.getDisplacement().z;
+		altitude = rocket.getDisplacement().y;
 		if( altitude > value ) {
 			return true;
 		} 
@@ -265,7 +290,7 @@ bool Brain::checkPyroCase(Pyro pyro, int caseN ) {
 			return false;
 		}
 	case ALTITUDE_BELOW:
-		altitude = rocket.getDisplacement().z;
+		altitude = rocket.getDisplacement().y;
 		if( altitude < value ) {
 			return true;
 		} 
@@ -282,7 +307,7 @@ bool Brain::checkPyroCase(Pyro pyro, int caseN ) {
 }
 
 bool Brain::checkLanded() {
-	if(rocket.getDisplacement().z < LANDED_ALTITUDE) {
+	if(rocket.getDisplacement().y < LANDED_ALTITUDE) {
 		landedCountdown--;
 		if(landedCountdown < 0) {
 			return true;

@@ -43,7 +43,7 @@ class RocketData{
 		void sensorFusion(AltitudeDeterminination mode);
 
     public:
-        RocketData(Configuration& config, SensorValues& sensors);
+        RocketData(Configuration& config, SensorValues& sensors, Cartesian startAverageAcceleration);
         ~RocketData(){}
 
         void update();
@@ -54,7 +54,7 @@ class RocketData{
         Cartesian getAcceleration();
         Cartesian getAngularVelocity();
         Quanternion getAngle();
-        float getAngleFromVertical(); 
+        float getAngleFromVertical(); //radians
         
         float getCPressure();
         float getSPressure();

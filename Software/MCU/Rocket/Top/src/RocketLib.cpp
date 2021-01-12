@@ -1,10 +1,10 @@
-#include "RocketrLib.hpp"
+#include "RocketLib.hpp"
 
 RocketLayer(ARM_CALLBACK armCallback, 
 			FIRE_CALLBACK fireCallback,
 			FLASH_WRITE_CALLBACK flashWriteCallback,
 			TRANSMIT_CALLBACK transmitCallback) {
-					
+	
 }
 					
 ~RocketLayer() {

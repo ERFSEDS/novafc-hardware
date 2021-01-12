@@ -12,7 +12,8 @@ int main() {
 	config.setAltitudeDetermination(ACCELEROMETER_ONLY);
 	
 	SensorValues sensors;
-	RocketData rocket(config, sensors);
+	Cartesian gravityAcceleration = {0,9.81,0};
+	RocketData rocket(config, sensors, gravityAcceleration);
 	
 	FlightSimulator simulator(rocket, sensors, flightData, fileOut);
 	bool success = simulator.runSimulation(100);

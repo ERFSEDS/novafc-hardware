@@ -3,6 +3,8 @@
 #include "RocketData.h"
 #include "SensorValues.h"
 #include "StateMachine.hpp"
+#define ARM_CALLBACK 			void (*arm_callback)(bool) 	
+#define FIRE_CALLBACK 			void (*fire_callback)(int) 	
 
 #define APOGEE_DESCENT_DETECT_TIME 5
 #define IGNITION_DETECT_TIME 0.25
@@ -12,7 +14,7 @@
 
 class Brain {
 	public:
-		Brain(Configuration& config, StateMachine& state, RocketData& rocket, SensorValues& sensor);
+		Brain(Configuration& config, StateMachine& state, RocketData& rocket, SensorValues& sensor, ARM_CALLBACK, FIRE_CALLBACK);
 		void check();
 		void arm();
 		void disarm();
@@ -23,6 +25,9 @@ class Brain {
 		StateMachine& state;
 		RocketData& rocket;
 		SensorValues& sensors;
+		
+		ARM_CALLBACK;
+		FIRE_CALLBACK;
 		//checks if the motor ignited
 		bool motorIgnition();
 		//checks if the motor has cutoff
