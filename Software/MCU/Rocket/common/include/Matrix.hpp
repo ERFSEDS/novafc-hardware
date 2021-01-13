@@ -19,6 +19,7 @@ struct Matrix {
     	returnVector.x = values[0][0] * vector.x + values[0][1] * vector.x + values[0][2] * vector.x;
     	returnVector.y = values[1][0] * vector.y + values[1][1] * vector.y + values[1][2] * vector.y;
     	returnVector.z = values[2][0] * vector.z + values[2][1] * vector.z + values[2][2] * vector.z;
+    	returnVector.unNAN();
     	return returnVector;
     }
     

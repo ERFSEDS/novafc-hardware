@@ -55,6 +55,7 @@ class RocketData{
         Cartesian getAngularVelocity();
         Quanternion getAngle();
         float getAngleFromVertical(); //radians
+        float getAltitude(); //meters
         
         float getCPressure();
         float getSPressure();

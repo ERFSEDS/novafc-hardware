@@ -2,13 +2,14 @@
 #include "Brain.hpp"
 #include "Logger.hpp"
 #include <cmath>
+#include <iostream>
 
 #define ARM_IF_VERTICAL_WHEN_ON //TODO move to common header
  
 #ifdef ARM_IF_VERTICAL_WHEN_ON
 #define VERTICAL_TOLERENCE (10*180/M_PI) //10 degrees in radians
 #endif
-Brain::Brain(Configuration& config, StateMachine& state, RocketData& rocket, SensorValues& sensors, ARM_CALLBACK, FIRE_CALLBACK) : config(config), state(state), rocket(rocket), sensors(sensors), arm_callback(arm_callback), fire_callback(fire_callback) {
+Brain::Brain(Configuration& config, StateMachine& state, RocketData& rocket, SensorValues& sensors, ARM_CALLBACK, void* armContext, FIRE_CALLBACK, void* fireContext) : config(config), state(state), rocket(rocket), sensors(sensors), arm_callback(arm_callback), armContext(armContext), fire_callback(fire_callback), fireContext(fireContext) {
 #ifdef ARM_IF_VERTICAL_WHEN_ON
 	if(rocket.getAngleFromVertical() > VERTICAL_TOLERENCE) {
 		if(state.getCurrentState() == UNARMED) {
@@ -34,9 +35,6 @@ void Brain::check() {
 			//IGNITION
 			state.changeState(STAGE1POWERED);
 		}
-		else {
-			//TODO Watch for disarming 
-		}
 		break;
 	case STAGE1POWERED:
 		if(motorCutoff()) {
@@ -44,8 +42,8 @@ void Brain::check() {
 		}
 		break;
 	case STAGE1COAST:
-		pyroFired = checkPyros();
 		checkApogee();
+		pyroFired = checkPyros();
 		if(config.getTwoStageRocket() ) {
 			if(motorIgnition()) {
 				state.changeState(STAGE1COAST);	
@@ -89,6 +87,7 @@ void Brain::check() {
 		break;
 	}
 	lastState = state.getCurrentState();
+	pastAltitude = rocket.getAltitude();;
 }
 //handles all state changes
 void Brain::hangleStateChange() {
@@ -96,16 +95,6 @@ void Brain::hangleStateChange() {
 	State pState = state.getPreviousState();
 	//not all states are here only the states where action is required
 	switch(cState) {
-	case UNARMED:
-		if(pState == READY) {
-			//TODO disarm
-		}
-		break;
-	case READY:
-		if(pState == UNARMED) {
-			//TODO arm
-		}
-		break;
 	case LANDED:
 		//TODO copy flash to SD
 		break;
@@ -119,13 +108,13 @@ void Brain::hangleStateChange() {
 void Brain::arm() {
 	if(state.getCurrentState() == UNARMED) {
 		state.changeState(READY);
-		(*arm_callback)(true);
+		(*arm_callback)(armContext, true);
 	}
 }
 void Brain::disarm() {
 	if(state.getCurrentState() == READY) {
 		state.changeState(UNARMED);
-		(*arm_callback)(false);
+		(*arm_callback)(armContext, false);
 	}
 }
 
@@ -133,7 +122,7 @@ bool Brain::motorIgnition() {
 	float acceleration = rocket.getAcceleration().magnitude();
 	if (acceleration > ignitionThreshold) {
 		ignitionCountdown--;
-		if(ignitionCountdown) {
+		if(ignitionCountdown <= 0) {
 			return true;
 		}
 	}
@@ -145,9 +134,10 @@ bool Brain::motorIgnition() {
 }
 bool Brain::motorCutoff() {
 	float acceleration = rocket.getAcceleration().magnitude();
+	Cartesian vec = rocket.getAcceleration();
 	if (acceleration < cutoffThreshold) {
 		cutoffCountdown--;
-		if(cutoffCountdown) {
+		if(cutoffCountdown <= 0) {
 			return true;
 		}
 	}
@@ -159,15 +149,20 @@ bool Brain::motorCutoff() {
 
 
 void Brain::checkApogee() {
-	float currentAltitude = rocket.getDisplacement().z;
-	if( currentAltitude <= pastAltitude ) {
-		descentTimeSteps++;
-		if(descentTimeSteps >= requiredTimeSteps) {
-			postAgogee = true;
+	if(!postApogee) {
+		float currentAltitude = rocket.getAltitude();
+		if( currentAltitude <= pastAltitude ) {
+			descentTimeSteps++;
+			if(descentTimeSteps >= requiredTimeSteps) {
+				std::cout << "Post Apogee" << std::endl;
+				postApogee = true;
+			}
 		}
-	}
-	else {
-		descentTimeSteps = 0;
+		else {
+			if(descentTimeSteps != 0) {
+			}
+			descentTimeSteps = 0;
+		}
 	}
 }
 		
@@ -201,34 +196,40 @@ void Brain::updateConfigValues() {
 			delayPyroCharge[i] = 0;
 			counting[i] = false;
 		}
+		hasFired[i] = false;
 	}
+	postApogee = false;
 }
 
 //checks and if neccessary fires pyros
 bool Brain::checkPyros() {
 	bool fired = false;
 	for(int i = 0; i < NUMBER_OF_PYROS; i++) {
-		Pyro pyro = *config.getPyro(i);
-		bool caseOneMet = checkPyroCase(pyro, 1);
-		bool caseTwoMet = checkPyroCase(pyro, 2);
-		
+		if(!hasFired[i]) {
+			Pyro pyro = *config.getPyro(i);
+			bool caseOneMet = checkPyroCase(pyro, 1);
+			bool caseTwoMet = checkPyroCase(pyro, 2);
+			
 
-		if(caseOneMet && caseTwoMet) {
-			//Cases are met, begin the countdown
-			counting[i] = true;
-		}
-		
-		if(counting[i] == true) {
-			if(delayPyroCharge[i] == 0) {
-				char * msg = (char*)malloc(12);
-				sprintf(msg, "FIRE PYRO %d", i);
-				Logger::Event(msg, 12);
-				(*fire_callback)(i);
-				fired = true;
-				free(msg);
+			if(caseOneMet && caseTwoMet) {
+				//Cases are met, begin the countdown
+				counting[i] = true;
 			}
-			else {
-				delayPyroCharge[i]--; //waaaaaaaait
+			
+			if(counting[i] == true) {
+				if(delayPyroCharge[i] == 0) {
+					char * msg = (char*)malloc(12);
+					sprintf(msg, "FIRE PYRO %d", i);
+					Logger::Event(msg, 12);
+					free(msg);
+					
+					(*fire_callback)(fireContext, i);
+					fired = true;
+					hasFired[i] = true;
+				}
+				else {
+					delayPyroCharge[i]--; //waaaaaaaait
+				}
 			}
 		}
 	}
@@ -282,7 +283,7 @@ bool Brain::checkPyroCase(Pyro pyro, int caseN ) {
 			return false;
 		}
 	case ALTITUDE_ABOVE:
-		altitude = rocket.getDisplacement().y;
+		altitude = rocket.getAltitude();
 		if( altitude > value ) {
 			return true;
 		} 
@@ -290,8 +291,22 @@ bool Brain::checkPyroCase(Pyro pyro, int caseN ) {
 			return false;
 		}
 	case ALTITUDE_BELOW:
-		altitude = rocket.getDisplacement().y;
+		altitude = rocket.getAltitude();
 		if( altitude < value ) {
+			return true;
+		} 
+		else {
+			return false;
+		}
+	case PAST_APOGEE:
+		if( postApogee ) {
+			return true;
+		} 
+		else {
+			return false;
+		}	
+	case STATE:
+		if( (int)(state.getCurrentState()) == (int)value ) {
 			return true;
 		} 
 		else {
@@ -300,6 +315,7 @@ bool Brain::checkPyroCase(Pyro pyro, int caseN ) {
 	case TIME_DELAY://treat time_delay like none, it is implimented elsewhere
 	case NONE:
 		return true;
+	case NO_FIRE:
 	default:
 		return false;
 	}

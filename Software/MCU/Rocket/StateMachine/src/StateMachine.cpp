@@ -1,7 +1,6 @@
 #include "StateMachine.hpp"
 #include "Logger.hpp"
 #include "Configuration.hpp"
-#include <cstdio>
 
 void StateMachine::changeState(State state) {
 	char msg[35];

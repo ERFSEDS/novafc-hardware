@@ -10,6 +10,21 @@ struct Quanternion {
 	float magnitude() {
     	return sqrt( (a*a) + (i*i) + (j*j) + (k*k) );
     }
+    void unNAN() {
+    	if(a != a) {
+    		a = 0;
+    	}
+    	if(i != i) {
+    		i = 0;
+    	}
+    	if(j != j) {
+    		j = 0;
+    	}
+    	if(k != k) {
+    		k = 0;
+    	}
+    	
+    }
     void normalize() {
     	float magnitude = this->magnitude();
     	this->a /= magnitude;

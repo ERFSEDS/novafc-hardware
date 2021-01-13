@@ -1,12 +1,14 @@
+#pragma once
+
 #include "cartesian.h"
 #include "Configuration.hpp"
 #include "RocketData.h"
 #include "SensorValues.h"
 #include "StateMachine.hpp"
-#define ARM_CALLBACK 			void (*arm_callback)(bool) 	
-#define FIRE_CALLBACK 			void (*fire_callback)(int) 	
+#define ARM_CALLBACK 			void (*arm_callback)(void *, bool) 	
+#define FIRE_CALLBACK 			void (*fire_callback)(void *, int) 	
 
-#define APOGEE_DESCENT_DETECT_TIME 5
+#define APOGEE_DESCENT_DETECT_TIME 0.5
 #define IGNITION_DETECT_TIME 0.25
 #define CUTOFF_DETECT_TIME 0.25
 #define LANDED_DETECTION_TIME 10
@@ -14,7 +16,7 @@
 
 class Brain {
 	public:
-		Brain(Configuration& config, StateMachine& state, RocketData& rocket, SensorValues& sensor, ARM_CALLBACK, FIRE_CALLBACK);
+		Brain(Configuration& config, StateMachine& state, RocketData& rocket, SensorValues& sensor, ARM_CALLBACK, void* armContext, FIRE_CALLBACK, void* fireContext);
 		void check();
 		void arm();
 		void disarm();
@@ -25,9 +27,10 @@ class Brain {
 		StateMachine& state;
 		RocketData& rocket;
 		SensorValues& sensors;
-		
 		ARM_CALLBACK;
+		void* armContext;
 		FIRE_CALLBACK;
+		void* fireContext;
 		//checks if the motor ignited
 		bool motorIgnition();
 		//checks if the motor has cutoff
@@ -49,7 +52,7 @@ class Brain {
 		void hangleStateChange();
 		
 		
-		bool postAgogee;
+		bool postApogee;
 		
 		float pastAltitude;
 		int descentTimeSteps;
@@ -57,6 +60,7 @@ class Brain {
 		
 		int delayPyroCharge[NUMBER_OF_PYROS];
 		bool counting[NUMBER_OF_PYROS];
+		bool hasFired[NUMBER_OF_PYROS];
 		
 		float cutoffThreshold;
 		int cutoffCountdown;

@@ -30,7 +30,10 @@ enum PyroConfig {
 	ALTITUDE_ABOVE,
 	ALTITUDE_BELOW,
 	TIME_DELAY,
-	NONE
+	PAST_APOGEE,
+	STATE,//value is state desired(it will be cast to int)
+	NONE,	//this condition is always met
+	NO_FIRE //this condition is never met
 };
 enum AltitudeDeterminination {
 	ACCELEROMETER_ONLY,

@@ -54,14 +54,12 @@ void RocketData::gyroUpdate() {
 
 void RocketData::updateData() {
 	acceleration = sensors.getAcceleration();
-	std::cout << "Acceleration: " << acceleration.x << ", " << acceleration.y << ", " << acceleration.z << std::endl;	
 	angularVelocity[1] = angularVelocity[0];
 	angularVelocity[0] = sensors.getAngularVelocity();
     currentPressure = sensors.getCPressure();
     groundPressure = sensors.getSPressure();
     temperature = sensors.getTemperature();
     deltaT = config.getUpperTimeStepms()/1000.0;
-    
 }
 
 // Prettified equation(paste in latex parser)
@@ -70,9 +68,7 @@ void RocketData::updateBarometer() {
 	float height;
 	float magicNumber = 1/5.257;
 	baroHeight = std::pow(SEA_LEVEL_PRESSURE, magicNumber) * (temperature + 273.15)/0.0065;
-	std::cout << "Baro Height: " << baroHeight << std::endl;
 	baroHeight *= (std::pow(groundPressure, magicNumber) - std::pow(currentPressure, magicNumber))/(std::pow(groundPressure, magicNumber)*std::pow(currentPressure, magicNumber));
-	std::cout << "Baro Height: " << baroHeight << std::endl;
 }
 void RocketData::sensorFusion(AltitudeDeterminination mode) {
 	Cartesian previousDisplacement = rocketDisplacement;
@@ -104,11 +100,12 @@ float RocketData::getAngleFromVertical() {
 }
 
 Cartesian RocketData::getDisplacement()     {return rocketDisplacement;}
-Cartesian RocketData::getAcceleration()     {return acceleration;}
+Cartesian RocketData::getAcceleration()     {return  acceleration;}
 Cartesian RocketData::getAngularVelocity()  {return (angularVelocity[0]+angularVelocity[1])*0.5;}
 Quanternion RocketData::getAngle() {return rocketAngle;} 
 
 float RocketData::getCPressure()    {return currentPressure;}
 float RocketData::getSPressure()    {return groundPressure;}
 float RocketData::getTemperature()  {return temperature;}
+float RocketData::getAltitude() 	{return rocketDisplacement.y;}
 Cartesian RocketData::getVelocity()    {return rocketVelocity;}
