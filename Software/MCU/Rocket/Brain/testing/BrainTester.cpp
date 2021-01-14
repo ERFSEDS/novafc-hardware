@@ -26,7 +26,13 @@ int main() {
 	Cartesian gravityAcceleration = {0,9.81,0};
 	RocketData rocket(config, sensors, gravityAcceleration);
 	
+	float gyroNoiseMean = 0.2;
+	float gyroNoiseSTD = 0.1;
+	float accelNoiseMean = 0;
+	float accelNoiseSTD = 3;
+
 	FlightSimulator simulator(config, rocket, sensors, flightData, fileOut);
+	simulator.insertNoise(gyroNoiseMean, gyroNoiseSTD, accelNoiseMean, accelNoiseSTD);
 	bool success = simulator.runSimulation(100);
 	if(!success) {
 		std::cout <<"fail" << std::endl;
@@ -35,5 +41,5 @@ int main() {
 		return exitCode;
 	}
 	std::cout << "Success" <<std::endl;
-	return 1; //I need to check output so im just going to always fail it rn
+	return 0;
 }

@@ -188,7 +188,7 @@ bool FlightSimulator::runSimulation(int subSampleRate) {
 				//check each pyro
 				std::stringstream events("");
 				for(int i = 0; i < NUMBER_OF_PYROS; i++) {
-					if(pyros[i] && (pyroTime[i] != -1)) {
+					if(pyros[i] && (pyroTime[i] == -1)) {
 						pyroTime[i] = timeStep;
 						events <<"Pyro " << i << " fired--"; 
 						std::cout << "Pyro " << i << " fired at " << timeStep << std::endl;
@@ -197,13 +197,13 @@ bool FlightSimulator::runSimulation(int subSampleRate) {
 				
 				//determine the true times it should run
 				//sets pyro 0 to fire at apogee,
-				if( (lastAltitude > trueAltitude) && (truePyroTime[0] != -1) ) {
+				if( (lastAltitude > trueAltitude) && (truePyroTime[0] == -1) ) {
 					truePyroTime[0] = timeStep;
 					events << "Pyro 0 should have fired--";
 					std::cout << "Pyro 0 should fire at " << timeStep << std::endl;
 				} 
 				//pyro 1 to fire at 200m and past apogee, 
-				if( (trueAltitude < 200) && (lastAltitude > trueAltitude) && (truePyroTime[1] != -1) ) {
+				if( (trueAltitude < 200) && (lastAltitude > trueAltitude) && (truePyroTime[1] == -1) ) {
 					truePyroTime[1] = timeStep;
 					events << "Pyro 1 should have fired--";
 					std::cout << "Pyro 1 should fire at " << timeStep << std::endl;
@@ -217,6 +217,15 @@ bool FlightSimulator::runSimulation(int subSampleRate) {
 			lastAltitude=trueAltitude;
 		}
 		this->fileOut.close();
+		
+		for(int i = 0; i < NUMBER_OF_PYROS; i++) {
+			if(std::abs(truePyroTime[i] - pyroTime[i]) > ACCEPTABLE_TIME_PYRO_ERROR) {
+				success =false;
+			}
+			std::cout << "Pyro " << i << " outside of acceptable range:" << std::endl;
+			std::cout << "Desired: " << truePyroTime[i] << std::endl;
+			std::cout << "Actual: " << pyroTime[i] << std::endl;
+		}
 		return success;
 	}
 	catch(std::out_of_range) {

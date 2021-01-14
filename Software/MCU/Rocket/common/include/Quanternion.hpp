@@ -11,16 +11,10 @@ struct Quanternion {
     	return sqrt( (a*a) + (i*i) + (j*j) + (k*k) );
     }
     void unNAN() {
-    	if(a != a) {
-    		a = 0;
-    	}
-    	if(i != i) {
+    	if((a != a) || (i != i) || (j != j) || (k != k)) {
+    		a = 1;
     		i = 0;
-    	}
-    	if(j != j) {
     		j = 0;
-    	}
-    	if(k != k) {
     		k = 0;
     	}
     	
