@@ -10,14 +10,18 @@
 #include "Brain.hpp"
 #include "Logger.hpp"
 #include "Cartesian.hpp"
+#include "RocketData.h"
+#include "Sensors.h"
+#include "StateMachine.hpp"
 
 class RocketLayer {
 
 	public:
-		RocketLayer(ARM_CALLBACK, 
-					FIRE_CALLBACK,
-					FLASH_WRITE_CALLBACK,
-					TRANSMIT_CALLBACK);
+  RocketLayer(ARM_CALLBACK, void *armContext,
+	      FIRE_CALLBACK, void *fireContext,
+	      FLASH_WRITE_CALLBACK, void * writeContext,
+	      TRANSMIT_CALLBACK, void *transmitContext,
+	      Cartesian startGravity);
 					
 		~RocketLayer();
 		
@@ -28,5 +32,10 @@ class RocketLayer {
 		void updatePressure(float presssure); //[insert pressure units]
 		void updatePyroCorrect(bool * pyros); //is each pyro correct precompiled sizeof this is expected to equal NUMBER_PYROS
 		void update();
-	private:
+private:
+  SensorValues sensors;
+  Configuration config;
+  RocketData data;
+  StateMachine stateMachine;
+  Brain brain;
 }

@@ -17,7 +17,7 @@
 class Brain {
 	public:
 		Brain(Configuration& config, StateMachine& state, RocketData& rocket, SensorValues& sensor, ARM_CALLBACK, void* armContext, FIRE_CALLBACK, void* fireContext);
-		void check();
+  void check();
 		void arm();
 		void disarm();
 	
