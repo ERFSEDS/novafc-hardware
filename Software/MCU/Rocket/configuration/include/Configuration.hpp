@@ -21,6 +21,7 @@
 #define DEFAULT_DROGUE_PYRO_CHANNEL			(1)
 #define DEFAULT_UPPER_TIME_STEP_MS			(20) //50Hz
 #define DEFAULT_LOWER_TIME_STEP_MS			(20) //50Hz
+#define DEFAULT_MODE_TEST                               (false)
 
 enum PyroConfig {
 	VELOCITY_ABOVE,
@@ -129,7 +130,10 @@ class Configuration {
 		
 		float getLowerTimeStepms(); //miliseconds
 		void setLowerTimeStepms(float newTimeStep); //miliseconds
-		
+
+  bool getTest();
+  void setTest(bool test);
+  
 	//Private Variables
 	private:
 		static Configuration INSTANCE;
@@ -156,6 +160,6 @@ class Configuration {
 		int droguePyroChannel;
 		
 		float uppertimeStepms; //miliseconds
-		float lowertimeStepms; //miliseconds
-		
+		float lowertimeStepms; //miliseconds		
+                bool test;
 };

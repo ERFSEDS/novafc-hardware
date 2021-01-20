@@ -15,7 +15,7 @@ int main() {
 	float accelNoiseMean = 0;
 	float accelNoiseSTD = 3;
 
-	SensorValues sensors;
+	SensorValues sensors(config);
 	Cartesian gravityAcceleration = {0,9.81,0};
 	RocketData rocket(config, sensors, gravityAcceleration);
 		

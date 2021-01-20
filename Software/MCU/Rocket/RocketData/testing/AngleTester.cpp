@@ -9,7 +9,7 @@ float checkErrorRate(Quanternion calcAngle, Quanternion expectedAngle);
 int main() {
 	Configuration config;
 	config.setUpperTimeStepms(1);
-	SensorValues sensors;
+	SensorValues sensors(config);
 	Cartesian gravityAcceleration = {0,9.81,0};
 	RocketData rocket(config, sensors, gravityAcceleration);
 	sensors.setAngularVelocity({0,0,M_PI/2});

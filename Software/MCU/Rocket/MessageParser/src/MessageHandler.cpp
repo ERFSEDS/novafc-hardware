@@ -1,11 +1,7 @@
-#include "Configuration.hpp"
-#include "StateMachine.hpp"
 #include "MessageHandler.hpp"
-#include <iostream>
 #include <cassert>
 
-MessageHandler MessageHandler::INSTANCE;
-uint16_t MessageHandler::parseMessage(uint8_t* message, uint16_t arraySize, uint8_t * responseBuffer) {
+void MessageHandler::parseMessage(uint8_t* message, uint16_t arraySize) {
 	uint8_t * buffer = new uint8_t[BUFFER_SIZE];
 	
 	uint8_t bufferIndex = 0;
@@ -29,7 +25,6 @@ uint16_t MessageHandler::parseMessage(uint8_t* message, uint16_t arraySize, uint
 		
 		if(bufferIndex == BUFFER_SIZE-1) {
 			delete buffer;
-			return 0; //message too large, drop
 		}
 		bufferIndex++;
 	}
@@ -37,40 +32,36 @@ uint16_t MessageHandler::parseMessage(uint8_t* message, uint16_t arraySize, uint
 	
 	//check some stuff
 	if(MESSAGE_VERSION != buffer[MESSAGE_VERSION_BYTE]) {
-		std::cout << "Incorrect version" << std::endl;
-		std::cout << "Expected: " << (int)MESSAGE_VERSION << " GOT: " << (int)buffer[MESSAGE_VERSION_BYTE] << std::endl;
+	  Logger::Warning("Incorrect Message Version", 26);
 		//drop message wrong message version
 	}
 	else if(messageSize != buffer[MESSAGE_LENGTH_BYTE]) {
-		std::cout << "Incorrect message Size" << std::endl;
-		std::cout << "Expected: " << (int)messageSize << " GOT: " << (int)buffer[MESSAGE_LENGTH_BYTE] << std::endl;
+	  Logger::Warning("Message Sizes do not match", 27);
 		//drop, message incorrect size
 	} 
-	else if( (INSTANCE.address != buffer[DEST_ADDRESS_BYTE]) 
-			 && (INSTANCE.address != BROADCAST_ADDRESS) ) {
-		std::cout << "Incorrect address" << std::endl;
-		std::cout << "Expected: " << (int)INSTANCE.address << " GOT: " << (int)buffer[DEST_ADDRESS_BYTE] << std::endl;
+	else if( (address != buffer[DEST_ADDRESS_BYTE]) 
+			 && (address != BROADCAST_ADDRESS) ) {
 		//drop, not addressed to this device
 	}
 	else if(COMMAND_TYPE == buffer[COMMAND_RESPONSE_BYTE]) {
-		return handleCommand(buffer, messageSize, responseBuffer);
+		handleCommand(buffer, messageSize);
 	}
 	else if(RESPONSE_TYPE == buffer[COMMAND_RESPONSE_BYTE]) {
-		return handleResponse(buffer, messageSize, responseBuffer);
+		handleResponse(buffer, messageSize);
 	}
 	else {
-		std::cout << "Incorrect address" << std::endl;
-		std::cout << "Expected: 1 || 2 GOT: " << (int)buffer[COMMAND_RESPONSE_BYTE] << std::endl;
+	  Logger::Warning("Unknown Command response byte", 30); 
 	}
 	
 	delete buffer;
-	return 0;
 }
 void MessageHandler::sendCommand(uint8_t* message, uint8_t size) {
-
+  //Dont have any commands to send so I am just being great and not doing this
+  //for the future
 }
 
-uint16_t MessageHandler::handleCommand(uint8_t* message, uint8_t size, uint8_t * responseBuffer) {
+void MessageHandler::handleCommand(uint8_t* message, uint8_t size) {
+  uint8_t *responseBuffer = (uint8_t*)malloc(128);
 	uint8_t index = MESSAGE_DATA_START;
 	uint8_t numFields = message[index++];
 	
@@ -84,110 +75,141 @@ uint16_t MessageHandler::handleCommand(uint8_t* message, uint8_t size, uint8_t *
 		switch(fieldId) {
 		case FIELD_PRESSURE:
 			if(setGet == FIELD_SET) {
-				std::cout << "Cannot set FIELD_PRESSURE silly " << std::endl;
-				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 1; 
-			}
-			else if(setGet == FIELD_GET) {
-				std::cout << "Get get Pressure yet" << std::endl;
-				fieldStatuses[i].value = 0;
-				fieldStatuses[i].size = 4;  
-			}
-			break;
-		case FIELD_ACCELERATION_X:
-			if(setGet == FIELD_SET) {
-				std::cout << "Cannot set FIELD_ACCELERATION_X silly " << std::endl;
-				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 1; 
-			}
-			else if(setGet == FIELD_GET) {
-				std::cout << "Cannot Get FIELD_ACCELERATION_X " << std::endl;
-				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 4; 
-			}
-			break;
-			break;
-		case FIELD_ACCELERATION_Y:
-			if(setGet == FIELD_SET) {
-				std::cout << "Cannot set FIELD_ACCELERATION_Y silly " << std::endl;
-				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 1; 
-			}
-			else if(setGet == FIELD_GET) {
-				std::cout << "Cannot Get FIELD_ACCELERATION_Y" << std::endl;
-				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 4; 
-			}
-			break;
-			break;
-		case FIELD_ACCELERATION_Z:
-			if(setGet == FIELD_SET) {
-				std::cout << "Cannot set FIELD_ACCELERATION_Z silly " << std::endl;
-				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 1; 
-			}
-			else if(setGet == FIELD_GET) {
-				std::cout << "Cannot Get FIELD_ACCELERATION_Z" << std::endl;
-				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 4; 
-			}
-			break;
-			break;
-		case FIELD_ROTATION_X:
-			if(setGet == FIELD_SET) {
-				std::cout << "Cannot set FIELD_ROTATION_X silly " << std::endl;
-				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 1; 
-			}
-			else if(setGet == FIELD_GET) {
-				std::cout << "Cannot Get FIELD_ROTATION_X" << std::endl;
-				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 4; 
-			}
-			break;
-			break;
-		case FIELD_ROTATION_Y:
-			if(setGet == FIELD_SET) {
-				std::cout << "Cannot set FIELD_ROTATION_Y silly " << std::endl;
-				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 1; 
-			}
-			else if(setGet == FIELD_GET) {
-				std::cout << "Cannot Get FIELD_ROTATION_Y" << std::endl;
-				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 4; 
-			}
-			break;
-			break;
-		case FIELD_ROTATION_Z:
-			if(setGet == FIELD_SET) {
-				std::cout << "Cannot set FIELD_ROTATION_Z silly " << std::endl;
-				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 1; 
-			}
-			else if(setGet == FIELD_GET) {
-				std::cout << "Cannot Get FIELD_ROTATION_Z" << std::endl;
-				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 4; 
-			}
-			break;
-			break;
-		case FIELD_ALTITUDE:
-			if(setGet == FIELD_SET) {
-				uint32_t floatBytes = 	(message[index + 3] << 24) + 
+			  uint32_t floatBytes = 	(message[index + 3] << 24) + 
 										(message[index + 2] << 16) + 
 										(message[index + 1] << 8) + 
 										(message[index + 0]);
 				float value = static_cast<float>(floatBytes);
 				index = index + 4;
-				std::cout << "Set FIELD_ALTITUDE to " << value << std::endl;
-				fieldStatuses[i].value = 0;
+				sensors.setCPressure_test(value);
+				fieldStatuses[i].value = 0; 
 				fieldStatuses[i].size = 1; 
 			}
 			else if(setGet == FIELD_GET) {
-				std::cout << "Cannot Get FIELD_ALTITUDE" << std::endl;
+			  fieldStatuses[i].value = sensors.getCPressure();
+			  fieldStatuses[i].size = 4;
+			}
+			break;
+		case FIELD_ACCELERATION_X:
+			if(setGet == FIELD_SET) {
+			  uint32_t floatBytes = 	(message[index + 3] << 24) + 
+										(message[index + 2] << 16) + 
+										(message[index + 1] << 8) + 
+										(message[index + 0]);
+				float value = static_cast<float>(floatBytes);
+				index = index + 4;
+				Cartesian acceleration = sensors.getAcceleration();
+				acceleration.x = value;
+				sensors.setAcceleration_test(acceleration);
 				fieldStatuses[i].value = 0; 
+				fieldStatuses[i].size = 1; 
+			}
+			else if(setGet == FIELD_GET) {
+			  fieldStatuses[i].value = sensors.getAcceleration().x;
 				fieldStatuses[i].size = 4; 
+			}
+			break;
+		case FIELD_ACCELERATION_Y:
+			if(setGet == FIELD_SET) {
+			  uint32_t floatBytes = 	(message[index + 3] << 24) + 
+										(message[index + 2] << 16) + 
+										(message[index + 1] << 8) + 
+										(message[index + 0]);
+				float value = static_cast<float>(floatBytes);
+				index = index + 4;
+				Cartesian acceleration = sensors.getAcceleration();
+				acceleration.y = value;
+				sensors.setAcceleration_test(acceleration);
+				fieldStatuses[i].value = 0; 
+				fieldStatuses[i].size = 1; 
+			}
+			else if(setGet == FIELD_GET) {
+			  fieldStatuses[i].value = sensors.getAcceleration().y;
+				fieldStatuses[i].size = 4; 
+			}
+			break;
+		case FIELD_ACCELERATION_Z:
+			if(setGet == FIELD_SET) {
+			  uint32_t floatBytes = 	(message[index + 3] << 24) + 
+										(message[index + 2] << 16) + 
+										(message[index + 1] << 8) + 
+										(message[index + 0]);
+				float value = static_cast<float>(floatBytes);
+				index = index + 4;
+				Cartesian acceleration = sensors.getAcceleration();
+				acceleration.z = value;
+				sensors.setAcceleration_test(acceleration);
+				fieldStatuses[i].value = 0; 
+				fieldStatuses[i].size = 1; 
+			}
+			else if(setGet == FIELD_GET) {
+			  fieldStatuses[i].value = sensors.getAcceleration().z;
+			  fieldStatuses[i].size = 4;
+			}
+			break;
+		case FIELD_ROTATION_X:
+			if(setGet == FIELD_SET) {
+			  uint32_t floatBytes = 	(message[index + 3] << 24) + 
+										(message[index + 2] << 16) + 
+										(message[index + 1] << 8) + 
+										(message[index + 0]);
+				float value = static_cast<float>(floatBytes);
+				index = index + 4;
+				Cartesian rotation = sensors.getAngularVelocity();
+				rotation.x = value;
+				sensors.setAngularVelocity_test(rotation);
+				fieldStatuses[i].value = 0; 
+				fieldStatuses[i].size = 1; 
+			}
+			else if(setGet == FIELD_GET) {
+			  fieldStatuses[i].value = sensors.getAngularVelocity().x;
+			  fieldStatuses[i].size = 4;
+			}
+			break;
+		case FIELD_ROTATION_Y:
+			if(setGet == FIELD_SET) {
+			  uint32_t floatBytes = 	(message[index + 3] << 24) + 
+										(message[index + 2] << 16) + 
+										(message[index + 1] << 8) + 
+										(message[index + 0]);
+				float value = static_cast<float>(floatBytes);
+				index = index + 4;
+				Cartesian rotation = sensors.getAngularVelocity();
+				rotation.y = value;
+				sensors.setAngularVelocity_test(rotation);
+				fieldStatuses[i].value = 0; 
+				fieldStatuses[i].size = 1; 
+			}
+			else if(setGet == FIELD_GET) {
+			  fieldStatuses[i].value = sensors.getAngularVelocity().y;
+			  fieldStatuses[i].size = 4;
+			}
+			break;
+		case FIELD_ROTATION_Z:
+			if(setGet == FIELD_SET) {
+			  uint32_t floatBytes = 	(message[index + 3] << 24) + 
+										(message[index + 2] << 16) + 
+										(message[index + 1] << 8) + 
+										(message[index + 0]);
+				float value = static_cast<float>(floatBytes);
+				index = index + 4;
+				Cartesian rotation = sensors.getAngularVelocity();
+				rotation.z = value;
+				sensors.setAngularVelocity_test(rotation);
+				fieldStatuses[i].value = 0; 
+				fieldStatuses[i].size = 1; 
+			}
+			else if(setGet == FIELD_GET) {
+			  fieldStatuses[i].value = sensors.getAngularVelocity().z;
+			  fieldStatuses[i].size = 4;
+			}
+			break;
+		case FIELD_ALTITUDE:
+			if(setGet == FIELD_SET) {
+			  Logger::Warning("Attempted to set Altitude", 26);
+			}
+			else if(setGet == FIELD_GET) {
+			  fieldStatuses[i].value = data.getAltitude();
 			}
 			break;
 		case FIELD_ANGLE_X:
@@ -198,14 +220,14 @@ uint16_t MessageHandler::handleCommand(uint8_t* message, uint8_t size, uint8_t *
 										(message[index + 0]);
 				float value = static_cast<float>(floatBytes);
 				index = index + 4;
-				std::cout << "Set FIELD_ANGLE_X to " << value << std::endl;
-				fieldStatuses[i].value = 0;
+				std::cout << "Cannot set FIELD_PRESSURE silly " << std::endl;
+				fieldStatuses[i].value = 0; 
 				fieldStatuses[i].size = 1; 
 			}
 			else if(setGet == FIELD_GET) {
-				std::cout << "Cannot Get FIELD_ANGLE_X" << std::endl;
-				fieldStatuses[i].value = 0; 
-				fieldStatuses[i].size = 4; 
+				std::cout << "Get get Pressure yet" << std::endl;
+				fieldStatuses[i].value = 0;
+				fieldStatuses[i].size = 4;  
 			}
 			break;
 		case FIELD_ANGLE_Y:
@@ -328,20 +350,19 @@ uint16_t MessageHandler::handleCommand(uint8_t* message, uint8_t size, uint8_t *
 			if(setGet == FIELD_SET) {
 				uint8_t address = message[index++];
 				std::cout << "Set FIELD_ADDRESS to " << (int)address << std::endl;
-				INSTANCE.address = address;
+				this->address = address;
 				fieldStatuses[i].value = 1; 
 				fieldStatuses[i].size = 1; 
 			}
 			else if(setGet == FIELD_GET) {
 				std::cout << "Get FIELD_ADDRESS" << std::endl;
-				fieldStatuses[i].value = INSTANCE.address; 
+				fieldStatuses[i].value = address; 
 				fieldStatuses[i].size = 1; 
 			}
 			break;
 		}
 	}	
-	
-	
+
 	uint8_t numActions = message[index++];
 	CommandStatus actionStatuses[numActions];
 	for(int i = 0; i < numActions; i++) {
@@ -351,23 +372,24 @@ uint16_t MessageHandler::handleCommand(uint8_t* message, uint8_t size, uint8_t *
 		actionStatuses[i].size = 1; 
 		switch(actionID) {
 		case ACTION_COPY_FLASH:
-			std::cout << "Copying Flash" << std::endl;
+		  //TODO impliment this
 			break;
 		case ACTION_FIRE_PYRO:
-			std::cout << "FIRE" << std::endl;
+		  //TODO impliment this
 			break;
 		case ACTION_ARM:
-			std::cout << "ARM" << std::endl;
+		  brain.arm();
 			break;
 		case ACTION_DISARM:
-			std::cout << "DISARM" << std::endl;
+		  brain.disarm();
 			break;
 		}
 	}
 	
 	
 	uint8_t srcAddress = message[SRC_ADDRESS_BYTE];
-	return formatResponse(fieldStatuses, numFields, actionStatuses, numActions, srcAddress, responseBuffer);
+	uint16_t messageSize = formatResponse(fieldStatuses, numFields, actionStatuses, numActions, srcAddress, responseBuffer);
+	transmit_callback((const char *)responseBuffer, messageSize); //This function takes responsibility for freeing memory
 }
 
 uint16_t MessageHandler::formatResponse(CommandStatus * fieldStatuses, int numFields, CommandStatus * actionStatuses, int numActions, uint8_t srcAddress, uint8_t * responseBuffer) {
@@ -376,7 +398,7 @@ uint16_t MessageHandler::formatResponse(CommandStatus * fieldStatuses, int numFi
 	response[MESSAGE_VERSION_BYTE] = MESSAGE_VERSION;
 	response[COMMAND_RESPONSE_BYTE] = RESPONSE_TYPE;
 	response[DEST_ADDRESS_BYTE] = srcAddress;
-	response[SRC_ADDRESS_BYTE] = INSTANCE.address;
+	response[SRC_ADDRESS_BYTE] = address;
 	
 	uint8_t index = MESSAGE_DATA_START;
 	response[index++] = numFields;
@@ -456,13 +478,18 @@ uint16_t MessageHandler::formatResponse(CommandStatus * fieldStatuses, int numFi
 
 
 
-uint16_t MessageHandler::handleResponse(uint8_t* message, uint8_t size, uint8_t * responseBuffer) {
+void MessageHandler::handleResponse(uint8_t* message, uint8_t size) {
 	//casually drops message
 }
-MessageHandler::MessageHandler() {
+MessageHandler::~MessageHandler() {
+}
+MessageHandler::MessageHandler(Configuration& config, Brain& brain, SensorValues& sensors, RocketData& data) :
+  config(config),
+  brain(brain),
+  sensors(sensors),
+  data(data)
+{
 	assert(sizeof (float) == 4);//need float to be 32 bit
 	address = DEFAULT_ADDRESS;
-}
-MessageHandler::~MessageHandler() {
 
 }

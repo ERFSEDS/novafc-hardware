@@ -1,0 +1,11 @@
+#pragma once
+
+class LowLevelSimulator {
+
+  void arm_callback(void *, bool);
+  void fire_callback(void *, bool);
+  void flash_write_callback(void*, const char *, const size_t);
+  void transmit_callback(void*, const char *, const size_t);
+			 
+
+}

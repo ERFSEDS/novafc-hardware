@@ -180,6 +180,7 @@ void Configuration::setToDefault() {
 	
 	this->uppertimeStepms = DEFAULT_UPPER_TIME_STEP_MS;
 	this->lowertimeStepms = DEFAULT_LOWER_TIME_STEP_MS;
+	this->test = DEFAULT_MODE_TEST;
 }
 
 Configuration::Configuration() {
@@ -188,4 +189,13 @@ Configuration::Configuration() {
 
 Configuration::~Configuration() {
 	//should never get here
+}
+
+
+bool Configuration::getTest() {
+  return this->test;
+}
+
+void Configuration::setTest( bool test) {
+  this->test = test;
 }

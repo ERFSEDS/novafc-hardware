@@ -1,4 +1,10 @@
 #pragma once
+#include <cinttypes>
+#include "RocketData.h"
+#include "Logger.hpp"
+#include "Brain.hpp"
+#include "SensorValues.h"
+
 #define MESSAGE_VERSION		1
 
 #define BOARD_MAJOR_VERSION 1
@@ -67,34 +73,30 @@
 #define BOARD_TYPE 			1
 
 
-
-#include <cinttypes>
-//this class is really just a container
-
 struct CommandStatus {
 	uint8_t ID;
 	uint32_t value;
 	uint8_t size;//0 means ignore value, 1 means only bottom byte .. so on
+  //This should really be a union but i honestly dont have the energy rn
 };
 
 class MessageHandler {
 	public:
-		//returns size message put into buffer
-		//buffer should be BUFFER_SIZE * 2 bytes
-		static uint16_t parseMessage(uint8_t* message, uint16_t arraySize, uint8_t * responseBuffer);
-		static void sendCommand(uint8_t* message, uint8_t size); //rework into command options, figure out how to handle response
+		void parseMessage(uint8_t* message, uint16_t arraySize);
+		void sendCommand(uint8_t* message, uint8_t size); 
 		
 	private:
-		static uint16_t formatResponse(CommandStatus * fieldStatuses, int numFields, CommandStatus * actionStatuses, int numActions, uint8_t srcAddress, uint8_t * responseBuffer);
-		static uint16_t handleCommand(uint8_t* message, uint8_t msgSize, uint8_t * responseBuffer);
-		static uint16_t handleResponse(uint8_t* message, uint8_t msgSize, uint8_t * responseBuffer);
+		uint16_t formatResponse(CommandStatus * fieldStatuses, int numFields, CommandStatus * actionStatuses, int numActions, uint8_t srcAddress, uint8_t * responseBuffer);
+		void handleCommand(uint8_t* message, uint8_t msgSize);
+	        void handleResponse(uint8_t* message, uint8_t msgSize);
 		uint8_t address;
-		
-	public:
-		MessageHandler(const MessageHandler &messageHandler) = delete;
-	private:
-		static MessageHandler INSTANCE;
-		MessageHandler();
+  Configuration& config;
+  Brain& brain;
+  SensorValues& sensors;
+  RocketData& data;
+  TRANSMIT_CALLBACK;
+public:
+  MessageHandler(Configuration& config, Brain& brain, SensorValues& sensors, RocketData& data);
 		~MessageHandler();
 		
 };

@@ -5,6 +5,7 @@
  */
 #pragma once
 #include "cartesian.h"
+#include "Configuration.hpp"
 
 class SensorValues {
     private:
@@ -13,10 +14,9 @@ class SensorValues {
         float sPressure, cPressure[2], temperature;
         bool pyro[2];
         float deltaT;
-
-
+  Configuration &config;
     public:
-        SensorValues();
+  SensorValues(Configuration &config);
         ~SensorValues(){}
 
         void setAcceleration(Cartesian data);
@@ -24,7 +24,7 @@ class SensorValues {
         void setSPressure(float pressure);
         void setCPressure(float pressure);
         void setTemperature(float temperature);
-
+  
         Cartesian   getAcceleration();
         Cartesian   getAngularVelocity();
         float       getSPressure();
@@ -34,4 +34,12 @@ class SensorValues {
         bool checkPyro(int cmd);
         void firePyro(int cmd);
         void setPyro(int cmd, bool state);
+
+  void setTest(bool test); //DO NOT USE THIS IF YOU ARE NOT RUNNING A TEST WITH SIMULATED VALUES
+        void setAcceleration_test(Cartesian data);
+        void setAngularVelocity_test(Cartesian data);
+        void setSPressure_test(float pressure);
+        void setCPressure_test(float pressure);
+        void setTemperature_test(float temperature);
+  
 };

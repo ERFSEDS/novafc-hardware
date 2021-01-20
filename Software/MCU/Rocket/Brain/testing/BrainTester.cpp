@@ -22,7 +22,7 @@ int main() {
 	std::string fileOut = "BrainTest.csv";
 	Configuration config;
 	config.setAltitudeDetermination(ACCELEROMETER_ONLY);
-	SensorValues sensors;
+	SensorValues sensors(config);
 	Cartesian gravityAcceleration = {0,9.81,0};
 	RocketData rocket(config, sensors, gravityAcceleration);
 	

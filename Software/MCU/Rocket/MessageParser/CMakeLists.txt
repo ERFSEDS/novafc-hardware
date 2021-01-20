@@ -7,16 +7,13 @@ project("MessageHandler")
 #Create variables for sources and header files
 set("MessageHandler_sources" ${CMAKE_CURRENT_SOURCE_DIR}/src/MessageHandler.cpp)
 set("Messagehandler_include" ${CMAKE_CURRENT_SOURCE_DIR}/include)
-
+set("MessageHandler_dependencies" "Brain" "SensorValues" "Logger" "Configuration" "RocketData" "State_Machine" "Rocket_Layer_Common")
 #Create a library from source files
 add_library("${PROJECT_NAME}" ${MessageHandler_sources})
 
 #Include the header files for everyone else to use
 target_include_directories("${PROJECT_NAME}" PUBLIC ${Messagehandler_include})
-target_link_libraries("${PROJECT_NAME}" PRIVATE Configuration)
-target_link_libraries("${PROJECT_NAME}" PRIVATE State_Machine)
-
-
+target_link_libraries("${PROJECT_NAME}" PRIVATE ${MessageHandler_dependencies})
 #declare a function to make a test
 function(create_MessageHandler_test)
     
@@ -41,8 +38,7 @@ function(create_MessageHandler_test)
     #Create the executable and link to the library
     add_executable(${test_NAME} ${test_SOURCE})
     target_link_libraries(${test_NAME} PRIVATE "${PROJECT_NAME}")
-	target_link_libraries(${test_NAME} PRIVATE Configuration)
-	target_link_libraries(${test_NAME} PRIVATE State_Machine)
+	target_link_libraries(${test_NAME} PRIVATE ${MessageHandler_dependencies})
     add_test("${test_NAME}_test"  "${test_NAME}")
 
     #if there is a REGEX that was passed in(usually no but sometimes yes) check it against this variable
