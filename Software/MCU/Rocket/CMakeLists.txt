@@ -6,8 +6,9 @@ set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++17")
 
 
 add_subdirectory(common)
-add_subdirectory(Logger)
 add_subdirectory(configuration)
+add_subdirectory(commonTest)
+add_subdirectory(Logger)
 add_subdirectory(SensorValues)
 add_subdirectory(StateMachine)
 add_subdirectory(Brain)
