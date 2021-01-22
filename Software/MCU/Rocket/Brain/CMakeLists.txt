@@ -14,6 +14,7 @@ target_link_libraries("${PROJECT_NAME}" PRIVATE ${Brain_dependencies})
 
 ########################################################################
 set("Common_Test_Source" ${CMAKE_CURRENT_SOURCE_DIR}/testing/FlightLoader.cpp)
+set("brain_test_depends" ${Brain_dependencies} "common_test")
 function(create_Brain_test)
     
     #parse all inputs namely NAME, SOURCE, and PASS_REGEX
@@ -38,7 +39,7 @@ function(create_Brain_test)
     #Create the executable and link to the library
     add_executable(${test_NAME} ${test_SOURCE} ${Common_Test_Source})
     target_link_libraries(${test_NAME} PRIVATE "${PROJECT_NAME}")
-	target_link_libraries(${test_NAME} PRIVATE ${Brain_dependencies} )
+	target_link_libraries(${test_NAME} PRIVATE ${brain_test_depends} )
     add_test("${test_NAME}_test"  "${test_NAME}")
 
     #if there is a REGEX that was passed in(usually no but sometimes yes) check it against this variable

@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "Configuration.hpp"
+#include "Logger.hpp"
 #define NUMBER_OF_STATES 10
 #define DEFAULT_START_STATE (UNARMED)
 enum State
@@ -49,14 +50,15 @@ class StateMap {
 class StateMachine
 {
 	public:
-		StateMachine(Configuration& config);
+  StateMachine(Configuration& config, Logger& logger);
 		~StateMachine();
 		void changeState(State state);
 		State getCurrentState();
 		State getPreviousState();
 		void refresh();
 	private:
-		Configuration config;
+		Configuration& config;
+  Logger& logger;
 		State currentState;
 		State previousState;
 		StateMap stateMap;

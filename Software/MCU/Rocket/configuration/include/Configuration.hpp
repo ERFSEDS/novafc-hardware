@@ -79,9 +79,9 @@ struct LoggingRates {
 
 class Configuration {	
 	public:		
-		Configuration(); //constructor is private
+		Configuration();
 		
-		~Configuration(); //deconstructor is private
+		~Configuration();
 
 		void setToDefault();
 		bool getTwoStageRocket();

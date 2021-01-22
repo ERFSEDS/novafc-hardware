@@ -2,20 +2,18 @@
 #include "Logger.hpp"
 #include "Configuration.hpp"
 #include <iostream>
-void flash_write_callback(const char * msg, const size_t size) {
-	std::string message(msg, size);
-	std::cout << "[Store]: " << message << std::endl;	
-}
-void transmit_callback(const char * msg, const size_t size) {
-	std::string message(msg, size);
-	std::cout << "[Transmit]: "  << message << std::endl;
-}
+#include "LowLevelSimulator.hpp"
+
 int main() {
-	Logger::setTransmitCallback(&transmit_callback);
-	Logger::setFlashWriteCallback(&flash_write_callback);
+
+  LowLevelSimulator sim;
+  Logger log((void*)(&sim),
+	     &(LowLevelSimulator::transmit_callback),
+	     (void*)(&sim),
+	     &(LowLevelSimulator::flash_write_callback));
 	//check to make sure 2 stage cannot go to 1 stage flight
 	Configuration config;
-	StateMachine stateMachine(config);
+	StateMachine stateMachine(config, log);
 	config.setTwoStageRocket(true);
 	char msg[100];
 	int result = 0;
@@ -32,7 +30,7 @@ int main() {
 	///should get stuck at stage1coast
 	if(stateMachine.getCurrentState() != STAGE1COAST) {
 		std::sprintf(msg, "Did not properly handle a 1 stage flight");
-		Logger::Fatal(msg, 42);
+		log.Fatal(msg);
 		result = 1;
 	}
 	else {
@@ -57,7 +55,7 @@ int main() {
 	//should get stuck all the way throguh
 	if(stateMachine.getCurrentState() != RESET) {
 		std::sprintf(msg, "Did not properly handle a 2 stage flight");
-		Logger::Fatal(msg, 42);
+		log.Fatal(msg);
 		result = 1;
 	}
 	else {
@@ -66,11 +64,11 @@ int main() {
 	
 	if(result == 1) {
 		std::sprintf(msg, "State Machine did not handle prevent bad changes");
-		Logger::Fatal(msg, 49);
+		log.Fatal(msg);
 	}
 	else {
 		std::sprintf(msg, "Successful Flight!");
-		Logger::Info(msg, 19);
+		log.Info(msg);
 	}
 	return 0; //success
 }

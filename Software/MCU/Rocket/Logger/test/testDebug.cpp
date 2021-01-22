@@ -1,19 +1,15 @@
-#include <iostream>
 #include "Logger.hpp"
-#include <iostream>
-#include <string>
-
 #include "LowLevelSimulator.hpp"
 
 
 int main() {
   LowLevelSimulator sim;
-  Logger logger( &(LowLevelSimulator::flash_write_callback),
+  Logger logger( (void*)(&sim),
+		&(LowLevelSimulator::flash_write_callback),
 		 (void*)(&sim),
-		 &(LowLevelSimulator::transmit_callback),
-		 (void*)(&sim));
+		 &(LowLevelSimulator::transmit_callback));
   
   logger.SetLogLevelUSB(DEBUG);
-  logger.Debug("Test DEBUG", 11);
+  logger.Debug("Test DEBUG");
   return 0;
 }

@@ -2,22 +2,19 @@
 #include "Logger.hpp"
 #include "Configuration.hpp"
 #include <iostream>
-void flash_write_callback(const char * msg, const size_t size) {
-	std::string message(msg, size);
-	std::cout << "[Store]: " << message << std::endl;	
-}
-void transmit_callback(const char * msg, const size_t size) {
-	std::string message(msg, size);
-	std::cout << "[Transmit]: "  << message << std::endl;
-}
+#include "LowLevelSimulator.hpp"
 
-int main() {	
-	Logger::setTransmitCallback(&transmit_callback);
-	Logger::setFlashWriteCallback(&flash_write_callback);
+int main() {
+
+  LowLevelSimulator sim;
+  Logger log((void*)(&sim),
+	     &(LowLevelSimulator::transmit_callback),
+	     (void*)(&sim),
+	     &(LowLevelSimulator::flash_write_callback));
+	//check to make sure 2 stage cannot go to 1 stage flight
 	Configuration config;
-	int result;
-	char msg[100];
-	StateMachine stateMachine(config);
+	StateMachine stateMachine(config, log);
+	int result = 0;
 	//set configuration
 	config.setTwoStageRocket(true);
 	
@@ -34,16 +31,13 @@ int main() {
 	
 	if(stateMachine.getCurrentState() != RESET) {
 		result = 1;
-		std::sprintf(msg, "Did not properly handle a 2 stage flight");
-		Logger::Fatal(msg, 40);
-		return 1;
+		log.Fatal("Did not properly handle a 2 stage flight");
 	}
 	else {
-		std::sprintf(msg, "Successful flight");
-		Logger::Info(msg, 19);
+	  log.Info("Successful flight");
 	}
 	
 	
 	
-	return 0; //success
+	return result;
 }

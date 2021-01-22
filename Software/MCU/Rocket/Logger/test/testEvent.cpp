@@ -1,28 +1,15 @@
-#include <iostream>
 #include "Logger.hpp"
-#include <iostream>
-#include <string>
+#include "LowLevelSimulator.hpp"
 
 
-void flash_write_callback(const char * msg, const size_t size);
-void transmit_callback(const char * msg, const size_t size);
-
-
-
-//Should print [ERROR]: Test Error
 int main() {
-	Logger::setTransmitCallback(&transmit_callback);
-	Logger::setFlashWriteCallback(&flash_write_callback);
-	Logger::SetLogLevelUSB(EVENT);
-	Logger::Event("Test Event", 11);
-	return 0;
-}
-
-void flash_write_callback(const char * msg, const size_t size) {
-	std::string message(msg, size);
-	std::cout << "[Store]: " << message << std::endl;	
-}
-void transmit_callback(const char * msg, const size_t size) {
-	std::string message(msg, size);
-	std::cout << "[Transmit]: "  << message << std::endl;
+  LowLevelSimulator sim;
+  Logger logger( (void*)(&sim),
+		&(LowLevelSimulator::flash_write_callback),
+		 (void*)(&sim),
+		 &(LowLevelSimulator::transmit_callback));
+  
+  logger.SetLogLevelUSB(DEBUG);
+  logger.Event("Test Event");
+  return 0;
 }

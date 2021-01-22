@@ -15,7 +15,7 @@ add_library("${PROJECT_NAME}" ${Logger_sources})
 target_include_directories("${PROJECT_NAME}" PUBLIC ${Logger_include})
 
 
-set("logger_test_depends" "Logger" "common_test")
+set("logger_test_depends" "Logger" "common_test" "Configuration")
 #declare a function to make a test
 function(create_logger_test)
     

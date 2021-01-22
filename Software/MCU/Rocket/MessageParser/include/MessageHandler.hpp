@@ -94,9 +94,11 @@ class MessageHandler {
   Brain& brain;
   SensorValues& sensors;
   RocketData& data;
-  TRANSMIT_CALLBACK;
+  void (*transmit_callback) (void*, std::string);
+  void* transmitContext;
+  Logger& logger;
 public:
-  MessageHandler(Configuration& config, Brain& brain, SensorValues& sensors, RocketData& data);
+  MessageHandler(Configuration& config, Brain& brain, SensorValues& sensors, RocketData& data, Logger& logger, void* transmitContext, void (*transmit_callback)(void*, std::string));
 		~MessageHandler();
 		
 };

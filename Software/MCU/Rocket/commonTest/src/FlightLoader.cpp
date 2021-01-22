@@ -15,7 +15,7 @@
 
 namespace fs = std::filesystem;
 
-
+//BURN THIS IN HELL, its so bad I just need to start over and just grab parts of this and ditch the rest
 FlightSimulator::FlightSimulator(Configuration& config, RocketData &data, SensorValues &sensors, Logger& logger, std::string inputFile, std::string outputFile) : 
 		config(config),
 		rocket(data), 

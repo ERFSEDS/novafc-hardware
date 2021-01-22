@@ -35,14 +35,14 @@ class Logger
 		void SetLogLevelFLASH(LoggerLevel level);
 	
   Logger(void* flashContext,
-	 void (*flash_write) (std::string),
-		       void* transmitContext,
-	 void (*transmit) (std::string));
+	 void (*flash_write) (void*,std::string),
+	 void* transmitContext,
+	 void (*transmit) (void*,std::string));
 private:
 		LoggerLevel loggerLevelUSB;
 		LoggerLevel loggerLevelFLASH;
-  void (*transmit_callback) (std::string);
-  void (*flash_write_callback) (std::string);
+  void (*transmit_callback) (void* context, std::string);
+  void (*flash_write_callback) (void* context, std::string);
   void * transmitContext;
   void * flashContext;
 };

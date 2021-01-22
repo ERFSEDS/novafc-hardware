@@ -25,6 +25,7 @@ struct Quanternion {
     	this->i /= magnitude;
     	this->j /= magnitude;
     	this->k /= magnitude;
+	unNAN();
     }
     Quanternion operator+(const Quanternion& other) {
 		Quanternion returnVal;

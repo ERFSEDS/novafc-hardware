@@ -17,6 +17,7 @@ target_include_directories("${PROJECT_NAME}" PUBLIC ${State_Machine_include})
 target_link_libraries("${PROJECT_NAME}" PRIVATE ${State_Machine_dependencies})
 
 #declare a function to make a test
+set("state_machine_test_depends" "common_test" "State_Machine" "Configuration" "Logger")
 function(create_State_Machine_test)
     
     #parse all inputs namely NAME, SOURCE, and PASS_REGEX
@@ -39,7 +40,7 @@ function(create_State_Machine_test)
 
     #Create the executable and link to the library
     add_executable("${test_NAME}" ${test_SOURCE})
-    target_link_libraries(${test_NAME} PRIVATE "${PROJECT_NAME}" ${State_Machine_dependencies})
+    target_link_libraries(${test_NAME} PRIVATE "${PROJECT_NAME}" ${state_machine_test_depends})
     add_test("${test_NAME}_test"  "${test_NAME}")
 
     #if there is a REGEX that was passed in(usually no but sometimes yes) check it against this variable

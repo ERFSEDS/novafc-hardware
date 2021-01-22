@@ -32,11 +32,11 @@ void MessageHandler::parseMessage(uint8_t* message, uint16_t arraySize) {
 	
 	//check some stuff
 	if(MESSAGE_VERSION != buffer[MESSAGE_VERSION_BYTE]) {
-	  Logger::Warning("Incorrect Message Version", 26);
+	  logger.Warning(std::string("Incorrect Message Version"));
 		//drop message wrong message version
 	}
 	else if(messageSize != buffer[MESSAGE_LENGTH_BYTE]) {
-	  Logger::Warning("Message Sizes do not match", 27);
+	  logger.Warning("Message Sizes do not match");
 		//drop, message incorrect size
 	} 
 	else if( (address != buffer[DEST_ADDRESS_BYTE]) 
@@ -50,7 +50,7 @@ void MessageHandler::parseMessage(uint8_t* message, uint16_t arraySize) {
 		handleResponse(buffer, messageSize);
 	}
 	else {
-	  Logger::Warning("Unknown Command response byte", 30); 
+	  logger.Warning("Unkown Command response byte");
 	}
 	
 	delete buffer;
@@ -206,7 +206,7 @@ void MessageHandler::handleCommand(uint8_t* message, uint8_t size) {
 			break;
 		case FIELD_ALTITUDE:
 			if(setGet == FIELD_SET) {
-			  Logger::Warning("Attempted to set Altitude", 26);
+			  logger.Warning("Attempted to set altitude");
 			}
 			else if(setGet == FIELD_GET) {
 			  fieldStatuses[i].value = data.getAltitude();
@@ -389,7 +389,9 @@ void MessageHandler::handleCommand(uint8_t* message, uint8_t size) {
 	
 	uint8_t srcAddress = message[SRC_ADDRESS_BYTE];
 	uint16_t messageSize = formatResponse(fieldStatuses, numFields, actionStatuses, numActions, srcAddress, responseBuffer);
-	transmit_callback((const char *)responseBuffer, messageSize); //This function takes responsibility for freeing memory
+	std::string msg((const char *)responseBuffer, messageSize);
+	transmit_callback(transmitContext, msg); //This function takes responsibility for freeing memory
+	free(responseBuffer);
 }
 
 uint16_t MessageHandler::formatResponse(CommandStatus * fieldStatuses, int numFields, CommandStatus * actionStatuses, int numActions, uint8_t srcAddress, uint8_t * responseBuffer) {
@@ -483,11 +485,14 @@ void MessageHandler::handleResponse(uint8_t* message, uint8_t size) {
 }
 MessageHandler::~MessageHandler() {
 }
-MessageHandler::MessageHandler(Configuration& config, Brain& brain, SensorValues& sensors, RocketData& data) :
+MessageHandler::MessageHandler(Configuration& config, Brain& brain, SensorValues& sensors, RocketData& data, Logger& logger, void* transmitContext, void (*transmit_callback)(void*, std::string)) :
   config(config),
   brain(brain),
   sensors(sensors),
-  data(data)
+  data(data),
+  logger(logger),
+  transmit_callback(transmit_callback),
+  transmitContext(transmitContext)
 {
 	assert(sizeof (float) == 4);//need float to be 32 bit
 	address = DEFAULT_ADDRESS;

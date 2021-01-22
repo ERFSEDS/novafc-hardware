@@ -2,14 +2,22 @@
 #include "Brain.hpp"
 #include "Logger.hpp"
 #include <cmath>
-#include <iostream>
 
 #define ARM_IF_VERTICAL_WHEN_ON //TODO move to common header
  
 #ifdef ARM_IF_VERTICAL_WHEN_ON
 #define VERTICAL_TOLERENCE (10*180/M_PI) //10 degrees in radians
 #endif
-Brain::Brain(Configuration& config, StateMachine& state, RocketData& rocket, SensorValues& sensors, ARM_CALLBACK, void* armContext, FIRE_CALLBACK, void* fireContext) : config(config), state(state), rocket(rocket), sensors(sensors), arm_callback(arm_callback), armContext(armContext), fire_callback(fire_callback), fireContext(fireContext) {
+Brain::Brain(Configuration& config, StateMachine& state, RocketData& rocket, SensorValues& sensors, Logger& logger, void (*arm_callback)(void*, bool), void* armContext, void (*fire_callback)(void*, int), void* fireContext) :
+  config(config),
+  state(state),
+  rocket(rocket),
+  sensors(sensors),
+  logger(logger),
+  arm_callback(arm_callback),
+  armContext(armContext),
+  fire_callback(fire_callback),
+  fireContext(fireContext) {
 #ifdef ARM_IF_VERTICAL_WHEN_ON
 	if(rocket.getAngleFromVertical() > VERTICAL_TOLERENCE) {
 		if(state.getCurrentState() == UNARMED) {
@@ -218,11 +226,8 @@ bool Brain::checkPyros() {
 			
 			if(counting[i] == true) {
 				if(delayPyroCharge[i] == 0) {
-					char * msg = (char*)malloc(12);
-					sprintf(msg, "FIRE PYRO %d", i);
-					Logger::Event(msg, 12);
-					free(msg);
-					
+				  std::string msg = std::to_string(i) + " pyro fired";
+					logger.Event(msg);
 					(*fire_callback)(fireContext, i);
 					fired = true;
 					hasFired[i] = true;
@@ -334,3 +339,4 @@ bool Brain::checkLanded() {
 	}
 	return false;
 }
+

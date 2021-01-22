@@ -5,20 +5,15 @@
 #include "Configuration.hpp"
 #include "Brain.hpp"
 #include "Logger.hpp"
+#include "LowLevelSimulator.hpp"
 
-void flash_write_callback(const char * msg, const size_t size) {
-	std::string message(msg, size);
-	std::cout << "[Store]: " << message << std::endl;	
-}
-void transmit_callback(const char * msg, const size_t size) {
-	std::string message(msg, size);
-	std::cout << "[Transmit]: "  << message << std::endl;
-}
 int main() {
-	
-	Logger::setTransmitCallback(&transmit_callback);
-	Logger::setFlashWriteCallback(&flash_write_callback);
-	std::string flightData = "resources/TestData.csv";
+  LowLevelSimulator sim;
+  Logger logger( (void*)(&sim),
+		 &(LowLevelSimulator::flash_write_callback),
+		 (void*)(&sim),
+		 &(LowLevelSimulator::transmit_callback));
+  std::string flightData = "resources/TestData.csv";
 	std::string fileOut = "BrainTest.csv";
 	Configuration config;
 	config.setAltitudeDetermination(ACCELEROMETER_ONLY);
@@ -31,7 +26,7 @@ int main() {
 	float accelNoiseMean = 0;
 	float accelNoiseSTD = 3;
 
-	FlightSimulator simulator(config, rocket, sensors, flightData, fileOut);
+	FlightSimulator simulator(config, rocket, sensors, logger, flightData, fileOut);
 	simulator.insertNoise(gyroNoiseMean, gyroNoiseSTD, accelNoiseMean, accelNoiseSTD);
 	bool success = simulator.runSimulation(100);
 	if(!success) {

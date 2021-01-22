@@ -6,7 +6,6 @@
 #include "RocketData.h"
 #include "SensorValues.h"
 #include <cmath>
-
 RocketData::RocketData(Configuration& config, SensorValues& sensors, Cartesian startAverageAcceleration) : sensors(sensors), groundPressure(SEA_LEVEL_PRESSURE), config(config){
 	rocketAngle = {1,0,0,0};
 	//TODO determine initial data from accelerometer data

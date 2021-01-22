@@ -6,18 +6,24 @@
 #include "Brain.hpp"
 #include "StateMachine.hpp"
 #include <iostream>
-
+#include "LowLevelSimulator.hpp"
 
 int main() {
 	uint8_t messageOutput[22] = {1, 16, 0, 1, 1, 56, 2, 4, 0, 1, 7, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 2};// get RotationX	set altitude 0	arm Rocket
-	
+
+	LowLevelSimulator sim;
+	Logger log((void*)(&sim),
+		   &(LowLevelSimulator::flash_write_callback),
+		   (void*)(&sim),
+		   &(LowLevelSimulator::transmit_callback));
+	Cartesian gravity = {0,9.81,0};
 	uint8_t * responseBuffer = new uint8_t[BUFFER_SIZE * 2];
 	Configuration config;
 	SensorValues sensors(config);
-	RocketData data();
-	StateMachine state();
-	Brain brain(config, state, data, sensors, ARM_CALLBACK, armContext, FIRE_CALLBACK, fireContext);
-	MessageHandler handler(config, brain, sensors, data);
+	RocketData data(config, sensors, gravity);
+	StateMachine state(config, log);
+	Brain brain(config, state, data, sensors, log, &(LowLevelSimulator::arm_callback), (void*)(&sim), &(LowLevelSimulator::fire_callback), (void*)(&sim));
+	MessageHandler handler(config, brain, sensors, data, log, (void*)(&sim), &(LowLevelSimulator::transmit_callback));
 	handler.parseMessage(messageOutput, 22);
 	
 	std::cout << "Response: <";

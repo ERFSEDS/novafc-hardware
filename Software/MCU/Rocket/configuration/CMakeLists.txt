@@ -7,14 +7,19 @@ project("Configuration")
 #Create variables for sources and header files
 set("Configuration_sources" ${CMAKE_CURRENT_SOURCE_DIR}/src/Configuration.cpp)
 set("Configuration_include" ${CMAKE_CURRENT_SOURCE_DIR}/include)
-set("configuration_depends" "Rocket_Layer_Common")
+set("configuration_depends" ) #this is for private includes
+
+
 #Create a library from source files
 add_library("${PROJECT_NAME}" ${Configuration_sources})
 
 #Include the header files for everyone else to use
 target_include_directories("${PROJECT_NAME}" PUBLIC ${Configuration_include})
+target_link_libraries("${PROJECT_NAME}" PUBLIC "Rocket_Layer_Common")
 target_link_libraries("${PROJECT_NAME}" PRIVATE ${configuration_depends})
 
+
+set("configuration_test_depends" "Rocket_Layer_Common" "Configuration")
 #declare a function to make a test
 function(create_config_test)
     

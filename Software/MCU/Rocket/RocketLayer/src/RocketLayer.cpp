@@ -1,19 +1,20 @@
 #include "RocketLayer.hpp"
+#include <string>
 
-RocketLayer::RocketLayer(ARM_CALLBACK, void *armContext,
-	      FIRE_CALLBACK, void *fireContext,
-	      FLASH_WRITE_CALLBACK, void * writeContext,
-	      TRANSMIT_CALLBACK, void *transmitContext,
+RocketLayer::RocketLayer(void (*arm_callback)(void*, bool), void *armContext,
+			 void (*fire_callback)(void*, int), void *fireContext,
+			 void (*flash_write_callback)(void*, std::string), void * writeContext,
+			 void (*transmit_callback)(void*, std::string), void *transmitContext,
 			 Cartesian startGravity, float groundPressure) :
-  sensors{},
   config{},
+  logger{writeContext, flash_write_callback, transmitContext, transmit_callback},
+  sensors{config},
   data{config, sensors, startGravity},
-  stateMachine{config},
-brain{config, stateMachine, data, sensors, arm_callback, armContext, fire_callback, fireContext}
+  stateMachine{config, logger},
+  brain{config, stateMachine, data, sensors, logger, arm_callback, armContext, fire_callback, fireContext}
+  
 {
   sensors.setSPressure(groundPressure);
-  Logger::setTransmitCallback(transmit_callback);
-  Logger::setFlashWriteCallback(flash_write_callback);
 }
 RocketLayer::~RocketLayer() {
   

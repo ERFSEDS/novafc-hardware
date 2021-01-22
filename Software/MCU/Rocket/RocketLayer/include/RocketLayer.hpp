@@ -2,10 +2,6 @@
 
 //this operated on function pointers that are called when the top layer needs to interact with the low layer. you could just pass void pointers but then that section of the code will not work
 #pragma once
-//arm callback defined in Brain.hpp
-//fire callback defined in Brain.hpp
-//flash write callback defined in Logger.hpp
-//transmit callback defined in Logger.hpp
 #include "Logger.hpp"
 #include "Brain.hpp"
 #include "cartesian.h"
@@ -16,10 +12,10 @@
 class RocketLayer {
 
 	public:
-  RocketLayer(ARM_CALLBACK, void *armContext,
-	      FIRE_CALLBACK, void *fireContext,
-	      FLASH_WRITE_CALLBACK, void * writeContext,
-	      TRANSMIT_CALLBACK, void *transmitContext,
+  RocketLayer(void (*arm_callback)(void*, bool), void *armContext,
+	      void (*fire_callback)(void*, int), void *fireContext,
+	      void (*flash_write_callback)(void*, std::string), void * writeContext,
+	      void (*transmit_callback)(void*, std::string), void *transmitContext,
 	      Cartesian startGravity, float groundPressure);
 					
 		~RocketLayer();
@@ -37,4 +33,5 @@ private:
   RocketData data;
   StateMachine stateMachine;
   Brain brain;
+  Logger logger;
 };
