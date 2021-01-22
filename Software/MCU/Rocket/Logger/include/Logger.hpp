@@ -3,10 +3,7 @@
 
 #define DEFAULT_USB_LOG_LEVEL 		(EVENT)
 #define DEFAULT_FLASH_LOG_LEVEL		(EVENT)
-#define FLASH_RETURN_TYPE void
-#define FLASH_ARGS (void *, const char *, const size_t)
-#define TRANSMIT_RETURN_TYPE void
-#define TRANSMIT_ARGS (void *, const char *, const size_t)
+
 
 enum LoggerLevel
 {
@@ -28,24 +25,24 @@ enum LoggerOuts
 class Logger
 {
 	public:
-		void const Debug(const char * msg, const size_t size);
-		void const Info(const char * msg, const size_t size);
-		void const Event(const char * msg, const size_t size);
-		void const Warning(const char * msg, const size_t size);
-		void const Error(const char * msg, const size_t size);
-		void const Fatal(const char * msg, const size_t size);
+  void const Debug(std::string);
+		void const Info(std::string);
+       	void const Event(std::string);
+		void const Warning(std::string);
+		void const Error(std::string);
+		void const Fatal(std::string);
 		void SetLogLevelUSB(LoggerLevel level);
 		void SetLogLevelFLASH(LoggerLevel level);
 	
-		Logger(void* flashContext
-		       FLASH_RETURN_TYPE (*flash_write) FLASH_ARGS,
+  Logger(void* flashContext,
+	 void (*flash_write) (std::string),
 		       void* transmitContext,
-		       TRANSMIT_RETURN_TYPE (*transmit) TRANSMIT_ARGS);
+	 void (*transmit) (std::string));
 private:
 		LoggerLevel loggerLevelUSB;
 		LoggerLevel loggerLevelFLASH;
-  TRANSMIT_RETURN_TYPE (*transmit_callback) TRANSMIT_ARGS;
-  FLASH_RETURN_TYPE (*flash_write_callback) FLASH_ARGS;
+  void (*transmit_callback) (std::string);
+  void (*flash_write_callback) (std::string);
   void * transmitContext;
   void * flashContext;
 };

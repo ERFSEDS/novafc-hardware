@@ -14,6 +14,8 @@ add_library("${PROJECT_NAME}" ${Logger_sources})
 #Include the header files for everyone else to use
 target_include_directories("${PROJECT_NAME}" PUBLIC ${Logger_include})
 
+
+set("logger_test_depends" "Logger" "common_test")
 #declare a function to make a test
 function(create_logger_test)
     
@@ -37,7 +39,7 @@ function(create_logger_test)
 
     #Create the executable and link to the library
     add_executable(${test_NAME} ${test_SOURCE})
-    target_link_libraries(${test_NAME} PRIVATE "${PROJECT_NAME}")
+    target_link_libraries(${test_NAME} PRIVATE ${logger_test_depends})
     add_test("${test_NAME}_test"  "${test_NAME}")
 
     #if there is a REGEX that was passed in(usually no but sometimes yes) check it against this variable

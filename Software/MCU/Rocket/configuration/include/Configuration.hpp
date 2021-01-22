@@ -1,6 +1,5 @@
 #pragma once
-//This needs to be moved to top level header file
-#define NUMBER_OF_PYROS 3
+#include "CommonDefines.hpp"
 //A bunch of defualt defines
 
 #define DEFAULT_TWO_STAGE_ROCKET			(true)
