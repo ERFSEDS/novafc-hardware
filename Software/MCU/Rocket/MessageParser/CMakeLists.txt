@@ -16,10 +16,7 @@ target_include_directories("${PROJECT_NAME}" PUBLIC ${Messagehandler_include})
 target_link_libraries("${PROJECT_NAME}" PRIVATE ${MessageHandler_dependencies})
 #declare a function to make a test
 set("message_handle_test_depends" ${MessageHandler_dependencies} "common_test")
-message(WARNING "Test depends: " ${message_handle_test_depends})
-foreach(depends IN LISTS ${message_handle_test_depends})
-  message(WARNING ${depends})
-endforeach()
+set("message_handle_common_src" "test/TransmitSnooper.cpp")
 function(create_MessageHandler_test)
     
     #parse all inputs namely NAME, SOURCE, and PASS_REGEX
@@ -41,9 +38,9 @@ function(create_MessageHandler_test)
     endforeach()
 
     #Create the executable and link to the library
-    add_executable(${test_NAME} ${test_SOURCE})
+    add_executable(${test_NAME} ${test_SOURCE} ${message_handle_common_src})
     target_link_libraries(${test_NAME} PRIVATE "${PROJECT_NAME}")
-	target_link_libraries(${test_NAME} PRIVATE ${message_handle_test_depends})
+    target_link_libraries(${test_NAME} PRIVATE ${message_handle_test_depends})
     add_test("${test_NAME}_test"  "${test_NAME}")
 
     #if there is a REGEX that was passed in(usually no but sometimes yes) check it against this variable
@@ -58,4 +55,8 @@ create_MessageHandler_test(
 	NAME "TempTest"
 	SOURCE "test/workingTest.cpp"
 )
+
+
+
+
 
