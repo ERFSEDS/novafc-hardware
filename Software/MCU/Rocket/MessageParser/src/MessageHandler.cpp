@@ -1,6 +1,6 @@
 #include "MessageHandler.hpp"
 #include <cassert>
-
+//TODO put all the get value from array and put value in bytes to account for big and little endian differences
 void MessageHandler::parseMessage(uint8_t* message, uint16_t arraySize) {
 	uint8_t * buffer = new uint8_t[BUFFER_SIZE];
 	
@@ -436,7 +436,7 @@ uint16_t MessageHandler::formatResponse(CommandStatus * fieldStatuses, int numFi
 			break;
 		}
 	}
-	
+	response[index++] = numActions;
 	for(int i = 0; i < numActions; i++) {
 		uint32_t value = actionStatuses[i].value;
 		response[index++] = actionStatuses[i].ID;
@@ -444,7 +444,7 @@ uint16_t MessageHandler::formatResponse(CommandStatus * fieldStatuses, int numFi
 		case 0:
 			break;
 		case 1:
-			response[index++] = value & 0xFF;
+		        response[index++] = value & 0xFF;
 			break;	
 		case 2:
 			response[index++] = (value & (0xFF << 8) >> 8);
