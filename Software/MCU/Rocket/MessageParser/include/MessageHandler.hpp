@@ -65,9 +65,10 @@
 #define STATUS_FAIL				0
 
 //escapeChars
-#define ESCAPE_INT				0
+#define ESCAPE_INT				1
 #define ESCAPE_END_MSG			0
-#define ESCAPE_0				1
+#define ESCAPE_1				2
+#define ESCAPE_0 1
 
 
 #define BOARD_TYPE 			1

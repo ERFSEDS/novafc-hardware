@@ -8,14 +8,16 @@ void MessageHandler::parseMessage(uint8_t* message, uint16_t arraySize) {
 	uint8_t messageSize = 0;
 	for(uint16_t i = 0; i < arraySize; i++) {
 		if(message[i] == ESCAPE_INT) {
-			//escape charachter
+			//escape charachter fun!
 			i++;
 			if(message[i] == ESCAPE_END_MSG) {
-				bufferIndex++;
 				break;
 			}
 			else if(message[i] == ESCAPE_0) {
 				buffer[bufferIndex] = 0;
+			}
+			else if(message[i] == ESCAPE_1) {
+			  buffer[bufferIndex] = 1;
 			}
 		}
 		else {
@@ -36,7 +38,9 @@ void MessageHandler::parseMessage(uint8_t* message, uint16_t arraySize) {
 		//drop message wrong message version
 	}
 	else if(messageSize != buffer[MESSAGE_LENGTH_BYTE]) {
-	  logger.Warning("Message Sizes do not match");
+	  logger.Warning("Message Sizes do not match listed: " +
+			 std::to_string(buffer[MESSAGE_LENGTH_BYTE]) + " Actual: " +
+			 std::to_string(messageSize));
 		//drop, message incorrect size
 	} 
 	else if( (address != buffer[DEST_ADDRESS_BYTE]) 
@@ -460,12 +464,16 @@ uint16_t MessageHandler::formatResponse(CommandStatus * fieldStatuses, int numFi
 		}
 	}
 	
-	response[MESSAGE_LENGTH_BYTE] = index;;
+	response[MESSAGE_LENGTH_BYTE] = index;
 	uint16_t finalSize = 0;
 	for(int i = 0; i < index; i++) {
 		if(response[i] == ESCAPE_INT) {
 			responseBuffer[finalSize++] = ESCAPE_INT;
-			responseBuffer[finalSize++] = ESCAPE_0;
+			responseBuffer[finalSize++] = ESCAPE_1;
+		}
+		else if(response[i] == 0) {
+		  responseBuffer[finalSize++] = ESCAPE_INT;
+		  responseBuffer[finalSize++] = ESCAPE_0;
 		}
 		else {
 			responseBuffer[finalSize++] = response[i];

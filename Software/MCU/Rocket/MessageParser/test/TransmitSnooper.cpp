@@ -8,7 +8,6 @@ TransmitSnooper::TransmitSnooper(bool active, void* handoffContext, void (*trans
   expectedMsg(nullptr),
   expectedSize(0),
   messageMatch(false) {
-  
 }
 
 void TransmitSnooper::snoop(bool snooping) {
@@ -37,11 +36,11 @@ void TransmitSnooper::snoop_callback_i(std::string msg) {
   uint8_t* msgPtr = (uint8_t*)(msg.c_str());
   std::cout << "snoop: <";
   for(int i = 0; i < msg.length(); i++) {
-    std::cout << msgPtr[i] << ", ";
+    std::cout << (int)msgPtr[i] << ", ";
   }
   std::cout <<">" << std::endl;
-  messageMatch = true;
   if( (expectedMsg != nullptr) && (expectedSize > 0) ) {
+    messageMatch = true;
     if(expectedSize != msg.length()) {
       std::cout << "Messages are different sizes" <<std::endl;
       std::cout << "Expected Size = " << expectedSize << std::endl;
