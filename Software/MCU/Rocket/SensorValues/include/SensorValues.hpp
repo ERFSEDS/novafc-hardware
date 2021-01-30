@@ -4,7 +4,7 @@
  * Author: Matthew Gasper
  */
 #pragma once
-#include "cartesian.h"
+#include "Cartesian.hpp"
 #include "Configuration.hpp"
 
 class SensorValues {

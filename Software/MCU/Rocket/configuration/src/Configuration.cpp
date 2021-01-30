@@ -54,7 +54,7 @@ void Configuration::setPyro(int pyroNum, bool tiltLock,
 }
 Pyro* Configuration::getPyro(int pyroNum) {
 	if( (pyroNum<0) ) {
-		return &(this->pyroChannels[0]);
+	  return &(this->pyroChannels[0]);
 	}
 	else if(pyroNum>=NUMBER_OF_PYROS) {
 		return &(this->pyroChannels[NUMBER_OF_PYROS-1]);

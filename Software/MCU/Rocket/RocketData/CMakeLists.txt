@@ -4,7 +4,7 @@ enable_testing()
 project( RocketData )
 
 set("RocketData_sources" ${CMAKE_CURRENT_SOURCE_DIR}/src/RocketData.cpp)
-set("RocketData_include" ${CMAKE_CURRENT_SOURCE_DIR}/Include)
+set("RocketData_include" ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set("RocketData_dependencies" "SensorValues" "Logger" "Configuration" "Rocket_Layer_Common")
 
 add_library("${PROJECT_NAME}" ${RocketData_sources})

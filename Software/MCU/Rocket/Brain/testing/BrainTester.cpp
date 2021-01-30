@@ -1,11 +1,12 @@
 #include "FlightLoader.hpp"
-#include "RocketData.h"
-#include "SensorValues.h"
+#include "RocketData.hpp"
+#include "SensorValues.hpp"
 #include <string>
 #include "Configuration.hpp"
 #include "Brain.hpp"
 #include "Logger.hpp"
 #include "LowLevelSimulator.hpp"
+#include <iostream>
 
 int main() {
   LowLevelSimulator sim;

@@ -1,6 +1,5 @@
 #pragma once
-#include "cartesian.h"
-#include <iostream>
+#include "Cartesian.hpp"
 struct Matrix {
 	float values[3][3];
 	

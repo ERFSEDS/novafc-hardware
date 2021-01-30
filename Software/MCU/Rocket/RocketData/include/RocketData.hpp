@@ -5,8 +5,8 @@
  */
 
 #pragma once
-#include "cartesian.h"
-#include "SensorValues.h"
+#include "Cartesian.hpp"
+#include "SensorValues.hpp"
 #include "Quanternion.hpp"
 #include "Configuration.hpp"
 #define SEA_LEVEL_PRESSURE 101325

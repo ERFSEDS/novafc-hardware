@@ -1,9 +1,9 @@
 #pragma once
 
-#include "cartesian.h"
+#include "Cartesian.hpp"
 #include "Configuration.hpp"
-#include "RocketData.h"
-#include "SensorValues.h"
+#include "RocketData.hpp"
+#include "SensorValues.hpp"
 #include "StateMachine.hpp"
 
 #define APOGEE_DESCENT_DETECT_TIME 0.5

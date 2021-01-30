@@ -2,7 +2,7 @@
  * Description: This class is to act like a Storage class for sensor values
  * Author: Matthew Gasper
  */
-#include "SensorValues.h"
+#include "SensorValues.hpp"
 
 SensorValues::SensorValues(Configuration& config) : acceleration{0,0,0},
 						    angularVelocity{0,0,0},

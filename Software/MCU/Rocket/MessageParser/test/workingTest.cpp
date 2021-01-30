@@ -1,8 +1,8 @@
 #include "Configuration.hpp"
 #include "StateMachine.hpp"
 #include "MessageHandler.hpp"
-#include "SensorValues.h"
-#include "RocketData.h"
+#include "SensorValues.hpp"
+#include "RocketData.hpp"
 #include "Brain.hpp"
 #include "StateMachine.hpp"
 #include <iostream>
@@ -23,15 +23,20 @@ int main() {
 	RocketData data(config, sensors, gravity);
 	StateMachine state(config, log);
 	Brain brain(config, state, data, sensors, log, &(LowLevelSimulator::arm_callback), (void*)(&sim), &(LowLevelSimulator::fire_callback), (void*)(&sim));
-	MessageHandler handler(config, brain, sensors, data, log, (void*)(&snoops), &(TransmitSnooper::snoopCallback));
+	MessageHandler handler(config, brain, sensors, data, log, state,(void*)(&snoops), &(TransmitSnooper::snoopCallback));
 
 	//yuck all that above is stetup
-	uint8_t messageOutput[28] = {1, 2, 13, 1, 1, 1, 2, 56, 2, 4, 1, 1, 7, 1, 1, 1, 2, 2, 2, 1, 0};// get RotationX get altitude arm Rocket
-	uint8_t expectedResponse[34] = {1, 2, 19, 1, 2, 56, 1, 2, 2, 4, 1,1,1,1,1,1,1,1, 7, 1,1,1,1,1,1,1,1, 1, 2, 2, 1, 2, 1, 0}; 
+
+	//get orientation, get altitude, arm rocket
+	uint8_t message[20] = {1,2, 12, 1,1, 1,2, 56, 2, 4, 1,1, 3, 1,1, 1,2, 2, 1,0};
+
+	uint8_t expectedResponse[56] = {1,2, 31, 1,2, 56, 1,2, 2, 4, 63,128,1,1,1,1,
+					1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,
+					3, 1,1,1,1,1,1,1,1, 1,2, 2, 1,2, 1,0};
 	snoops.snoop(true);
-	snoops.setExpectedResponse(expectedResponse, 34);
+	snoops.setExpectedResponse(expectedResponse, 56);
 	//test timeo
-	handler.parseMessage(messageOutput, 28);
+	handler.parseMessage(message, 20);
 	
 	
 	if(snoops.matchedExpected()) {

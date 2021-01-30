@@ -1,7 +1,7 @@
 #include "FlightLoader.hpp"
-#include "RocketData.h"
-#include "SensorValues.h"
-#include "cartesian.h"
+#include "RocketData.hpp"
+#include "SensorValues.hpp"
+#include "Cartesian.hpp"
 #include <cmath>
 #include <iostream>
 #include <stdexcept>

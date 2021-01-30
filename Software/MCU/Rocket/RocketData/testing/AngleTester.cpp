@@ -1,6 +1,6 @@
-#include "RocketData.h"
+#include "RocketData.hpp"
 #include "Configuration.hpp"
-#include "SensorValues.h"
+#include "SensorValues.hpp"
 #include <iostream>
 #include <cmath>
 #define _USE_MATH_DEFINES

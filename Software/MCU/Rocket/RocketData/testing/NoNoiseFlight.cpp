@@ -1,9 +1,9 @@
 #include "FlightLoader.hpp"
-#include "RocketData.h"
-#include "SensorValues.h"
+#include "RocketData.hpp"
+#include "SensorValues.hpp"
 #include <string>
 #include "Configuration.hpp"
-
+#include <iostream>
 int main() {
 	std::string flightData = "resources/TestData.csv";
 	std::string fileOut = "noNoise.csv";

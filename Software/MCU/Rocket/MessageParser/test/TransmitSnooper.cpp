@@ -51,8 +51,8 @@ void TransmitSnooper::snoop_callback_i(std::string msg) {
     for(int i = 0; i < expectedSize; i++) {
       if(expectedMsg[i] != msgPtr[i]) {
 	std::cout << "Message Byte "  << i << " does not match" << std::endl;
-	std::cout << "expected: " << expectedMsg[i] << std::endl;
-	std::cout << "actual: " << msgPtr[i] << std::endl;
+	std::cout << "expected: " << (int)expectedMsg[i] << std::endl;
+	std::cout << "actual: " << (int)msgPtr[i] << std::endl;
 	messageMatch = false;
       }
     }

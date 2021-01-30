@@ -4,9 +4,9 @@
 #pragma once
 #include "Logger.hpp"
 #include "Brain.hpp"
-#include "cartesian.h"
-#include "RocketData.h"
-#include "SensorValues.h"
+#include "Cartesian.hpp"
+#include "RocketData.hpp"
+#include "SensorValues.hpp"
 #include "StateMachine.hpp"
 
 class RocketLayer {

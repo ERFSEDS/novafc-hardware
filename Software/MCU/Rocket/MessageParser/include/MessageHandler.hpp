@@ -1,9 +1,9 @@
 #pragma once
 #include <cinttypes>
-#include "RocketData.h"
+#include "RocketData.hpp"
 #include "Logger.hpp"
 #include "Brain.hpp"
-#include "SensorValues.h"
+#include "SensorValues.hpp"
 
 #define MESSAGE_VERSION		1
 
@@ -12,8 +12,8 @@
 #define SOFTWARE_MAJOR_VERSION 1
 #define SOFTWARE_MINOR_VERSION 0
 
-#define BOARD_VERSION		(BOARD_MAJOR_VERSION << 8) | (BOARD_MINOR_VERSION)	
-#define SOFTWARE_VERSION	(SOFTWARE_MAJOR_VERSION << 8) | (SOFTWARE_MINOR_VERSION)
+#define BOARD_VERSION		((BOARD_MAJOR_VERSION << 8) | (BOARD_MINOR_VERSION))
+#define SOFTWARE_VERSION	((SOFTWARE_MAJOR_VERSION << 8) | (SOFTWARE_MINOR_VERSION))
 #define BUFFER_SIZE 		256
 #define DEFAULT_ADDRESS		56
 #define BROADCAST_ADDRESS	255
@@ -34,31 +34,28 @@
 #define FIELD_SET				1
 #define FIELD_GET				0
 #define FIELD_PRESSURE			0
-#define FIELD_ACCELERATION_X	1
-#define FIELD_ACCELERATION_Y	2
-#define FIELD_ACCELERATION_Z	3
-#define FIELD_ROTATION_X		4
-#define FIELD_ROTATION_Y		5
-#define FIELD_ROTATION_Z		6
-#define FIELD_ALTITUDE			7
-#define FIELD_ANGLE_X			8
-#define FIELD_ANGLE_Y			9
-#define FIELD_ANGLE_Z			10
-#define FIELD_ROCKET_STATE		11
-#define FIELD_LED_1				12
-#define FIELD_LED_2				13
-#define FIELD_BUZZER			14
-#define FIELD_SOFTWARE_VERSION	15
-#define FIELD_HARDWARE_VERSION	16
-#define FIELD_ADDRESS			17
-#define FIELD_BOARD_TYPE		18
+#define FIELD_ACCELERATION  	        1
+#define FIELD_ANGULAR_VELOCITY          2
+#define FIELD_ALTITUDE                  3
+#define FIELD_ORIENTATION               4
+#define FIELD_ROCKET_STATE              5
+#define FIELD_PYRO_CHANNEL              6
+#define FIELD_ALTITUDE_DETERMINATION    7
+#define FIELD_IGNITION_THRESHOLD        8
+#define FIELD_CUTOFF_THRESHOLD          9
+#define FIELD_TEST_SIMULATION           10
+#define FIELD_BOARD_TYPE		11
+#define FIELD_ADDRESS			12
+#define FIELD_SOFTWARE_VERSION	        13
+#define FIELD_HARDWARE_VERSION          14
 
 //actions
 #define ACTION_COPY_FLASH		0
 #define ACTION_FIRE_PYRO		1
 #define ACTION_ARM				2
 #define ACTION_DISARM			3
-
+#define ACTION_PYRO_CORRECT             4  //not really an action but it fits better here
+#define ACTION_SIM_STEP                 5
 
 //General command
 #define STATUS_SUCCESS			1
@@ -75,31 +72,33 @@
 
 
 struct CommandStatus {
-	uint8_t ID;
-	uint32_t value;
-	uint8_t size;//0 means ignore value, 1 means only bottom byte .. so on
-  //This should really be a union but i honestly dont have the energy rn
+  uint8_t ID;
+  uint8_t value[16];
+  uint8_t size;
 };
 
 class MessageHandler {
-	public:
-		void parseMessage(uint8_t* message, uint16_t arraySize);
-		void sendCommand(uint8_t* message, uint8_t size); 
+public:
+  void parseMessage(uint8_t* message, uint16_t arraySize);
+  void sendCommand(uint8_t* message, uint8_t size); 
 		
-	private:
-		uint16_t formatResponse(CommandStatus * fieldStatuses, int numFields, CommandStatus * actionStatuses, int numActions, uint8_t srcAddress, uint8_t * responseBuffer);
-		void handleCommand(uint8_t* message, uint8_t msgSize);
-	        void handleResponse(uint8_t* message, uint8_t msgSize);
-		uint8_t address;
+private:
+  uint16_t formatResponse(CommandStatus * fieldStatuses, int numFields, CommandStatus * actionStatuses, int numActions, uint8_t srcAddress, uint8_t * responseBuffer);
+  void handleCommand(uint8_t* message, uint8_t msgSize);
+  void handleResponse(uint8_t* message, uint8_t msgSize);
+  float getFloat(uint8_t * floatBytes, int offset);
+  void setFloat(float value, uint8_t * ptr, int offset);
+  uint8_t address;
   Configuration& config;
   Brain& brain;
+  StateMachine& state;
   SensorValues& sensors;
   RocketData& data;
   void (*transmit_callback) (void*, std::string);
   void* transmitContext;
   Logger& logger;
 public:
-  MessageHandler(Configuration& config, Brain& brain, SensorValues& sensors, RocketData& data, Logger& logger, void* transmitContext, void (*transmit_callback)(void*, std::string));
-		~MessageHandler();
+  MessageHandler(Configuration& config, Brain& brain, SensorValues& sensors, RocketData& data, Logger& logger, StateMachine& state, void* transmitContext, void (*transmit_callback)(void*, std::string));
+  ~MessageHandler();
 		
 };

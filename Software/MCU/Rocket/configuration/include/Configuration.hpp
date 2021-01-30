@@ -23,22 +23,22 @@
 #define DEFAULT_MODE_TEST                               (false)
 
 enum PyroConfig {
-	VELOCITY_ABOVE,
-	VELOCITY_BELOW,
-	ACCELERATION_BELOW,
-	ACCELERATION_ABOVE,
-	ALTITUDE_ABOVE,
-	ALTITUDE_BELOW,
-	TIME_DELAY,
-	PAST_APOGEE,
-	STATE,//value is state desired(it will be cast to int)
-	NONE,	//this condition is always met
-	NO_FIRE //this condition is never met
+		 VELOCITY_ABOVE = 0,
+		 VELOCITY_BELOW = 1,
+		 ACCELERATION_BELOW = 2,
+		 ACCELERATION_ABOVE = 3,
+		 ALTITUDE_ABOVE = 4,
+		 ALTITUDE_BELOW = 5,
+		 TIME_DELAY = 6,
+		 PAST_APOGEE = 7,
+		 STATE = 8,//value is state desired(it will be cast to int)
+		 NONE = 9,	//this condition is always met
+		 NO_FIRE = 10//this condition is never met
 };
 enum AltitudeDeterminination {
-	ACCELEROMETER_ONLY,
-	BAROMETER_ONLY,
-	BOTH
+	ACCELEROMETER_ONLY=0,
+	BAROMETER_ONLY=1,
+	BOTH=2
 };
 struct Pyro {
 	PyroConfig configOne;
@@ -135,9 +135,7 @@ class Configuration {
   
 	//Private Variables
 	private:
-		static Configuration INSTANCE;
-		
-		bool twoStageRocket;
+  bool twoStageRocket;
 		
 		bool safetyLock;
 		float safetyLockValue;

@@ -162,7 +162,7 @@ void Brain::checkApogee() {
 		if( currentAltitude <= pastAltitude ) {
 			descentTimeSteps++;
 			if(descentTimeSteps >= requiredTimeSteps) {
-				std::cout << "Post Apogee" << std::endl;
+			  logger.Event("Apogee Detected");
 				postApogee = true;
 			}
 		}
