@@ -2,7 +2,7 @@
 #include <string>
 #include "Configuration.hpp"
 #include "Logger.hpp"
-#define NUMBER_OF_STATES 10
+#define NUMBER_OF_STATES 9
 #define DEFAULT_START_STATE (UNARMED)
 enum State
 {
@@ -12,10 +12,9 @@ enum State
 	STAGE1COAST = 3,
 	STAGE2POWERED = 4,
 	STAGE2COAST = 5,
-	DROGUEPAR = 6,
-	MAINPAR = 7,
-	LANDED = 8,
-	RESET = 9
+	DESCENT = 6,
+	LANDED = 7,
+	RESET = 8
 	
 };
 

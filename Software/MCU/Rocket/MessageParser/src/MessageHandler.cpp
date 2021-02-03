@@ -1,5 +1,6 @@
 #include "MessageHandler.hpp"
 #include <cassert>
+#include "Common.hpp"
 //TODO put all the get value from array and put value in bytes to account for big and little endian differences
 //TODO we should probably try catch the reading of the messages there is a lot of assumed casting
 void MessageHandler::parseMessage(uint8_t* message, uint16_t arraySize) {
@@ -374,20 +375,7 @@ uint16_t MessageHandler::formatResponse(CommandStatus * fieldStatuses, int numFi
 //its formatted big endian
 // [0]       [1]  [2]  [3]
 // highest   high low lowest
-float MessageHandler::getFloat(uint8_t * floatBytes, int offset) {
-  uint32_t bytes = (floatBytes[offset] & (0xFF << 24)) +
-    (floatBytes[offset+1] & (0xFF << 16)) +
-    (floatBytes[offset+2] & (0xFF << 8 )) +
-    (floatBytes[offset+3] & (0xFF));
-  return *(reinterpret_cast<float*>(&bytes));
-}
-void MessageHandler::setFloat(float valueF, uint8_t * ptr, int offset) {
-  uint32_t* value = reinterpret_cast<uint32_t*>(&valueF);
-  ptr[offset] = (*value & (0xFF << 24)) >> 24;
-  ptr[offset+1]=(*value & (0xFF << 16)) >> 16;
-  ptr[offset+2]=(*value & (0xFF << 8)) >> 8;
-  ptr[offset+3]=*value & (0xFF);
-}
+
 void MessageHandler::handleResponse(uint8_t* message, uint8_t size) {
   //casually drops message
 }

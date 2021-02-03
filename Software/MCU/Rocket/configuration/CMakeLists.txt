@@ -83,18 +83,6 @@ create_config_test(
 	SOURCE "testing/testArmingAltitude.cpp"
 )
 create_config_test(
-	NAME "Drogue_Chute_Test"
-	SOURCE "testing/testDrogueChute.cpp"
-)
-create_config_test(
-	NAME "Main_Pyro_Test"
-	SOURCE "testing/testMainPyroChannel.cpp"
-)
-create_config_test(
-	NAME "Drogue_Pyro_Test"
-	SOURCE "testing/testDroguePyroChannel.cpp"
-)
-create_config_test(
 	NAME "Default_Value_Test"
 	SOURCE "testing/testDefaults.cpp"
 )
@@ -106,3 +94,7 @@ create_config_test(
 	NAME "Layer_Time_Step_Test"
 	SOURCE "testing/testLayerTimeSteps.cpp"
 )
+create_config_test(
+  NAME "WRITE_BYTES"
+  SOURCE "testing/testByteStoreAndLoad.cpp"
+  )

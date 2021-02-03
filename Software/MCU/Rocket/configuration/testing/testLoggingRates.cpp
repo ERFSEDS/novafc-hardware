@@ -7,11 +7,9 @@ int main() {
 	Configuration config;
 	
 	//Set Logging rates to:
-	//	preLaunch = 0.1
-	//	poweredFlight = 50
-	//	unpoweredFlight = 25
-	//	descent = 0
-	logRates = {0.1, 50, 25, 0};
+	//      ascent = 0.1
+	//	descent = 0.2
+	logRates = {0.1, 0.2};
 	config.setLoggingRates(logRates);
 	success = logRates == *config.getLoggingRates();
 	if( !success) {
@@ -20,11 +18,9 @@ int main() {
 	}
 	
 	//Set Logging rates to:
-	//	preLaunch = 100
-	//	poweredFlight = 0.1
-	//	unpoweredFlight = 0.6
+	//	ascent = 100
 	//	descent = 70
-	logRates = {100, 0.1, 0.6, 70};
+	logRates = {100, 70};
 	config.setLoggingRates(logRates);
 	success = logRates == *config.getLoggingRates();
 	if( !success) {

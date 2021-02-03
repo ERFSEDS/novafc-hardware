@@ -8,10 +8,6 @@ int main() {
 		return 1;
 	}
 
-	if (config.getSafetyLock() != DEFAULT_SAFETY_LOCK) {
-		std::cout << "Failed Safety Lock" << std::endl;
-		return 1;
-	}
 	if (config.getSafetyLockValue() != DEFAULT_SAFETY_LOCK_VALUE) {
 		std::cout << "Failed Safety Lock Value" << std::endl;
 		return 1;
@@ -37,10 +33,7 @@ int main() {
 		return 1;
 	}
 
-	LoggingRates logRates = {
-							DEFAULT_PRE_LAUNCH_LOG_RATE, 
-							DEFAULT_POWERED_FLIGHT_LOG_RATE,
-							DEFAULT_UNPOWERED_FLIGHT_LOG_RATE,
+	LoggingRates logRates = {			DEFAULT_ASCENT_LOG_RATE,
 							DEFAULT_DESCENT_LOG_RATE};
 	if ( !(*config.getLoggingRates() == logRates) ){
 		std::cout << "Failed Logging Rates" << std::endl;
@@ -57,28 +50,9 @@ int main() {
 		return 1;
 	}
 		
-	if (config.getDrogueChute() != DEFAULT_DROGUE_CHUTE) {
-		std::cout << "Failed Drogue Chute" << std::endl;
-		return 1;
-	}
-		
-	if (config.getMainPyroChannel() != DEFAULT_MAIN_PYRO_CHANNEL) {
-		std::cout << "Failed Main Pyro CHannel" << std::endl;
-		return 1;
-	}
-		
-	if (config.getDroguePyroChannel() != DEFAULT_DROGUE_PYRO_CHANNEL) {
-		std::cout << "Failed Drogue Pyro Channel" << std::endl;
-		return 1;
-	}
 	if (config.getUpperTimeStepms() != DEFAULT_UPPER_TIME_STEP_MS) {
 		std::cout << "Failed upper layer time" << std::endl;
 		return 1;
-	}
-	if (config.getLowerTimeStepms() != DEFAULT_LOWER_TIME_STEP_MS) {
-		std::cout << "Failed Lower Layer time" << std::endl;
-		return 1;
-	}
-	
+	}	
 	return 0;
 }

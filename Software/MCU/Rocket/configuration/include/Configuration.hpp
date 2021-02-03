@@ -1,5 +1,6 @@
 #pragma once
 #include "CommonDefines.hpp"
+#include <cinttypes>
 //A bunch of defualt defines
 
 #define DEFAULT_TWO_STAGE_ROCKET			(true)
@@ -9,10 +10,8 @@
 #define DEFAULT_PYRO_VALUE					(0)
 #define DEFAULT_IGNITION_THRESHOLD			(50)
 #define DEFAULT_CUTOFF_THRESHOLD			(20)
-#define DEFAULT_PRE_LAUNCH_LOG_RATE			(0)
-#define DEFAULT_POWERED_FLIGHT_LOG_RATE		(50)
-#define DEFAULT_UNPOWERED_FLIGHT_LOG_RATE	(50)
-#define DEFAULT_DESCENT_LOG_RATE			(1)
+#define DEFAULT_ASCENT_LOG_RATE		(50)
+#define DEFAULT_DESCENT_LOG_RATE	(50)
 #define DEFAULT_ALTITUDE_DETERMINATION		(BOTH)
 #define DEFAULT_ARMING_ALTITUDE				(50)
 #define DEFAULT_DROGUE_CHUTE				(true)
@@ -21,6 +20,8 @@
 #define DEFAULT_UPPER_TIME_STEP_MS			(20) //50Hz
 #define DEFAULT_LOWER_TIME_STEP_MS			(20) //50Hz
 #define DEFAULT_MODE_TEST                               (false)
+
+#define CONFIG_BUFFER_SIZE    (63)
 
 enum PyroConfig {
 		 VELOCITY_ABOVE = 0,
@@ -48,33 +49,27 @@ struct Pyro {
 	bool tiltLock;
 	
 	bool operator==(const Pyro& pyro){
-    	if ( (configOne == pyro.configOne) &&
-			 (valueOne == pyro.valueOne) &&
-			 (configTwo == pyro.configTwo) &&
-			 (valueTwo == pyro.valueTwo) &&
-			 (tiltLock == pyro.tiltLock)) {
-			return true;
-		}
-		
-		return false;
+	  if ( (configOne == pyro.configOne) &&
+	       (valueOne == pyro.valueOne) &&
+	       (configTwo == pyro.configTwo) &&
+	       (valueTwo == pyro.valueTwo) &&
+	       (tiltLock == pyro.tiltLock)) {
+	    return true;
+	  }
+	  return false;
 	}
 };
 struct LoggingRates {
-	float preLaunch;
-	float poweredFlight;
-	float unpoweredFlight;
-	float descent;
+  float ascent;
+  float descent;
 	
-	bool operator==(const LoggingRates& rates){
-   	if ( (preLaunch == rates.preLaunch) &&
-		 (poweredFlight == rates.poweredFlight) &&
-		 (unpoweredFlight == rates.unpoweredFlight) &&
-		 (descent == rates.descent) ) {
-		return true;
-	}
-	
-	return false;
-	}
+  bool operator==(const LoggingRates& rates){
+    if (	 (ascent == rates.ascent) &&
+		 (descent == rates.descent)) {
+      return true;
+    }
+    return false;
+  }
 };
 
 class Configuration {	
@@ -87,8 +82,6 @@ class Configuration {
 		bool getTwoStageRocket();
 		void setTwoStageRocket(bool twoStage);
 
-		bool getSafetyLock();
-		void setSafetyLock(bool safetyLock);
 		float getSafetyLockValue();						
 		void setSafetyLockValue(float safetyLockValue); 
 
@@ -114,30 +107,19 @@ class Configuration {
 		
 		float getArmingAltitude();
 		void setArmingAltitude(float altitude);
-		
-		bool getDrogueChute();
-		void setDrogueChute(bool drogueChute);
-		
-		int getMainPyroChannel();
-		void setMainPyroChannel(int channel);
-		
-		int getDroguePyroChannel();
-		void setDroguePyroChannel(int channel);
-		
+				
 		float getUpperTimeStepms(); //miliseconds
 		void setUpperTimeStepms(float newTimeStep); //miliseconds
 		
-		float getLowerTimeStepms(); //miliseconds
-		void setLowerTimeStepms(float newTimeStep); //miliseconds
-
   bool getTest();
   void setTest(bool test);
-  
+
+  void generateConfig(uint8_t * buffer);
+  void updateFromConfig(uint8_t* buffer);
 	//Private Variables
 	private:
   bool twoStageRocket;
 		
-		bool safetyLock;
 		float safetyLockValue;
 		
 		Pyro pyroChannels[NUMBER_OF_PYROS];
@@ -150,13 +132,7 @@ class Configuration {
 		AltitudeDeterminination altitudeDetermination;
 		
 		float armingAltitude;
-		
-		bool drogueChute;
-		
-		int mainPyroChannel;
-		int droguePyroChannel;
-		
+				
 		float uppertimeStepms; //miliseconds
-		float lowertimeStepms; //miliseconds		
                 bool test;
 };

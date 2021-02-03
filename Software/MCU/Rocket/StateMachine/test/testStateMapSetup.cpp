@@ -22,8 +22,7 @@ int main() {
 	stateMachine.changeState(READY);
 	stateMachine.changeState(STAGE1POWERED);
 	stateMachine.changeState(STAGE1COAST);
-	stateMachine.changeState(DROGUEPAR);
-	stateMachine.changeState(MAINPAR);
+	stateMachine.changeState(DESCENT);
 	stateMachine.changeState(LANDED);
 	stateMachine.changeState(RESET);
 	
@@ -46,8 +45,7 @@ int main() {
 	stateMachine.changeState(STAGE1COAST);
 	stateMachine.changeState(STAGE2POWERED);
 	stateMachine.changeState(STAGE2COAST);
-	stateMachine.changeState(DROGUEPAR);
-	stateMachine.changeState(MAINPAR);
+	stateMachine.changeState(DESCENT);
 	stateMachine.changeState(LANDED);
 	stateMachine.changeState(RESET);
 	

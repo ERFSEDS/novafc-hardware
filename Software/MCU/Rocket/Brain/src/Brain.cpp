@@ -32,6 +32,7 @@ void Brain::check() {
 	if(stateChange) {
 		hangleStateChange();
 	}
+	checkPyros();
 	
 	bool pyroFired;
 	switch(state.getCurrentState()) {
@@ -51,39 +52,29 @@ void Brain::check() {
 		break;
 	case STAGE1COAST:
 		checkApogee();
-		pyroFired = checkPyros();
 		if(config.getTwoStageRocket() ) {
 			if(motorIgnition()) {
-				state.changeState(STAGE1COAST);	
+				state.changeState(STAGE2POWERED);	
 			}
 		}
 		else {
-			if(pyroFired) {
-				state.changeState(DROGUEPAR);
-			}
+		  if(postApogee) {
+		    state.changeState(DESCENT);
+		  }
 		}
 		break;
 	case STAGE2POWERED:
 		if(motorCutoff()) {
 			state.changeState(STAGE2COAST);
 		}
-		checkPyros();
 		break;
 	case STAGE2COAST:
-		pyroFired = checkPyros();
-		if(pyroFired) {
-			state.changeState(DROGUEPAR);
-		}
 		checkApogee();
+		if(postApogee) {
+		  state.changeState(DESCENT);
+		}
 		break;
-	case DROGUEPAR:
-		pyroFired = checkPyros();
-		checkApogee();
-		if(pyroFired) {
-			state.changeState(MAINPAR);
-		}
-	case MAINPAR:
-		checkApogee();
+	case DESCENT:
 		if(checkLanded()) {
 			state.changeState(LANDED);
 		}
