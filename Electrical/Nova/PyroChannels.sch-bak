@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
-Sheet 14 19
+Sheet 12 20
 Title ""
 Date ""
 Rev ""
@@ -71,7 +71,7 @@ U 1 1 5F6ECA83
 P 4050 3450
 F 0 "R5" H 4118 3496 50  0000 L CNN
 F 1 "10k" H 4118 3405 50  0000 L CNN
-F 2 "" V 4090 3440 50  0001 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 4090 3440 50  0001 C CNN
 F 3 "~" H 4050 3450 50  0001 C CNN
 	1    4050 3450
 	1    0    0    -1  
