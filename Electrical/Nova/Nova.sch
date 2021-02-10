@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
-Sheet 1 22
+Sheet 1 21
 Title ""
 Date ""
 Rev ""
@@ -15,70 +15,6 @@ Comment4 ""
 $EndDescr
 Text Notes 1500 -100 0    157  Italic 31
 When creating your part in your feature branch create a heirarchical\nsheet and name it appropriately and do your work in there. NOT IN\nTHIS SHEET. THis sheet is the top level connect all the parts together\nsheet. I will find you if you put something other than  Heirarchical\nsheet in here
-Wire Wire Line
-	4300 2250 3500 2250
-Wire Wire Line
-	4300 2500 3500 2500
-Wire Wire Line
-	4300 2600 3500 2600
-Wire Wire Line
-	4300 2750 3500 2750
-Wire Wire Line
-	4300 2850 3500 2850
-Text Label 4200 2250 2    50   ~ 0
-RESET
-Text Label 4200 2500 2    50   ~ 0
-CLOCKIN
-Text Label 4200 2600 2    50   ~ 0
-CLOCKOUT
-Text Label 4200 2750 2    50   ~ 0
-32CLOCKIN
-Text Label 4200 2850 2    50   ~ 0
-32CLOCKOUT
-Wire Wire Line
-	4300 1950 3500 1950
-Wire Wire Line
-	4300 2050 3500 2050
-Text Label 4200 1950 2    50   ~ 0
-SWDIO
-Text Label 4200 2050 2    50   ~ 0
-SWCLK
-Wire Wire Line
-	4300 3100 3500 3100
-Wire Wire Line
-	4300 3200 3500 3200
-Wire Wire Line
-	4300 3300 3500 3300
-Text Label 4200 3100 2    50   ~ 0
-VCAP
-Text Label 4200 3200 2    50   ~ 0
-VSSA
-Text Label 4200 3300 2    50   ~ 0
-VREF+
-Wire Wire Line
-	4300 3500 3500 3500
-Wire Wire Line
-	4300 3600 3500 3600
-Text Label 4200 3500 2    50   ~ 0
-RXD
-Text Label 4200 3600 2    50   ~ 0
-TXD
-Wire Wire Line
-	4300 3900 3500 3900
-Wire Wire Line
-	4300 4000 3500 4000
-Wire Wire Line
-	4300 4100 3500 4100
-Wire Wire Line
-	4300 4200 3500 4200
-Text Label 4200 3900 2    50   ~ 0
-NSS
-Text Label 4200 4000 2    50   ~ 0
-SCLK
-Text Label 4200 4100 2    50   ~ 0
-MISO
-Text Label 4200 4200 2    50   ~ 0
-MOSI
 $Sheet
 S 850  3800 1250 400 
 U 5F3616EF
@@ -120,28 +56,8 @@ Wire Wire Line
 	2100 3250 2900 3250
 Text Notes 1350 3700 0    79   ~ 0
 MCU PERIPHERALS\n\n
-Wire Wire Line
-	8900 950  8100 950 
-Wire Wire Line
-	8900 1050 8100 1050
-Wire Wire Line
-	8900 1150 8100 1150
-Wire Wire Line
-	8100 1250 8900 1250
 Text Label 8800 950  2    50   ~ 0
 SCLK
-Text Label 8800 1250 2    50   ~ 0
-BAROMETER_CS
-Wire Wire Line
-	6750 2550 7550 2550
-Wire Wire Line
-	6750 2150 7550 2150
-Wire Wire Line
-	6750 2050 7550 2050
-Text Label 6850 2550 0    50   ~ 0
-BAROMETER_CS
-Text Label 6850 2050 0    50   ~ 0
-GYRO_CS
 $Sheet
 S 850  4350 1250 200 
 U 5F36176A
@@ -166,22 +82,8 @@ F8 "INT4_GYRO" O R 10150 1600 50
 F9 "CSB_ACCEL" O L 8900 1900 50 
 F10 "CSB_GYRO" O L 8900 2000 50 
 $EndSheet
-Wire Wire Line
-	8900 1600 8100 1600
-Wire Wire Line
-	8900 1700 8100 1700
-Wire Wire Line
-	8900 1800 8100 1800
-Wire Wire Line
-	8900 1900 8100 1900
-Wire Wire Line
-	8900 2000 8100 2000
 Text Label 8800 1600 2    50   ~ 0
 SCLK
-Text Label 8800 1900 2    50   ~ 0
-GYRO_ACCEL_CS
-Text Label 8800 2000 2    50   ~ 0
-GYRO_CS
 Text Notes 1050 4800 0    79   ~ 0
 AUDIBLE/VISIBLE INDICATION\n
 Text Notes 1450 6100 0    79   ~ 0
@@ -192,42 +94,6 @@ Text Label 2200 4100 0    50   ~ 0
 LED_BLUE
 Text Label 2200 4000 0    50   ~ 0
 LED_GREEN
-Wire Wire Line
-	6750 1950 7550 1950
-Text Label 6850 1950 0    50   ~ 0
-GYRO_ACCEL_CS
-Wire Wire Line
-	6750 2450 7550 2450
-Text Label 6850 2450 0    50   ~ 0
-BUZZER
-Wire Wire Line
-	6750 2800 7550 2800
-Wire Wire Line
-	6750 2900 7550 2900
-Text Label 6850 2800 0    50   ~ 0
-LED_GREEN
-Text Label 6850 2900 0    50   ~ 0
-LED_RED
-Wire Wire Line
-	6750 3650 7550 3650
-Wire Wire Line
-	6750 3850 7550 3850
-Wire Wire Line
-	6750 3550 7550 3550
-Wire Wire Line
-	6750 3950 7550 3950
-Wire Wire Line
-	6750 3750 7550 3750
-Text Label 6850 3650 0    50   ~ 0
-ARM
-Text Label 6850 3850 0    50   ~ 0
-FIRE1
-Text Label 6850 3550 0    50   ~ 0
-FIRE2
-Text Label 6850 3950 0    50   ~ 0
-CONTINUITY1
-Text Label 6850 3750 0    50   ~ 0
-CONTINUITY2
 $Sheet
 S 8900 850  1250 500 
 U 5F3A063C
@@ -272,10 +138,6 @@ F1 "../Common_Modules/MCU/Breakout/USB-C.sch" 20
 F2 "TXD" I R 2100 2800 50 
 F3 "RXD" I R 2100 2900 50 
 $EndSheet
-Wire Wire Line
-	6750 3150 7550 3150
-Text Label 6850 2250 0    50   ~ 0
-SD_CS
 Text Notes 5450 5500 0    79   ~ 0
 MCU
 NoConn ~ 3500 3900
@@ -335,14 +197,6 @@ Wire Notes Line
 	3400 1700 3400 5350
 Text Label 8800 2650 2    50   ~ 0
 SCLK
-Text Label 8800 2350 2    50   ~ 0
-ACCELEROMETER_CS
-Wire Wire Line
-	8900 2650 8100 2650
-Wire Wire Line
-	8900 2550 8100 2550
-Wire Wire Line
-	8900 2450 8100 2450
 $Sheet
 S 8900 2275 1250 475 
 U 5F46051D
@@ -490,8 +344,6 @@ Text Label 2200 950  0    50   ~ 0
 SWDIO
 Wire Notes Line
 	7650 5350 7650 1700
-Text Label 6850 2150 0    50   ~ 0
-ACCELEROMETER_CS
 Wire Wire Line
 	2100 2450 2150 2450
 Wire Wire Line
@@ -602,116 +454,6 @@ F 3 "~" H 4100 7250 50  0001 C CNN
 $EndComp
 Entry Bus Bus
 	4050 6450 4150 6550
-Text Label 6850 3350 0    50   ~ 0
-FIRE3
-Wire Wire Line
-	6750 3350 7550 3350
-Text Label 6850 3450 0    50   ~ 0
-CONTINUITY3
-Wire Wire Line
-	6750 3450 7550 3450
-$Sheet
-S 4300 1850 2450 3400
-U 5F317AC9
-F0 "MCU" 50
-F1 "../Common_Modules/MCU/Breakout/MCU.sch" 20
-F2 "RESET" I L 4300 2250 50 
-F3 "CRYSTALIN" I L 4300 2500 50 
-F4 "CRYSTALOUT" I L 4300 2600 50 
-F5 "RTCCRYSTALIN" I L 4300 2750 50 
-F6 "RTCCRYSTALOUT" I L 4300 2850 50 
-F7 "TXD" I L 4300 3500 50 
-F8 "RXD" I L 4300 3600 50 
-F9 "VCAP" I L 4300 3100 50 
-F10 "VSSA" I L 4300 3200 50 
-F11 "VREF+" I L 4300 3300 50 
-F12 "PA14" I L 4300 2050 50 
-F13 "PA13" I L 4300 1950 50 
-F14 "PA4" I L 4300 3900 50 
-F15 "PA5" I L 4300 4000 50 
-F16 "PA6" I L 4300 4100 50 
-F17 "PA7" I L 4300 4200 50 
-F18 "PB0" I R 6750 1950 50 
-F19 "PB1" I R 6750 2050 50 
-F20 "PB2" I R 6750 2150 50 
-F21 "PC6" I R 6750 2900 50 
-F22 "PC9" I R 6750 3650 50 
-F23 "PA8" I R 6750 3550 50 
-F24 "PA9" I R 6750 3450 50 
-F25 "PA10" I R 6750 3350 50 
-F26 "PB10" I R 6750 2250 50 
-F27 "PB13" I L 4300 5150 50 
-F28 "PB14" I R 6750 2700 50 
-F29 "PB15" I R 6750 2800 50 
-F30 "PC4" I R 6750 2450 50 
-F31 "PC5" I R 6750 2550 50 
-F32 "PC10" I R 6750 4050 50 
-F33 "PA12" I R 6750 3150 50 
-F34 "PC0" I L 4300 4350 50 
-F35 "PC1" I L 4300 4450 50 
-F36 "PC2" I L 4300 4550 50 
-F37 "PC3" I L 4300 4650 50 
-F38 "PC7" I R 6750 3850 50 
-F39 "PC8" I R 6750 3750 50 
-F40 "PC11" I R 6750 4150 50 
-F41 "PC12" I R 6750 4250 50 
-F42 "PC13" I L 4300 4950 50 
-F43 "PD2" I R 6750 4350 50 
-F44 "PA0" I L 4300 5050 50 
-F45 "PA1" I L 4300 3750 50 
-F46 "PA11" I R 6750 3250 50 
-F47 "PA15" I L 4300 4850 50 
-F48 "PB3" I R 6750 4450 50 
-F49 "PB4" I R 6750 4550 50 
-F50 "PB5" I R 6750 4650 50 
-F51 "PB6" I R 6750 4750 50 
-F52 "PB7" I R 6750 4850 50 
-F53 "PB8" I R 6750 4950 50 
-F54 "PB9" I R 6750 5050 50 
-F55 "PB12" I R 6750 3950 50 
-$EndSheet
-Text Label 6850 2700 0    50   ~ 0
-LED_BLUE
-Wire Wire Line
-	6750 2700 7550 2700
-Wire Wire Line
-	6750 2250 7550 2250
-Wire Wire Line
-	8900 2350 8100 2350
-Wire Wire Line
-	6750 4050 7550 4050
-Wire Wire Line
-	6750 4150 7550 4150
-Wire Wire Line
-	6750 4250 7550 4250
-Wire Wire Line
-	6750 4350 7550 4350
-Wire Wire Line
-	6750 4450 7550 4450
-Wire Wire Line
-	6750 4550 7550 4550
-Wire Wire Line
-	6750 4650 7550 4650
-Wire Wire Line
-	6750 4750 7550 4750
-Wire Wire Line
-	6750 4850 7550 4850
-Wire Wire Line
-	6750 4950 7550 4950
-Wire Wire Line
-	6750 5050 7550 5050
-Text Label 6850 4050 0    50   ~ 0
-H_SCLK
-Text Label 6850 4150 0    50   ~ 0
-H_MISO
-Text Label 6850 4250 0    50   ~ 0
-H_MOSI
-Wire Wire Line
-	6750 3250 7550 3250
-Text Label 6850 3150 0    50   ~ 0
-H_RX
-Text Label 6850 3250 0    50   ~ 0
-H_TX
 Text Label 2250 6450 0    50   ~ 0
 H_RX
 Text Label 2250 6550 0    50   ~ 0
@@ -722,22 +464,6 @@ Text Label 2250 6650 0    50   ~ 0
 H_MISO
 Wire Wire Line
 	2150 6750 2700 6750
-Text Label 6850 4350 0    50   ~ 0
-H_Pin_0
-Text Label 6850 4450 0    50   ~ 0
-H_Pin_1
-Text Label 6850 4550 0    50   ~ 0
-H_Pin_2
-Text Label 6850 4650 0    50   ~ 0
-H_Pin_3
-Text Label 6850 4750 0    50   ~ 0
-H_Pin_4
-Text Label 6850 4850 0    50   ~ 0
-H_Pin_5
-Text Label 6850 4950 0    50   ~ 0
-H_Pin_6
-Text Label 6850 5050 0    50   ~ 0
-H_Pin_7
 Wire Wire Line
 	2150 6950 2950 6950
 Wire Wire Line
@@ -841,22 +567,6 @@ F 3 "" H 1250 6650 50  0001 C CNN
 $EndComp
 Text Label 1200 7150 0    50   ~ 0
 H_Pin_7
-Wire Wire Line
-	4300 4350 3700 4350
-Wire Wire Line
-	4300 4450 3700 4450
-Wire Wire Line
-	4300 4550 3700 4550
-Wire Wire Line
-	4300 4650 3700 4650
-Text Label 3900 4350 0    50   ~ 0
-H_Pin_8
-Text Label 3900 4450 0    50   ~ 0
-H_Pin_9
-Text Label 3900 4550 0    50   ~ 0
-H_Pin_10
-Text Label 3900 4650 0    50   ~ 0
-H_Pin_11
 $Sheet
 S 8900 3850 1250 700 
 U 5F3B5C2E
@@ -897,21 +607,44 @@ Wire Wire Line
 	8600 4350 8900 4350
 Text Label 8400 5900 0    50   ~ 0
 VMonitorPin
-Wire Wire Line
-	4300 3750 3500 3750
-Text Label 3800 3750 0    50   ~ 0
-VMonitorPin
 Text Label 8500 3950 0    50   ~ 0
 H_SCLK
 Text Label 8500 4050 0    50   ~ 0
 H_MOSI
 Text Label 8500 4150 0    50   ~ 0
 H_MISO
-NoConn ~ 4300 4850
-NoConn ~ 4300 4950
-NoConn ~ 4300 5050
-Text Label 4200 5150 2    50   ~ 0
-FLASH_CS
 Wire Wire Line
-	4300 5150 3500 5150
+	8900 2350 8100 2350
+Wire Wire Line
+	8900 2450 8100 2450
+Wire Wire Line
+	8900 2550 8100 2550
+Wire Wire Line
+	8900 2650 8100 2650
+Text Label 8800 2350 2    50   ~ 0
+ACCELEROMETER_CS
+Text Label 8800 2000 2    50   ~ 0
+GYRO_CS
+Text Label 8800 1900 2    50   ~ 0
+GYRO_ACCEL_CS
+Wire Wire Line
+	8900 2000 8100 2000
+Wire Wire Line
+	8900 1900 8100 1900
+Wire Wire Line
+	8900 1800 8100 1800
+Wire Wire Line
+	8900 1700 8100 1700
+Wire Wire Line
+	8900 1600 8100 1600
+Text Label 8800 1250 2    50   ~ 0
+BAROMETER_CS
+Wire Wire Line
+	8100 1250 8900 1250
+Wire Wire Line
+	8900 1150 8100 1150
+Wire Wire Line
+	8900 1050 8100 1050
+Wire Wire Line
+	8900 950  8100 950 
 $EndSCHEMATC
