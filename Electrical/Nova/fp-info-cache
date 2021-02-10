@@ -1,4 +1,4 @@
-18683012365560622
+18692929368144407
 Accelerometer_Breakout
 4_Pin_Header
 
@@ -75599,6 +75599,34 @@ Resistor Radial_Power series Radial pin pitch 7.37mm 10W length 16.1mm width 9mm
 0
 2
 2
+Rev1Logo
+Logo1
+
+
+0
+0
+0
+Rev1Logo
+Logo2
+
+
+0
+0
+0
+Rev1Logo
+Logo3
+
+
+0
+0
+0
+Rev1Logo
+Logo4
+
+
+0
+0
+0
 Rotary_Encoder
 RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm
 Alps rotary encoder, EC12E... with switch, vertical shaft, http://www.alps.com/prod/info/E/HTML/Encoder/Incremental/EC11/EC11E15204A3.html
@@ -82279,6 +82307,20 @@ varistor SIOV
 2
 logo
 Logo
+
+
+0
+0
+0
+logo
+Logo3
+
+
+0
+0
+0
+logo
+SmallLogo
 
 
 0
