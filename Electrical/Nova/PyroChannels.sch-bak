@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
-Sheet 12 20
+Sheet 12 21
 Title ""
 Date ""
 Rev ""
@@ -161,4 +161,29 @@ F1 "../Common_Modules/PyroChannel/Breakout/ArmSchematic.sch" 50
 F2 "FireOut" I R 3850 4200 50 
 F3 "arm" I R 3850 4350 50 
 $EndSheet
+Text HLabel 7100 5700 2    50   Input ~ 0
+Fire4
+Wire Wire Line
+	7100 5700 6800 5700
+Wire Wire Line
+	7100 5550 6800 5550
+Text HLabel 7100 5550 2    50   Output ~ 0
+4Correct
+$Sheet
+S 5950 5450 850  350 
+U 6040FF20
+F0 "Channel 4" 50
+F1 "../Common_Modules/PyroChannel/Breakout/PyroChannel.sch" 50
+F2 "FIRE" I R 6800 5550 50 
+F3 "pyroCorrect" O R 6800 5700 50 
+F4 "fireOut" O L 5950 5550 50 
+F5 "Pyro" O L 5950 5700 50 
+$EndSheet
+Wire Wire Line
+	5950 5700 5650 5700
+Wire Wire Line
+	4900 5550 5950 5550
+Wire Wire Line
+	4900 4900 4900 5550
+Connection ~ 4900 4900
 $EndSCHEMATC
