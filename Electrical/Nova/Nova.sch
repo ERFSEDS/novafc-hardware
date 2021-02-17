@@ -22,9 +22,9 @@ F2 "LED_RED" I R 7150 800 50
 F3 "LED_BLUE" I R 7150 1000 50 
 F4 "LED_GREEN" I R 7150 900 50 
 $EndSheet
-Text Label 1550 2750 0    50   ~ 0
-RXD
 Text Label 1550 2650 0    50   ~ 0
+RXD
+Text Label 1550 2750 0    50   ~ 0
 TXD
 Wire Wire Line
 	1450 2750 2250 2750
@@ -140,8 +140,6 @@ Wire Wire Line
 	7150 1000 7950 1000
 Text Notes 3050 3550 0    79   ~ 0
 SENSORS\n\n
-Text Notes 4900 2350 0    79   ~ 0
-DATA LOGGING\n
 Text Label 5300 900  0    50   ~ 0
 SCLK
 Text Label 5300 1000 0    50   ~ 0
@@ -227,18 +225,6 @@ F 3 "~" H 9800 6550 50  0001 C CNN
 $EndComp
 Entry Bus Bus
 	9750 5750 9850 5850
-$Sheet
-S 4450 1350 800  700 
-U 5F3B5C2E
-F0 "FlashChip" 50
-F1 "../Common_Modules/FHSD/Flash SD Board/Flash Chip.sch" 20
-F2 "IO0" B R 5250 1650 50 
-F3 "IO1" B R 5250 1750 50 
-F4 "IO2" B R 5250 1850 50 
-F5 "IO3" B R 5250 1950 50 
-F6 "SCL" I R 5250 1550 50 
-F7 "CS_FL" I R 5250 1450 50 
-$EndSheet
 Text Notes 8550 1950 0    79   ~ 0
 PYRO CHANNELS
 Text Label 9150 1100 0    50   ~ 0
@@ -386,30 +372,20 @@ Wire Wire Line
 	5250 1650 6050 1650
 Wire Wire Line
 	6050 1450 5250 1450
-Wire Wire Line
-	6050 1950 5250 1950
-Wire Wire Line
-	6050 1850 5250 1850
 Text Label 5350 1450 0    50   ~ 0
 FL_CS
 Text Label 5350 1550 0    50   ~ 0
-SCLK
+CLK
 Text Label 5350 1650 0    50   ~ 0
 IO0
 Text Label 5350 1750 0    50   ~ 0
 IO1
-Text Label 5350 1850 0    50   ~ 0
-IO2
-Text Label 5350 1950 0    50   ~ 0
-IO3
 Wire Notes Line
 	2450 3300 4250 3300
 Wire Notes Line
 	2450 550  4250 550 
 Wire Notes Line
 	4350 550  6150 550 
-Wire Notes Line
-	6150 2150 4350 2150
 $Sheet
 S 2550 2050 800  1100
 U 6029A10C
@@ -494,20 +470,6 @@ F 3 "" H 7350 6200 50  0001 C CNN
 	1    7350 6200
 	0    1    1    0   
 $EndComp
-Text HLabel 6550 6400 0    50   Input ~ 0
-SCLK
-Text HLabel 6550 6500 0    50   Input ~ 0
-MISO
-Text HLabel 6550 6600 0    50   Input ~ 0
-MOSI
-Text HLabel 7350 6300 2    50   Input ~ 0
-GPIO0
-Text HLabel 7350 6400 2    50   Input ~ 0
-GPIO1
-Text HLabel 7350 6500 2    50   Input ~ 0
-GPIO2
-Text HLabel 7350 6600 2    50   Input ~ 0
-GPIO3
 Wire Wire Line
 	6550 6200 6700 6200
 Wire Wire Line
@@ -615,23 +577,18 @@ Wire Wire Line
 Wire Wire Line
 	2300 4100 2300 4150
 Connection ~ 2400 4100
-Wire Wire Line
-	2600 4100 2700 4100
-Wire Wire Line
-	2700 4100 2700 4150
 Connection ~ 2600 4100
 Wire Wire Line
-	2700 4100 2700 4000
-Connection ~ 2700 4100
+	2600 4100 2600 4000
 $Comp
 L power:+3.3V #PWR?
 U 1 1 603423E4
-P 2700 4000
-F 0 "#PWR?" H 2700 3850 50  0001 C CNN
-F 1 "+3.3V" H 2715 4173 50  0000 C CNN
-F 2 "" H 2700 4000 50  0001 C CNN
-F 3 "" H 2700 4000 50  0001 C CNN
-	1    2700 4000
+P 2600 4000
+F 0 "#PWR?" H 2600 3850 50  0001 C CNN
+F 1 "+3.3V" H 2615 4173 50  0000 C CNN
+F 2 "" H 2600 4000 50  0001 C CNN
+F 3 "" H 2600 4000 50  0001 C CNN
+	1    2600 4000
 	1    0    0    -1  
 $EndComp
 Text Label 1650 4350 2    50   ~ 0
@@ -691,7 +648,7 @@ Wire Wire Line
 Wire Wire Line
 	3700 4850 3100 4850
 Wire Wire Line
-	3700 4950 3100 4950
+	3700 6650 3100 6650
 Wire Wire Line
 	3700 5050 3100 5050
 Wire Wire Line
@@ -721,7 +678,7 @@ Wire Wire Line
 Wire Wire Line
 	3700 6550 3100 6550
 Wire Wire Line
-	3700 6650 3100 6650
+	3700 4950 3100 4950
 Wire Wire Line
 	3700 6750 3100 6750
 Wire Wire Line
@@ -760,4 +717,50 @@ Wire Notes Line
 	9950 550  9950 1800
 Wire Notes Line
 	8150 550  8150 1800
+Text Label 3150 4950 0    50   ~ 0
+IO0
+Text Label 3150 5050 0    50   ~ 0
+IO1
+Wire Notes Line
+	6150 2150 4350 2150
+Text Label 5350 1950 0    50   ~ 0
+IO3
+Text Label 5350 1850 0    50   ~ 0
+IO2
+Wire Wire Line
+	6050 1850 5250 1850
+Wire Wire Line
+	6050 1950 5250 1950
+$Sheet
+S 4450 1350 800  700 
+U 5F3B5C2E
+F0 "FlashChip" 50
+F1 "../Common_Modules/FHSD/Flash SD Board/Flash Chip.sch" 20
+F2 "IO0" B R 5250 1650 50 
+F3 "IO1" B R 5250 1750 50 
+F4 "IO2" B R 5250 1850 50 
+F5 "IO3" B R 5250 1950 50 
+F6 "CLK" I R 5250 1550 50 
+F7 "CS_FL" I R 5250 1450 50 
+$EndSheet
+Text Notes 4900 2350 0    79   ~ 0
+DATA LOGGING\n
+Text Label 1650 6350 2    50   ~ 0
+IO2
+Text Label 1650 6450 2    50   ~ 0
+IO3
+Text Label 3150 6150 0    50   ~ 0
+CLK
+Text Label 3150 4350 0    50   ~ 0
+TXD
+Text Label 3150 4450 0    50   ~ 0
+RXD
+Text Label 1650 7050 2    50   ~ 0
+MISO
+Text Label 1650 7150 2    50   ~ 0
+MOSI
+Text Label 1650 6950 2    50   ~ 0
+SCLK
+Text Label 1650 4750 2    50   ~ 0
+VCAP
 $EndSCHEMATC
