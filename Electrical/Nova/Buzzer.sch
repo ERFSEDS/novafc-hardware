@@ -24,4 +24,25 @@ F 3 "https://www.cuidevices.com/product/resource/cmt-7525-80-smt-tr.pdf" V 5625 
 	1    5650 3450
 	0    -1   -1   0   
 $EndComp
+Wire Wire Line
+	5750 3550 5750 3600
+Wire Wire Line
+	5750 3600 6400 3600
+Wire Wire Line
+	5550 3550 5550 3600
+Wire Wire Line
+	5550 3600 4950 3600
+$Comp
+L power:GND #PWR?
+U 1 1 60506B3B
+P 6400 3600
+F 0 "#PWR?" H 6400 3350 50  0001 C CNN
+F 1 "GND" V 6405 3472 50  0000 R CNN
+F 2 "" H 6400 3600 50  0001 C CNN
+F 3 "" H 6400 3600 50  0001 C CNN
+	1    6400 3600
+	0    -1   -1   0   
+$EndComp
+Text HLabel 4950 3600 0    50   Input ~ 0
+BUZZER
 $EndSCHEMATC

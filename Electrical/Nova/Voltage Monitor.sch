@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 10 21
+Sheet 9 21
 Title ""
 Date ""
 Rev ""
@@ -94,7 +94,7 @@ Wire Wire Line
 	5150 4000 5150 4500
 Text Notes 5800 3500 0    50   ~ 0
 Battrty voltage is from 10V to 7.3V\n+BATT == Vout\n10V == 3.298V\n7.3V == 2.407V\n0V == 0V
-Text HLabel 6650 3900 2    50   Input ~ 0
+Text HLabel 6650 3900 2    50   Output ~ 0
 MonitorPin
 $Comp
 L Device:R_US R?

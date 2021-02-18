@@ -22,16 +22,14 @@ F2 "LED_RED" I R 7150 800 50
 F3 "LED_BLUE" I R 7150 1000 50 
 F4 "LED_GREEN" I R 7150 900 50 
 $EndSheet
-Text Label 1550 2650 0    50   ~ 0
+Text Label 1550 2550 0    50   ~ 0
 RXD
-Text Label 1550 2750 0    50   ~ 0
+Text Label 1550 2650 0    50   ~ 0
 TXD
 Wire Wire Line
-	1450 2750 2250 2750
-Wire Wire Line
 	1450 2650 2250 2650
-Text Label 1600 2300 0    50   ~ 0
-VREF+
+Wire Wire Line
+	1450 2550 2250 2550
 Text Label 1550 2100 0    50   ~ 0
 VSSA
 Text Label 1550 2000 0    50   ~ 0
@@ -48,17 +46,18 @@ Wire Wire Line
 	1450 1000 2250 1000
 Text Label 1550 1350 0    50   ~ 0
 CLOCKIN
-Text Label 1550 3100 0    50   ~ 0
+Text Label 1550 3000 0    50   ~ 0
 RESET
 Wire Wire Line
-	1450 3100 2250 3100
-Text Notes 900  3600 0    79   ~ 0
+	1450 3000 2250 3000
+Text Notes 900  3500 0    79   ~ 0
 MCU PERIPHERALS\n\n
 $Sheet
-S 6350 1250 800  150 
+S 6350 1250 800  200 
 U 5F36176A
 F0 "Buzzer" 50
 F1 "Buzzer.sch" 20
+F2 "BUZZER" I R 7150 1350 50 
 $EndSheet
 Text Notes 6300 1700 0    79   ~ 0
 AUDIBLE/VISIBLE INDICATION\n
@@ -78,29 +77,19 @@ F3 "JTCK-SWCLK" I R 1450 900 50
 F4 "RESET" I R 1450 1000 50 
 $EndSheet
 $Sheet
-S 650  3000 800  200 
+S 650  2900 800  200 
 U 5F317E00
 F0 "MCU RESET" 50
 F1 "../Common_Modules/MCU/Breakout/RESET.sch" 20
-F2 "RESET" I R 1450 3100 50 
+F2 "RESET" I R 1450 3000 50 
 $EndSheet
 $Sheet
-S 650  1900 800  500 
-U 5F3189B2
-F0 "MCU FILTERING" 50
-F1 "../Common_Modules/MCU/Breakout/FILTERING.sch" 20
-F2 "VCAP" I R 1450 2000 50 
-F3 "VSSA" I R 1450 2100 50 
-F4 "VDDA" I R 1450 2200 50 
-F5 "VREF+" I R 1450 2300 50 
-$EndSheet
-$Sheet
-S 650  2550 800  300 
+S 650  2450 800  300 
 U 5F319D4B
 F0 "USB-C" 50
 F1 "../Common_Modules/MCU/Breakout/USB-C.sch" 20
-F2 "TXD" O R 1450 2650 50 
-F3 "RXD" I R 1450 2750 50 
+F2 "TXD" O R 1450 2550 50 
+F3 "RXD" I R 1450 2650 50 
 $EndSheet
 $Sheet
 S 650  1250 800  500 
@@ -127,10 +116,6 @@ Text Label 1550 1550 0    50   ~ 0
 Text Label 1550 1650 0    50   ~ 0
 32CLOCKOUT
 Wire Notes Line
-	550  3300 550  550 
-Wire Notes Line
-	2350 550  2350 3300
-Wire Notes Line
 	6250 550  6250 1550
 Wire Wire Line
 	7150 800  7950 800 
@@ -156,15 +141,6 @@ Text Label 1550 900  0    50   ~ 0
 SWCLK
 Text Label 1550 800  0    50   ~ 0
 SWDIO
-Wire Wire Line
-	1450 2300 1500 2300
-Wire Wire Line
-	1450 2200 1500 2200
-Wire Wire Line
-	1500 2200 1500 2300
-Connection ~ 1500 2300
-Wire Wire Line
-	1500 2300 2250 2300
 Text Notes 8650 3100 0    79   ~ 0
 POWER SUPPLY\n
 $Sheet
@@ -178,6 +154,7 @@ S 8250 2600 800  200
 U 5F964042
 F0 "Voltage Monitor" 50
 F1 "Voltage Monitor.sch" 50
+F2 "MonitorPin" O R 9050 2700 50 
 $EndSheet
 $Comp
 L Mechanical:MountingHole H1
@@ -273,7 +250,7 @@ CONTINUITY3
 Wire Notes Line
 	550  550  2350 550 
 Wire Notes Line
-	550  3300 2350 3300
+	550  3200 2350 3200
 Wire Notes Line
 	6250 550  8050 550 
 Wire Notes Line
@@ -395,12 +372,12 @@ F2 "CS_AG" I R 3350 2150 50
 F3 "MOSI" I R 3350 2350 50 
 F4 "SCL" I R 3350 2250 50 
 F5 "MISO" O R 3350 2450 50 
-F6 "INT1" I R 3350 2550 50 
-F7 "INT2" I R 3350 2650 50 
-F8 "DEN" I R 3350 2750 50 
-F9 "CS_M" I R 3350 2850 50 
-F10 "DRDYM" I R 3350 2950 50 
-F11 "INTM" I R 3350 3050 50 
+F6 "DEN" I R 3350 2750 50 
+F7 "CS_M" I R 3350 2850 50 
+F8 "DRDYM" I R 3350 2950 50 
+F9 "INT1" O R 3350 2550 50 
+F10 "INT2" O R 3350 2650 50 
+F11 "INTM" O R 3350 3050 50 
 $EndSheet
 Wire Notes Line
 	4250 550  4250 3300
@@ -475,21 +452,7 @@ Wire Wire Line
 Wire Wire Line
 	6700 6300 6550 6300
 Wire Wire Line
-	6550 6400 6700 6400
-Wire Wire Line
-	6700 6500 6550 6500
-Wire Wire Line
-	6550 6600 6700 6600
-Wire Wire Line
 	7200 6200 7350 6200
-Wire Wire Line
-	7350 6300 7200 6300
-Wire Wire Line
-	7200 6400 7350 6400
-Wire Wire Line
-	7350 6500 7200 6500
-Wire Wire Line
-	7200 6600 7350 6600
 $Comp
 L MCU_ST_STM32F4:STM32F423RHTx U?
 U 1 1 602D9534
@@ -499,17 +462,6 @@ F 1 "STM32F423RHTx" H 2400 3850 50  0000 C CNN
 F 2 "Package_QFP:LQFP-64_10x10mm_P0.5mm" H 1800 4150 50  0001 R CNN
 F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/DM00282247.pdf" H 2400 5850 50  0001 C CNN
 	1    2400 5850
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector:Conn_01x09_Male J?
-U 1 1 602E5ADF
-P 7950 6200
-F 0 "J?" H 8058 6781 50  0000 C CNN
-F 1 "Conn_MX_530480910" H 8058 6690 50  0000 C CNN
-F 2 "" H 7950 6200 50  0001 C CNN
-F 3 "~" H 7950 6200 50  0001 C CNN
-	1    7950 6200
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -577,18 +529,17 @@ Wire Wire Line
 Wire Wire Line
 	2300 4100 2300 4150
 Connection ~ 2400 4100
-Connection ~ 2600 4100
 Wire Wire Line
-	2600 4100 2600 4000
+	2400 4100 2400 4000
 $Comp
 L power:+3.3V #PWR?
 U 1 1 603423E4
-P 2600 4000
-F 0 "#PWR?" H 2600 3850 50  0001 C CNN
-F 1 "+3.3V" H 2615 4173 50  0000 C CNN
-F 2 "" H 2600 4000 50  0001 C CNN
-F 3 "" H 2600 4000 50  0001 C CNN
-	1    2600 4000
+P 2400 4000
+F 0 "#PWR?" H 2400 3850 50  0001 C CNN
+F 1 "+3.3V" H 2415 4173 50  0000 C CNN
+F 2 "" H 2400 4000 50  0001 C CNN
+F 3 "" H 2400 4000 50  0001 C CNN
+	1    2400 4000
 	1    0    0    -1  
 $EndComp
 Text Label 1650 4350 2    50   ~ 0
@@ -763,4 +714,145 @@ Text Label 1650 6950 2    50   ~ 0
 SCLK
 Text Label 1650 4750 2    50   ~ 0
 VCAP
+$Sheet
+S 650  1900 800  400 
+U 5F3189B2
+F0 "MCU FILTERING" 50
+F1 "../Common_Modules/MCU/Breakout/FILTERING.sch" 20
+F2 "VCAP" I R 1450 2000 50 
+F3 "VSSA" I R 1450 2100 50 
+F4 "VDDA" I R 1450 2200 50 
+$EndSheet
+Wire Wire Line
+	1450 2200 2250 2200
+Wire Notes Line
+	2350 3200 2350 550 
+Wire Notes Line
+	550  550  550  3200
+Wire Wire Line
+	2700 4150 2700 4100
+Text Label 2750 4100 0    50   ~ 0
+VDDA
+Wire Wire Line
+	3300 4100 2700 4100
+Text Label 1550 2200 0    50   ~ 0
+VDDA
+Wire Wire Line
+	9050 2700 9850 2700
+Text Label 9150 2700 0    50   ~ 0
+VMonitor
+Wire Wire Line
+	2200 4150 2200 4100
+Wire Wire Line
+	2200 4100 2300 4100
+Connection ~ 2300 4100
+Text Label 3450 2150 0    50   ~ 0
+CS_AG
+Text Label 3450 2250 0    50   ~ 0
+SCLK
+Text Label 3450 2350 0    50   ~ 0
+MOSI
+Text Label 3450 2450 0    50   ~ 0
+MISO
+Text Label 3450 2550 0    50   ~ 0
+INT1
+Text Label 3450 2650 0    50   ~ 0
+INT2
+Text Label 3450 2750 0    50   ~ 0
+DEN
+Text Label 3450 2850 0    50   ~ 0
+CS_M
+Text Label 3450 2950 0    50   ~ 0
+DRDYM
+Text Label 3450 3050 0    50   ~ 0
+INTM
+Wire Wire Line
+	6700 6400 6100 6400
+Wire Wire Line
+	6700 6500 6100 6500
+Wire Wire Line
+	7800 6300 7200 6300
+Wire Wire Line
+	7800 6400 7200 6400
+Wire Wire Line
+	7800 6500 7200 6500
+Wire Wire Line
+	7800 6600 7200 6600
+Wire Wire Line
+	6700 6600 6100 6600
+Text Label 6650 6400 2    50   ~ 0
+SCLK
+Text Label 6650 6500 2    50   ~ 0
+MOSI
+Text Label 6650 6600 2    50   ~ 0
+MISO
+Text Label 7250 6300 0    50   ~ 0
+HGPIO0
+Text Label 7250 6400 0    50   ~ 0
+HGPIO1
+Text Label 7250 6500 0    50   ~ 0
+HGPIO2
+Text Label 7250 6600 0    50   ~ 0
+HGPIO3
+Wire Wire Line
+	8950 6000 8350 6000
+Wire Wire Line
+	8950 6100 8350 6100
+Wire Wire Line
+	8950 6200 8350 6200
+Wire Wire Line
+	8950 6300 8350 6300
+Wire Wire Line
+	8950 6400 8350 6400
+Text Label 8400 6000 0    50   ~ 0
+SCLK
+Text Label 8400 6100 0    50   ~ 0
+MOSI
+Text Label 8400 6200 0    50   ~ 0
+MISO
+Text Label 8400 6300 0    50   ~ 0
+CS0
+Text Label 8400 6400 0    50   ~ 0
+CS1
+$Comp
+L power:GND #PWR?
+U 1 1 604DCB10
+P 8500 6600
+F 0 "#PWR?" H 8500 6350 50  0001 C CNN
+F 1 "GND" V 8505 6472 50  0000 R CNN
+F 2 "" H 8500 6600 50  0001 C CNN
+F 3 "" H 8500 6600 50  0001 C CNN
+	1    8500 6600
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:+3.3V #PWR?
+U 1 1 604DCB16
+P 8500 6500
+F 0 "#PWR?" H 8500 6350 50  0001 C CNN
+F 1 "+3.3V" V 8515 6628 50  0000 L CNN
+F 2 "" H 8500 6500 50  0001 C CNN
+F 3 "" H 8500 6500 50  0001 C CNN
+	1    8500 6500
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8500 6600 8350 6600
+Wire Wire Line
+	8350 6500 8500 6500
+$Comp
+L Connector:Conn_01x07_Male J?
+U 1 1 604FA7CA
+P 8150 6300
+F 0 "J?" H 8550 6850 50  0000 C CNN
+F 1 "Conn_MX_530480910" H 8550 6750 50  0000 C CNN
+F 2 "" H 8150 6300 50  0001 C CNN
+F 3 "~" H 8150 6300 50  0001 C CNN
+	1    8150 6300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7150 1350 7950 1350
+Text Label 7250 1350 0    50   ~ 0
+BUZZER
 $EndSCHEMATC

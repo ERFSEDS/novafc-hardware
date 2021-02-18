@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
-Sheet 12 21
+Sheet 10 21
 Title ""
 Date ""
 Rev ""
@@ -186,4 +186,12 @@ Wire Wire Line
 Wire Wire Line
 	4900 4900 4900 5550
 Connection ~ 4900 4900
+Text Label 5900 3600 2    50   ~ 0
+PYRO1
+Text Label 5900 4350 2    50   ~ 0
+PYRO2
+Text Label 5900 5050 2    50   ~ 0
+PYRO3
+Text Label 5900 5700 2    50   ~ 0
+PYRO4
 $EndSCHEMATC
