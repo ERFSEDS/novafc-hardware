@@ -14,10 +14,10 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Device:Buzzer BZ?
+L Device:Buzzer BZ1
 U 1 1 60310C97
 P 5650 3450
-F 0 "BZ?" V 5701 3263 50  0000 R CNN
+F 0 "BZ1" V 5701 3263 50  0000 R CNN
 F 1 "Buzzer" V 5610 3263 50  0000 R CNN
 F 2 "" V 5625 3550 50  0001 C CNN
 F 3 "https://www.cuidevices.com/product/resource/cmt-7525-80-smt-tr.pdf" V 5625 3550 50  0001 C CNN
@@ -33,10 +33,10 @@ Wire Wire Line
 Wire Wire Line
 	5550 3600 4950 3600
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0127
 U 1 1 60506B3B
 P 6400 3600
-F 0 "#PWR?" H 6400 3350 50  0001 C CNN
+F 0 "#PWR0127" H 6400 3350 50  0001 C CNN
 F 1 "GND" V 6405 3472 50  0000 R CNN
 F 2 "" H 6400 3600 50  0001 C CNN
 F 3 "" H 6400 3600 50  0001 C CNN

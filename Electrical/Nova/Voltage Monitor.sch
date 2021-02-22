@@ -97,23 +97,23 @@ Battrty voltage is from 10V to 7.3V\n+BATT == Vout\n10V == 3.298V\n7.3V == 2.407
 Text HLabel 6650 3900 2    50   Output ~ 0
 MonitorPin
 $Comp
-L Device:R_US R?
+L Device:R_US R19
 U 1 1 6024316E
 P 4850 3550
-F 0 "R?" H 4918 3596 50  0000 L CNN
+F 0 "R19" H 4918 3596 50  0000 L CNN
 F 1 "95.5k" H 4918 3505 50  0000 L CNN
-F 2 "" V 4890 3540 50  0001 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 4890 3540 50  0001 C CNN
 F 3 "~" H 4850 3550 50  0001 C CNN
 	1    4850 3550
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R_US R?
+L Device:R_US R20
 U 1 1 60243E65
 P 4850 4050
-F 0 "R?" H 4918 4096 50  0000 L CNN
+F 0 "R20" H 4918 4096 50  0000 L CNN
 F 1 "47k" H 4918 4005 50  0000 L CNN
-F 2 "" V 4890 4040 50  0001 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 4890 4040 50  0001 C CNN
 F 3 "~" H 4850 4050 50  0001 C CNN
 	1    4850 4050
 	1    0    0    -1  
