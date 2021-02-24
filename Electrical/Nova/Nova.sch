@@ -855,4 +855,8 @@ Wire Wire Line
 	6350 3300 7150 3300
 Text Label 6450 3300 0    50   ~ 0
 BUZZER
+Text Label 4100 5350 0    50   ~ 0
+CTS
+Text Label 4100 5450 0    50   ~ 0
+RTS
 $EndSCHEMATC
