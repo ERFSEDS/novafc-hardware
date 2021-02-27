@@ -48,6 +48,7 @@
 #define FIELD_ADDRESS			12
 #define FIELD_SOFTWARE_VERSION	        13
 #define FIELD_HARDWARE_VERSION          14
+#define FIELD_TWO_STAGE                 15
 
 //actions
 #define ACTION_COPY_FLASH		0
@@ -102,3 +103,4 @@ public:
   ~MessageHandler();
 		
 };
+

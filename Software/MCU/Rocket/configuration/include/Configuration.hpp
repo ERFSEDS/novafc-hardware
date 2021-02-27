@@ -2,7 +2,7 @@
 #include "CommonDefines.hpp"
 //A bunch of defualt defines
 
-#define DEFAULT_TWO_STAGE_ROCKET			(true)
+#define DEFAULT_TWO_STAGE_ROCKET			(false)
 #define DEFAULT_SAFETY_LOCK					(true)
 #define DEFAULT_SAFETY_LOCK_VALUE			(15)
 #define DEFAULT_PYRO_CONFIG					(NONE)	

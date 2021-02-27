@@ -284,6 +284,18 @@ void MessageHandler::handleCommand(uint8_t* message, uint8_t size) {
 	fieldStatuses[i].size = 2; 
       }
       break;
+    case FIELD_TWO_STAGE:
+      if(setGet == FIELD_SET) {
+	bool twoStage = message[index++];
+	config.setTwoStageRocket(twoStage);
+	fieldStatuses[i].value[0] = 0;
+	fieldStatuses[i].size = 1;
+      }
+      else if(setGet == FIELD_GET) {
+	fieldStatuses[i].value[0] = (uint8_t)config.getTwoStageRocket();
+	fieldStatuses[i].size = 1;
+      }
+      
     }
   }	
 
