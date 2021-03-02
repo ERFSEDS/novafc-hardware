@@ -1,4 +1,4 @@
-18692929368144407
+18693016845491402
 Accelerometer_Breakout
 4_Pin_Header
 
@@ -80927,12 +80927,12 @@ test point THT pad
 1
 1
 Transducer
-BUZZER_PS1440P02BT
+XDCR_CMT-7525-80-SMT-TR
 
 
 0
-2
-2
+4
+4
 Transformer_SMD
 Pulse_P0926NL
 SMT Gate Drive Transformer, 1:1:1, 8.0x6.3x5.3mm (https://productfinder.pulseeng.com/products/datasheets/SPM2007_61.pdf)

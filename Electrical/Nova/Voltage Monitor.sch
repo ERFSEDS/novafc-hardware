@@ -19,7 +19,7 @@ U 1 1 5F935857
 P 5700 3900
 F 0 "U5" H 5750 3750 50  0000 L CNN
 F 1 "OP179GRT" H 5700 4050 50  0000 L CNN
-F 2 "" H 5700 3900 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23-5" H 5700 3900 50  0001 C CNN
 F 3 "https://www.analog.com/media/en/technical-documentation/data-sheets/OP179_279.pdf" H 5700 4100 50  0001 C CNN
 	1    5700 3900
 	1    0    0    -1  

@@ -198,7 +198,7 @@ U 1 1 6033E472
 P 8000 3900
 F 0 "J5" H 8028 3876 50  0000 L CNN
 F 1 "Conn_01x04_Female" H 8028 3785 50  0000 L CNN
-F 2 "" H 8000 3900 50  0001 C CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PTSM-0,5-4-2.5-H-THR_1x04_P2.50mm_Horizontal" H 8000 3900 50  0001 C CNN
 F 3 "" H 8000 3900 50  0001 C CNN
 F 4 "https://www.digikey.com/en/products/detail/phoenix-contact/1770908/2192462" H 8000 3900 50  0001 C CNN "Order Link"
 	1    8000 3900
@@ -210,7 +210,7 @@ U 1 1 6033EDCD
 P 8000 4600
 F 0 "J6" H 8028 4576 50  0000 L CNN
 F 1 "Conn_01x04_Female" H 8028 4485 50  0000 L CNN
-F 2 "" H 8000 4600 50  0001 C CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PTSM-0,5-4-2.5-H-THR_1x04_P2.50mm_Horizontal" H 8000 4600 50  0001 C CNN
 F 3 "~" H 8000 4600 50  0001 C CNN
 F 4 "https://www.digikey.com/en/products/detail/phoenix-contact/1770908/2192462" H 8000 4600 50  0001 C CNN "Order Link"
 	1    8000 4600
@@ -290,8 +290,9 @@ U 1 1 60348F4E
 P 2950 2550
 F 0 "J4" H 2978 2526 50  0000 L CNN
 F 1 "Conn_01x02_Female" H 2978 2435 50  0000 L CNN
-F 2 "" H 2950 2550 50  0001 C CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PTSM-0,5-2-2.5-H-THR_1x02_P2.50mm_Horizontal" H 2950 2550 50  0001 C CNN
 F 3 "~" H 2950 2550 50  0001 C CNN
+F 4 "https://www.digikey.com/en/products/detail/phoenix-contact/1770885/2192460" H 2950 2550 50  0001 C CNN "Order Link"
 	1    2950 2550
 	1    0    0    -1  
 $EndComp
