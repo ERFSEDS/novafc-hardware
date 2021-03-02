@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
-Sheet 1 21
+Sheet 1 20
 Title ""
 Date ""
 Rev ""
@@ -46,11 +46,7 @@ Wire Wire Line
 	2550 1050 3350 1050
 Text Label 2650 1400 0    50   ~ 0
 CLOCKIN
-Text Label 2650 3050 0    50   ~ 0
-RESET
-Wire Wire Line
-	2550 3050 3350 3050
-Text Notes 2000 3550 0    79   ~ 0
+Text Notes 2000 3400 0    79   ~ 0
 MCU PERIPHERALS\n\n
 $Sheet
 S 5550 3200 800  200 
@@ -77,19 +73,14 @@ F3 "JTCK-SWCLK" I R 2550 950 50
 F4 "RESET" I R 2550 1050 50 
 $EndSheet
 $Sheet
-S 1750 2950 800  200 
-U 5F317E00
-F0 "MCU RESET" 50
-F1 "../Common_Modules/MCU/Breakout/RESET.sch" 20
-F2 "RESET" I R 2550 3050 50 
-$EndSheet
-$Sheet
-S 1750 2500 800  300 
+S 1750 2500 800  500 
 U 5F319D4B
 F0 "USB-C" 50
 F1 "../Common_Modules/MCU/Breakout/USB-C.sch" 20
 F2 "TXD" O R 2550 2600 50 
 F3 "RXD" I R 2550 2700 50 
+F4 "RTS" I R 2550 2800 50 
+F5 "CTS" O R 2550 2900 50 
 $EndSheet
 $Sheet
 S 1750 1300 800  500 
@@ -250,7 +241,7 @@ CONTINUITY3
 Wire Notes Line
 	1650 600  3450 600 
 Wire Notes Line
-	1650 3250 3450 3250
+	1650 3100 3450 3100
 Wire Notes Line
 	5450 2500 7250 2500
 Wire Notes Line
@@ -725,10 +716,6 @@ F4 "VDDA" I R 2550 2250 50
 $EndSheet
 Wire Wire Line
 	2550 2250 3350 2250
-Wire Notes Line
-	3450 3250 3450 600 
-Wire Notes Line
-	1650 600  1650 3250
 Wire Wire Line
 	3650 4050 3650 4000
 Text Label 3700 4000 0    50   ~ 0
@@ -859,4 +846,16 @@ Text Label 4100 5350 0    50   ~ 0
 CTS
 Text Label 4100 5450 0    50   ~ 0
 RTS
+Text Label 2650 2800 0    50   ~ 0
+CTS
+Text Label 2650 2900 0    50   ~ 0
+RTS
+Wire Wire Line
+	2550 2800 3350 2800
+Wire Wire Line
+	2550 2900 3350 2900
+Wire Notes Line
+	3450 600  3450 3100
+Wire Notes Line
+	1650 600  1650 3100
 $EndSCHEMATC
