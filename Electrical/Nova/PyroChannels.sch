@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
-Sheet 10 20
+Sheet 9 20
 Title ""
 Date ""
 Rev ""
@@ -199,7 +199,8 @@ P 8000 3900
 F 0 "J5" H 8028 3876 50  0000 L CNN
 F 1 "Conn_01x04_Female" H 8028 3785 50  0000 L CNN
 F 2 "" H 8000 3900 50  0001 C CNN
-F 3 "~" H 8000 3900 50  0001 C CNN
+F 3 "" H 8000 3900 50  0001 C CNN
+F 4 "https://www.digikey.com/en/products/detail/phoenix-contact/1770908/2192462" H 8000 3900 50  0001 C CNN "Order Link"
 	1    8000 3900
 	1    0    0    -1  
 $EndComp
@@ -211,6 +212,7 @@ F 0 "J6" H 8028 4576 50  0000 L CNN
 F 1 "Conn_01x04_Female" H 8028 4485 50  0000 L CNN
 F 2 "" H 8000 4600 50  0001 C CNN
 F 3 "~" H 8000 4600 50  0001 C CNN
+F 4 "https://www.digikey.com/en/products/detail/phoenix-contact/1770908/2192462" H 8000 4600 50  0001 C CNN "Order Link"
 	1    8000 4600
 	1    0    0    -1  
 $EndComp

@@ -400,7 +400,7 @@ U 1 1 602F4EF9
 P 6250 4550
 F 0 "J3" H 6300 4967 50  0000 C CNN
 F 1 "Conn_02x05_Counter_Clockwise" H 6300 4876 50  0000 C CNN
-F 2 "" H 6250 4550 50  0001 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_2x05_P2.54mm_Vertical" H 6250 4550 50  0001 C CNN
 F 3 "~" H 6250 4550 50  0001 C CNN
 	1    6250 4550
 	1    0    0    -1  
@@ -832,9 +832,10 @@ L Connector:Conn_01x07_Male J2
 U 1 1 604FA7CA
 P 5950 5700
 F 0 "J2" H 6350 6250 50  0000 C CNN
-F 1 "Conn_MX_530480910" H 6350 6150 50  0000 C CNN
-F 2 "" H 5950 5700 50  0001 C CNN
+F 1 "Conn_MX_530480710" H 6350 6150 50  0000 C CNN
+F 2 "Connector_Molex:Molex_PicoBlade_53048-0710_1x07_P1.25mm_Horizontal" H 5950 5700 50  0001 C CNN
 F 3 "~" H 5950 5700 50  0001 C CNN
+F 4 "https://www.digikey.com/en/products/detail/molex/0530480710/242869?WT.z_cid=sp_900_0310_buynow&s=N4IgTCBcDaIAwFYDMcAsAOOB2AjHEAugL5A" H 5950 5700 50  0001 C CNN "Order Link"
 	1    5950 5700
 	1    0    0    -1  
 $EndComp
