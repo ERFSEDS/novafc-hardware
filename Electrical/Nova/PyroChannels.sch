@@ -217,19 +217,19 @@ F 4 "https://www.digikey.com/en/products/detail/phoenix-contact/1770908/2192462"
 $EndComp
 Wire Wire Line
 	7950 3750 7650 3750
-Text Label 7900 3750 2    50   ~ 0
+Text Label 7900 3950 2    50   ~ 0
 PYRO1
 Wire Wire Line
 	7950 3950 7650 3950
-Text Label 7900 3950 2    50   ~ 0
+Text Label 7900 3750 2    50   ~ 0
 PYRO2
 Wire Wire Line
 	7950 4450 7650 4450
-Text Label 7900 4450 2    50   ~ 0
+Text Label 7900 4650 2    50   ~ 0
 PYRO3
 Wire Wire Line
 	7950 4650 7650 4650
-Text Label 7900 4650 2    50   ~ 0
+Text Label 7900 4450 2    50   ~ 0
 PYRO4
 $Comp
 L Connector:Conn_01x02_Female J4

@@ -430,12 +430,12 @@ $EndComp
 $Comp
 L power:+BATT #PWR0121
 U 1 1 602F8B35
-P 6700 4350
-F 0 "#PWR0121" H 6700 4200 50  0001 C CNN
-F 1 "+BATT" V 6715 4478 50  0000 L CNN
-F 2 "" H 6700 4350 50  0001 C CNN
-F 3 "" H 6700 4350 50  0001 C CNN
-	1    6700 4350
+P 6700 4450
+F 0 "#PWR0121" H 6700 4300 50  0001 C CNN
+F 1 "+BATT" V 6715 4578 50  0000 L CNN
+F 2 "" H 6700 4450 50  0001 C CNN
+F 3 "" H 6700 4450 50  0001 C CNN
+	1    6700 4450
 	0    1    1    0   
 $EndComp
 Wire Wire Line
@@ -443,7 +443,7 @@ Wire Wire Line
 Wire Wire Line
 	6050 4450 5900 4450
 Wire Wire Line
-	6550 4350 6700 4350
+	6550 4450 6700 4450
 $Comp
 L MCU_ST_STM32F4:STM32F423RHTx U1
 U 1 1 602D9534
@@ -756,37 +756,33 @@ INTM
 Wire Wire Line
 	6050 4550 5450 4550
 Wire Wire Line
-	6050 4650 5450 4650
+	6050 4750 5450 4750
 Wire Wire Line
-	7150 4450 6550 4450
+	7150 4350 6550 4350
+Wire Wire Line
+	6050 4650 5450 4650
 Wire Wire Line
 	7150 4550 6550 4550
 Wire Wire Line
-	7150 4650 6550 4650
-Wire Wire Line
 	7150 4750 6550 4750
 Wire Wire Line
-	6050 4750 5450 4750
+	7150 4650 6550 4650
 Text Label 6000 4550 2    50   ~ 0
 SCLK
-Text Label 6000 4650 2    50   ~ 0
-MOSI
 Text Label 6000 4750 2    50   ~ 0
-MISO
-Text Label 6600 4450 0    50   ~ 0
-HGPIO0
-Text Label 6600 4550 0    50   ~ 0
-HGPIO1
+MOSI
 Text Label 6600 4650 0    50   ~ 0
+MISO
+Text Label 6600 4350 0    50   ~ 0
+HGPIO0
+Text Label 6000 4650 2    50   ~ 0
+HGPIO1
+Text Label 6600 4550 0    50   ~ 0
 HGPIO2
 Text Label 6600 4750 0    50   ~ 0
 HGPIO3
 Wire Wire Line
 	6750 5400 6150 5400
-Wire Wire Line
-	6750 5500 6150 5500
-Wire Wire Line
-	6750 5600 6150 5600
 Wire Wire Line
 	6750 5700 6150 5700
 Wire Wire Line
@@ -795,8 +791,6 @@ Text Label 6200 5400 0    50   ~ 0
 SCLK
 Text Label 6200 5500 0    50   ~ 0
 MOSI
-Text Label 6200 5600 0    50   ~ 0
-MISO
 Text Label 6200 5700 0    50   ~ 0
 CS0
 Text Label 6200 5800 0    50   ~ 0
@@ -859,4 +853,12 @@ Wire Notes Line
 	3450 600  3450 3100
 Wire Notes Line
 	1650 600  1650 3100
+Wire Wire Line
+	6750 5500 6150 5500
+Text Label 6200 5600 0    50   ~ 0
+MISO
+Wire Wire Line
+	6750 5600 6150 5600
+Text Label 4100 5950 0    50   ~ 0
+FL_CS
 $EndSCHEMATC
