@@ -292,6 +292,7 @@ F 0 "J4" H 2978 2526 50  0000 L CNN
 F 1 "Conn_01x02_Female" H 2978 2435 50  0000 L CNN
 F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PTSM-0,5-2-2.5-H-THR_1x02_P2.50mm_Horizontal" H 2950 2550 50  0001 C CNN
 F 3 "~" H 2950 2550 50  0001 C CNN
+F 4 "https://www.digikey.com/en/products/detail/phoenix-contact/1770885/2192460" H 2950 2550 50  0001 C CNN "Order Link"
 	1    2950 2550
 	1    0    0    -1  
 $EndComp
