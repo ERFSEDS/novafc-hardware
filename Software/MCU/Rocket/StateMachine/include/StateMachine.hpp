@@ -2,23 +2,7 @@
 #include <string>
 #include "Configuration.hpp"
 #include "Logger.hpp"
-#define NUMBER_OF_STATES 10
-#define DEFAULT_START_STATE (UNARMED)
-enum State
-{
-	UNARMED = 0,
-	READY = 1,
-	STAGE1POWERED = 2,
-	STAGE1COAST = 3,
-	STAGE2POWERED = 4,
-	STAGE2COAST = 5,
-	DROGUEPAR = 6,
-	MAINPAR = 7,
-	LANDED = 8,
-	RESET = 9
-	
-};
-
+#include "State.hpp"
 struct ValidTransitionNode {
 	State validTransition;
 	ValidTransitionNode * nextTransition;

@@ -3,16 +3,15 @@
 #include "Configuration.hpp"
 #include <string>
 void StateMachine::changeState(State state) {
-	char msg[35];
 	if(stateMap.checkTransition(this->currentState, state) ) {
 		this->previousState = this->currentState;
 		this->currentState = state;
 		std::string message = std::string("Changing from state ")+ std::to_string((int)this->previousState) + " to " + std::to_string((int)this->currentState);
-		logger.Event(msg);
+		logger.Event(message);
 	}
 	else {
 	  std::string message = std::string("Illegal state change from ") + std::to_string((int)this->currentState) + " to " + std::to_string((int)state);
-	  logger.Warning(msg);
+	  logger.Warning(message);
 	}
 }
 State StateMachine::getCurrentState() {
@@ -49,25 +48,12 @@ void StateMap::setupTransitions() {
 	if(config.getTwoStageRocket()) {
 		this->nodes[(int)STAGE1COAST].addTransition(STAGE2POWERED);
 		this->nodes[(int)STAGE2POWERED].addTransition(STAGE2COAST);
-		if(config.getDrogueChute()) {
-			this->nodes[(int)STAGE2COAST].addTransition(DROGUEPAR);
-			this->nodes[(int)DROGUEPAR].addTransition(MAINPAR);
-		}
-		else {
-			this->nodes[(int)STAGE2COAST].addTransition(MAINPAR);
-		}
-		
+		this->nodes[(int)STAGE2COAST].addTransition(DESCENT);
 	}
 	else {
-		if(config.getDrogueChute()) {
-			this->nodes[(int)STAGE1COAST].addTransition(DROGUEPAR);
-			this->nodes[(int)DROGUEPAR].addTransition(MAINPAR);
-		}
-		else {
-			this->nodes[(int)STAGE1COAST].addTransition(MAINPAR);
-		}
+	  this->nodes[(int)STAGE1COAST].addTransition(DESCENT);
 	}
-	this->nodes[(int)MAINPAR].addTransition(LANDED);
+	this->nodes[(int)DESCENT].addTransition(LANDED);
 	this->nodes[(int)LANDED].addTransition(RESET);
 
 }

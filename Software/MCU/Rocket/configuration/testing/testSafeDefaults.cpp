@@ -3,13 +3,7 @@
 
 int main() {
 	//Safety Lock Enabled by default
-	Configuration config;
-	
-	if (config.getSafetyLock() != true) {
-		std::cout << "Failed to enable Safety Lock by default" << std::endl;
-		return false;
-	}
-	
+	Configuration config;	
 	//Safety Lock Value is lower 0 < x <= 45
 	float safetyLockValue = config.getSafetyLockValue();
 	if ( (safetyLockValue > 0) && (safetyLockValue <= 45) ) {

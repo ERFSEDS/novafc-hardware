@@ -87,8 +87,6 @@ private:
   uint16_t formatResponse(CommandStatus * fieldStatuses, int numFields, CommandStatus * actionStatuses, int numActions, uint8_t srcAddress, uint8_t * responseBuffer);
   void handleCommand(uint8_t* message, uint8_t msgSize);
   void handleResponse(uint8_t* message, uint8_t msgSize);
-  float getFloat(uint8_t * floatBytes, int offset);
-  void setFloat(float value, uint8_t * ptr, int offset);
   uint8_t address;
   Configuration& config;
   Brain& brain;

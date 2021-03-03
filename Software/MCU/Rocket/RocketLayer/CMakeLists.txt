@@ -2,7 +2,7 @@ project("Rocket_Layer")
 
 set("Layer_Sources" ${CMAKE_CURRENT_SOURCE_DIR}/src/RocketLayer.cpp)
 set("Layer_Include_Dir" ${CMAKE_CURRENT_SOURCE_DIR}/include)
-set("Layer_Dependencies" "Brain" "SensorValues" "Logger" "Configuration" "RocketData" "State_Machine" "Rocket_Layer_Common" )#literally all of them
+set("Layer_Dependencies" "MessageHandler" "Brain" "SensorValues" "Logger" "Configuration" "RocketData" "State_Machine" "Rocket_Layer_Common" )#literally all of them
 
 add_library("${PROJECT_NAME}" ${Layer_Sources})
 target_include_directories("${PROJECT_NAME}" PUBLIC ${Layer_Include_Dir})

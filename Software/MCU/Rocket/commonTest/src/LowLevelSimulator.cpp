@@ -1,5 +1,5 @@
 #include "LowLevelSimulator.hpp"
-#include <iostream>
+#include <iostream> //TODO REMOVE THIS
 
 
 LowLevelSimulator::LowLevelSimulator() :armed(false), fired{false} {
@@ -11,9 +11,11 @@ void LowLevelSimulator::fire_callback(void * context, int channel) {
   reinterpret_cast<LowLevelSimulator*>(context)->fire_callback_i(channel);
 }
 void LowLevelSimulator::flash_write_callback(void* context, std::string message) {
+  std::cout <<"static: " << message <<std::endl;
   reinterpret_cast<LowLevelSimulator*>(context)->flash_write_callback_i(message);
 }
 void LowLevelSimulator::transmit_callback(void* context, std::string message) {
+  std::cout <<"static: " << message <<std::endl;
   reinterpret_cast<LowLevelSimulator*>(context)->transmit_callback_i(message);
 }
 

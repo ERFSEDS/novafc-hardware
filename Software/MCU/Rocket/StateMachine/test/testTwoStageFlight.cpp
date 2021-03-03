@@ -12,7 +12,8 @@ int main() {
 	     (void*)(&sim),
 	     &(LowLevelSimulator::flash_write_callback));
 	//check to make sure 2 stage cannot go to 1 stage flight
-	Configuration config;
+  log.SetLogLevelUSB(DEBUG);
+  Configuration config;
 	StateMachine stateMachine(config, log);
 	int result = 0;
 	//set configuration
@@ -24,8 +25,7 @@ int main() {
 	stateMachine.changeState(STAGE1COAST);
 	stateMachine.changeState(STAGE2POWERED);
 	stateMachine.changeState(STAGE2COAST);
-	stateMachine.changeState(DROGUEPAR);
-	stateMachine.changeState(MAINPAR);
+	stateMachine.changeState(DESCENT);
 	stateMachine.changeState(LANDED);
 	stateMachine.changeState(RESET);
 	
