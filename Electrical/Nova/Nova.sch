@@ -395,53 +395,18 @@ Wire Wire Line
 Wire Wire Line
 	5250 3100 4450 3100
 $Comp
-L Connector_Generic:Conn_02x05_Counter_Clockwise J3
-U 1 1 602F4EF9
-P 6250 4550
-F 0 "J3" H 6300 4967 50  0000 C CNN
-F 1 "Conn_02x05_Counter_Clockwise" H 6300 4876 50  0000 C CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_2x05_P2.54mm_Vertical" H 6250 4550 50  0001 C CNN
-F 3 "~" H 6250 4550 50  0001 C CNN
-	1    6250 4550
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR0119
-U 1 1 602F8265
-P 5900 4350
-F 0 "#PWR0119" H 5900 4100 50  0001 C CNN
-F 1 "GND" V 5905 4222 50  0000 R CNN
-F 2 "" H 5900 4350 50  0001 C CNN
-F 3 "" H 5900 4350 50  0001 C CNN
-	1    5900 4350
-	0    1    1    0   
-$EndComp
-$Comp
 L power:+3.3V #PWR0120
 U 1 1 602F8700
-P 5900 4450
-F 0 "#PWR0120" H 5900 4300 50  0001 C CNN
-F 1 "+3.3V" V 5915 4578 50  0000 L CNN
-F 2 "" H 5900 4450 50  0001 C CNN
-F 3 "" H 5900 4450 50  0001 C CNN
-	1    5900 4450
-	0    -1   -1   0   
-$EndComp
-$Comp
-L power:+BATT #PWR0121
-U 1 1 602F8B35
 P 6700 4450
-F 0 "#PWR0121" H 6700 4300 50  0001 C CNN
-F 1 "+BATT" V 6715 4578 50  0000 L CNN
+F 0 "#PWR0120" H 6700 4300 50  0001 C CNN
+F 1 "+3.3V" V 6715 4578 50  0000 L CNN
 F 2 "" H 6700 4450 50  0001 C CNN
 F 3 "" H 6700 4450 50  0001 C CNN
 	1    6700 4450
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	5900 4350 6050 4350
-Wire Wire Line
-	6050 4450 5900 4450
+	6550 4350 6700 4350
 Wire Wire Line
 	6550 4450 6700 4450
 $Comp
@@ -754,32 +719,20 @@ DRDYM
 Text Label 4550 3100 0    50   ~ 0
 INTM
 Wire Wire Line
-	6050 4550 5450 4550
+	6550 4750 7150 4750
 Wire Wire Line
-	6050 4750 5450 4750
-Wire Wire Line
-	7150 4350 6550 4350
-Wire Wire Line
-	6050 4650 5450 4650
-Wire Wire Line
-	7150 4550 6550 4550
-Wire Wire Line
-	7150 4750 6550 4750
-Wire Wire Line
-	7150 4650 6550 4650
-Text Label 6000 4550 2    50   ~ 0
-SCLK
-Text Label 6000 4750 2    50   ~ 0
-MOSI
-Text Label 6600 4650 0    50   ~ 0
-MISO
-Text Label 6600 4350 0    50   ~ 0
-HGPIO0
-Text Label 6000 4650 2    50   ~ 0
-HGPIO1
-Text Label 6600 4550 0    50   ~ 0
-HGPIO2
+	6550 4550 7150 4550
 Text Label 6600 4750 0    50   ~ 0
+SCLK
+Text Label 6600 4550 0    50   ~ 0
+MOSI
+Text Label 6000 4750 2    50   ~ 0
+MISO
+Text Label 6000 4350 2    50   ~ 0
+HGPIO0
+Text Label 6000 4550 2    50   ~ 0
+HGPIO2
+Text Label 6000 4650 2    50   ~ 0
 HGPIO3
 Wire Wire Line
 	6750 5400 6150 5400
@@ -794,29 +747,29 @@ CS0
 $Comp
 L power:GND #PWR0125
 U 1 1 604DCB10
-P 6300 6100
-F 0 "#PWR0125" H 6300 5850 50  0001 C CNN
-F 1 "GND" V 6305 5972 50  0000 R CNN
-F 2 "" H 6300 6100 50  0001 C CNN
-F 3 "" H 6300 6100 50  0001 C CNN
-	1    6300 6100
+P 6300 6000
+F 0 "#PWR0125" H 6300 5750 50  0001 C CNN
+F 1 "GND" V 6305 5872 50  0000 R CNN
+F 2 "" H 6300 6000 50  0001 C CNN
+F 3 "" H 6300 6000 50  0001 C CNN
+	1    6300 6000
 	0    -1   -1   0   
 $EndComp
 $Comp
 L power:+3.3V #PWR0126
 U 1 1 604DCB16
-P 6300 6000
-F 0 "#PWR0126" H 6300 5850 50  0001 C CNN
-F 1 "+3.3V" V 6315 6128 50  0000 L CNN
-F 2 "" H 6300 6000 50  0001 C CNN
-F 3 "" H 6300 6000 50  0001 C CNN
-	1    6300 6000
+P 6300 5900
+F 0 "#PWR0126" H 6300 5750 50  0001 C CNN
+F 1 "+3.3V" V 6315 6028 50  0000 L CNN
+F 2 "" H 6300 5900 50  0001 C CNN
+F 3 "" H 6300 5900 50  0001 C CNN
+	1    6300 5900
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	6300 6100 6150 6100
+	6300 6000 6150 6000
 Wire Wire Line
-	6150 6000 6300 6000
+	6150 5900 6300 5900
 Wire Wire Line
 	6350 3300 7150 3300
 Text Label 6450 3300 0    50   ~ 0
@@ -845,35 +798,84 @@ Wire Wire Line
 	6750 5600 6150 5600
 Text Label 4100 5950 0    50   ~ 0
 FL_CS
-$Comp
-L Connector:Conn_01x08_Male J?
-U 1 1 6044335A
-P 5950 5700
-F 0 "J?" H 6058 6181 50  0000 C CNN
-F 1 "Conn_01x08_Male" H 6058 6090 50  0000 C CNN
-F 2 "" H 5950 5700 50  0001 C CNN
-F 3 "~" H 5950 5700 50  0001 C CNN
-	1    5950 5700
-	1    0    0    -1  
-$EndComp
+Text Label 4100 5650 0    50   ~ 0
+SWCLK
+Text Label 4100 5550 0    50   ~ 0
+SWDIO
 $Comp
 L Connector:Conn_01x07_Male J2
 U 1 1 604FA7CA
-P 6350 5000
-F 0 "J2" H 6750 5550 50  0000 C CNN
-F 1 "Conn_MX_530480710" H 6750 5450 50  0000 C CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53048-0710_1x07_P1.25mm_Horizontal" H 6350 5000 50  0001 C CNN
-F 3 "~" H 6350 5000 50  0001 C CNN
-F 4 "https://www.digikey.com/en/products/detail/molex/0530480710/242869?WT.z_cid=sp_900_0310_buynow&s=N4IgTCBcDaIAwFYDMcAsAOOB2AjHEAugL5A" H 6350 5000 50  0001 C CNN "Order Link"
-	1    6350 5000
+P 5950 5700
+F 0 "J2" H 6350 6250 50  0000 C CNN
+F 1 "Conn_MX_530480710" H 6350 6150 50  0000 C CNN
+F 2 "Connector_Molex:Molex_PicoBlade_53048-0710_1x07_P1.25mm_Horizontal" H 5950 5700 50  0001 C CNN
+F 3 "~" H 5950 5700 50  0001 C CNN
+F 4 "https://www.digikey.com/en/products/detail/molex/0530480710/242869?WT.z_cid=sp_900_0310_buynow&s=N4IgTCBcDaIAwFYDMcAsAOOB2AjHEAugL5A" H 5950 5700 50  0001 C CNN "Order Link"
+	1    5950 5700
+	1    0    0    -1  
+$EndComp
+Text Label 4100 4750 0    50   ~ 0
+LED_RED
+Text Label 4100 4650 0    50   ~ 0
+LED_GREEN
+Text Label 4100 4550 0    50   ~ 0
+LED_BLUE
+Text Label 4100 4450 0    50   ~ 0
+BUZZER
+Text Label 2600 6150 2    50   ~ 0
+CONTINUITY1
+Text Label 2600 6050 2    50   ~ 0
+FIRE1
+Text Label 2600 5950 2    50   ~ 0
+CONTINUITY2
+Text Label 2600 5850 2    50   ~ 0
+FIRE2
+Text Label 4100 6850 0    50   ~ 0
+CONTINUITY3
+Text Label 4100 6750 0    50   ~ 0
+FIRE3
+Text Label 4100 6650 0    50   ~ 0
+CONTINUITY4
+Text Label 4100 6550 0    50   ~ 0
+FIRE4
+Text Label 2450 7150 0    50   ~ 0
+ARM
+Wire Wire Line
+	5450 4650 6050 4650
+Wire Wire Line
+	5450 4750 6050 4750
+Wire Wire Line
+	5450 4550 6050 4550
+Wire Wire Line
+	5450 4350 6050 4350
+$Comp
+L Connector_Generic:Conn_02x05_Counter_Clockwise J3
+U 1 1 602F4EF9
+P 6250 4550
+F 0 "J3" H 6300 4967 50  0000 C CNN
+F 1 "Conn_02x05_Counter_Clockwise" H 6300 4876 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_2x05_P2.54mm_Vertical" H 6250 4550 50  0001 C CNN
+F 3 "~" H 6250 4550 50  0001 C CNN
+	1    6250 4550
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6750 5900 6150 5900
+	6050 4450 5450 4450
+Text Label 6000 4450 2    50   ~ 0
+HGPIO1
+$Comp
+L power:GND #PWR0119
+U 1 1 602F8265
+P 6700 4350
+F 0 "#PWR0119" H 6700 4100 50  0001 C CNN
+F 1 "GND" V 6705 4222 50  0000 R CNN
+F 2 "" H 6700 4350 50  0001 C CNN
+F 3 "" H 6700 4350 50  0001 C CNN
+	1    6700 4350
+	0    -1   -1   0   
+$EndComp
+Text Label 6600 4650 0    50   ~ 0
+HGPIO4
 Wire Wire Line
-	6750 5800 6150 5800
-Text Label 6200 5800 0    50   ~ 0
-TX
-Text Label 6200 5900 0    50   ~ 0
-RX
+	7150 4650 6550 4650
 $EndSCHEMATC
