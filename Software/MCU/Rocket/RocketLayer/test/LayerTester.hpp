@@ -35,18 +35,13 @@ struct Message {
 
 class RocketLayerTester {
 public:
-  RocketLayerTester(RocketLayer &layer,
-		    std::string inputFile,
-		    std::string outputFile,
+  RocketLayerTester(std::string inputFile,
 		    int (*checkPyros)(void*, SensorData),
 		    void* pyroCheckerConetext,
 		    Message * messages,
 		    int numMessages);
   
-  void runSimulations(int numSimulations);
   void runSimulation();
 private:
-  void simulation();
   std::ifstream inputFile;
-  std::ofstream ouputFile;
 };
