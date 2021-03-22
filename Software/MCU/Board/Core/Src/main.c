@@ -20,8 +20,6 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include <stdio.h>
-#include "math.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -98,41 +96,34 @@ int main(void)
   MX_SPI1_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-	uint8_t whoAmIaddr = 0x0f;
-	uint8_t whoami = 0;
-	SPI_Custom(SPI_READ, whoAmIaddr, &whoami, ACCEL_CS_GPIO_Port, ACCEL_CS_Pin);
 
-	char msg[20] = "                    ";
-	char msg1[20] = "                    ";
-	char msg2[20] = "                    ";
-	char msg3[20] = "                    ";
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
   while (1)
   {
+    /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
-	  HAL_StatusTypeDef val = SPI_Custom(SPI_READ, whoAmIaddr, &whoami, ACCEL_CS_GPIO_Port, ACCEL_CS_Pin);
+	 HAL_Delay(1000);
+	 HAL_GPIO_WritePin(LED_R_GPIO_Port, LED_R_Pin, GPIO_PIN_SET);
+	 HAL_GPIO_WritePin(LED_G_GPIO_Port, LED_G_Pin, GPIO_PIN_SET);
+	 HAL_GPIO_WritePin(LED_B_GPIO_Port, LED_B_Pin, GPIO_PIN_SET);
 
-		sprintf(msg3, "who am i:%d\n\r", (int)whoami);
-		HAL_UART_Transmit(&huart2, msg3, 20,1);
+	 HAL_Delay(1000);
 
-		uint16_t acceleration;
-		uint8_t high_addr = 0x29;
-		uint8_t low_addr = 0x28;
-		uint8_t highVal;
-		uint8_t lowVal;
-		SPI_Custom(SPI_READ, low_addr, &lowVal, ACCEL_CS_GPIO_Port, ACCEL_CS_Pin);
-		SPI_Custom(SPI_READ, high_addr, &highVal, ACCEL_CS_GPIO_Port, ACCEL_CS_Pin);
+	 HAL_GPIO_WritePin(LED_B_GPIO_Port, LED_B_Pin, GPIO_PIN_RESET);
+	 //HAL_GPIO_WritePin(Arm_GPIO_Port, Arm_Pin, GPIO_PIN_SET);
+	 HAL_Delay(5000);
 
-		acceleration = (highVal << 8) + lowVal;
+	 HAL_GPIO_WritePin(LED_B_GPIO_Port, LED_B_Pin, GPIO_PIN_SET);
+	 HAL_GPIO_WritePin(LED_R_GPIO_Port, LED_R_Pin, GPIO_PIN_RESET);
+	// HAL_GPIO_WritePin(Fire1_GPIO_Port, Fire1_Pin, GPIO_PIN_SET);
 
-		sprintf(msg2, "Accel:%d\n\r", (int)acceleration);
-		HAL_UART_Transmit(&huart2, msg2, 20,1);
+	 GPIO_PinState AccelPinData = HAL_GPIO_ReadPin(ACCEL_CS_GPIO_Port, ACCEL_CS_Pin);
 
-		HAL_Delay(500);
+
   }
   /* USER CODE END 3 */
 }
@@ -146,11 +137,11 @@ void SystemClock_Config(void)
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
-  /** Configure the main internal regulator output voltage 
+  /** Configure the main internal regulator output voltage
   */
   __HAL_RCC_PWR_CLK_ENABLE();
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE2);
-  /** Initializes the CPU, AHB and APB busses clocks 
+  /** Initializes the CPU, AHB and APB busses clocks
   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
@@ -160,7 +151,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  /** Initializes the CPU, AHB and APB busses clocks 
+  /** Initializes the CPU, AHB and APB busses clocks
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
@@ -262,28 +253,28 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, FLASH_SD_Pin|SD_CS_Pin|LED_R_Pin|Arm_Pin 
-                          |Fire1_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, FLASH_SD_Pin|SD_CS_Pin|LED_R_Pin|Fire1_Pin
+                          |ArmGoAway_Pin|Arm_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, BARO_CS_Pin|IMU_GYRO_CS_Pin|IMU_ACCEL_CS_Pin|Buzzer_Pin 
+  HAL_GPIO_WritePin(GPIOB, BARO_CS_Pin|IMU_GYRO_CS_Pin|IMU_ACCEL_CS_Pin|Buzzer_Pin
                           |LED_G_Pin|LED_B_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(Fire2_GPIO_Port, Fire2_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : FLASH_SD_Pin SD_CS_Pin LED_R_Pin Arm_Pin 
-                           Fire1_Pin */
-  GPIO_InitStruct.Pin = FLASH_SD_Pin|SD_CS_Pin|LED_R_Pin|Arm_Pin 
-                          |Fire1_Pin;
+  /*Configure GPIO pins : FLASH_SD_Pin SD_CS_Pin LED_R_Pin Fire1_Pin
+                           ArmGoAway_Pin Arm_Pin */
+  GPIO_InitStruct.Pin = FLASH_SD_Pin|SD_CS_Pin|LED_R_Pin|Fire1_Pin
+                          |ArmGoAway_Pin|Arm_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : BARO_CS_Pin IMU_GYRO_CS_Pin IMU_ACCEL_CS_Pin Buzzer_Pin 
+  /*Configure GPIO pins : BARO_CS_Pin IMU_GYRO_CS_Pin IMU_ACCEL_CS_Pin Buzzer_Pin
                            LED_G_Pin LED_B_Pin */
-  GPIO_InitStruct.Pin = BARO_CS_Pin|IMU_GYRO_CS_Pin|IMU_ACCEL_CS_Pin|Buzzer_Pin 
+  GPIO_InitStruct.Pin = BARO_CS_Pin|IMU_GYRO_CS_Pin|IMU_ACCEL_CS_Pin|Buzzer_Pin
                           |LED_G_Pin|LED_B_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
@@ -355,7 +346,7 @@ void Error_Handler(void)
   * @retval None
   */
 void assert_failed(uint8_t *file, uint32_t line)
-{ 
+{
   /* USER CODE BEGIN 6 */
   /* User can add his own implementation to report the file name and line number,
      tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */

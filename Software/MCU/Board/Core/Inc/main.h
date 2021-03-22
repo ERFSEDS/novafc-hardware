@@ -78,10 +78,12 @@ void Error_Handler(void);
 #define LED_B_GPIO_Port GPIOB
 #define LED_R_Pin GPIO_PIN_6
 #define LED_R_GPIO_Port GPIOC
-#define Arm_Pin GPIO_PIN_8
-#define Arm_GPIO_Port GPIOC
-#define Fire1_Pin GPIO_PIN_9
+#define Fire1_Pin GPIO_PIN_7
 #define Fire1_GPIO_Port GPIOC
+#define ArmGoAway_Pin GPIO_PIN_8
+#define ArmGoAway_GPIO_Port GPIOC
+#define Arm_Pin GPIO_PIN_9
+#define Arm_GPIO_Port GPIOC
 #define Fire2_Pin GPIO_PIN_8
 #define Fire2_GPIO_Port GPIOA
 #define Continuity1_Pin GPIO_PIN_9
