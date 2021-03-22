@@ -12,6 +12,11 @@
 #define SET_ACCEL_ONLY_MSG
 
 
+#define ACCEPTABLE_ALTITUDE_ERROR 		0.05
+#define ACCEPTABLE_ALTITUDE_ERROR_ABS 	10
+#define ACCEPTABLE_ANGLE_ERROR 			0.05
+#define ACCEPTABLE_ANGLE_ERROR_ABS 		0.17 // about 10 degrees
+#define ACCEPTABLE_TIME_PYRO_ERROR 		10 //seconds
 
 
 
@@ -28,20 +33,14 @@ struct SensorData {
   float trueAltitude;
   float trueAngle;
 };
-struct Message {
-  uint8_t * msg;
-  int size;
-};
 
 class RocketLayerTester {
 public:
-  RocketLayerTester(std::string inputFile,
-		    int (*checkPyros)(void*, SensorData),
-		    void* pyroCheckerConetext,
-		    Message * messages,
-		    int numMessages);
+  RocketLayerTester(std::string inputFile);
   
-  void runSimulation();
+  bool runSimulation();//returns true if succeeds
 private:
+  void split(std::string const &str, std::vector<float> &out);
+  void insertNoise(float *value, float mean, float stdDev);
   std::ifstream inputFile;
 };

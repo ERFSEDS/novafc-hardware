@@ -8,6 +8,9 @@ add_library("${PROJECT_NAME}" ${Layer_Sources})
 target_include_directories("${PROJECT_NAME}" PUBLIC ${Layer_Include_Dir})
 target_link_libraries("${PROJECT_NAME}" PRIVATE ${Layer_Dependencies})
 
+set("Common_Test_Source" ${CMAKE_CURRENT_SOURCE_DIR}/test/LayerTester.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/test/MessageHandler.cpp)
+set("Common_Test_Depends" ${Layer_Dependencies} "common_test")
 function(create_layer_test)
     #parse all inputs namely NAME, SOURCE, and PASS_REGEX
     #Other two are not used, just needed for function call
@@ -29,9 +32,9 @@ function(create_layer_test)
     
 	
     #Create the executable and link to the library
-    add_executable(${test_NAME} ${test_SOURCE} ${Common_Test_Source})
-    target_link_libraries(${test_NAME} PRIVATE "${PROJECT_NAME}")
-	target_link_libraries(${test_NAME} PRIVATE ${RocketData_dependencies} )
+    add_executable(${test_NAME} ${test_SOURCE} ${Common_Test_Source} )
+    target_link_libraries(${test_NAME} PRIVATE "${PROJECT_NAME}" ${Common_Test_Depends})
+    target_include_directories(${test_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/test)
     add_test("${test_NAME}_test"  "${test_NAME}")
 
     #if there is a REGEX that was passed in(usually no but sometimes yes) check it against this variable
@@ -40,6 +43,15 @@ function(create_layer_test)
             PROPERTY PASS_REGULAR_EXPRESSION ${test_PASS_REGEX}
         )
     endif()
+    foreach(file IN LISTS test_RESOURCES)
+      file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/test/${file}
+	DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/resources)
+    endforeach()
 endfunction()
 
 
+create_layer_test(
+  NAME "simulate_basic_launch"
+  SOURCE "test/BasicLaunch.cpp"
+  RESOURCES "resources/TestData.csv"
+  )

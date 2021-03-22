@@ -2,7 +2,7 @@
 #include <iostream> //TODO REMOVE THIS
 
 
-LowLevelSimulator::LowLevelSimulator() :armed(false), fired{false} {
+LowLevelSimulator::LowLevelSimulator(bool printMessage) :armed(false), fired{false}, printMessage(printMessage) {
 }
 void LowLevelSimulator::arm_callback(void * context, bool arm) {
   reinterpret_cast<LowLevelSimulator*>(context)->arm_callback_i(arm);
@@ -11,11 +11,9 @@ void LowLevelSimulator::fire_callback(void * context, int channel) {
   reinterpret_cast<LowLevelSimulator*>(context)->fire_callback_i(channel);
 }
 void LowLevelSimulator::flash_write_callback(void* context, std::string message) {
-  std::cout <<"static: " << message <<std::endl;
   reinterpret_cast<LowLevelSimulator*>(context)->flash_write_callback_i(message);
 }
 void LowLevelSimulator::transmit_callback(void* context, std::string message) {
-  std::cout <<"static: " << message <<std::endl;
   reinterpret_cast<LowLevelSimulator*>(context)->transmit_callback_i(message);
 }
 
@@ -28,14 +26,19 @@ void LowLevelSimulator::fire_callback_i(int channel) {
     std::cout << "Pyro out of bounds: " << channel << std::endl;
     return;
   }
+  std::cout << "Pyro " << channel << "fired" << std::endl;
   fired[channel] = true;
   
 }
 void LowLevelSimulator::flash_write_callback_i(std::string message) {
-  std::cout << "[FLASH]: " << message << std::endl;
+  if(printMessage) {
+    std::cout << "[FLASH]: " << message << std::endl;
+  }
 }
 void LowLevelSimulator::transmit_callback_i(std::string message) {
-  std::cout << "[TRANSMIT]: " << message << std::endl;
+  if(printMessage) {
+    std::cout << "[TRANSMIT]: " << message << std::endl;
+  }
 }
 
 

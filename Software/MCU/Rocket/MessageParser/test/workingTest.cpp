@@ -30,11 +30,11 @@ int main() {
 	//get orientation, get altitude, arm rocket
 	uint8_t message[20] = {1,2, 12, 1,1, 1,2, 56, 2, 4, 1,1, 3, 1,1, 1,2, 2, 1,0};
 
-	uint8_t expectedResponse[56] = {1,2, 31, 1,2, 56, 1,2, 2, 4, 63,128,1,1,1,1,
+	uint8_t expectedResponse[60] = {1,2, 33, 1,2, 56, 1,2, 2, 4, 1,1, 63,128,1,1,1,1,
 					1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,
-					3, 1,1,1,1,1,1,1,1, 1,2, 2, 1,2, 1,0};
+					3, 1,1, 1,1,1,1,1,1,1,1, 1,2, 2, 1,2, 1,0};
 	snoops.snoop(true);
-	snoops.setExpectedResponse(expectedResponse, 56);
+	snoops.setExpectedResponse(expectedResponse, 60);
 	//test timeo
 	handler.parseMessage(message, 20);
 	

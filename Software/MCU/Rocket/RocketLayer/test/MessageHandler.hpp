@@ -1,7 +1,7 @@
 #pragma once
 #include <cinttypes>
 #include <vector>
-
+#define TESTING_BOARD
 #define MESSAGE_VERSION		1
 
 #define BOARD_MAJOR_VERSION 1
@@ -68,6 +68,15 @@
 
 #define NUMBER_OF_STATES 9
 #define DEFAULT_START_STATE (UNARMED)
+#ifdef TESTING_BOARD
+#include "Logger.hpp"
+#include "Brain.hpp"
+#include "Cartesian.hpp"
+#include "RocketData.hpp"
+#include "SensorValues.hpp"
+#include "StateMachine.hpp"
+#include "MessageHandler.hpp"
+#else
 enum State
 {
 	UNARMED = 0,
@@ -120,7 +129,7 @@ struct Pyro {
 	  return false;
 	}
 };
-
+#endif
 
 enum Fields {
 	pressure = 0, //use value
@@ -138,7 +147,8 @@ enum Fields {
 	addrress=12, //use valueInt
 	softwareVersion=13, //use valueInt
 	hardwareVersion=14, //use valueInt
-	twoStage=15 //use valueInt(0 for false 1 for true)
+	twoStage=15, //use valueInt(0 for false 1 for true)
+	upperStageTimeStepms=16 //use value
 };
 enum Actions {
 	copyFlashToSD=0,
@@ -171,11 +181,12 @@ struct Message {
 class MessageHandler {
 public:
 	MessageHandler(uint8_t address);
-	std::vector<uint8_t> generateMessage(Message message, uint8_t address=0x56);
+  std::vector<uint8_t> undoEncoding(std::vector<uint8_t> msg);
+	std::vector<uint8_t> generateMessage(Message message, uint8_t address=56);
 	Message handlerResponse(std::vector<uint8_t> msg);
 	
 private:
-	void getFloat(std::vector<uint8_t> message, float valueF);
-	float getFloat(std::vector<uint8_t> message, int offset=0);
+	void setFloat(std::vector<uint8_t>& message, float valueF);
+	float getFloat(std::vector<uint8_t>& message, int offset=0);
 	uint8_t address;
 };

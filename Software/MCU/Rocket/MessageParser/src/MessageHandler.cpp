@@ -58,7 +58,6 @@ void MessageHandler::parseMessage(uint8_t* message, uint16_t arraySize) {
   else {
     logger.Warning("Unkown Command response byte");
   }
-	
   delete buffer;
 }
 void MessageHandler::sendCommand(uint8_t* message, uint8_t size) {
@@ -76,6 +75,7 @@ void MessageHandler::handleCommand(uint8_t* message, uint8_t size) {
     uint8_t fieldId = message[index++];
     uint8_t setGet = message[index++];
     fieldStatuses[i].ID = fieldId;
+    fieldStatuses[i].setget = setGet;
     fieldStatuses[i].size = 0;
     switch(fieldId) {
     case FIELD_PRESSURE:
@@ -296,7 +296,21 @@ void MessageHandler::handleCommand(uint8_t* message, uint8_t size) {
 	fieldStatuses[i].value[0] = (uint8_t)config.getTwoStageRocket();
 	fieldStatuses[i].size = 1;
       }
-      
+      break;
+    case FIELD_UPPER_TIME_STEP:
+      if(setGet == FIELD_SET) {
+	float upperTimeStep = getFloat(message, index);
+	index +=4;
+	config.setUpperTimeStepms(upperTimeStep);
+	fieldStatuses[i].value[0] = 0;
+	fieldStatuses[i].size = 1;
+      }
+      else if(setGet == FIELD_GET) {
+	setFloat(config.getUpperTimeStepms(), fieldStatuses[i].value, 0);
+	fieldStatuses[i].size = 4; 
+
+      }
+      break;
     }
   }	
 
@@ -349,6 +363,7 @@ uint16_t MessageHandler::formatResponse(CommandStatus * fieldStatuses, int numFi
 	
   for(int i = 0; i < numFields; i++) {
     response[index++] = fieldStatuses[i].ID;
+    response[index++] = fieldStatuses[i].setget;
     for(int j = 0; j < fieldStatuses[i].size; j++) {
       response[index++] = fieldStatuses[i].value[j];
     }

@@ -4,7 +4,7 @@
 #include <string>
 class LowLevelSimulator {
 public:
-  LowLevelSimulator();
+  LowLevelSimulator(bool printMessages=false);
   static void arm_callback(void * context, bool arm);
   static void fire_callback(void * context, int channel);
   static void flash_write_callback(void* context, std::string str);
@@ -23,4 +23,5 @@ public:
 private:
   bool armed;
   bool fired[NUMBER_OF_PYROS];
+  bool printMessage;
 };

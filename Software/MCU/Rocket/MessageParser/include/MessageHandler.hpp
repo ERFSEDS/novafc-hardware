@@ -49,6 +49,7 @@
 #define FIELD_SOFTWARE_VERSION	        13
 #define FIELD_HARDWARE_VERSION          14
 #define FIELD_TWO_STAGE                 15
+#define FIELD_UPPER_TIME_STEP 16
 
 //actions
 #define ACTION_COPY_FLASH		0
@@ -74,6 +75,7 @@
 
 struct CommandStatus {
   uint8_t ID;
+  uint8_t setget;
   uint8_t value[16];
   uint8_t size;
 };
