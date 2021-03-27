@@ -1,0 +1,3 @@
+# common
+
+This is sa group of structures that is used to pass data between different structuers, so if you look in this you will see some common structs like cartesian, a 3d vector, a 3x3 matrix(the only one we need as I did not plan for ascending to the fourth dimension), and a quanternion. The required math for interacting between all of these modules is also included to make the code in other modules, namely Rocket Data much closer to the application layer and not bogged down in the nitty gritty of matrix math

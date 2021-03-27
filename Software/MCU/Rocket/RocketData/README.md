@@ -1,0 +1,3 @@
+# Rocket Data
+
+This is the big math module which takes a stream of sensor data and produces the current location. If you know anything about controls, you may know about Kalman Filters and thier magic and how good they are. Basically this uses none of that because it would be a lot of time to set it up and get it to work, time I didnt have. So this is basically a series of integrals and rotation matrixes(and a quanternion!) that I use to guestimate our position and according to the tests I wrote it seems to work halfway decently, and once we get a magnetometer you should be able to improve it muuuuch more

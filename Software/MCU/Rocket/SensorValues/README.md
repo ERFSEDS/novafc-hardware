@@ -1,0 +1,3 @@
+# Sensor Values
+
+This module is useful for the days when the top and low level code are multithreaded messes that operate independently. This module was supposed to ensure that clean, up to date, data was passed into the top layer, however with the current goal of just single thread it for now this module is redundant and is kept here so if you do switch to multithreading, just add some semaphores and whatnot to create a multithread safe handoff of data

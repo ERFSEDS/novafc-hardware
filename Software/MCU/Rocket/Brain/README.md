@@ -1,0 +1,3 @@
+# Brain
+
+This module is responsible for determine what if any actions need to be taken at this point in time. It pulls data from the rocket data module which determines where the rocket is and the state machine module which categorizes what part of the flight we are in to determine what actins need to be taken at this point. At the moment this is only used to fire pyros and is over built however this is useful for expanding into other projects where the benefits are not as clear
