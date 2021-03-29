@@ -17,11 +17,8 @@
   ******************************************************************************
   */
 /* USER CODE END Header */
-
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include <stdio.h>
-#include "math.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -59,7 +56,7 @@ static void MX_SPI1_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 HAL_StatusTypeDef SPI_Custom(uint8_t rw, uint8_t address, uint16_t * value, GPIO_TypeDef* GPIO, uint16_t pin);
-
+HAL_StatusTypeDef SPI_CustomADC(uint8_t rw, uint8_t address, uint32_t * value, GPIO_TypeDef* GPIO, uint16_t pin);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -91,7 +88,7 @@ int main(void)
 
   /* USER CODE BEGIN SysInit */
 
-  /* USER CODE EN D SysInit */
+  /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
@@ -103,24 +100,45 @@ int main(void)
 	HAL_SPI_Transmit(&hspi1, &reset, 1, 1000);
 	HAL_GPIO_WritePin(BARO_CS_GPIO_Port, BARO_CS_Pin, GPIO_PIN_SET);
 
-	char msg[20]  = "                    ";
+	char msg[20]  = "    Hello World     ";
 	char msg1[20] = "                    ";
 	char msg2[20] = "                    ";
 	char msg3[20] = "                    ";
   /* USER CODE END 2 */
 
   /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
+	HAL_Delay(3);
 
+	uint8_t whoAmIaddr = 0xA0;
+	uint16_t whoami = 0;
+    SPI_Custom(SPI_READ, whoAmIaddr, &whoami, BARO_CS_GPIO_Port, BARO_CS_Pin);
+
+	sprintf(msg3, "PROM0 : %d\n\r", (int)whoami);
+	HAL_UART_Transmit(&huart2, msg3, 20, 1);
+  /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE BEGIN 3 */
-		uint8_t whoAmIaddr = 0xA0;
-		uint16_t whoami = 0;
-	  	SPI_Custom(SPI_READ, whoAmIaddr, &whoami, BARO_CS_GPIO_Port, BARO_CS_Pin);
+    /* USER CODE END WHILE */
 
-		sprintf(msg3, "PROM0 : %d\n\r", (int)whoami);
-		HAL_UART_Transmit(&huart2, msg3, 20, 1);
+    /* USER CODE BEGIN 3 */
+	uint8_t calltempaddr = 0x58;
+	uint8_t calladcaddr = 0x00;
+	uint32_t calladc=0;
+
+
+	HAL_GPIO_WritePin(BARO_CS_GPIO_Port, BARO_CS_Pin, GPIO_PIN_RESET);
+	HAL_SPI_Transmit(&hspi1, calltempaddr, 1, 1000);
+	//HAL_GPIO_WritePin(BARO_CS_GPIO_Port, BARO_CS_Pin, GPIO_PIN_SET);
+
+	HAL_Delay(1000);
+
+	SPI_CustomADC(SPI_READ, calladcaddr, &calladc, BARO_CS_GPIO_Port, BARO_CS_Pin);
+
+	sprintf(msg1,"ADC : %d\n\r", (int)calladc);
+	HAL_UART_Transmit(&huart2,msg1,20,1);
+
+	//HAL_UART_Transmit(&huart2, msg, 20, 1);
+
 
 		//uint16_t acceleration;
 		//uint8_t high_addr = 0x29;
@@ -149,11 +167,12 @@ void SystemClock_Config(void)
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
-  /** Configure the main internal regulator output voltage 
+  /** Configure the main internal regulator output voltage
   */
   __HAL_RCC_PWR_CLK_ENABLE();
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE2);
-  /** Initializes the CPU, AHB and APB busses clocks 
+  /** Initializes the RCC Oscillators according to the specified parameters
+  * in the RCC_OscInitTypeDef structure.
   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
@@ -163,7 +182,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  /** Initializes the CPU, AHB and APB busses clocks 
+  /** Initializes the CPU, AHB and APB buses clocks
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
@@ -265,28 +284,28 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, FLASH_SD_Pin|SD_CS_Pin|LED_R_Pin|Arm_Pin 
+  HAL_GPIO_WritePin(GPIOC, FLASH_SD_Pin|SD_CS_Pin|LED_R_Pin|Arm_Pin
                           |Fire1_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, BARO_CS_Pin|IMU_GYRO_CS_Pin|IMU_ACCEL_CS_Pin|Buzzer_Pin 
-                          |LED_G_Pin|LED_B_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOB, BARO_CS_Pin|IMU_GYRO_CS_Pin|IMU_ACCEL_CS_Pin|Buzzer_Pin
+                          |LED_G_Pin|LED_B_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(Fire2_GPIO_Port, Fire2_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : FLASH_SD_Pin SD_CS_Pin LED_R_Pin Arm_Pin 
+  /*Configure GPIO pins : FLASH_SD_Pin SD_CS_Pin LED_R_Pin Arm_Pin
                            Fire1_Pin */
-  GPIO_InitStruct.Pin = FLASH_SD_Pin|SD_CS_Pin|LED_R_Pin|Arm_Pin 
+  GPIO_InitStruct.Pin = FLASH_SD_Pin|SD_CS_Pin|LED_R_Pin|Arm_Pin
                           |Fire1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : BARO_CS_Pin IMU_GYRO_CS_Pin IMU_ACCEL_CS_Pin Buzzer_Pin 
+  /*Configure GPIO pins : BARO_CS_Pin IMU_GYRO_CS_Pin IMU_ACCEL_CS_Pin Buzzer_Pin
                            LED_G_Pin LED_B_Pin */
-  GPIO_InitStruct.Pin = BARO_CS_Pin|IMU_GYRO_CS_Pin|IMU_ACCEL_CS_Pin|Buzzer_Pin 
+  GPIO_InitStruct.Pin = BARO_CS_Pin|IMU_GYRO_CS_Pin|IMU_ACCEL_CS_Pin|Buzzer_Pin
                           |LED_G_Pin|LED_B_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
@@ -323,16 +342,40 @@ HAL_StatusTypeDef SPI_Custom(uint8_t rw, uint8_t address, uint16_t * value, GPIO
 	if(rw == SPI_READ) {
 		//uint8_t dummy = 0x00;
 		//val = HAL_SPI_Transmit(&hspi1, &address, 1, 1000);
-		HAL_Delay(10);
+
 		uint8_t vals[2];
 		//val = HAL_SPI_Transmit(&hspi1, &dummy, 1, 1000);
 		//val = HAL_SPI_Receive(&hspi1, &vals, 3, 1000);
 
-		val = HAL_SPI_TransmitReceive(&hspi1, &address, vals, 4, 1000);
+		val = HAL_SPI_TransmitReceive(&hspi1, &address, vals, 2, 1000);
 		*value = (vals[1] << 8) + vals[0];
 	}
 	else {
 		uint16_t data = (address << 8) + *value;
+		val = HAL_SPI_Transmit(&hspi1, &data, 2, 1000);
+	}
+	HAL_GPIO_WritePin(GPIO, pin, GPIO_PIN_SET);
+	return val;
+}
+
+HAL_StatusTypeDef SPI_CustomADC(uint8_t rw, uint8_t address, uint32_t * value, GPIO_TypeDef* GPIO, uint16_t pin) {
+	HAL_GPIO_WritePin(GPIO, pin, GPIO_PIN_RESET);
+	//address |= rw ;
+	//address &= 0xBF;
+	HAL_StatusTypeDef val;
+	if(rw == SPI_READ) {
+		//uint8_t dummy = 0x00;
+		//val = HAL_SPI_Transmit(&hspi1, &address, 1, 1000);
+
+		uint8_t vals[3];
+		//val = HAL_SPI_Transmit(&hspi1, &dummy, 1, 1000);
+		//val = HAL_SPI_Receive(&hspi1, &vals, 3, 1000);
+
+		val = HAL_SPI_TransmitReceive(&hspi1, &address, vals, 3, 1000);
+		*value = (vals[2] <<16) + (vals[1] << 8) + vals[0];
+	}
+	else {
+		uint32_t data = (address << 8) + *value;
 		val = HAL_SPI_Transmit(&hspi1, &data, 2, 1000);
 	}
 	HAL_GPIO_WritePin(GPIO, pin, GPIO_PIN_SET);
@@ -362,7 +405,7 @@ void Error_Handler(void)
   * @retval None
   */
 void assert_failed(uint8_t *file, uint32_t line)
-{ 
+{
   /* USER CODE BEGIN 6 */
   /* User can add his own implementation to report the file name and line number,
      tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
