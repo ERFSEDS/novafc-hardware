@@ -1,0 +1,5 @@
+Barometer.c:6:16:cmd_adc	40	static
+Barometer.c:37:15:cmd_prom	32	static
+Barometer.c:53:7:cmd_reset	16	static
+Barometer.c:66:16:crc4	32	static
+Barometer.c:99:6:barometer_test	184	static

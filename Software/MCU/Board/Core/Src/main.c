@@ -19,6 +19,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "barometer.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -44,6 +45,7 @@
 SPI_HandleTypeDef hspi1;
 
 UART_HandleTypeDef huart2;
+UART_HandleTypeDef huart6;
 
 /* USER CODE BEGIN PV */
 
@@ -54,6 +56,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_USART2_UART_Init(void);
+static void MX_USART6_UART_Init(void);
 /* USER CODE BEGIN PFP */
 HAL_StatusTypeDef SPI_Custom(uint8_t rw, uint8_t address, uint16_t * value, GPIO_TypeDef* GPIO, uint16_t pin);
 HAL_StatusTypeDef SPI_CustomADC(uint8_t rw, uint8_t address, uint32_t * value, GPIO_TypeDef* GPIO, uint16_t pin);
@@ -94,6 +97,10 @@ int main(void)
   MX_GPIO_Init();
   MX_SPI1_Init();
   MX_USART2_UART_Init();
+  MX_USART6_UART_Init();
+
+  barometer_test(hspi1,huart2);
+
   /* USER CODE BEGIN 2 */
 	uint8_t reset = 0x1E;
 	HAL_GPIO_WritePin(BARO_CS_GPIO_Port, BARO_CS_Pin, GPIO_PIN_RESET);
@@ -107,14 +114,6 @@ int main(void)
   /* USER CODE END 2 */
 
   /* Infinite loop */
-	HAL_Delay(3);
-
-	uint8_t whoAmIaddr = 0xA0;
-	uint16_t whoami = 0;
-    SPI_Custom(SPI_READ, whoAmIaddr, &whoami, BARO_CS_GPIO_Port, BARO_CS_Pin);
-
-	sprintf(msg3, "PROM0 : %d\n\r", (int)whoami);
-	HAL_UART_Transmit(&huart2, msg3, 20, 1);
   /* USER CODE BEGIN WHILE */
   while (1)
   {
@@ -124,7 +123,13 @@ int main(void)
 	uint8_t calltempaddr = 0x58;
 	uint8_t calladcaddr = 0x00;
 	uint32_t calladc=0;
+	uint8_t whoamiaddr=0x00;
+	uint16_t whoami=0;
 
+	SPI_Custom(SPI_READ, whoamiaddr, &whoami, BARO_CS_GPIO_Port, BARO_CS_Pin);
+
+	sprintf(msg1,"PROM : %d\n\r", (int)whoami);
+	HAL_UART_Transmit(&huart2,msg3,20,1);
 
 	HAL_GPIO_WritePin(BARO_CS_GPIO_Port, BARO_CS_Pin, GPIO_PIN_RESET);
 	HAL_SPI_Transmit(&hspi1, calltempaddr, 1, 1000);
@@ -269,6 +274,39 @@ static void MX_USART2_UART_Init(void)
 }
 
 /**
+  * @brief USART6 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART6_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART6_Init 0 */
+
+  /* USER CODE END USART6_Init 0 */
+
+  /* USER CODE BEGIN USART6_Init 1 */
+
+  /* USER CODE END USART6_Init 1 */
+  huart6.Instance = USART6;
+  huart6.Init.BaudRate = 115200;
+  huart6.Init.WordLength = UART_WORDLENGTH_8B;
+  huart6.Init.StopBits = UART_STOPBITS_1;
+  huart6.Init.Parity = UART_PARITY_NONE;
+  huart6.Init.Mode = UART_MODE_TX_RX;
+  huart6.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart6.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart6) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART6_Init 2 */
+
+  /* USER CODE END USART6_Init 2 */
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -284,28 +322,28 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, FLASH_SD_Pin|SD_CS_Pin|LED_R_Pin|Arm_Pin
+  HAL_GPIO_WritePin(GPIOC, FLASH_SD_Pin|BARO_CS_Pin|LED_R_Pin|Arm_Pin
                           |Fire1_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, BARO_CS_Pin|IMU_GYRO_CS_Pin|IMU_ACCEL_CS_Pin|Buzzer_Pin
+  HAL_GPIO_WritePin(GPIOB, SD_CS_Pin|IMU_GYRO_CS_Pin|IMU_ACCEL_CS_Pin|Buzzer_Pin
                           |LED_G_Pin|LED_B_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(Fire2_GPIO_Port, Fire2_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : FLASH_SD_Pin SD_CS_Pin LED_R_Pin Arm_Pin
+  /*Configure GPIO pins : FLASH_SD_Pin BARO_CS_Pin LED_R_Pin Arm_Pin
                            Fire1_Pin */
-  GPIO_InitStruct.Pin = FLASH_SD_Pin|SD_CS_Pin|LED_R_Pin|Arm_Pin
+  GPIO_InitStruct.Pin = FLASH_SD_Pin|BARO_CS_Pin|LED_R_Pin|Arm_Pin
                           |Fire1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : BARO_CS_Pin IMU_GYRO_CS_Pin IMU_ACCEL_CS_Pin Buzzer_Pin
+  /*Configure GPIO pins : SD_CS_Pin IMU_GYRO_CS_Pin IMU_ACCEL_CS_Pin Buzzer_Pin
                            LED_G_Pin LED_B_Pin */
-  GPIO_InitStruct.Pin = BARO_CS_Pin|IMU_GYRO_CS_Pin|IMU_ACCEL_CS_Pin|Buzzer_Pin
+  GPIO_InitStruct.Pin = SD_CS_Pin|IMU_GYRO_CS_Pin|IMU_ACCEL_CS_Pin|Buzzer_Pin
                           |LED_G_Pin|LED_B_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
