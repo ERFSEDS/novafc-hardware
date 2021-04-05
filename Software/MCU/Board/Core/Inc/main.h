@@ -60,10 +60,10 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define FLASH_SD_Pin GPIO_PIN_4
 #define FLASH_SD_GPIO_Port GPIOC
-#define SD_CS_Pin GPIO_PIN_5
-#define SD_CS_GPIO_Port GPIOC
-#define BARO_CS_Pin GPIO_PIN_0
-#define BARO_CS_GPIO_Port GPIOB
+#define BARO_CS_Pin GPIO_PIN_5
+#define BARO_CS_GPIO_Port GPIOC
+#define SD_CS_Pin GPIO_PIN_0
+#define SD_CS_GPIO_Port GPIOB
 #define ACCEL_CS_Pin GPIO_PIN_1
 #define ACCEL_CS_GPIO_Port GPIOB
 #define IMU_GYRO_CS_Pin GPIO_PIN_2
