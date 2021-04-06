@@ -19,7 +19,6 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "barometer.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -98,9 +97,6 @@ int main(void)
   MX_SPI1_Init();
   MX_USART2_UART_Init();
   MX_USART6_UART_Init();
-
-  barometer_test(hspi1,huart2);
-
   /* USER CODE BEGIN 2 */
 	uint8_t reset = 0x1E;
 	HAL_GPIO_WritePin(BARO_CS_GPIO_Port, BARO_CS_Pin, GPIO_PIN_RESET);
@@ -120,7 +116,9 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	uint8_t calltempaddr = 0x58;
+
+	barometer_test(hspi1,huart2);
+	/*uint8_t calltempaddr = 0x58;
 	uint8_t calladcaddr = 0x00;
 	uint32_t calladc=0;
 	uint8_t whoamiaddr=0x00;
@@ -157,7 +155,7 @@ int main(void)
 
 		//sprintf(msg2, "Accel:%d\n\r", (int)acceleration);
 		//HAL_UART_Transmit(&huart2, msg2, 20,1);
-
+*/
 		HAL_Delay(500);
   }
   /* USER CODE END 3 */

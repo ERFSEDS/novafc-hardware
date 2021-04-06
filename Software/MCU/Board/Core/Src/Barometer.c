@@ -136,9 +136,9 @@
   // place to use P, T, put them on LCD, send them trough RS232 interface...
 
 
-  sprintf(msg1,"Temperature : %d\n\r", (int)T);
+  sprintf(msg1,"Temperature : %d\n\r", (int)P);
   HAL_UART_Transmit(&huart2,msg1,20,1);
-
+HAL_Delay(100);
   }
 
   return 0;
