@@ -1,0 +1,15 @@
+[package]
+name = "nova_flight_computer"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+embedded-hal = "0.2"
+nb = "1"
+cortex-m = "0.7"
+cortex-m-rt = "0.6"
+# Panic behaviour, see https://crates.io/keywords/panic-impl for alternatives
+panic-halt = "0.2"
+
+stm32f4xx-hal = { version = "0.9", features = ["rt", "stm32f423"] }
+
