@@ -7,5 +7,5 @@
   (lib (name Accelerometer_Breakout)(type Legacy)(uri ${KIPRJMOD}/../Common_Modules/Accelerometer_Breakout/Symbols/Accelerometer_Breakout.lib)(options "")(descr ""))
   (lib (name FT232RL-REEL)(type Legacy)(uri "${KIPRJMOD}/../Common_Modules/FTDI/Symbol Library/FT232RL-REEL.lib")(options "")(descr ""))
   (lib (name AZ1117EH-3.3TRG1)(type Legacy)(uri "${KIPRJMOD}/../Common_Modules/PowerSupply/Symbol Library/AZ1117EH-3.3TRG1.lib")(options "")(descr ""))
-  (lib (name Nova-rescue)(type Legacy)(uri ${KIPRJMOD}/Nova-rescue.lib)(options "")(descr ""))
+  (lib (name SN74ALVCH16374DGVR)(type Legacy)(uri ${KIPRJMOD}/../libraries/SN74ALVCH16374DGVR.lib)(options "")(descr ""))
 )
