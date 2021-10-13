@@ -6,3 +6,12 @@ edition = "2018"
 [dependencies]
 state-machine = { path = "../state-machine" }
 data-acquisition = { path = "../data-acquisition" }
+
+embedded-hal = "0.2"
+nb = "1"
+cortex-m = "0.7"
+cortex-m-rt = "0.6"
+# Panic behaviour, see https://crates.io/keywords/panic-impl for alternatives
+panic-halt = "0.2"
+ms5611-spi = "0.2.0"
+stm32f4xx-hal = { version = "0.9", features = ["rt", "stm32f423"] }
