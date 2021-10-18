@@ -1,0 +1,8 @@
+[workspace]
+
+members = [
+	"main",
+	"state-machine",
+	"data-acquisition",
+	"telemetry"
+]
