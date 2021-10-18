@@ -5,3 +5,4 @@ edition = "2018"
 
 [dependencies]
 state-machine = { path = "../state-machine" }
+heapless = "0.7.7"
