@@ -24,7 +24,7 @@ jobs:
     - name: Rustfmt Check
       run: |
         rustup update stable && rustup default stable && rustup component add rustfmt
-        cargo fmt --manifest-path Software/Cargo.toml -- --check
+        cargo fmt --all --manifest-path "Software/Cargo.toml" -- --check
 
   clippy_check:
     name: Clippy Check
