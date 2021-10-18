@@ -13,9 +13,8 @@ jobs:
     - uses: actions/checkout@master
     - name: Build & Test
       run: |
-        sudo apt-get install -y libxcb-xfixes0-dev libxcb-shape0-dev
         rustup update ${{ matrix.rust }} && rustup default ${{ matrix.rust }}
-        cargo test 
+        cargo test --manifest-path Software/Cargo.toml
 
   rustfmt:
     name: Rustfmt
@@ -25,7 +24,7 @@ jobs:
     - name: Rustfmt Check
       run: |
         rustup update stable && rustup default stable && rustup component add rustfmt
-        cargo fmt -- --check
+        cargo fmt --all --manifest-path "Software/Cargo.toml" -- --check
 
   clippy_check:
     name: Clippy Check
@@ -44,5 +43,5 @@ jobs:
       - uses: actions-rs/clippy-check@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          args: --all-features
+          args: "--manifest-path Software/Cargo.toml --all-features"
 
