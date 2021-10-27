@@ -91,22 +91,24 @@ F 3 "~" H 5000 3600 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	4700 3600 4850 3600
-$Comp
-L Nova-rescue:MMBF4393-Transistor_FET Q10
-U 1 1 6042ACD4
-P 5550 3600
-AR Path="/6042ACD4" Ref="Q10"  Part="1" 
-AR Path="/5F36176A/6042ACD4" Ref="Q10"  Part="1" 
-F 0 "Q10" H 5740 3646 50  0000 L CNN
-F 1 "MMBF4393" H 5740 3555 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 5750 3525 50  0001 L CIN
-F 3 "https://www.onsemi.com/pub/Collateral/MMBF4391LT1-D.PDF" H 5550 3600 50  0001 L CNN
-F 4 "https://www.newark.com/on-semiconductor/mmbf4393/n-channel-jfet-30v-sot-23/dp/58K9428" H 5550 3600 50  0001 C CNN "Order Link"
-	1    5550 3600
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	5650 3800 5650 3950
 Wire Wire Line
 	5150 3600 5350 3600
+$Comp
+L MOSFET:Q_NMOS_DGS Q?
+U 1 1 617C8203
+P 5550 3600
+AR Path="/5F448D4B/6179571F/617C8203" Ref="Q?"  Part="1" 
+AR Path="/5F448D4B/617C20EF/617C8203" Ref="Q?"  Part="1" 
+AR Path="/5F448D4B/617C2A68/617C8203" Ref="Q?"  Part="1" 
+AR Path="/5F448D4B/617C3265/617C8203" Ref="Q?"  Part="1" 
+AR Path="/5F36176A/617C8203" Ref="Q9"  Part="1" 
+F 0 "Q9" H 5754 3646 50  0000 L CNN
+F 1 "Q_NMOS_DGS" H 5754 3555 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23-6_Handsoldering" H 5750 3700 50  0001 C CNN
+F 3 "~" H 5550 3600 50  0001 C CNN
+	1    5550 3600
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

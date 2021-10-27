@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Device:Q_NMOS_DGS Q1
+L MOSFET:Q_NMOS_DGS Q1
 U 1 1 617E0250
 P 5150 2600
 AR Path="/5F448D4B/6179571F/617E0250" Ref="Q1"  Part="1" 
@@ -29,7 +29,7 @@ F 3 "~" H 5150 2600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:Q_NMOS_DGS Q2
+L MOSFET:Q_NMOS_DGS Q2
 U 1 1 617E0251
 P 5150 3600
 AR Path="/5F448D4B/6179571F/617E0251" Ref="Q2"  Part="1" 
