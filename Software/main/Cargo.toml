@@ -5,4 +5,11 @@ edition = "2018"
 
 [dependencies]
 state-machine = { path = "../state-machine" }
+data-acquisition = { path = "../data-acquisition" }
+
 heapless = "0.7.7"
+embedded-hal = "0.2.6"
+stm32f4xx-hal = { version = "0.10.0", features = ["stm32f412"] }
+cortex-m-rt = "0.7"
+cortex-m = "0.7"
+panic-halt = "0.2"
