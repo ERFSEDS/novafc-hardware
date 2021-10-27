@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
-Sheet 1 15
+Sheet 1 19
 Title ""
 Date ""
 Rev ""
@@ -181,49 +181,33 @@ F 3 "~" H 8950 5550 50  0001 C CNN
 $EndComp
 Text Notes 8100 2150 0    79   ~ 0
 PYRO CHANNELS
-Text Label 8700 1300 0    50   ~ 0
+Text Label 8700 1450 0    50   ~ 0
 FIRE3
 $Sheet
-S 7800 900  800  1000
+S 7800 1050 800  600 
 U 5F448D4B
 F0 "Pyro Channels" 50
 F1 "PyroChannels.sch" 20
-F2 "arm" I R 8600 1000 50 
-F3 "Fire1" I R 8600 1100 50 
-F4 "1Correct" O R 8600 1500 50 
-F5 "Fire2" I R 8600 1200 50 
-F6 "2Correct" O R 8600 1600 50 
-F7 "Fire3" I R 8600 1300 50 
-F8 "3Correct" O R 8600 1700 50 
-F9 "Fire4" I R 8600 1400 50 
-F10 "4Correct" O R 8600 1800 50 
+F2 "arm" I R 8600 1150 50 
+F3 "Fire1" I R 8600 1250 50 
+F4 "Fire2" I R 8600 1350 50 
+F5 "Fire3" I R 8600 1450 50 
+F6 "Fire4" I R 8600 1550 50 
 $EndSheet
-Text Label 8700 1200 0    50   ~ 0
+Text Label 8700 1350 0    50   ~ 0
 FIRE2
-Text Label 8700 1100 0    50   ~ 0
+Text Label 8700 1250 0    50   ~ 0
 FIRE1
-Text Label 8700 1000 0    50   ~ 0
+Text Label 8700 1150 0    50   ~ 0
 ARM
 Wire Wire Line
-	8600 1000 9400 1000
+	8600 1150 9400 1150
 Wire Wire Line
-	8600 1100 9400 1100
+	8600 1250 9400 1250
 Wire Wire Line
-	8600 1200 9400 1200
+	8600 1350 9400 1350
 Wire Wire Line
-	8600 1500 9400 1500
-Wire Wire Line
-	8600 1600 9400 1600
-Text Label 8700 1500 0    50   ~ 0
-CONTINUITY1
-Text Label 8700 1600 0    50   ~ 0
-CONTINUITY2
-Wire Wire Line
-	8600 1300 9400 1300
-Wire Wire Line
-	8600 1700 9400 1700
-Text Label 8700 1700 0    50   ~ 0
-CONTINUITY3
+	8600 1450 9400 1450
 Wire Notes Line
 	1550 750  3350 750 
 Wire Notes Line
@@ -373,14 +357,6 @@ Wire Wire Line
 Wire Wire Line
 	1600 4850 1000 4850
 Wire Wire Line
-	650  6350 1250 6350
-Wire Wire Line
-	650  6150 1250 6150
-Wire Wire Line
-	650  6250 1250 6250
-Wire Wire Line
-	650  6050 1250 6050
-Wire Wire Line
 	1250 7150 650  7150
 Wire Wire Line
 	1250 6950 650  6950
@@ -388,8 +364,6 @@ Wire Wire Line
 	1250 6850 650  6850
 Wire Wire Line
 	1250 6750 650  6750
-Wire Wire Line
-	3850 5950 3250 5950
 Wire Wire Line
 	3500 6950 2900 6950
 Wire Wire Line
@@ -399,25 +373,15 @@ Wire Wire Line
 Wire Wire Line
 	3500 6750 2900 6750
 Wire Wire Line
-	3850 5750 3250 5750
-Wire Wire Line
-	3850 5850 3250 5850
-Wire Wire Line
-	3850 5650 3250 5650
-Wire Wire Line
 	2900 6150 3500 6150
 Wire Wire Line
 	2900 6250 3500 6250
 Wire Wire Line
 	2900 6350 3500 6350
-Text Label 8700 1400 0    50   ~ 0
+Text Label 8700 1550 0    50   ~ 0
 FIRE4
 Wire Wire Line
-	8600 1400 9400 1400
-Text Label 8700 1800 0    50   ~ 0
-CONTINUITY4
-Wire Wire Line
-	8600 1800 9400 1800
+	8600 1550 9400 1550
 Wire Notes Line
 	9500 750  9500 2000
 Wire Notes Line
@@ -464,22 +428,6 @@ Text Label 700  6950 0    50   ~ 0
 LED_BLUE
 Text Label 700  7150 0    50   ~ 0
 BUZZER
-Text Label 700  6050 0    50   ~ 0
-CONTINUITY1
-Text Label 700  6250 0    50   ~ 0
-FIRE1
-Text Label 700  6150 0    50   ~ 0
-CONTINUITY2
-Text Label 700  6350 0    50   ~ 0
-FIRE2
-Text Label 3300 5650 0    50   ~ 0
-CONTINUITY3
-Text Label 3300 5850 0    50   ~ 0
-FIRE3
-Text Label 3300 5750 0    50   ~ 0
-CONTINUITY4
-Text Label 3300 5950 0    50   ~ 0
-FIRE4
 Text Label 850  5950 2    50   ~ 0
 ARM
 Text Label 4650 1650 0    50   ~ 0
@@ -548,19 +496,19 @@ Text Label 700  7050 0    50   ~ 0
 VMonitor
 Wire Wire Line
 	1250 7050 650  7050
-Text Label 3300 6050 0    50   ~ 0
+Text Label 3050 5750 0    50   ~ 0
 FL_CS
 Wire Wire Line
 	650  5950 1250 5950
 Wire Wire Line
 	650  5850 1250 5850
 Wire Wire Line
-	3850 6050 3250 6050
+	3600 5750 3000 5750
 Wire Wire Line
-	3250 6450 3850 6450
+	3000 5650 3600 5650
 Wire Wire Line
 	650  5750 1250 5750
-Text Label 3300 6450 0    50   ~ 0
+Text Label 3050 5650 0    50   ~ 0
 SD_CS
 Text Label 700  5850 0    50   ~ 0
 BAROMETER_CS
@@ -888,4 +836,20 @@ Wire Wire Line
 Wire Wire Line
 	2200 4200 2100 4200
 Connection ~ 2200 4200
+Text Label 1200 6350 2    50   ~ 0
+FIRE4
+Text Label 1200 6250 2    50   ~ 0
+FIRE3
+Text Label 1200 6150 2    50   ~ 0
+FIRE2
+Wire Wire Line
+	650  6250 1250 6250
+Wire Wire Line
+	1250 6150 650  6150
+Wire Wire Line
+	1250 6050 650  6050
+Text Label 1200 6050 2    50   ~ 0
+FIRE1
+Wire Wire Line
+	650  6350 1250 6350
 $EndSCHEMATC

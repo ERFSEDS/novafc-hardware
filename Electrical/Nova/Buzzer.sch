@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 15
+Sheet 3 19
 Title ""
 Date ""
 Rev ""
@@ -92,9 +92,11 @@ $EndComp
 Wire Wire Line
 	4700 3600 4850 3600
 $Comp
-L Transistor_FET:MMBF4393 Q10
+L Nova-rescue:MMBF4393-Transistor_FET Q10
 U 1 1 6042ACD4
 P 5550 3600
+AR Path="/6042ACD4" Ref="Q10"  Part="1" 
+AR Path="/5F36176A/6042ACD4" Ref="Q10"  Part="1" 
 F 0 "Q10" H 5740 3646 50  0000 L CNN
 F 1 "MMBF4393" H 5740 3555 50  0000 L CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 5750 3525 50  0001 L CIN
