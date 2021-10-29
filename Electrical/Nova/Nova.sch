@@ -181,33 +181,34 @@ F 3 "~" H 8950 5550 50  0001 C CNN
 $EndComp
 Text Notes 8100 2150 0    79   ~ 0
 PYRO CHANNELS
-Text Label 8700 1450 0    50   ~ 0
+Text Label 8700 1300 0    50   ~ 0
 FIRE3
 $Sheet
-S 7800 1050 800  600 
+S 7800 1050 800  650 
 U 5F448D4B
 F0 "Pyro Channels" 50
 F1 "PyroChannels.sch" 20
-F2 "arm" I R 8600 1150 50 
-F3 "Fire1" I R 8600 1250 50 
-F4 "Fire2" I R 8600 1350 50 
-F5 "Fire3" I R 8600 1450 50 
-F6 "Fire4" I R 8600 1550 50 
+F2 "Fire1" I R 8600 1100 50 
+F3 "Fire2" I R 8600 1200 50 
+F4 "Fire3" I R 8600 1300 50 
+F5 "Fire4" I R 8600 1400 50 
+F6 "Arm1" I R 8600 1500 50 
+F7 "Arm2" I R 8600 1600 50 
 $EndSheet
-Text Label 8700 1350 0    50   ~ 0
+Text Label 8700 1200 0    50   ~ 0
 FIRE2
-Text Label 8700 1250 0    50   ~ 0
+Text Label 8700 1100 0    50   ~ 0
 FIRE1
-Text Label 8700 1150 0    50   ~ 0
-ARM
+Text Label 8700 1500 0    50   ~ 0
+ARM1
 Wire Wire Line
-	8600 1150 9400 1150
+	8600 1500 9400 1500
 Wire Wire Line
-	8600 1250 9400 1250
+	8600 1100 9400 1100
 Wire Wire Line
-	8600 1350 9400 1350
+	8600 1200 9400 1200
 Wire Wire Line
-	8600 1450 9400 1450
+	8600 1300 9400 1300
 Wire Notes Line
 	1550 750  3350 750 
 Wire Notes Line
@@ -357,14 +358,6 @@ Wire Wire Line
 Wire Wire Line
 	1600 4850 1000 4850
 Wire Wire Line
-	1250 7150 650  7150
-Wire Wire Line
-	1250 6950 650  6950
-Wire Wire Line
-	1250 6850 650  6850
-Wire Wire Line
-	1250 6750 650  6750
-Wire Wire Line
 	3500 6950 2900 6950
 Wire Wire Line
 	3500 7050 2900 7050
@@ -373,15 +366,15 @@ Wire Wire Line
 Wire Wire Line
 	3500 6750 2900 6750
 Wire Wire Line
-	2900 6150 3500 6150
+	1600 6950 1000 6950
 Wire Wire Line
-	2900 6250 3500 6250
+	1600 7050 1000 7050
 Wire Wire Line
-	2900 6350 3500 6350
-Text Label 8700 1550 0    50   ~ 0
+	1600 7150 1000 7150
+Text Label 8700 1400 0    50   ~ 0
 FIRE4
 Wire Wire Line
-	8600 1550 9400 1550
+	8600 1400 9400 1400
 Wire Notes Line
 	9500 750  9500 2000
 Wire Notes Line
@@ -400,11 +393,11 @@ F5 "SCLK" I R 6600 1750 50
 $EndSheet
 Text Notes 6200 2300 0    79   ~ 0
 DATA LOGGING\n
-Text Label 2950 6250 0    50   ~ 0
+Text Label 1550 7050 2    50   ~ 0
 MISO
-Text Label 2950 6350 0    50   ~ 0
+Text Label 1550 7150 2    50   ~ 0
 MOSI
-Text Label 2950 6150 0    50   ~ 0
+Text Label 1550 6950 2    50   ~ 0
 SCLK
 Text Label 1550 4850 2    50   ~ 0
 VCAP
@@ -420,16 +413,6 @@ Text Label 2950 7050 0    50   ~ 0
 SWCLK
 Text Label 2950 6950 0    50   ~ 0
 SWDIO
-Text Label 700  6750 0    50   ~ 0
-LED_RED
-Text Label 700  6850 0    50   ~ 0
-LED_GREEN
-Text Label 700  6950 0    50   ~ 0
-LED_BLUE
-Text Label 700  7150 0    50   ~ 0
-BUZZER
-Text Label 850  5950 2    50   ~ 0
-ARM
 Text Label 4650 1650 0    50   ~ 0
 BAROMETER_CS
 Text Label 4650 1000 0    50   ~ 0
@@ -492,28 +475,14 @@ F 3 "" H 2500 4150 50  0001 C CNN
 	1    2500 4150
 	1    0    0    -1  
 $EndComp
-Text Label 700  7050 0    50   ~ 0
-VMonitor
-Wire Wire Line
-	1250 7050 650  7050
-Text Label 3050 5750 0    50   ~ 0
+Text Label 2950 5650 0    50   ~ 0
 FL_CS
 Wire Wire Line
-	650  5950 1250 5950
+	3500 5650 2900 5650
 Wire Wire Line
-	650  5850 1250 5850
-Wire Wire Line
-	3600 5750 3000 5750
-Wire Wire Line
-	3000 5650 3600 5650
-Wire Wire Line
-	650  5750 1250 5750
-Text Label 3050 5650 0    50   ~ 0
+	2900 5750 3500 5750
+Text Label 2950 5750 0    50   ~ 0
 SD_CS
-Text Label 700  5850 0    50   ~ 0
-BAROMETER_CS
-Text Label 700  5750 0    50   ~ 0
-ACCELEROMETER_CS
 Text Label 6650 1750 0    50   ~ 0
 SCLK
 Text Label 6650 1850 0    50   ~ 0
@@ -611,10 +580,10 @@ F 3 "" H 6050 4700 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L Switch:SW_Push SW1
+L Switch:SW_Push BOOT1
 U 1 1 61C94220
 P 6550 4700
-F 0 "SW1" H 6550 4515 50  0000 C CNN
+F 0 "BOOT1" H 6550 4515 50  0000 C CNN
 F 1 "SW_Push" H 6550 4606 50  0000 C CNN
 F 2 "NOVA MCU (STM):KSR223GLFG" H 6550 4900 50  0001 C CNN
 F 3 "~" H 6550 4900 50  0001 C CNN
@@ -679,10 +648,10 @@ F 3 "" H 7100 6300 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L Switch:SW_Push SW2
+L Switch:SW_Push NRST1
 U 1 1 61CFD677
 P 6600 6000
-F 0 "SW2" H 6600 5815 50  0000 C CNN
+F 0 "NRST1" H 6600 5815 50  0000 C CNN
 F 1 "SW_Push" H 6600 5906 50  0000 C CNN
 F 2 "NOVA MCU (STM):KSR223GLFG" H 6600 6200 50  0001 C CNN
 F 3 "~" H 6600 6200 50  0001 C CNN
@@ -776,41 +745,13 @@ Text Label 4650 2700 0    50   ~ 0
 IMU_INT
 Text Label 4650 2800 0    50   ~ 0
 FSYNC
-Text Label 700  6450 0    50   ~ 0
-IMU_CS
-Text Label 700  6550 0    50   ~ 0
-IMU_INT
-Text Label 700  6650 0    50   ~ 0
-FSYNC
 Wire Notes Line
 	5450 3050 5450 750 
 Wire Notes Line
 	3650 750  3650 3050
 Wire Wire Line
-	1250 6650 650  6650
-Wire Wire Line
-	1250 6550 650  6550
-Wire Wire Line
-	1250 6450 650  6450
-Wire Wire Line
 	2200 4200 2100 4200
 Connection ~ 2200 4200
-Text Label 1200 6350 2    50   ~ 0
-FIRE4
-Text Label 1200 6250 2    50   ~ 0
-FIRE3
-Text Label 1200 6150 2    50   ~ 0
-FIRE2
-Wire Wire Line
-	650  6250 1250 6250
-Wire Wire Line
-	1250 6150 650  6150
-Wire Wire Line
-	1250 6050 650  6050
-Text Label 1200 6050 2    50   ~ 0
-FIRE1
-Wire Wire Line
-	650  6350 1250 6350
 Text Label 7450 4350 2    50   ~ 0
 PC13
 Wire Wire Line
@@ -852,4 +793,78 @@ F 3 "~" H 6400 4350 50  0001 C CNN
 	1    6400 4350
 	0    1    1    0   
 $EndComp
+Wire Wire Line
+	1000 6050 1600 6050
+Text Label 2950 5850 0    50   ~ 0
+FIRE1
+Wire Wire Line
+	2900 5850 3500 5850
+Wire Wire Line
+	2900 5950 3500 5950
+Wire Wire Line
+	1600 6150 1000 6150
+Text Label 2950 5950 0    50   ~ 0
+FIRE2
+Text Label 1550 6150 2    50   ~ 0
+FIRE3
+Text Label 1550 6050 2    50   ~ 0
+FIRE4
+Wire Wire Line
+	3500 6450 2900 6450
+Wire Wire Line
+	3500 6550 2900 6550
+Wire Wire Line
+	3500 6650 2900 6650
+Text Label 2950 6650 0    50   ~ 0
+FSYNC
+Text Label 2950 6550 0    50   ~ 0
+IMU_INT
+Text Label 2950 6450 0    50   ~ 0
+IMU_CS
+Text Label 1550 6750 2    50   ~ 0
+ACCELEROMETER_CS
+Text Label 1550 6850 2    50   ~ 0
+BAROMETER_CS
+Wire Wire Line
+	1600 6750 1000 6750
+Wire Wire Line
+	1600 6850 1000 6850
+Wire Wire Line
+	2900 6050 3500 6050
+Wire Wire Line
+	3500 7150 2900 7150
+Text Label 2950 7150 0    50   ~ 0
+VMonitor
+Text Label 2950 6050 0    50   ~ 0
+ARM1
+Text Label 1550 6350 2    50   ~ 0
+BUZZER
+Text Label 1550 6450 2    50   ~ 0
+LED_BLUE
+Text Label 1550 6550 2    50   ~ 0
+LED_GREEN
+Text Label 1550 6650 2    50   ~ 0
+LED_RED
+Wire Wire Line
+	1000 6650 1600 6650
+Wire Wire Line
+	1000 6550 1600 6550
+Wire Wire Line
+	1000 6450 1600 6450
+Wire Wire Line
+	1000 6350 1600 6350
+Text Label 8700 1600 0    50   ~ 0
+ARM2
+Wire Wire Line
+	8600 1600 9400 1600
+Wire Wire Line
+	1600 6250 1000 6250
+Text Label 1550 6250 2    50   ~ 0
+ARM2
+NoConn ~ 2900 6350
+NoConn ~ 2900 6250
+NoConn ~ 2900 6150
+NoConn ~ 1600 5950
+NoConn ~ 1600 5850
+NoConn ~ 1600 5750
 $EndSCHEMATC

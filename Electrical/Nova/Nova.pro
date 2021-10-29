@@ -1,4 +1,4 @@
-update=10/27/2021 1:40:38 AM
+update=10/28/2021 8:46:36 PM
 version=1
 last_client=kicad
 [general]
@@ -250,7 +250,7 @@ dPairViaGap=0.25
 [pcbnew/Netclasses/1]
 Name=High-Current
 Clearance=0.15
-TrackWidth=1
+TrackWidth=0.5
 ViaDiameter=0.8
 ViaDrill=0.4
 uViaDiameter=0.3

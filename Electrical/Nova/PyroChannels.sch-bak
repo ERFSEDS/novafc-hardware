@@ -165,7 +165,7 @@ Fire2
 Wire Wire Line
 	4850 2900 5050 2900
 Text HLabel 5050 2900 2    50   Input ~ 0
-arm
+Arm1
 Wire Wire Line
 	5150 4150 4850 4150
 Text HLabel 5150 4150 2    50   Input ~ 0
@@ -173,13 +173,13 @@ Fire3
 Wire Wire Line
 	4850 3550 5050 3550
 Text HLabel 5050 3550 2    50   Input ~ 0
-arm
+Arm1
 Wire Wire Line
 	4850 4250 5050 4250
 Text HLabel 5050 4250 2    50   Input ~ 0
-arm
+Arm2
 Text HLabel 5050 4900 2    50   Input ~ 0
-arm
+Arm2
 Wire Wire Line
 	4850 4900 5050 4900
 Text Label 6450 3600 2    50   ~ 0
