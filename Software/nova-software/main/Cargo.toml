@@ -15,3 +15,4 @@ cortex-m-rt = "0.7"
 panic-halt = "0.2"
 ms5611-spi = "0.2.0"
 stm32f4xx-hal = { version = "0.10", features = ["stm32f401"] }
+bmi088 = "0.1.0"

@@ -6,6 +6,7 @@
 #![no_main]
 extern crate ms5611_spi as ms5611;
 use ms5611::{Ms5611, Oversampling};
+use bmi088;
 
 // use core::cell::{Cell, RefCell};
 // use core::ops::DerefMut;
@@ -40,6 +41,8 @@ fn start() -> ! {
     let gpiob = dp.GPIOB.split();
     let gpioc = dp.GPIOC.split();
     let bar_pin = gpioc.pc5.into_push_pull_output();
+    let gyro_accel_pin = gpiob.pb0.into_push_pull_output();
+    let gyro_pin = gpiob.pb1.into_push_pull_output();
     let mut success_led = gpiob.pb15.into_push_pull_output();
     let mut hi_temp_light = gpiob.pb14.into_push_pull_output();
     // success_led.set_high();
@@ -61,16 +64,20 @@ fn start() -> ! {
         800.khz(), 
         clocks
     );
-    // let mut spi = Spi::(
-    //     dp.SPI1,
-    //     bar_pin,
-    //     Config::default().baudrate(9600.bps()),
-    //     clocks,
-    // )
-    // .unwrap();
+
 
 
     let mut ms5611 = Ms5611::new(spi, bar_pin, &mut delay).unwrap();
+
+    let mut bmi088_accel = bmi088::Builder::new_accel_spi(spi, gyro_accel_pin);
+    bmi088_accel.setup(&mut delay).unwrap();
+
+    let mut bmi088_gyro = bmi088::Builder::new_gyro_spi(spi, gyro_pin);
+    bmi088_gyro.setup(&mut delay).unwrap();
+
+ 
+
+
 
     loop {
         let sample = ms5611.get_second_order_sample(Oversampling::OS_2048, &mut delay).unwrap();
@@ -79,6 +86,14 @@ fn start() -> ! {
             success_led.set_high();
         } else if temperature > 20 {
             hi_temp_light.set_high();
+        }
+
+        if let Ok(gyro_sample) = bmi088_gyro.get_gyro() {
+            // hprintln!("bmi088_g: {:?}", gyro_sample);
+        }
+
+        if let Ok(accel_sample) = bmi088_accel.get_accel() {
+            // hprintln!("bmi088_a: {:?}", accel_sample);
         }
         
         // panic!("{:?}", sample.pressure);
