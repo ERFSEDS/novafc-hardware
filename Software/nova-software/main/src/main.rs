@@ -1,120 +1,87 @@
 // use state_machine::StateMachine;
 // use data_acquisition as da;
 // // use embedded_hal as hal;
-// extern crate ms5611_spi as ms5611;
-// use ms5611::Ms5611;
+
 #![no_std]
 #![no_main]
+extern crate ms5611_spi as ms5611;
+use ms5611::{Ms5611, Oversampling};
 
-use core::cell::{Cell, RefCell};
-use core::ops::DerefMut;
-use cortex_m::interrupt::{free, Mutex};
+// use core::cell::{Cell, RefCell};
+// use core::ops::DerefMut;
+// use cortex_m::interrupt::{free, Mutex};
 use cortex_m_rt::entry;
-use hal::{
-    gpio::{
-        gpiog::{PG13, PG14},
-        Output, PushPull,
-    },
-    interrupt,
-    prelude::*,
-    stm32,
-    timer::{Event, Timer},
-};
+// use hal::{
+    
+// };
 
 use panic_halt as _;
 use stm32f4xx_hal as hal;
 
-static BLINKY: Mutex<Cell<BlinkState>> = Mutex::new(Cell::new(BlinkState::OnOff));
-static TIMER: Mutex<RefCell<Option<Timer<stm32::TIM2>>>> = Mutex::new(RefCell::new(None));
-static LED_GREEN: Mutex<RefCell<Option<PG13<Output<PushPull>>>>> = Mutex::new(RefCell::new(None));
-static LED_RED: Mutex<RefCell<Option<PG14<Output<PushPull>>>>> = Mutex::new(RefCell::new(None));
+// use crate::hal::{pac, prelude::*, delay::Delay};
+use crate::hal::{pac, prelude::*, spi::Spi};
+use hal::spi::{Mode, Phase, Polarity};
 
-#[derive(Clone, Copy)]
-enum BlinkState {
-    OnOff,
-    OffOn,
-}
 
 #[entry]
 fn start() -> ! {
-    let device_periphs = stm32::Peripherals::take().unwrap();
+    // let device_periphs = stm32::Peripherals::take().unwrap();
+    let dp = pac::Peripherals::take().unwrap();
+    let cp = cortex_m::peripheral::Peripherals::take().unwrap();
+    
+    let rcc = dp.RCC.constrain();
 
-    device_periphs.RCC.apb2enr.write(|w| w.syscfgen().enabled());
+    let clocks = rcc.cfgr.use_hse(8.mhz()).freeze();
 
-    let rcc_periph = device_periphs.RCC.constrain();
+    let mut delay = hal::delay::Delay::new(cp.SYST, &clocks);
 
-    let clocks = rcc_periph
-        .cfgr
-        .use_hse(8.mhz()) // discovery board has 8 MHz crystal for HSE
-        .hclk(100.mhz())
-        .sysclk(100.mhz())
-        .pclk1(25.mhz())
-        .pclk2(50.mhz())
-        .freeze();
 
-    let gpiog_periph = device_periphs.GPIOG.split();
+    let gpioa = dp.GPIOA.split();
+    let gpiob = dp.GPIOB.split();
+    let gpioc = dp.GPIOC.split();
+    let bar_pin = gpioc.pc5.into_push_pull_output();
+    let mut success_led = gpiob.pb15.into_push_pull_output();
+    let mut hi_temp_light = gpiob.pb14.into_push_pull_output();
+    // success_led.set_high();
+    success_led.set_low();
+    hi_temp_light.set_low();
+    
+// sck pa5 miso pa6 mosi pa7 
+    let sck = gpioa.pa5.into_alternate();
+    let miso = gpioa.pa6.into_alternate();
+    let mosi = gpioa.pa7.into_alternate();
 
-    let mut _led_green = gpiog_periph.pg13.into_push_pull_output();
-    _led_green.set_high().unwrap();
+    let spi = Spi::new(
+        dp.SPI1,
+        (sck, miso, mosi),  
+        Mode {
+            polarity: Polarity::IdleLow,
+            phase: Phase::CaptureOnFirstTransition,
+        }, 
+        800.khz(), 
+        clocks
+    );
+    // let mut spi = Spi::(
+    //     dp.SPI1,
+    //     bar_pin,
+    //     Config::default().baudrate(9600.bps()),
+    //     clocks,
+    // )
+    // .unwrap();
 
-    let mut _led_red = gpiog_periph.pg14.into_push_pull_output();
-    _led_red.set_low().unwrap();
 
-    // Create a 1s periodic interrupt from TIM2
-    let mut _timer = Timer::tim2(device_periphs.TIM2, 1.hz(), clocks);
-
-    _timer.listen(Event::TimeOut);
-    _timer.clear_interrupt(Event::TimeOut);
-
-    free(|cs| {
-        TIMER.borrow(cs).replace(Some(_timer));
-        LED_GREEN.borrow(cs).replace(Some(_led_green));
-        LED_RED.borrow(cs).replace(Some(_led_red));
-    });
-
-    // Enable interrupt
-    stm32::NVIC::unpend(hal::stm32::Interrupt::TIM2);
-    unsafe { stm32::NVIC::unmask(hal::stm32::Interrupt::TIM2) };
+    let mut ms5611 = Ms5611::new(spi, bar_pin, &mut delay).unwrap();
 
     loop {
-        // The main thread can now go to sleep.
-        // WFI (wait for interrupt) puts the core in sleep until an interrupt occurs.
-        cortex_m::asm::wfi();
+        let sample = ms5611.get_second_order_sample(Oversampling::OS_2048, &mut delay).unwrap();
+        let temperature = sample.temperature;
+        if temperature <= 20 {
+            success_led.set_high();
+        } else if temperature > 20 {
+            hi_temp_light.set_high();
+        }
+        
+        // panic!("{:?}", sample.pressure);
+        // panic!("ahhhhh");
     }
 }
-
-#[interrupt]
-fn TIM2() {
-    free(|cs| {
-        if let (Some(ref mut _timer), Some(ref mut _led_green), Some(ref mut _led_red)) = (
-            TIMER.borrow(cs).borrow_mut().deref_mut(),
-            LED_GREEN.borrow(cs).borrow_mut().deref_mut(),
-            LED_RED.borrow(cs).borrow_mut().deref_mut(),
-        ) {
-            _timer.clear_interrupt(Event::TimeOut);
-            match BLINKY.borrow(cs).get() {
-                BlinkState::OnOff => {
-                    BLINKY.borrow(cs).replace(BlinkState::OffOn);
-                    _led_green.set_low().unwrap();
-                    _led_red.set_high().unwrap();
-                }
-                BlinkState::OffOn => {
-                    BLINKY.borrow(cs).replace(BlinkState::OnOff);
-                    _led_green.set_high().unwrap();
-                    _led_red.set_low().unwrap();
-                }
-            }
-        }
-    });
-}
-    //barometer set up
-
-    // let mut ms5611 = Ms5611::new(spi, ncs, &mut delay_source).unwrap();
-
-    // println!("Hello, world!");
-    // da::get_acceleration();
-    // da::get_high_g_acceleration();
-    // println!("Pressure: {:?}", da::get_pressure());
-    // println!("Temp: {:?}", da::get_temperature());
-
-// }
