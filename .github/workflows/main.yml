@@ -3,6 +3,17 @@ name: CI
 on: [push, pull_request]
 
 jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Rust Build
+      run: |
+        git clone https://github.com/ERFSEDS/nova-software-common ../nova-software-common
+        rustup update stable && rustup default stable
+        cargo build
+
   rustfmt:
     name: Rustfmt
     runs-on: ubuntu-latest
