@@ -3,20 +3,6 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        rust: [stable, beta, nightly]
-    steps:
-    - uses: actions/checkout@master
-    - name: Build & Test
-      run: |
-        git clone https://github.com/ERFSEDS/nova-software-common ../nova-software-common
-        rustup update ${{ matrix.rust }} && rustup default ${{ matrix.rust }}
-        cargo test --manifest-path Software/Cargo.toml
-
   rustfmt:
     name: Rustfmt
     runs-on: ubuntu-latest
