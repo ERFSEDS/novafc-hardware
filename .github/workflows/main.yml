@@ -13,6 +13,7 @@ jobs:
     - uses: actions/checkout@master
     - name: Build & Test
       run: |
+        git clone https://github.com/ERFSEDS/nova-software-common ../
         rustup update ${{ matrix.rust }} && rustup default ${{ matrix.rust }}
         cargo test --manifest-path Software/Cargo.toml
 
@@ -23,6 +24,7 @@ jobs:
     - uses: actions/checkout@master
     - name: Rustfmt Check
       run: |
+        git clone https://github.com/ERFSEDS/nova-software-common ../
         rustup update stable && rustup default stable && rustup component add rustfmt
         cargo fmt --all --manifest-path "Software/Cargo.toml" -- --check
 
@@ -39,7 +41,9 @@ jobs:
         with:
             toolchain: ${{ steps.component.outputs.toolchain }}
             override: true
-      - run: rustup component add clippy
+      - run: |
+          git clone https://github.com/ERFSEDS/nova-software-common ../
+          rustup component add clippy
       - uses: actions-rs/clippy-check@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
