@@ -12,7 +12,8 @@ jobs:
       run: |
         git clone https://github.com/ERFSEDS/nova-software-common ../nova-software-common
         rustup update stable && rustup default stable
-        cargo build --manifest-path "Software/Cargo.toml"
+        rustup target add thumbv7em-none-eabihf
+        cargo build --manifest-path "Software/Cargo.toml" --target thumbv7em-none-eabihf
 
   rustfmt:
     name: Rustfmt
