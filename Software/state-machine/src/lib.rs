@@ -1,10 +1,10 @@
 #![no_std]
 
 use data_acquisition::DataWorkspace;
-use heapless::{String, Vec};
+use heapless::Vec;
 use stm32f4xx_hal::gpio::{Input, PullDown};
 
-use nova_software_common::State;
+use nova_software_common::{Check, State};
 
 type PyroPin = stm32f4xx_hal::gpio::gpioe::PE1<Input<PullDown>>;
 
@@ -18,7 +18,7 @@ pub struct StateMachine<'a> {
     current_state: usize,
     /// In order to read inputs for check values we need a reference to the data acquisition
     /// workspace
-    data_workspace: &'a DataWorkspace<PyroPin>,
+    _data_workspace: &'a DataWorkspace<PyroPin>,
 }
 
 impl<'a> StateMachine<'a> {
@@ -28,13 +28,13 @@ impl<'a> StateMachine<'a> {
         states: Vec<State, 16>,
         data_workspace: &'a DataWorkspace<PyroPin>,
     ) -> Result<Self, ()> {
-        let current_state = states.iter().position(|s| s.name() == "PowerOn");
+        let current_state = states.iter().position(|s| s.name == "PowerOn");
 
         if let Some(first_state) = current_state {
             Ok(Self {
                 states,
                 current_state: first_state,
-                data_workspace,
+                _data_workspace: data_workspace,
             })
         } else {
             Err(())
@@ -43,8 +43,12 @@ impl<'a> StateMachine<'a> {
 
     /// Executes the state machine
     pub fn execute(&mut self) {
-        for check in self.states.get(self.current_state).unwrap().checks() {
-            let _satisfied = check.execute();
+        for check in &self.states.get(self.current_state).unwrap().checks {
+            let _satisfied = execute_check(check);
         }
     }
+}
+
+fn execute_check(_check: &Check) -> bool {
+    todo!();
 }
