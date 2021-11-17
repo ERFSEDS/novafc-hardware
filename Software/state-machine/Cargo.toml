@@ -8,4 +8,4 @@ heapless = "0.7.7"
 cortex-m = "0.7.3"
 data-acquisition = { path = "../data-acquisition" }
 stm32f4xx-hal = "0.10.1"
-nova-software-common = { path = "../../../nova-software-common" }
+nova-software-common = { path = "../../../nova-software-common", default-features = false }
