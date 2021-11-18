@@ -29,17 +29,25 @@ const INT2_SOURCE: u8 = 0x35;
 const INT2_THS: u8 = 0x36;
 const INT2_DURATION: u8 = 0x37;
 
-
-
+#[repr(C)]
 enum comm_mode {USE_I2C, USE_SPI}
+#[repr(C)]
 enum power_mode {POWER_DOWN, NORMAL, LOW_POWER_0_5HZ, LOW_POWER_1HZ, LOW_POWER_2HZ, LOW_POWER_5HZ, LOW_POWER_10HZ}
+#[repr(C)]
 enum data_rate {DR_50HZ, DR_100HZ, DR_400HZ, DR_1000HZ}
+#[repr(C)]
 enum high_pass_cutoff_freq_cfg {HPC_8, HPC_16, HPC_32, HPC_64}
-enum pp_od {PUSH_PULL, OPEN_DRAIN} 
+#[repr(C)]
+enum pp_od {PUSH_PULL, OPEN_DRAIN}
+#[repr(C)]
 enum int_sig_src {INT_SRC, INT1_2_SRC, DRDY, BOOT}
+#[repr(C)]
 enum fs_range {LOW_RANGE, MED_RANGE, NO_RANGE, HIGH_RANGE}
+#[repr(C)]
 enum int_axis {X_AXIS, Y_AXIS, Z_AXIS}
+#[repr(C)]
 enum trig_on_level {TRIG_ON_HIGH, TRIG_ON_LOW}
+
 
 
 // H3LIS331DL
@@ -47,6 +55,8 @@ pub struct H3LIS331DL<SPI, NCS>{
     spi: SPI,
     ncs: NCS,
 }
+
+
 
 impl<SPI, NCS, E> H3LIS331DL<SPI, NCS>
 where
@@ -60,7 +70,7 @@ where
             ncs,
         };
 
-        h3lis331dl.setPowerMode(NORMAL);
+        h3lis331dl.setPowerMode(power_mode::NORMAL);
         h3lis331dl.axisEnable(true);
         let mut data: [u8; 1] = [0];
 
@@ -84,7 +94,7 @@ where
         //  top three bits to zero, and leave the others untouched, so we *only*
         //  affect the power mode bits.
         data[0] &= !0xe0; // Clear the top three bits
-        data |= power_mode<<5; // set the top three bits to our pmode value
+        data |= mode<<5; // set the top three bits to our pmode value
         self.H3LIS331DL_write(CTRL_REG1, &mut data, 1); // write the new value to CTRL_REG1
     }
 
@@ -118,36 +128,292 @@ where
     }
 
     fn readAxes(&self, x: &i16, y: &i16, z: &i16){
-        let mut data: [u8; 1];
-        let mut data1: [u8; 1];
-        let mut data2: [u8; 1];
-        let mut data3: [u8; 1];
-        let mut data4: [u8; 1];
-        let mut data5: [u8; 1];
+        let mut data: [u8; 6];
 
         // LIS331_read(OUT_X_L, &data[0], 1);
-        self.H3LIS331DL_read(OUT_X_L, &mut data, 1);
+        self.H3LIS331DL_read(OUT_X_L, &mut data[0..1], 1);
         // LIS331_read(OUT_X_H, &data[1], 1);
-        self.H3LIS331DL_read(OUT_X_L, &mut data1, 1);
+        self.H3LIS331DL_read(OUT_X_L, &mut data[1..2], 1);
         // LIS331_read(OUT_Y_L, &data[2], 1);
-        self.H3LIS331DL_read(OUT_X_L, &mut data2, 1);
+        self.H3LIS331DL_read(OUT_X_L, &mut data[2..3], 1);
         // LIS331_read(OUT_Y_H, &data[3], 1);
-        self.H3LIS331DL_read(OUT_X_L, &mut data3, 1);
+        self.H3LIS331DL_read(OUT_X_L, &mut data[3..4], 1);
         // LIS331_read(OUT_Z_L, &data[4], 1);
-        self.H3LIS331DL_read(OUT_X_L, &mut data4, 1);
+        self.H3LIS331DL_read(OUT_X_L, &mut data[4..5], 1);
         // LIS331_read(OUT_Z_H, &data[5], 1);
-        self.H3LIS331DL_read(OUT_X_L, &mut data5, 1);
+        self.H3LIS331DL_read(OUT_X_L, &mut data[5..6], 1);
         // The data that comes out is 12-bit data, left justified, so the lower
         //  four bits of the data are always zero. We need to right shift by four,
         //  then typecase the upper data to an integer type so it does a signed
         //  right shift.
-        x = data[0] | data1[0] << 8;
-        y = data2[0] | data3[0] << 8;
-        z = data4[0] | data5[0] << 8;
-        x = x >> 4;
-        y = y >> 4;
-        z = z >> 4;
+        x = &((data[0] | data[1] << 8) as i16);
+        y = &((data[2] | data[3] << 8) as i16);
+        z = &((data[4] | data[5] << 8) as i16);
+        x = &(x >> 4);
+        y = &(y >> 4);
+        z = &(z >> 4);
     }
+
+    fn readReg(&mut self, reg_address: u8) -> u8{
+    let mut data: [u8; 1];
+    self.H3LIS331DL_read(reg_address, &mut data, 1);
+    data[0]
+    }
+
+    fn convertToG(&mut self, maxScale: i32, reading: i32) -> f32{
+        let result = ((maxScale as f32) * (reading as f32))/(2047 as f32);
+        result
+    }
+
+    
+    fn setHighPassCoeff(&mut self, hpcoeff: high_pass_cutoff_freq_cfg){
+        // The HPF coeff depends on the output data rate. The cutoff frequency is
+        //  is approximately fs/(6*HPc) where HPc is 8, 16, 32 or 64, corresponding
+        //  to the various constants available for this parameter.
+        let mut data: [u8; 1];
+        self.H3LIS331DL_read(CTRL_REG2, &mut data, 1);
+        data[0] &= !0xfc;  // Clear the two low bits of the CTRL_REG2
+        data[0] |= hpcoeff;
+        self.H3LIS331DL_write(CTRL_REG2, &mut data, 1)
+    }
+
+    fn enableHPF(&mut self, enable: bool){
+        // Enable the high pass filter
+        let mut data: [u8; 1];
+        self.H3LIS331DL_read(CTRL_REG2, &mut data, 1);
+        if enable
+        {
+            data[0] |= 1<<5;
+        }
+        else
+        {
+            data[0] &= !(1<<5);
+        }
+        self.H3LIS331DL_write(CTRL_REG2, &mut data, 1);
+    }
+
+    fn HPFOnIntPin(&mut self, enable: bool, pin: u8){
+    // Enable the hpf on signal to int pins 
+        let mut data: [u8; 1];
+        self.H3LIS331DL_read(CTRL_REG2, &mut data, 1);
+        if enable
+        {
+            if pin == 1
+            {
+                data[0] |= 1<<3;
+            }
+            if pin == 2
+            {
+                data[0] |= 1<<4;
+            }
+        }
+        else
+        {
+            if pin == 1
+            {
+                data[0] &= !1<<3;
+            }
+            if pin == 2
+            {
+                data[0] &= !1<<4;
+            }
+        }
+        self.H3LIS331DL_write(CTRL_REG2, &mut data, 1)
+    }
+
+    fn intActiveHigh(&mut self, enable: bool)
+    {
+        // Are the int pins active high or active low?
+        let mut data: [u8; 1];
+        self.H3LIS331DL_read(CTRL_REG3, &mut data, 1);
+        // Setting bit 7 makes int pins active low
+        if !enable
+        {
+            data[0] |= 1<<7;
+        }
+        else
+        {
+            data[0] &= !(1<<7);
+        }
+        self.H3LIS331DL_write(CTRL_REG3, &mut data, 1);
+    }
+
+    fn intPinMode(&mut self, _pinMode: pp_od){
+        let mut data: [u8; 1];
+        self.H3LIS331DL_read(CTRL_REG3, &mut data, 1);
+        // Setting bit 6 makes int pins open drain.
+        if _pinMode == pp_od::OPEN_DRAIN
+        {
+            data[0] |= 1<<6;
+        }
+        else
+        {
+            data[0] &= !(1<<6);
+        }
+        self.H3LIS331DL_write(CTRL_REG3, &mut data, 1);
+    }
+
+    fn latchInterrupt(&mut self, enable: bool, intSource: u8){
+        // Latch mode for interrupt. When enabled, you must read the INTx_SRC reg
+        //  to clear the interrupt and make way for another.
+        let mut data: [u8; 1];
+        self.H3LIS331DL_read(CTRL_REG3, &mut data, 1);
+        // Enable latching by setting the appropriate bit.
+        if enable
+        {
+            if intSource == 1
+            {
+            data[0] |= 1<<2;
+            }
+            if intSource == 2
+            {
+            data[0] |= 1<<5;
+            }
+        }
+        else
+        {
+            if intSource == 1
+            {
+            data[0] &= !1<<2;
+            }
+            if intSource == 2
+            {
+            data[0] &= !1<<5;
+            }
+        }
+        self.H3LIS331DL_write(CTRL_REG3, &mut data, 1);
+    }
+
+    fn intSrcConfig(&mut self, src: int_sig_src, pin: u8){
+        let mut data: [u8; 1];
+        self.H3LIS331DL_read(CTRL_REG3, &mut data, 1);
+        // Enable latching by setting the appropriate bit.
+        if pin == 1
+        {
+            data[0] &= !0xfc; // clear the low two bits of the register
+            data[0] |= src;
+        }
+        if pin == 2
+        {
+            data[0] &= !0xe7; // clear bits 4:3 of the register
+            data[0] |= src<<4;
+        }
+        self.H3LIS331DL_write(CTRL_REG3, &mut data, 1);
+    }
+
+    fn setFullScale(&mut self, range: fs_range){
+        let mut data: [u8; 1];
+        self.H3LIS331DL_read(CTRL_REG4, &mut data, 1);
+        data[0] &= !0xcf;
+        data[0] |= range<<4;
+        self.H3LIS331DL_write(CTRL_REG4, &mut data, 1);
+    }
+
+    fn newXData(&mut self) -> bool{
+        let mut data: [u8; 1];
+        self.H3LIS331DL_read(STATUS_REG, &mut data, 1);
+        if data[0] & 1<<0
+        {
+            true
+        }
+        else
+        {
+            false
+        }
+    }
+
+    fn newYData(&mut self) -> bool{
+        let mut data: [u8; 1];
+        self.H3LIS331DL_read(STATUS_REG, &mut data, 1);
+        if data[0] & 1<<1
+        {
+            true
+        }
+        else
+        {
+            false
+        }
+    }
+
+    fn newZData(&mut self){
+        let mut data: [u8; 1];
+        self.H3LIS331DL_read(STATUS_REG, &mut data, 1);
+        if data[0] & 1<<2
+        {
+            true;
+        }
+        else
+        {
+            false;
+        }
+    }
+
+    fn enableInterrupt(&mut self, axis: int_axis, trigLevel: trig_on_level, interrupt: u8, enable: bool){
+        let mut data: [u8; 1];
+        let (mut reg, mut mask): (u8, u8);
+        mask = 0;
+        if interrupt == 1
+        {
+            reg = INT1_CFG;
+        }
+        else
+        {
+            reg = INT2_CFG;
+        }
+        self.H3LIS331DL_read(reg, &mut data, 1);
+        if trigLevel == trig_on_level::TRIG_ON_HIGH
+        {
+            mask = 1<<1;
+        }
+        else
+        {
+            mask = 1;
+        }
+        if axis == int_axis::Z_AXIS 
+        { 
+            mask = mask<<4; 
+        }
+        if axis == int_axis::Y_AXIS
+        { 
+            mask = mask<<2;
+        }
+        if enable
+        {
+            data[0] |= mask;
+        }
+        else
+        {
+            data[0] &= !mask;
+        }
+        self.H3LIS331DL_write(reg, &mut data, 1);
+    }
+
+    fn setIntDuration(&mut self, duration: u8, intSource: u8){
+        let mut data: [u8; 1];
+        data[0] = duration;
+        if intSource == 1
+        {
+            self.H3LIS331DL_write(INT1_DURATION, &mut data, 1);
+        }
+        else
+        {
+            self.H3LIS331DL_write(INT2_DURATION, &mut data, 1);
+        }
+    }
+
+    fn setIntThreshold(&mut self, threshold: u8, intSource: u8){
+    let mut data: [u8; 1];
+    data[0] = threshold;
+        if intSource == 1
+        {
+            self.H3LIS331DL_write(INT1_THS, &mut data, 1);
+        }
+        else
+        {
+            self.H3LIS331DL_write(INT2_THS, &mut data, 1);
+        }
+    }
+
 
     fn H3LIS331DL_read(&mut self, reg_address: u8, data: &mut [u8], len: u8){
 
