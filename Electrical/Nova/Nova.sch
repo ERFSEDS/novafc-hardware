@@ -860,12 +860,12 @@ Wire Wire Line
 Text Label 1850 5950 2    50   ~ 0
 ARM2
 $Comp
-L Connector_Generic:Conn_02x04_Counter_Clockwise J2
+L Connector_Generic:Conn_02x03_Counter_Clockwise J2
 U 1 1 61827242
 P 8900 4250
 F 0 "J2" H 8950 4567 50  0000 C CNN
 F 1 "Conn_02x04_Counter_Clockwise" H 8950 4476 50  0000 C CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_2x04_P2.54mm_Vertical" H 8900 4250 50  0001 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_2x03_P2.54mm_Vertical" H 8900 4250 50  0001 C CNN
 F 3 "~" H 8900 4250 50  0001 C CNN
 	1    8900 4250
 	1    0    0    -1  
@@ -877,8 +877,8 @@ Wire Wire Line
 Wire Wire Line
 	9800 4350 9200 4350
 Wire Wire Line
-	9200 4450 9800 4450
-Text Label 9250 4450 0    50   ~ 0
+	8700 4350 8100 4350
+Text Label 8425 4350 2    50   ~ 0
 GPIO2
 Text Label 9250 4350 0    50   ~ 0
 GPIO3
@@ -944,6 +944,4 @@ Text Label 4650 1500 0    50   ~ 0
 INT2
 Text Label 1850 5650 2    50   ~ 0
 INT2
-NoConn ~ 8700 4350
-NoConn ~ 8700 4450
 $EndSCHEMATC
