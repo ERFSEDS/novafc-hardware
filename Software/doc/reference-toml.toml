@@ -1,0 +1,78 @@
+[[states]]
+name = "PowerOn"
+
+[[states]]
+name = "Manual"
+
+[[states]]
+name = "Safe"
+
+[[states]]
+name = "Armed"
+
+[[states.checks]]
+name = "AltitudeCheck"
+condition = "altitude"
+type = "GreaterThan"
+value = 200.0
+transition = "Flight"
+
+[[states.checks]]
+name = "Pyro1Check"
+condition = "pyro1Continuity"
+type = "Flag"
+abort = "Safe"
+
+[[states.checks]]
+name = "Pyro2Check"
+condition = "pyro2Continuity"
+type = "Flag"
+abort = "Safe"
+
+[[states.commands]]
+object = "dataRate"
+value = 1000
+time = 0.0
+
+[[states]]
+name = "Flight"
+
+[[states.checks]]
+name = "ApogeeCheck"
+condition = "apogee_flag"
+type = "Flag"
+transition = "Apogee"
+
+[[states]]
+name = "Apogee"
+timeout = 0.0
+
+[[states]]
+name = "Descent"
+timeuot = 15.0
+
+[[states.commands]]
+object = "dataRate"
+value = 500
+time = 0.0
+
+[[states]]
+name = "Parachute"
+
+[[states.commands]]
+object = "pyro1"
+value = 1.0
+time = 0.0
+
+[[states.commands]]
+object = "pyro2"
+value = 1.0
+time = 10.0
+
+[[states]]
+name = "Recovery"
+
+[[states.commands]]
+object = "beacon"
+value = 1.0
+time = 0.0

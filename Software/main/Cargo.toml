@@ -5,4 +5,7 @@ edition = "2018"
 
 [dependencies]
 state-machine = { path = "../state-machine" }
+nova-software-common = { git = "https://github.com/ERFSEDS/nova-software-common" }
+data-acquisition = { path = "../data-acquisition/" }
+control = { path = "../control" }
 heapless = "0.7.7"
