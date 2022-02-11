@@ -1,18 +1,16 @@
 use control::Controls;
 use data_acquisition::DataWorkspace;
 use heapless::{pool::Pool, Vec};
-use nova_software_common::{CheckObject, CommandObject, ObjectState};
+use nova_software_common::{
+    CheckObject, CommandObject, ObjectState, MAX_CHECKS_PER_STATE, MAX_COMMANDS_PER_STATE,
+    MAX_STATES,
+};
 use state_machine::{Check, Command, State, StateMachine, StateTransition, Timeout};
 
-const MAX_NUM_STATES: usize = 16;
-const MAX_CHECKS_PER_STATE: usize = 3;
-const MAX_COMMANDS_PER_STATE: usize = 3;
-
-const STATE_POOL_SIZE: usize = core::mem::size_of::<State>() * MAX_NUM_STATES;
-const CHECK_POOL_SIZE: usize =
-    core::mem::size_of::<Check>() * MAX_CHECKS_PER_STATE * MAX_NUM_STATES;
+const STATE_POOL_SIZE: usize = core::mem::size_of::<State>() * MAX_STATES;
+const CHECK_POOL_SIZE: usize = core::mem::size_of::<Check>() * MAX_CHECKS_PER_STATE * MAX_STATES;
 const COMMAND_POOL_SIZE: usize =
-    core::mem::size_of::<Command>() * MAX_COMMANDS_PER_STATE * MAX_NUM_STATES;
+    core::mem::size_of::<Command>() * MAX_COMMANDS_PER_STATE * MAX_STATES;
 
 static mut STATE_POOL_BYTES: [u8; STATE_POOL_SIZE] = [0u8; STATE_POOL_SIZE];
 static mut CHECK_POOL_BYTES: [u8; CHECK_POOL_SIZE] = [0u8; CHECK_POOL_SIZE];

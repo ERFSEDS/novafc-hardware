@@ -6,12 +6,10 @@ use std::time::SystemTime;
 use control::Controls;
 use data_acquisition::DataWorkspace;
 use heapless::Vec;
-use nova_software_common::{CheckCondition, CheckObject, CommandObject, ObjectState};
-
-// TODO: Unify this into nova-software-common
-const MAX_NUM_STATES: usize = 16;
-const MAX_CHECKS_PER_STATE: usize = 3;
-const MAX_COMMANDS_PER_STATE: usize = 3;
+use nova_software_common::{
+    CheckCondition, CheckObject, CommandObject, ObjectState, MAX_CHECKS_PER_STATE,
+    MAX_COMMANDS_PER_STATE,
+};
 
 pub struct StateMachine<'a, 'b, 'c> {
     current_state: &'a State<'a>,
