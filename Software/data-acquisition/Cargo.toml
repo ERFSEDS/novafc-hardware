@@ -1,8 +1,12 @@
 [package]
 name = "data-acquisition"
 version = "0.1.0"
-edition = "2018"
+edition = "2021"
 
 [dependencies]
 cortex-m = "0.7"
 nova-software-common = { git = "https://github.com/ERFSEDS/nova-software-common" }
+
+[features]
+std = []
+default = ["std"]

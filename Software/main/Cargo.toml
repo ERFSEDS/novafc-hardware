@@ -1,12 +1,16 @@
 [package]
 name = "main"
 version = "0.1.0"
-edition = "2018"
+edition = "2021"
 
 [dependencies]
-state-machine = { path = "../state-machine" }
-nova-software-common = { git = "https://github.com/ERFSEDS/nova-software-common" }
-data-acquisition = { path = "../data-acquisition/" }
-control = { path = "../control" }
+state-machine = { path = "../state-machine", default-features = false }
+nova-software-common = { git = "https://github.com/ERFSEDS/nova-software-common", default-features = false }
+data-acquisition = { path = "../data-acquisition/", default-features = false }
+control = { path = "../control", default-features = false }
 heapless = "0.7.7"
 static-alloc = "0.2.3"
+
+[features]
+std = ["state-machine/std", "nova-software-common/std", "data-acquisition/std", "control/std"]
+default = ["std"]

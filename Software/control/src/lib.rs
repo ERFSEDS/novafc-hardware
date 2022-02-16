@@ -1,3 +1,5 @@
+#![cfg_attr(not(feature = "std"), no_std)]
+
 use std::time::SystemTime;
 
 use nova_software_common::{CommandObject, ObjectState};

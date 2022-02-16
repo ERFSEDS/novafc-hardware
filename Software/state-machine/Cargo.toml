@@ -1,7 +1,7 @@
 [package]
 name = "state-machine"
 version = "0.1.0"
-edition = "2018"
+edition = "2021"
 
 [dependencies]
 heapless = "0.7.7"

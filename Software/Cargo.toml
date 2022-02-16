@@ -5,5 +5,5 @@ members = [
 	"state-machine",
 	"data-acquisition",
 	"telemetry",
-	"control"
+	"control",
 ]

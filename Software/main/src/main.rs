@@ -1,3 +1,6 @@
+#![cfg_attr(not(feature = "std"), no_std)]
+//#![no_std]
+
 use control::Controls;
 use data_acquisition::DataWorkspace;
 use heapless::Vec;
@@ -26,10 +29,10 @@ fn main() {
         .map_err(|_| ())
         .unwrap();
 
-    let launch = State::new(String::from("Launch"), Vec::new(), launch_commands, None);
+    let launch = State::new(2, Vec::new(), launch_commands, None);
     let launch = A.leak(launch).map_err(|_| ()).unwrap();
 
-    let safe = State::new(String::from("Safe"), Vec::new(), Vec::new(), None);
+    let safe = State::new(1, Vec::new(), Vec::new(), None);
     let safe = A.leak(safe).map_err(|_| ()).unwrap();
 
     let mut poweron_checks: Vec<&Check, MAX_CHECKS_PER_STATE> = Vec::new();
@@ -46,7 +49,7 @@ fn main() {
         .unwrap();
 
     let poweron = State::new(
-        String::from("PowerOn"),
+        0,
         poweron_checks,
         Vec::new(),
         Some(Timeout::new(3.0, StateTransition::Abort(safe))),

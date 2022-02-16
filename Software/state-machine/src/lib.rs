@@ -27,7 +27,8 @@ impl<'a, 'b, 'c> StateMachine<'a, 'b, 'c> {
     ) -> Self {
         let time = SystemTime::now();
 
-        println!("State machine starting in state: {}", begin.name);
+        #[cfg(feature = "std")]
+        println!("State machine starting in state: {}", begin.id);
 
         Self {
             current_state: begin,
@@ -38,13 +39,13 @@ impl<'a, 'b, 'c> StateMachine<'a, 'b, 'c> {
         }
     }
 
-    pub fn execute<'_self>(&'_self mut self) {
+    pub fn execute(&mut self) {
         if let Some(transition) = self.execute_state() {
             self.transition(transition);
         }
     }
 
-    fn execute_state<'_self>(&'_self mut self) -> Option<StateTransition<'a>> {
+    fn execute_state(&mut self) -> Option<StateTransition<'a>> {
         // Execute commands
         for command in self.current_state.commands.iter() {
             self.execute_command(command);
@@ -70,7 +71,7 @@ impl<'a, 'b, 'c> StateMachine<'a, 'b, 'c> {
         }
     }
 
-    fn execute_command<'_self>(&'_self mut self, command: &Command) {
+    fn execute_command(&mut self, command: &Command) {
         if !command
             .was_executed
             .load(std::sync::atomic::Ordering::SeqCst)
@@ -84,24 +85,41 @@ impl<'a, 'b, 'c> StateMachine<'a, 'b, 'c> {
         }
     }
 
-    fn execute_check<'_self>(&'_self self, check: &Check<'a>) -> Option<StateTransition<'a>> {
+    fn execute_check(&self, check: &Check<'a>) -> Option<StateTransition<'a>> {
         let value = self.data_workspace.get_object(check.object);
 
         let satisfied = match check.condition {
             CheckCondition::FlagSet | CheckCondition::FlagUnset => match value {
                 ObjectState::Flag(b) => b == matches!(check.condition, CheckCondition::FlagSet),
-                _ => panic!("Non-flag value provided to a check that requires a FlagSet/Unset"),
+                _ => panic!(
+                    "{}",
+                    if cfg!(feature = "std") {
+                        "Non-flag value provided to a check that requires a FlagSet/Unset"
+                    } else {
+                        ""
+                    }
+                ),
             },
             CheckCondition::LessThan { value: other } => match value {
                 ObjectState::Float(f) => f < other,
                 _ => panic!(
-                    "Non-float value provided to a check that requires a float value (LessThan)"
+                    "{}",
+                    if cfg!(feature = "std") {
+                        "Non-float value provided to a check that requires a float value (LessThan)"
+                    } else {
+                        ""
+                    }
                 ),
             },
             CheckCondition::GreaterThan { value: other } => match value {
                 ObjectState::Float(f) => f > other,
                 _ => panic!(
-                    "Non-float value provided to a check that requires a float value (GreaterThan)"
+                    "{}",
+                    if cfg!(feature = "std") {
+                        "Non-float value provided to a check that requires a float value (GreaterThan)"
+                    } else {
+                        ""
+                    }
                 ),
             },
             CheckCondition::Between {
@@ -110,7 +128,12 @@ impl<'a, 'b, 'c> StateMachine<'a, 'b, 'c> {
             } => match value {
                 ObjectState::Float(f) => f < upper_bound && f > lower_bound,
                 _ => panic!(
-                    "Non-float value provided to a check that requires a float value (Between)"
+                    "{}",
+                    if cfg!(feature = "std") {
+                        "Non-float value provided to a check that requires a float value (Between)"
+                    } else {
+                        ""
+                    }
                 ),
             },
         };
@@ -121,20 +144,22 @@ impl<'a, 'b, 'c> StateMachine<'a, 'b, 'c> {
     fn transition(&mut self, transition: StateTransition<'a>) {
         let new_state = match transition {
             StateTransition::Abort(state) => {
+                #[cfg(feature = "std")]
                 println!(
                     "[{}s] Aborted to state: {}",
                     self.start_time.elapsed().unwrap().as_secs_f32(),
-                    state.name
+                    state.id
                 );
                 // Here we would have abort reporting of some kind like some "callback" to the data
                 // acquisition module
                 state
             }
             StateTransition::Transition(state) => {
+                #[cfg(feature = "std")]
                 println!(
                     "[{}s] Transitioned to state: {}",
                     self.start_time.elapsed().unwrap().as_secs_f32(),
-                    state.name
+                    state.id
                 );
                 // We may also put some kind of transition reporting here or just use state ID's
                 state
@@ -159,8 +184,7 @@ impl<'a> Timeout<'a> {
 }
 
 pub struct State<'a> {
-    // Debug purposes only
-    pub name: String,
+    pub id: u8,
     pub checks: Vec<&'a Check<'a>, MAX_CHECKS_PER_STATE>,
     pub commands: Vec<&'a Command, MAX_COMMANDS_PER_STATE>,
     pub timeout: Option<Timeout<'a>>,
@@ -168,13 +192,13 @@ pub struct State<'a> {
 
 impl<'a> State<'a> {
     pub fn new(
-        name: String,
+        id: u8,
         checks: Vec<&'a Check<'a>, MAX_CHECKS_PER_STATE>,
         commands: Vec<&'a Command, MAX_COMMANDS_PER_STATE>,
         timeout: Option<Timeout<'a>>,
     ) -> Self {
         Self {
-            name,
+            id,
             checks,
             commands,
             timeout,
