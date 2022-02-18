@@ -4,6 +4,13 @@ use std::time::SystemTime;
 
 use nova_software_common::{CheckObject, ObjectState};
 
+pub trait TimeSource {
+    fn get_time(&self) -> f32;
+}
+
+mod time_std;
+pub use time_std::*;
+
 pub struct DataWorkspace {
     altitude: DataObject,
     pyro1: DataObject,
