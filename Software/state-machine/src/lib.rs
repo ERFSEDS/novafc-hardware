@@ -1,37 +1,39 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 
 use core::sync::atomic::AtomicBool;
-use std::time::SystemTime;
 
 use control::Controls;
-use data_acquisition::DataWorkspace;
+use data_acquisition::{DataWorkspace, TimeSource};
 use heapless::Vec;
 use nova_software_common::{
     CheckCondition, CheckObject, CommandObject, ObjectState, MAX_CHECKS_PER_STATE,
     MAX_COMMANDS_PER_STATE,
 };
 
-pub struct StateMachine<'a, 'b, 'c> {
+pub struct StateMachine<'a, 'data, 'c, 'time> {
     current_state: &'a State<'a>,
-    start_time: SystemTime,
-    state_time: SystemTime,
-    data_workspace: &'b DataWorkspace,
+    time_source: &'time dyn TimeSource,
+    start_time: f32,
+    state_time: f32,
+    data_workspace: &'data DataWorkspace,
     controls: &'c mut Controls,
 }
 
-impl<'a, 'b, 'c> StateMachine<'a, 'b, 'c> {
+impl<'a, 'data, 'c, 'time> StateMachine<'a, 'data, 'c, 'time> {
     pub fn new(
         begin: &'a State<'a>,
-        data_workspace: &'b DataWorkspace,
+        time_source: &'time dyn TimeSource,
+        data_workspace: &'data DataWorkspace,
         controls: &'c mut Controls,
     ) -> Self {
-        let time = SystemTime::now();
+        let time = time_source.get_time();
 
         #[cfg(feature = "std")]
         println!("State machine starting in state: {}", begin.id);
 
         Self {
             current_state: begin,
+            time_source,
             start_time: time,
             state_time: time,
             data_workspace,
@@ -61,7 +63,7 @@ impl<'a, 'b, 'c> StateMachine<'a, 'b, 'c> {
         // Check for timeout
         if let Some(timeout) = &self.current_state.timeout {
             // Checks if the state has timed out
-            if self.state_time.elapsed().unwrap().as_secs_f32() >= timeout.time {
+            if (self.time_source.get_time() - self.state_time) >= timeout.time {
                 Some(timeout.transition)
             } else {
                 None
@@ -76,7 +78,7 @@ impl<'a, 'b, 'c> StateMachine<'a, 'b, 'c> {
             .was_executed
             .load(std::sync::atomic::Ordering::SeqCst)
         {
-            if self.state_time.elapsed().unwrap().as_secs_f32() >= command.delay {
+            if (self.time_source.get_time() - self.state_time) >= command.delay {
                 self.controls.set(command.object, command.setting);
                 command
                     .was_executed
@@ -147,7 +149,7 @@ impl<'a, 'b, 'c> StateMachine<'a, 'b, 'c> {
                 #[cfg(feature = "std")]
                 println!(
                     "[{}s] Aborted to state: {}",
-                    self.start_time.elapsed().unwrap().as_secs_f32(),
+                    (self.time_source.get_time() - self.start_time),
                     state.id
                 );
                 // Here we would have abort reporting of some kind like some "callback" to the data
@@ -158,7 +160,7 @@ impl<'a, 'b, 'c> StateMachine<'a, 'b, 'c> {
                 #[cfg(feature = "std")]
                 println!(
                     "[{}s] Transitioned to state: {}",
-                    self.start_time.elapsed().unwrap().as_secs_f32(),
+                    (self.time_source.get_time() - self.start_time),
                     state.id
                 );
                 // We may also put some kind of transition reporting here or just use state ID's
@@ -168,7 +170,7 @@ impl<'a, 'b, 'c> StateMachine<'a, 'b, 'c> {
 
         // Set the new state and reset the state time
         self.current_state = new_state;
-        self.state_time = SystemTime::now();
+        self.state_time = self.time_source.get_time();
     }
 }
 

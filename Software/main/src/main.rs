@@ -2,7 +2,7 @@
 //#![no_std]
 
 use control::Controls;
-use data_acquisition::DataWorkspace;
+use data_acquisition::{DataWorkspace, StdTimeSource};
 use heapless::Vec;
 use nova_software_common::{
     CheckObject, CommandObject, ObjectState, MAX_CHECKS_PER_STATE, MAX_COMMANDS_PER_STATE,
@@ -60,7 +60,10 @@ fn main() {
 
     let mut controls = Controls::new();
 
-    let mut state_machine = StateMachine::new(&poweron, &data_workspace, &mut controls);
+    let time_source = StdTimeSource::new();
+
+    let mut state_machine =
+        StateMachine::new(&poweron, &time_source, &data_workspace, &mut controls);
 
     loop {
         state_machine.execute();
