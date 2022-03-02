@@ -1,126 +1,251 @@
-#![no_std]
+#![cfg_attr(not(feature = "std"), no_std)]
 
-use heapless::{String, Vec};
+use core::sync::atomic::AtomicBool;
+use std::time::SystemTime;
 
-/// The main struct that manages the state machine
-pub struct StateMachine {
-    states: Vec<State, 16>,
-    /// The current state the state machine is in.
-    ///
-    /// Not sure if this should be an option, but I did it just to make sure it is able to be
-    /// created in an empty new() function
-    current_state: usize,
+use control::Controls;
+use data_acquisition::DataWorkspace;
+use heapless::Vec;
+use nova_software_common::{
+    CheckCondition, CheckObject, CommandObject, ObjectState, MAX_CHECKS_PER_STATE,
+    MAX_COMMANDS_PER_STATE,
+};
+
+pub struct StateMachine<'a, 'b, 'c> {
+    current_state: &'a State<'a>,
+    start_time: SystemTime,
+    state_time: SystemTime,
+    data_workspace: &'b DataWorkspace,
+    controls: &'c mut Controls,
 }
 
-impl StateMachine {
-    /*
-    /// Creates a new state machine with the provided state machine configuration
-    pub fn new() -> Self {
-        Self {
-            states: Vec::new(),
-            current_state: None,
-        }
-    }
-    */
-
-    /// THIS IS FOR TESTING PURPOSES ONLY, SHOULD BE REMOVED AS SOON AS CONFIGURATION READING IS
-    /// IMPLEMENTED
-    pub fn from_vec(states: Vec<State, 16>) -> Result<Self, ()> {
-        let current_state = states.iter().position(|s| s.name() == "PowerOn");
-
-        if let Some(first_state) = current_state {
-            Ok(Self {
-                states,
-                current_state: first_state,
-            })
-        } else {
-            Err(())
-        }
-    }
-
-    /// Executes the state machine
-    pub fn execute(&mut self) {
-        for check in self.states.get(self.current_state).unwrap().checks() {
-            let satisfied = check.execute();
-        }
-    }
-}
-
-/// A state that the rocket/flight computer can be in
-///
-/// This should be things like Armed, Stage1, Stage2, Safe, etc.
-///
-#[derive(Debug)]
-pub struct State {
-    name: String<32>,
-    checks: Vec<Check, 4>,
-}
-
-impl State {
-    pub fn new(name: String<32>, checks: Vec<Check, 4>) -> Self {
-        Self { name, checks }
-    }
-
-    pub fn name(&self) -> &str {
-        &self.name
-    }
-
-    pub fn checks(&self) -> &Vec<Check, 4> {
-        &self.checks
-    }
-}
-
-/// A check within a state that is run every time the state is run
-#[derive(Debug)]
-pub struct Check {
-    name: String<32>,
-    value: String<32>,
-    check_type: CheckType,
-    satisfied: Option<CheckSatisfied>,
-}
-
-impl Check {
+impl<'a, 'b, 'c> StateMachine<'a, 'b, 'c> {
     pub fn new(
-        name: String<32>,
-        value: String<32>,
-        check_type: CheckType,
-        satisfied: Option<CheckSatisfied>,
+        begin: &'a State<'a>,
+        data_workspace: &'b DataWorkspace,
+        controls: &'c mut Controls,
+    ) -> Self {
+        let time = SystemTime::now();
+
+        #[cfg(feature = "std")]
+        println!("State machine starting in state: {}", begin.id);
+
+        Self {
+            current_state: begin,
+            start_time: time,
+            state_time: time,
+            data_workspace,
+            controls,
+        }
+    }
+
+    pub fn execute(&mut self) {
+        if let Some(transition) = self.execute_state() {
+            self.transition(transition);
+        }
+    }
+
+    fn execute_state(&mut self) -> Option<StateTransition<'a>> {
+        // Execute commands
+        for command in self.current_state.commands.iter() {
+            self.execute_command(command);
+        }
+
+        // Execute checks
+        for check in self.current_state.checks.iter() {
+            if let Some(transition) = self.execute_check(check) {
+                return Some(transition);
+            }
+        }
+
+        // Check for timeout
+        if let Some(timeout) = &self.current_state.timeout {
+            // Checks if the state has timed out
+            if self.state_time.elapsed().unwrap().as_secs_f32() >= timeout.time {
+                Some(timeout.transition)
+            } else {
+                None
+            }
+        } else {
+            None
+        }
+    }
+
+    fn execute_command(&mut self, command: &Command) {
+        if !command
+            .was_executed
+            .load(std::sync::atomic::Ordering::SeqCst)
+        {
+            if self.state_time.elapsed().unwrap().as_secs_f32() >= command.delay {
+                self.controls.set(command.object, command.setting);
+                command
+                    .was_executed
+                    .store(true, std::sync::atomic::Ordering::SeqCst);
+            }
+        }
+    }
+
+    fn execute_check(&self, check: &Check<'a>) -> Option<StateTransition<'a>> {
+        let value = self.data_workspace.get_object(check.object);
+
+        let satisfied = match check.condition {
+            CheckCondition::FlagSet | CheckCondition::FlagUnset => match value {
+                ObjectState::Flag(b) => b == matches!(check.condition, CheckCondition::FlagSet),
+                _ => panic!(
+                    "{}",
+                    if cfg!(feature = "std") {
+                        "Non-flag value provided to a check that requires a FlagSet/Unset"
+                    } else {
+                        ""
+                    }
+                ),
+            },
+            CheckCondition::LessThan { value: other } => match value {
+                ObjectState::Float(f) => f < other,
+                _ => panic!(
+                    "{}",
+                    if cfg!(feature = "std") {
+                        "Non-float value provided to a check that requires a float value (LessThan)"
+                    } else {
+                        ""
+                    }
+                ),
+            },
+            CheckCondition::GreaterThan { value: other } => match value {
+                ObjectState::Float(f) => f > other,
+                _ => panic!(
+                    "{}",
+                    if cfg!(feature = "std") {
+                        "Non-float value provided to a check that requires a float value (GreaterThan)"
+                    } else {
+                        ""
+                    }
+                ),
+            },
+            CheckCondition::Between {
+                upper_bound,
+                lower_bound,
+            } => match value {
+                ObjectState::Float(f) => f < upper_bound && f > lower_bound,
+                _ => panic!(
+                    "{}",
+                    if cfg!(feature = "std") {
+                        "Non-float value provided to a check that requires a float value (Between)"
+                    } else {
+                        ""
+                    }
+                ),
+            },
+        };
+
+        satisfied.then(|| check.transition)
+    }
+
+    fn transition(&mut self, transition: StateTransition<'a>) {
+        let new_state = match transition {
+            StateTransition::Abort(state) => {
+                #[cfg(feature = "std")]
+                println!(
+                    "[{}s] Aborted to state: {}",
+                    self.start_time.elapsed().unwrap().as_secs_f32(),
+                    state.id
+                );
+                // Here we would have abort reporting of some kind like some "callback" to the data
+                // acquisition module
+                state
+            }
+            StateTransition::Transition(state) => {
+                #[cfg(feature = "std")]
+                println!(
+                    "[{}s] Transitioned to state: {}",
+                    self.start_time.elapsed().unwrap().as_secs_f32(),
+                    state.id
+                );
+                // We may also put some kind of transition reporting here or just use state ID's
+                state
+            }
+        };
+
+        // Set the new state and reset the state time
+        self.current_state = new_state;
+        self.state_time = SystemTime::now();
+    }
+}
+
+pub struct Timeout<'a> {
+    pub time: f32,
+    pub transition: StateTransition<'a>,
+}
+
+impl<'a> Timeout<'a> {
+    pub fn new(time: f32, transition: StateTransition<'a>) -> Self {
+        Self { time, transition }
+    }
+}
+
+pub struct State<'a> {
+    pub id: u8,
+    pub checks: Vec<&'a Check<'a>, MAX_CHECKS_PER_STATE>,
+    pub commands: Vec<&'a Command, MAX_COMMANDS_PER_STATE>,
+    pub timeout: Option<Timeout<'a>>,
+}
+
+impl<'a> State<'a> {
+    pub fn new(
+        id: u8,
+        checks: Vec<&'a Check<'a>, MAX_CHECKS_PER_STATE>,
+        commands: Vec<&'a Command, MAX_COMMANDS_PER_STATE>,
+        timeout: Option<Timeout<'a>>,
     ) -> Self {
         Self {
-            name,
-            value,
-            check_type,
-            satisfied,
+            id,
+            checks,
+            commands,
+            timeout,
         }
     }
+}
 
-    /// Runs the check.
-    ///
-    /// Returns an Option which is Some if the check has returned true.
-    /// None if the check has returned false.
-    pub fn execute(&self) -> Option<CheckSatisfied> {
-        todo!();
+pub struct Check<'a> {
+    pub object: CheckObject,
+    pub condition: CheckCondition,
+    pub transition: StateTransition<'a>,
+}
+
+impl<'a> Check<'a> {
+    pub fn new(
+        object: CheckObject,
+        condition: CheckCondition,
+        transition: StateTransition<'a>,
+    ) -> Self {
+        Self {
+            object,
+            condition,
+            transition,
+        }
     }
 }
 
-/// Represents a type of state check
-#[derive(Debug)]
-pub enum CheckType {
-    Flag,
-    Equals { value: f32 },
-    GreaterThan { value: f32 },
-    LessThan { value: f32 },
-    Between { upper_bound: f32, lower_bound: f32 },
+#[derive(Copy, Clone)]
+pub enum StateTransition<'a> {
+    Transition(&'a State<'a>),
+    Abort(&'a State<'a>),
 }
 
-/// A state transition due to a check being satisfied
-/// This is how states transition from one to another.
-///
-/// The enum values are the indexes of states within the vector passed to StateMachine::from_vec()
-#[derive(Debug)]
-pub enum CheckSatisfied {
-    /// Represents a safe transition to another state
-    Transition(usize),
-    /// Represents an abort to a safer state if an abort condition was met
-    Abort(usize),
+pub struct Command {
+    pub object: CommandObject,
+    pub setting: ObjectState,
+    pub delay: f32,
+    pub was_executed: AtomicBool,
+}
+
+impl Command {
+    pub fn new(object: CommandObject, setting: ObjectState, delay: f32) -> Self {
+        Self {
+            object,
+            setting,
+            delay,
+            was_executed: AtomicBool::new(false),
+        }
+    }
 }
