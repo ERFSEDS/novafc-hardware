@@ -1664,7 +1664,6 @@
     (at 159.9 66.375 180)
     (descr "Through hole straight pin header, 1x05, 2.54mm pitch, single row")
     (tags "Through hole pin header THT 1x05 2.54mm single row")
-    (path "/00000000-0000-0000-0000-00005f31b2a5/00000000-0000-0000-0000-000060422c5e")
     (attr through_hole)
     (fp_text reference "J1" (at 0 -2.33) (layer "F.SilkS")
       (effects (font (size 0.5 0.5) (thickness 0.1)))

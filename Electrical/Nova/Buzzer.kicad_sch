@@ -563,7 +563,7 @@
     (pin "1" (uuid 4c77837f-2440-4b7b-8e7e-430f981c7c04))
   )
 
-  (symbol (lib_id "Nova-rescue:Q_NMOS_DGS-MOSFET") (at 140.97 91.44 0)
+  (symbol (lib_id "Nova-rescue:Q_NMOS_DGS-MOSFET") (at 140.97 91.44 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-0000617c8203)
     (property "Reference" "Q9" (id 0) (at 146.1516 90.2716 0)

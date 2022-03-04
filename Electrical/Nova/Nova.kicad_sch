@@ -2645,12 +2645,6 @@
     (path "/00000000-0000-0000-0000-00005f3a063c/00000000-0000-0000-0000-00005f01d3f6"
       (reference "#PWR08") (unit 1) (value "GND") (footprint "")
     )
-    (path "/00000000-0000-0000-0000-00005f31b2a5/00000000-0000-0000-0000-00005ef1469e"
-      (reference "#PWR09") (unit 1) (value "+3.3V") (footprint "")
-    )
-    (path "/00000000-0000-0000-0000-00005f31b2a5/00000000-0000-0000-0000-00005ef14a6c"
-      (reference "#PWR010") (unit 1) (value "GND") (footprint "")
-    )
     (path "/00000000-0000-0000-0000-00005f46051d/00000000-0000-0000-0000-00005f0d93c7"
       (reference "#PWR027") (unit 1) (value "+3.3V") (footprint "")
     )
@@ -2891,6 +2885,12 @@
     (path "/00000000-0000-0000-0000-0000618a33af"
       (reference "#PWR0162") (unit 1) (value "GND") (footprint "")
     )
+    (path "/00000000-0000-0000-0000-00005f31b2a5/fb0ca1dc-4cb3-4b66-8fdb-082517b20665"
+      (reference "#PWR0163") (unit 1) (value "+3.3V") (footprint "")
+    )
+    (path "/00000000-0000-0000-0000-00005f31b2a5/d1465ddb-fd75-49b1-8e0f-f1dff5e2d580"
+      (reference "#PWR0164") (unit 1) (value "GND") (footprint "")
+    )
     (path "/00000000-0000-0000-0000-000061c94220"
       (reference "BOOT1") (unit 1) (value "SW_Push") (footprint "NOVA MCU (STM):KSR223GLFG")
     )
@@ -3017,8 +3017,8 @@
     (path "/00000000-0000-0000-0000-00005fa525d1"
       (reference "H4") (unit 1) (value "MountingHole") (footprint "MountingHole:MountingHole_3mm")
     )
-    (path "/00000000-0000-0000-0000-00005f31b2a5/00000000-0000-0000-0000-000060422c5e"
-      (reference "J1") (unit 1) (value "Conn_01x05_Male_Programmer") (footprint "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical")
+    (path "/00000000-0000-0000-0000-00005f31b2a5/b510653b-eba5-41b5-83c4-6318803272ce"
+      (reference "J1") (unit 1) (value "Conn_01x06_Male") (footprint "NOVA MCU (STM):j-link_6_pin_needle")
     )
     (path "/00000000-0000-0000-0000-000061827242"
       (reference "J2") (unit 1) (value "Conn_02x04_Counter_Clockwise") (footprint "Connector_PinSocket_2.54mm:PinSocket_2x03_P2.54mm_Vertical")

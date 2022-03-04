@@ -325,7 +325,7 @@
     (uuid a3fab380-991d-404b-95d5-1c209b047b6e)
   )
 
-  (symbol (lib_id "power:GND") (at 120.65 82.55 0)
+  (symbol (lib_id "power:GND") (at 120.65 82.55 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-00006179f961)
     (property "Reference" "#PWR0149" (id 0) (at 120.65 88.9 0)
@@ -341,7 +341,7 @@
     (pin "1" (uuid 8cf4e6c7-f213-4dc6-a215-9a85d8791784))
   )
 
-  (symbol (lib_id "Device:R_US") (at 133.35 78.74 0)
+  (symbol (lib_id "Device:R_US") (at 133.35 78.74 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-0000617df88e)
     (property "Reference" "R10" (id 0) (at 135.0772 77.5716 0)
@@ -360,7 +360,7 @@
     (pin "2" (uuid 740c9c9e-c377-4082-a7c2-2dfeb8296429))
   )
 
-  (symbol (lib_id "Device:R_US") (at 120.65 74.93 0)
+  (symbol (lib_id "Device:R_US") (at 120.65 74.93 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-0000617df88f)
     (property "Reference" "R8" (id 0) (at 122.3772 73.7616 0)
@@ -379,7 +379,7 @@
     (pin "2" (uuid cec22d4a-eda3-4d50-8609-c3a123c120be))
   )
 
-  (symbol (lib_id "Nova-rescue:Q_NMOS_DGS-MOSFET") (at 130.81 66.04 0)
+  (symbol (lib_id "Nova-rescue:Q_NMOS_DGS-MOSFET") (at 130.81 66.04 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-0000617e0250)
     (property "Reference" "Q1" (id 0) (at 135.9916 64.8716 0)
@@ -402,7 +402,7 @@
     (pin "6" (uuid d97f24b8-3f5c-4536-a071-0786594f3ffe))
   )
 
-  (symbol (lib_id "Nova-rescue:Q_NMOS_DGS-MOSFET") (at 130.81 91.44 0)
+  (symbol (lib_id "Nova-rescue:Q_NMOS_DGS-MOSFET") (at 130.81 91.44 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-0000617e0251)
     (property "Reference" "Q2" (id 0) (at 135.9916 90.2716 0)
@@ -425,7 +425,7 @@
     (pin "6" (uuid e4d0483b-1c21-4fb6-87dd-47e636746c0e))
   )
 
-  (symbol (lib_id "Device:R_US") (at 120.65 100.33 0)
+  (symbol (lib_id "Device:R_US") (at 120.65 100.33 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-0000617e0255)
     (property "Reference" "R9" (id 0) (at 122.3772 99.1616 0)
@@ -444,7 +444,7 @@
     (pin "2" (uuid 3497045f-d218-47c9-8fd1-2d0a39585aa6))
   )
 
-  (symbol (lib_id "power:GND") (at 120.65 107.95 0)
+  (symbol (lib_id "power:GND") (at 120.65 107.95 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-0000617e0256)
     (property "Reference" "#PWR0150" (id 0) (at 120.65 114.3 0)
@@ -460,7 +460,7 @@
     (pin "1" (uuid a29e1299-22c5-4fd2-9a37-e405785962a9))
   )
 
-  (symbol (lib_id "power:GND") (at 133.35 100.33 0)
+  (symbol (lib_id "power:GND") (at 133.35 100.33 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-0000617e0257)
     (property "Reference" "#PWR0151" (id 0) (at 133.35 106.68 0)
