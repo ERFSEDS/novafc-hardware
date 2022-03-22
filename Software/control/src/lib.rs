@@ -2,7 +2,7 @@
 
 use std::time::SystemTime;
 
-use nova_software_common::{CommandObject, ObjectState};
+use nova_software_common::{CommandKind, CommandObject, ObjectState};
 
 pub struct Controls {
     pyro1: ControlObject,
@@ -30,13 +30,15 @@ impl Controls {
         }
     }
 
-    pub fn set(&mut self, object: CommandObject, state: ObjectState) {
-        let object = match object {
-            CommandObject::Pyro1 => &mut self.pyro1,
-            CommandObject::Pyro2 => &mut self.pyro2,
-            CommandObject::Pyro3 => &mut self.pyro3,
-            CommandObject::Beacon => &mut self.beacon,
-            CommandObject::DataRate => &mut self.data_rate,
+    pub fn set(&mut self, kind: CommandKind, state: ObjectState) {
+        let a = kind.with_state(state);
+
+        let object = match kind {
+            CommandKind::Pyro1 => &mut self.pyro1,
+            CommandKind::Pyro2 => &mut self.pyro2,
+            CommandKind::Pyro3 => &mut self.pyro3,
+            CommandKind::Beacon => &mut self.beacon,
+            CommandKind::DataRate => &mut self.data_rate,
         };
 
         object.set(state);

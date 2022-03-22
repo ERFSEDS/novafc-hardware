@@ -2,7 +2,7 @@
 
 use std::time::SystemTime;
 
-use nova_software_common::{CheckObject, ObjectState};
+use nova_software_common::ObjectState;
 
 pub struct DataWorkspace {
     altitude: DataObject,
@@ -89,6 +89,14 @@ impl DataObject {
             Self::DurationBased(db) => db.read(),
         }
     }
+}
+
+#[derive(Debug, Copy, Clone)]
+pub enum CheckObject {
+    Altitude,
+    Pyro1Continuity,
+    Pyro2Continuity,
+    Pyro3Continuity,
 }
 
 // Just for testing, allowing us to simulate some events
