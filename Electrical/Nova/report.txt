@@ -1,0 +1,24 @@
+Plot file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-F_Cu.gbr" created.
+Plot file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-3_3V.gbr" created.
+Plot file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-GND.gbr" created.
+Plot file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-B_Cu.gbr" created.
+Plot file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-F_Paste.gbr" created.
+Plot file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-B_Paste.gbr" created.
+Plot file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-F_SilkS.gbr" created.
+Plot file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-B_SilkS.gbr" created.
+Plot file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-F_Mask.gbr" created.
+Plot file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-B_Mask.gbr" created.
+Plot file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-Edge_Cuts.gbr" created.
+Create Gerber job file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-job.gbrjob"
+Plot file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-F_Cu.gbr" created.
+Plot file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-3_3V.gbr" created.
+Plot file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-GND.gbr" created.
+Plot file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-B_Cu.gbr" created.
+Plot file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-F_Paste.gbr" created.
+Plot file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-B_Paste.gbr" created.
+Plot file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-F_SilkS.gbr" created.
+Plot file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-B_SilkS.gbr" created.
+Plot file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-F_Mask.gbr" created.
+Plot file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-B_Mask.gbr" created.
+Plot file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-Edge_Cuts.gbr" created.
+Create Gerber job file "C:\ERFSEDS\CERBERUS\NOVA\Nova_Flight_Computer\Electrical\Nova\Nova-job.gbrjob"
