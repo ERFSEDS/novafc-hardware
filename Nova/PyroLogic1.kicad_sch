@@ -271,6 +271,7 @@
   )
 
 
+
   (wire (pts (xy 120.65 104.14) (xy 120.65 107.95))
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid 000b46d6-b833-4804-8f56-56d539f76d09)
