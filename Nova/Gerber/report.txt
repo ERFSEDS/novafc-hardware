@@ -1,0 +1,13 @@
+Plotted to 'C:\ERFSEDS\CERBERUS\NOVA\novafc-hardware\Nova\Gerber\Nova-F_Cu.gbr'.
+Plotted to 'C:\ERFSEDS\CERBERUS\NOVA\novafc-hardware\Nova\Gerber\Nova-3_3V.gbr'.
+Plotted to 'C:\ERFSEDS\CERBERUS\NOVA\novafc-hardware\Nova\Gerber\Nova-GND.gbr'.
+Plotted to 'C:\ERFSEDS\CERBERUS\NOVA\novafc-hardware\Nova\Gerber\Nova-B_Cu.gbr'.
+Plotted to 'C:\ERFSEDS\CERBERUS\NOVA\novafc-hardware\Nova\Gerber\Nova-F_Paste.gbr'.
+Plotted to 'C:\ERFSEDS\CERBERUS\NOVA\novafc-hardware\Nova\Gerber\Nova-B_Paste.gbr'.
+Plotted to 'C:\ERFSEDS\CERBERUS\NOVA\novafc-hardware\Nova\Gerber\Nova-F_Silkscreen.gbr'.
+Plotted to 'C:\ERFSEDS\CERBERUS\NOVA\novafc-hardware\Nova\Gerber\Nova-B_Silkscreen.gbr'.
+Plotted to 'C:\ERFSEDS\CERBERUS\NOVA\novafc-hardware\Nova\Gerber\Nova-F_Mask.gbr'.
+Plotted to 'C:\ERFSEDS\CERBERUS\NOVA\novafc-hardware\Nova\Gerber\Nova-B_Mask.gbr'.
+Plotted to 'C:\ERFSEDS\CERBERUS\NOVA\novafc-hardware\Nova\Gerber\Nova-Edge_Cuts.gbr'.
+Created Gerber job file 'C:\ERFSEDS\CERBERUS\NOVA\novafc-hardware\Nova\Gerber\Nova-job.gbrjob'.
+Info: Done.

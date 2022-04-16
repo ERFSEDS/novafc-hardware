@@ -1,0 +1,12 @@
+(fp_lib_table
+  (lib (name "NOVA MCU (STM)")(type "KiCad")(uri "${KIPRJMOD}/../Common_Modules/MCU/Footprints/NOVA MCU (STM).pretty")(options "")(descr ""))
+  (lib (name "Accelerometer_Breakout")(type "KiCad")(uri "${KIPRJMOD}/../common_modules/Accelerometer_Breakout/Accelerometer_Breakout.pretty")(options "")(descr ""))
+  (lib (name "PyroChannel")(type "KiCad")(uri "${KIPRJMOD}/../common_modules/PyroChannel/Footprints/PyroChannel.pretty")(options "")(descr ""))
+  (lib (name "Barometer")(type "KiCad")(uri "${KIPRJMOD}/../Common_Modules/Barometer/Footprint Library/Barometer.pretty")(options "")(descr ""))
+  (lib (name "Power")(type "KiCad")(uri "${KIPRJMOD}/../Common_Modules/PowerSupply/Footprint Library/Power.pretty")(options "")(descr ""))
+  (lib (name "Transducer")(type "KiCad")(uri "${KIPRJMOD}/../Common_Modules/Transducer/Footprint Library/Transducer.pretty")(options "")(descr ""))
+  (lib (name "Gyroscope")(type "KiCad")(uri "${KIPRJMOD}/../Common_Modules/Gyroscope/footprints/Gyroscope.pretty")(options "")(descr ""))
+  (lib (name "FHSD")(type "KiCad")(uri "${KIPRJMOD}/../Common_Modules/FHSD/Footprint Library/FHSD.pretty")(options "")(descr ""))
+  (lib (name "Footrpint Library")(type "KiCad")(uri "C:/Users/Penguin/Documents/GitHub/Nova_Flight_Computer/Electrical/Common_Modules/FTDI/Footrpint Library")(options "")(descr ""))
+  (lib (name "Logo")(type "KiCad")(uri "${KIPRJMOD}/Logo.pretty")(options "")(descr ""))
+)
