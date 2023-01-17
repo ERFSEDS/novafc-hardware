@@ -9,4 +9,5 @@
   (lib (name "FHSD")(type "KiCad")(uri "${KIPRJMOD}/../Common_Modules/FHSD/Footprint Library/FHSD.pretty")(options "")(descr ""))
   (lib (name "Footrpint Library")(type "KiCad")(uri "C:/Users/Penguin/Documents/GitHub/Nova_Flight_Computer/Electrical/Common_Modules/FTDI/Footrpint Library")(options "")(descr ""))
   (lib (name "Logo")(type "KiCad")(uri "${KIPRJMOD}/Logo.pretty")(options "")(descr ""))
+  (lib (name "STMf411")(type "KiCad")(uri "/home/paul/Nova_New/Electrical/Parts/Custom/KiCAD/2022-12-28_18-19-48/footprints.pretty")(options "")(descr ""))
 )

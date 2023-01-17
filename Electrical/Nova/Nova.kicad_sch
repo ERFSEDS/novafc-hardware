@@ -1846,7 +1846,7 @@
     (uuid 00000000-0000-0000-0000-0000615ccc8f)
     (property "Reference" "U1" (id 0) (at 66.04 90.17 0))
     (property "Value" "STM32F411CEUx" (id 1) (at 66.04 87.63 0))
-    (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm" (id 2) (at 50.8 176.53 0)
+    (property "Footprint" "STMf411:STM32F411CEU6" (id 2) (at 50.8 176.53 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
     (property "Datasheet" "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/DM00115249.pdf" (id 3) (at 66.04 138.43 0)
@@ -2836,6 +2836,12 @@
     (path "/00000000-0000-0000-0000-00005f31b2a5/d1465ddb-fd75-49b1-8e0f-f1dff5e2d580"
       (reference "#PWR0163") (unit 1) (value "GND") (footprint "")
     )
+    (path "/00000000-0000-0000-0000-00005f319c9c/fc37719f-2e63-4176-896a-7a97074d32ca"
+      (reference "#PWR0164") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/00000000-0000-0000-0000-00005f319c9c/98bafe4f-e043-4d95-9cbb-e623ecfee013"
+      (reference "#PWR0165") (unit 1) (value "GND") (footprint "")
+    )
     (path "/00000000-0000-0000-0000-000061c94220"
       (reference "BOOT1") (unit 1) (value "SW_Push") (footprint "NOVA MCU (STM):KSR223GLFG")
     )
@@ -2861,16 +2867,16 @@
       (reference "C6") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0402_1005Metric")
     )
     (path "/00000000-0000-0000-0000-00005f319c9c/00000000-0000-0000-0000-000061c6928d"
-      (reference "C7") (unit 1) (value "1.5pF") (footprint "Capacitor_SMD:C_0402_1005Metric")
+      (reference "C7") (unit 1) (value "8pF") (footprint "Capacitor_SMD:C_0402_1005Metric")
     )
     (path "/00000000-0000-0000-0000-00005f319c9c/00000000-0000-0000-0000-000061c69a59"
-      (reference "C8") (unit 1) (value "1.5pF") (footprint "Capacitor_SMD:C_0402_1005Metric")
+      (reference "C8") (unit 1) (value "8pF") (footprint "Capacitor_SMD:C_0402_1005Metric")
     )
     (path "/00000000-0000-0000-0000-00005f319c9c/00000000-0000-0000-0000-000061c69d3a"
       (reference "C9") (unit 1) (value "8pF") (footprint "Capacitor_SMD:C_0402_1005Metric")
     )
     (path "/00000000-0000-0000-0000-00005f3189b2/00000000-0000-0000-0000-000061bc2f35"
-      (reference "C10") (unit 1) (value "2.2uF") (footprint "Capacitor_SMD:C_0402_1005Metric")
+      (reference "C10") (unit 1) (value "4.7uF") (footprint "Capacitor_SMD:C_0402_1005Metric")
     )
     (path "/00000000-0000-0000-0000-00005f319c9c/00000000-0000-0000-0000-000061c69e7c"
       (reference "C11") (unit 1) (value "8pF") (footprint "Capacitor_SMD:C_0402_1005Metric")
@@ -2909,7 +2915,7 @@
       (reference "C25") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0402_1005Metric")
     )
     (path "/00000000-0000-0000-0000-00005f3b5c2e/00000000-0000-0000-0000-00005f06d2e9"
-      (reference "C26") (unit 1) (value "0.1uF") (footprint "Capacitor_SMD:C_0402_1005Metric")
+      (reference "C26") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0402_1005Metric")
     )
     (path "/00000000-0000-0000-0000-00005f319d4b/00000000-0000-0000-0000-0000607642f6"
       (reference "C28") (unit 1) (value "27pF") (footprint "Capacitor_SMD:C_0402_1005Metric")
@@ -3071,10 +3077,10 @@
       (reference "R20") (unit 1) (value "47k") (footprint "Resistor_SMD:R_0402_1005Metric")
     )
     (path "/00000000-0000-0000-0000-00005f319d4b/00000000-0000-0000-0000-00005f9b6a21"
-      (reference "R21") (unit 1) (value "5k") (footprint "Resistor_SMD:R_0402_1005Metric")
+      (reference "R21") (unit 1) (value "5k1") (footprint "Resistor_SMD:R_0402_1005Metric")
     )
     (path "/00000000-0000-0000-0000-00005f319d4b/00000000-0000-0000-0000-00005f9b6a27"
-      (reference "R22") (unit 1) (value "5k") (footprint "Resistor_SMD:R_0402_1005Metric")
+      (reference "R22") (unit 1) (value "5k1") (footprint "Resistor_SMD:R_0402_1005Metric")
     )
     (path "/00000000-0000-0000-0000-00005f448d4b/00000000-0000-0000-0000-0000617c3265/00000000-0000-0000-0000-0000617e0252"
       (reference "R23") (unit 1) (value "3.3") (footprint "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder")
@@ -3110,7 +3116,7 @@
       (reference "R37") (unit 1) (value "10k") (footprint "Resistor_SMD:R_0402_1005Metric")
     )
     (path "/00000000-0000-0000-0000-0000615ccc8f"
-      (reference "U1") (unit 1) (value "STM32F411CEUx") (footprint "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm")
+      (reference "U1") (unit 1) (value "STM32F411CEUx") (footprint "STMf411:STM32F411CEU6")
     )
     (path "/00000000-0000-0000-0000-00005f46051d/00000000-0000-0000-0000-00005f0cd93e"
       (reference "U2") (unit 1) (value "ST_H3LIS331DL") (footprint "Accelerometer_Breakout:TFLGA-16_3x3mm")
